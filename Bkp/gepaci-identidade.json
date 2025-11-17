@@ -1,0 +1,419 @@
+{
+  "name": "gepaci-identidade",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "e5c3cf14-c033-481a-bbb3-30c55195ed5e",
+      "name": "Replace me with your logic",
+      "type": "n8n-nodes-base.noOp",
+      "position": [
+        528,
+        -128
+      ],
+      "typeVersion": 1
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://apiwhatsapp.icomon.com.vc/identidade/autenticar",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "integracao@mutant.com.br"
+            },
+            {
+              "name": "senha",
+              "value": "Heh#EL8@ScR%Gp$m"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -176,
+        -432
+      ],
+      "id": "c3e78575-579e-4dda-884e-0323d69124b9",
+      "name": "requestToken"
+    },
+    {
+      "parameters": {
+        "url": "=https://apiwhatsapp.icomon.com.vc/funcionarios/pesquisar/{{ $('coletar identificador').item.json.inputIdentity }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.body.accessToken }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -144,
+        -128
+      ],
+      "id": "932dd087-80d3-48e9-96e1-376c9cafcca6",
+      "name": "buscarFuncionario"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b1bbef1f-aade-4643-a58b-90a6e7b54cac",
+              "name": "body.nome",
+              "value": "={{ $('buscarFuncionario').item.json.body.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "8ce69bca-e03f-4819-b323-343385885b0a",
+              "name": "body.funcao",
+              "value": "={{ $('buscarFuncionario').item.json.body.funcao }}",
+              "type": "string"
+            },
+            {
+              "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
+              "name": "body.colaborador",
+              "value": "OK",
+              "type": "string"
+            },
+            {
+              "id": "2bd4e2c3-c065-4420-93be-75cc0adcbbcf",
+              "name": "chatInput",
+              "value": "Dados informados e validados com sucesso.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        288,
+        -304
+      ],
+      "id": "126c6db5-edb7-44d5-8a8a-e75668194456",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "37271610-ca3e-479a-a814-8ff315091d2a",
+                    "leftValue": "={{ $json.statusCode }}",
+                    "rightValue": 200,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "encontrado"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.statusCode }}",
+                    "rightValue": 200,
+                    "operator": {
+                      "type": "number",
+                      "operation": "notEquals"
+                    },
+                    "id": "244bbc4d-47f3-4f9a-803b-27850f3b2904"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "naoEncontrado"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        64,
+        -128
+      ],
+      "id": "921af276-715c-463e-9b91-6d7a1fe36550",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "content": "API identidade",
+        "height": 816,
+        "width": 1472,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -720,
+        -480
+      ],
+      "typeVersion": 1,
+      "id": "b2f800a7-507d-448b-8be4-a45750b90f4f",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "a97dd1d1-0b64-4a1f-a7db-7bf982ebd905",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -624,
+        -432
+      ],
+      "id": "f88460a6-99dc-4513-abf3-9f183f2638c1",
+      "name": "Webhook",
+      "webhookId": "a97dd1d1-0b64-4a1f-a7db-7bf982ebd905"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
+              "name": "body.colaborador",
+              "value": "NAO ENCONTRADO",
+              "type": "string"
+            },
+            {
+              "id": "6b8f4a3e-ba82-4a83-b1fb-07f462d233a9",
+              "name": "chatInput",
+              "value": "Usuário não localizado",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        288,
+        -112
+      ],
+      "id": "5fc91bf1-08cf-457b-a5c0-c12fccbcf8cf",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
+              "name": "inputIdentity",
+              "value": "={{ $json.body.json.chatInput }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -400,
+        -432
+      ],
+      "id": "ab1ebe07-5701-4090-979c-ca9557d5a9bd",
+      "name": "coletar identificador",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        496,
+        -464
+      ],
+      "id": "ec32f90a-46b7-48d2-844f-687477cf38a8",
+      "name": "Execution Data"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.executionData",
+      "typeVersion": 1.1,
+      "position": [
+        528,
+        144
+      ],
+      "id": "0201fbfa-ffa4-43c8-9b32-92d0f999f104",
+      "name": "Execution Data1"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "requestToken": {
+      "main": [
+        [
+          {
+            "node": "buscarFuncionario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "buscarFuncionario": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Replace me with your logic",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Execution Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "coletar identificador",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Replace me with your logic",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Execution Data1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "coletar identificador": {
+      "main": [
+        [
+          {
+            "node": "requestToken",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "425827c0-ecea-46f3-8cc7-ed100faa35c8",
+  "meta": {
+    "instanceId": "7e7e3575d283f24699fc69f563d93b46080b8f3323aee0041bb6ecefcd574587"
+  },
+  "id": "UJk89ag0vkpRg6yh",
+  "tags": [
+    {
+      "updatedAt": "2025-11-12T18:02:12.379Z",
+      "createdAt": "2025-11-12T18:02:12.379Z",
+      "id": "EQaCylDUfXy0rfSk",
+      "name": "api"
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "name": "gepaci-base-sql",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "db-contas",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f72c9ddc-3dc7-41a4-9aee-9955d4319ddb",
+      "name": "Webhook",
+      "webhookId": "ab867a92-b2dc-45f7-af57-a88339617451",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM [VW_LINHAS_GENESIS_SCL] WHERE [ID] = 1;"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        240,
+        -176
+      ],
+      "id": "5ba62692-5e9b-4cb4-9298-5e4345c25cbc",
+      "name": "Microsoft SQL",
+      "credentials": {
+        "microsoftSql": {
+          "id": "ZZJpvjAX2pf0a1pq",
+          "name": "Microsoft SQL account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "VW_LINHAS_GENESIS_SCL",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "LINHA_GENESIS",
+              "keyValue": "={{ $json.body.json.phoneNumber }}"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        240,
+        0
+      ],
+      "id": "72fbaadf-b182-4e8f-9fa4-bbbd5d2050a6",
+      "name": "Get a row",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "UkhcVA2BMMEna2bC",
+          "name": "Supabase account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Get a row",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "79b69eaf-c1cd-471e-822e-f9de15e2704e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "7e7e3575d283f24699fc69f563d93b46080b8f3323aee0041bb6ecefcd574587"
+  },
+  "id": "tsrEjzMicivyNdF5",
+  "tags": [
+    {
+      "updatedAt": "2025-11-13T11:53:19.187Z",
+      "createdAt": "2025-11-13T11:53:19.187Z",
+      "id": "hGL8TxnM2aO8NWJJ",
+      "name": "sql"
+    }
+  ]
+}
