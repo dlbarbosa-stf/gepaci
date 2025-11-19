@@ -11,10 +11,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        0,
-        0
+        -560,
+        304
       ],
-      "id": "f72c9ddc-3dc7-41a4-9aee-9955d4319ddb",
+      "id": "d5b76d30-cac3-4df6-8c8e-226d118f1bb0",
       "name": "Webhook",
       "webhookId": "ab867a92-b2dc-45f7-af57-a88339617451",
       "alwaysOutputData": false
@@ -27,17 +27,11 @@
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        240,
-        -176
+        -320,
+        128
       ],
-      "id": "5ba62692-5e9b-4cb4-9298-5e4345c25cbc",
-      "name": "Microsoft SQL",
-      "credentials": {
-        "microsoftSql": {
-          "id": "ZZJpvjAX2pf0a1pq",
-          "name": "Microsoft SQL account"
-        }
-      }
+      "id": "cbb8760a-0eb8-4bfe-a28d-9713e2463295",
+      "name": "Microsoft SQL"
     },
     {
       "parameters": {
@@ -55,15 +49,15 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        240,
-        0
+        -320,
+        304
       ],
-      "id": "72fbaadf-b182-4e8f-9fa4-bbbd5d2050a6",
+      "id": "d2b9ef4c-8fdd-4f16-8e30-d17d60400d60",
       "name": "Get a row",
       "alwaysOutputData": true,
       "credentials": {
         "supabaseApi": {
-          "id": "UkhcVA2BMMEna2bC",
+          "id": "htCf539ApNjfrbw8",
           "name": "Supabase account"
         }
       },
@@ -88,17 +82,16 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "79b69eaf-c1cd-471e-822e-f9de15e2704e",
+  "versionId": "838af672-832f-4dfe-8024-dac1056d154d",
   "meta": {
-    "templateCredsSetupCompleted": true,
-    "instanceId": "7e7e3575d283f24699fc69f563d93b46080b8f3323aee0041bb6ecefcd574587"
+    "instanceId": "e71ee30208579422913ee1673c6e68fb79d1e7e17d5c1deb0a672e043b70fb7c"
   },
-  "id": "tsrEjzMicivyNdF5",
+  "id": "ZVogERkQFDAhm1c5",
   "tags": [
     {
-      "updatedAt": "2025-11-13T11:53:19.187Z",
-      "createdAt": "2025-11-13T11:53:19.187Z",
-      "id": "hGL8TxnM2aO8NWJJ",
+      "updatedAt": "2025-11-18T17:53:11.353Z",
+      "createdAt": "2025-11-18T17:53:11.353Z",
+      "id": "PGdCYMjHTSZlTEwQ",
       "name": "sql"
     }
   ]

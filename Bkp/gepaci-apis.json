@@ -1,0 +1,710 @@
+{
+  "name": "gepaci-apis",
+  "nodes": [
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://apiwhatsapp.icomon.com.vc/identidade/autenticar",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "integracao@mutant.com.br"
+            },
+            {
+              "name": "senha",
+              "value": "Heh#EL8@ScR%Gp$m"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        544,
+        48
+      ],
+      "id": "2346ba7d-672a-413a-90d0-7d82e82a9918",
+      "name": "requestToken"
+    },
+    {
+      "parameters": {
+        "url": "=https://apiwhatsapp.icomon.com.vc/funcionarios/pesquisar/{{ $('coletar identificador').item.json.inputIdentity }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.body.accessToken }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        736,
+        48
+      ],
+      "id": "cecb0104-0acc-4421-942d-88d793fd77d5",
+      "name": "buscarFuncionario"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "37271610-ca3e-479a-a814-8ff315091d2a",
+                    "leftValue": "={{ $json.statusCode }}",
+                    "rightValue": 200,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "encontrado"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.statusCode }}",
+                    "rightValue": 200,
+                    "operator": {
+                      "type": "number",
+                      "operation": "notEquals"
+                    },
+                    "id": "244bbc4d-47f3-4f9a-803b-27850f3b2904"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "naoEncontrado"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        96,
+        400
+      ],
+      "id": "a399aa16-fc82-4271-8f8b-8e7b36497ec8",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "content": "API identidade",
+        "height": 608,
+        "width": 944,
+        "color": 6
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "f1d90e23-5cb9-47ec-8978-3f01ab91a237",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
+              "name": "inputIdentity",
+              "value": "={{ $json.body.json.chatInput }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        320,
+        48
+      ],
+      "id": "d386e2e4-0dc4-41a6-9a38-f57e219c9d58",
+      "name": "coletar identificador",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b1bbef1f-aade-4643-a58b-90a6e7b54cac",
+              "name": "body.nome",
+              "value": "={{ $('buscarFuncionario').item.json.body.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "8ce69bca-e03f-4819-b323-343385885b0a",
+              "name": "body.funcao",
+              "value": "={{ $('buscarFuncionario').item.json.body.funcao }}",
+              "type": "string"
+            },
+            {
+              "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
+              "name": "body.colaborador",
+              "value": "OK",
+              "type": "string"
+            },
+            {
+              "id": "2bd4e2c3-c065-4420-93be-75cc0adcbbcf",
+              "name": "chatInput",
+              "value": "Dados informados e validados com sucesso.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        400,
+        272
+      ],
+      "id": "57d009dd-4570-4aa8-aa9a-520a48550009",
+      "name": "Colaborador Encontrado"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
+              "name": "body.colaborador",
+              "value": "NAO ENCONTRADO",
+              "type": "string"
+            },
+            {
+              "id": "6b8f4a3e-ba82-4a83-b1fb-07f462d233a9",
+              "name": "chatInput",
+              "value": "Usuário não localizado",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        400,
+        464
+      ],
+      "id": "0ea80566-304b-41ec-bd6e-559fe01b87e3",
+      "name": "Não Encontrado"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://loginunicoapiexternos.icomon.com.vc/api/Sistema/login",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "login",
+              "value": "gepaci@icomon"
+            },
+            {
+              "name": "senha",
+              "value": "gC39p43BB_c14C4*2025aa82"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        544,
+        688
+      ],
+      "id": "338d0f78-6237-4375-8a9d-ca41d2f31205",
+      "name": "requestToken1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "37271610-ca3e-479a-a814-8ff315091d2a",
+                    "leftValue": "={{ $json.statusCode }}",
+                    "rightValue": 200,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "tokenValido"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.statusCode }}",
+                    "rightValue": 200,
+                    "operator": {
+                      "type": "number",
+                      "operation": "notExists",
+                      "singleValue": true
+                    },
+                    "id": "244bbc4d-47f3-4f9a-803b-27850f3b2904"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "tokenInvalido"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        96,
+        1040
+      ],
+      "id": "7b396539-5eb9-4ab0-ad15-983118642919",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "content": "API IcoPass",
+        "height": 608,
+        "width": 944,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        0,
+        640
+      ],
+      "typeVersion": 1,
+      "id": "70a074fd-295c-4497-be19-4c18e2fbbddc",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e5e9fabe-66d8-44eb-9b98-d247e0db3379",
+              "name": "matriculaUsuario",
+              "value": "={{ $json.body.matricula }}",
+              "type": "string"
+            },
+            {
+              "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
+              "name": "tokenIcoPass",
+              "value": "={{ $json.body.tokenUser }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        320,
+        688
+      ],
+      "id": "01a03d7a-77b3-45ca-b71b-d71d76f46edb",
+      "name": "coletar identificador1",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "identidade",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        96,
+        48
+      ],
+      "id": "7cfb9d81-727b-453d-b5e3-4b4761e97396",
+      "name": "Webhook Identidade",
+      "webhookId": "a97dd1d1-0b64-4a1f-a7db-7bf982ebd905"
+    },
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "icopass",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        96,
+        688
+      ],
+      "id": "6dea896c-b64c-4d4e-b77c-042b3639e66e",
+      "name": "Webhook IcoPass",
+      "webhookId": "a97dd1d1-0b64-4a1f-a7db-7bf982ebd905"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://loginunicoapiexternos.icomon.com.vc/api/Funcionario/ValidarIdentidade2FA/IcoPass",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.body.token }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "login",
+              "value": "={{ $('coletar identificador1').item.json.matriculaUsuario }}"
+            },
+            {
+              "name": "codigo",
+              "value": "={{ $('coletar identificador1').item.json.tokenIcoPass }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        736,
+        688
+      ],
+      "id": "59147543-9496-45f4-bdb1-45de37494046",
+      "name": "validarIcoPass",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b1bbef1f-aade-4643-a58b-90a6e7b54cac",
+              "name": "body.login",
+              "value": "={{ $('validarIcoPass').item.json.body.login }}",
+              "type": "string"
+            },
+            {
+              "id": "8ce69bca-e03f-4819-b323-343385885b0a",
+              "name": "body.nome",
+              "value": "={{ $('validarIcoPass').item.json.body.nome }}",
+              "type": "string"
+            },
+            {
+              "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
+              "name": "=body.matricula",
+              "value": "={{ $('validarIcoPass').item.json.body.matricula }}",
+              "type": "string"
+            },
+            {
+              "id": "2bd4e2c3-c065-4420-93be-75cc0adcbbcf",
+              "name": "chatInput",
+              "value": "Token valido",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        400,
+        912
+      ],
+      "id": "7eb16b6f-3731-4526-b0b3-423083c70127",
+      "name": "Token Valido"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
+              "name": "body.colaborador",
+              "value": "NAO ENCONTRADO",
+              "type": "string"
+            },
+            {
+              "id": "6b8f4a3e-ba82-4a83-b1fb-07f462d233a9",
+              "name": "chatInput",
+              "value": "Token invalido",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        400,
+        1104
+      ],
+      "id": "19b285eb-723d-43d4-8bea-9422bbbf779d",
+      "name": "Token Invalido"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "requestToken": {
+      "main": [
+        [
+          {
+            "node": "buscarFuncionario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "buscarFuncionario": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "Colaborador Encontrado",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Não Encontrado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "coletar identificador": {
+      "main": [
+        [
+          {
+            "node": "requestToken",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Colaborador Encontrado": {
+      "main": [
+        []
+      ]
+    },
+    "Não Encontrado": {
+      "main": [
+        []
+      ]
+    },
+    "requestToken1": {
+      "main": [
+        [
+          {
+            "node": "validarIcoPass",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Token Valido",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Token Invalido",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "coletar identificador1": {
+      "main": [
+        [
+          {
+            "node": "requestToken1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook Identidade": {
+      "main": [
+        [
+          {
+            "node": "coletar identificador",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook IcoPass": {
+      "main": [
+        [
+          {
+            "node": "coletar identificador1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "validarIcoPass": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "33d68e78-a40e-41bf-ad86-2e164e67da64",
+  "meta": {
+    "instanceId": "e71ee30208579422913ee1673c6e68fb79d1e7e17d5c1deb0a672e043b70fb7c"
+  },
+  "id": "bZSBB5GmroFlMYeM",
+  "tags": [
+    {
+      "updatedAt": "2025-11-18T17:53:35.379Z",
+      "createdAt": "2025-11-18T17:53:35.379Z",
+      "id": "hJ8x404bmFBZ6cyi",
+      "name": "api"
+    }
+  ]
+}

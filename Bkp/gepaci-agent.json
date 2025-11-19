@@ -5,9 +5,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-4o-mini",
+          "value": "gpt-4o-mini-2024-07-18",
           "mode": "list",
-          "cachedResultName": "gpt-4o-mini"
+          "cachedResultName": "gpt-4o-mini-2024-07-18"
         },
         "options": {
           "temperature": 0.7
@@ -16,14 +16,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        -4736,
-        2192
+        2720,
+        1344
       ],
-      "id": "40e59ffe-cdea-48ef-8fff-ed020b5c23d1",
+      "id": "1cfe5519-3c47-4768-bd10-e5e25a5ad5fc",
       "name": "OpenAI Chat Model1",
       "credentials": {
         "openAiApi": {
-          "id": "qwsdKwRzOzG38VlV",
+          "id": "HIV493e91Mlq2ZRT",
           "name": "OpenAi account"
         }
       }
@@ -36,11 +36,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -2912,
-        1296
+        6496,
+        -144
       ],
       "typeVersion": 1,
-      "id": "a7b3fc32-8766-4b75-9b8c-fa40fc036330",
+      "id": "9114f8ea-45f9-4d83-b8bd-f460baf3e45d",
       "name": "Sticky Note"
     },
     {
@@ -52,11 +52,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -4992,
-        2096
+        2464,
+        1232
       ],
       "typeVersion": 1,
-      "id": "2fa857d3-7d41-405f-bb46-74847f26f2e4",
+      "id": "d115af5c-4b64-4c25-ae5a-1f1755032ef3",
       "name": "Sticky Note1"
     },
     {
@@ -67,14 +67,14 @@
       "type": "n8n-nodes-base.googleDocsTool",
       "typeVersion": 2,
       "position": [
-        -1104,
-        2080
+        8272,
+        816
       ],
-      "id": "4a303c81-b06a-4c70-a9e7-46ee421f90dc",
+      "id": "caf3bf78-c9f6-4578-8545-dfd82e41964c",
       "name": "Parcerias",
       "credentials": {
         "googleDocsOAuth2Api": {
-          "id": "nxZcafPim6Pfbvi0",
+          "id": "qyHO2kMTuKnaY79N",
           "name": "Google Docs account"
         }
       }
@@ -87,14 +87,14 @@
       "type": "n8n-nodes-base.googleDocsTool",
       "typeVersion": 2,
       "position": [
-        -752,
-        2080
+        8624,
+        816
       ],
-      "id": "195d658c-9450-40e6-b320-4f5c9b32aa5b",
+      "id": "17d70e8b-bd86-4cff-a382-52bd1b967915",
       "name": "Seguro de Vida",
       "credentials": {
         "googleDocsOAuth2Api": {
-          "id": "nxZcafPim6Pfbvi0",
+          "id": "qyHO2kMTuKnaY79N",
           "name": "Google Docs account"
         }
       }
@@ -107,14 +107,14 @@
       "type": "n8n-nodes-base.googleDocsTool",
       "typeVersion": 2,
       "position": [
-        -1728,
-        2080
+        7648,
+        816
       ],
-      "id": "a6bcc1a4-7b76-41b6-87ef-e9874d6cd230",
+      "id": "c95f5ad5-623a-4174-aeae-08d1a62c3109",
       "name": "Folha de Pagamento",
       "credentials": {
         "googleDocsOAuth2Api": {
-          "id": "nxZcafPim6Pfbvi0",
+          "id": "qyHO2kMTuKnaY79N",
           "name": "Google Docs account"
         }
       }
@@ -128,14 +128,14 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        -4848,
-        2240
+        2528,
+        1392
       ],
-      "id": "4c63d046-1dc3-4c36-b55d-5c5201faca50",
+      "id": "d1b61362-bd8e-4c6a-a021-d7b6ba4df48e",
       "name": "Google Gemini Chat Atendimento",
       "credentials": {
         "googlePalmApi": {
-          "id": "pP9dCLnmvtSclqEs",
+          "id": "oGRdmFIGj3kd3Pmo",
           "name": "Google Gemini(PaLM) Api account"
         }
       }
@@ -143,17 +143,17 @@
     {
       "parameters": {
         "content": "Tools e Memory",
-        "height": 1056,
+        "height": 1168,
         "width": 1216,
         "color": 7
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -4176,
-        1296
+        2224,
+        0
       ],
       "typeVersion": 1,
-      "id": "e31075c9-a96a-40ae-9d44-2126fef5dd07",
+      "id": "37cb17f1-a86c-435f-b5c6-07f8964a7b01",
       "name": "Sticky Note2"
     },
     {
@@ -164,14 +164,14 @@
       "type": "n8n-nodes-base.googleDocsTool",
       "typeVersion": 2,
       "position": [
-        -2384,
-        2064
+        6992,
+        800
       ],
-      "id": "f60462bf-8d8b-4851-9e49-85fd8a8cfedf",
+      "id": "e53ea7a2-4583-482f-a0b9-034a65d0a0cf",
       "name": "Auxilio Creche",
       "credentials": {
         "googleDocsOAuth2Api": {
-          "id": "nxZcafPim6Pfbvi0",
+          "id": "qyHO2kMTuKnaY79N",
           "name": "Google Docs account"
         }
       }
@@ -184,14 +184,14 @@
       "type": "n8n-nodes-base.googleDocsTool",
       "typeVersion": 2,
       "position": [
-        -2688,
-        2064
+        6720,
+        800
       ],
-      "id": "0bcb07fe-e7ed-4503-97bb-240b8f4594e8",
+      "id": "22998a7c-7e1d-46ee-aa59-b44432b8e094",
       "name": "Admissao",
       "credentials": {
         "googleDocsOAuth2Api": {
-          "id": "nxZcafPim6Pfbvi0",
+          "id": "qyHO2kMTuKnaY79N",
           "name": "Google Docs account"
         }
       }
@@ -204,14 +204,14 @@
       "type": "n8n-nodes-base.googleDocsTool",
       "typeVersion": 2,
       "position": [
-        -2048,
-        2064
+        7328,
+        800
       ],
-      "id": "cede11f0-31da-4200-81af-97781438b5ad",
+      "id": "0e095d35-f08e-4e0f-8c4e-edc623e66869",
       "name": "Convenio Medico",
       "credentials": {
         "googleDocsOAuth2Api": {
-          "id": "nxZcafPim6Pfbvi0",
+          "id": "qyHO2kMTuKnaY79N",
           "name": "Google Docs account"
         }
       }
@@ -224,14 +224,14 @@
       "type": "n8n-nodes-base.googleDocsTool",
       "typeVersion": 2,
       "position": [
-        -1408,
-        2080
+        7968,
+        816
       ],
-      "id": "7b036bf9-62f8-4dca-8a9c-a59fc23ec228",
+      "id": "571eb52a-0ce5-4444-aaa5-1b538d89ba16",
       "name": "Frequencia",
       "credentials": {
         "googleDocsOAuth2Api": {
-          "id": "nxZcafPim6Pfbvi0",
+          "id": "qyHO2kMTuKnaY79N",
           "name": "Google Docs account"
         }
       }
@@ -244,14 +244,14 @@
       "type": "n8n-nodes-base.googleDocsTool",
       "typeVersion": 2,
       "position": [
-        -416,
-        2096
+        8960,
+        800
       ],
-      "id": "cc57d982-82dd-4105-9f14-27929ef9d81d",
+      "id": "0d3686be-363b-4c7b-abcb-19213f388903",
       "name": "Vale Transporte",
       "credentials": {
         "googleDocsOAuth2Api": {
-          "id": "nxZcafPim6Pfbvi0",
+          "id": "qyHO2kMTuKnaY79N",
           "name": "Google Docs account"
         }
       }
@@ -263,10 +263,10 @@
       "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
       "typeVersion": 2,
       "position": [
-        -1840,
-        1312
+        7408,
+        128
       ],
-      "id": "484b8062-5e3f-4108-bddd-8adfa60ed5e5",
+      "id": "edfa2247-6894-4350-994d-2dde21e10140",
       "name": "MCP Base de Conhecimento",
       "webhookId": "8ffcb6c1-c5d4-4c3c-b0f2-26e844222cd2",
       "alwaysOutputData": false,
@@ -284,10 +284,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        -3616,
-        1328
+        2640,
+        96
       ],
-      "id": "9b5b9938-9918-4017-88c2-de2419ba761a",
+      "id": "de3f9608-3922-477d-be4b-cf8e16ef2bd1",
       "name": "Validar Usuario",
       "notesInFlow": false,
       "alwaysOutputData": false,
@@ -299,55 +299,20 @@
         "text": "={{ $('Coletar Mensagem Atendimento').item.json.mensagemAtual }}",
         "needsFallback": true,
         "options": {
-          "systemMessage": "=**INSTRUÇÕES GERAIS PARA O AGENTE \"Gê\"**\n\nVocê é a **Gê**, atendente virtual do **Gepaci**, especializada em fornecer informações sobre os processos de gestão de pessoas.\n\n### 1. **Estilo de Atendimento**\n\n* Seja sempre **educada**, **objetiva**, **compreensiva** e **empática**.\n* Chame o usuário apenas pelo primeiro nome, se necessário.\n* Mantenha um tom **humanizado e acolhedor**.\n* Faça **apenas uma pergunta por vez**. Nunca sobrecarregue o cliente com múltiplas perguntas simultâneas.\n* **Nunca utilize informações externas** ao conteúdo da **Tool MCP Client** aplicada na Tools.\n\n### 2. **Início da Conversa**\n\n1. Inicie a conversa chamando o usuário pela primeira parte do nome **{{ $json.nomeUsuario }}** pergunte em que pode ajudar.\n2. Nesse ponto você não precisa solicitar os dados do usuário. Todos eles já foram coletados no banco de dados e podem ser utilizados na conversa, caso necessário.\n\n⚠️ *Aguarde a resposta de cada pergunta antes de seguir para a próxima.*\n\n### 3. **Uso da Base de Conhecimento**\n\n* Utilize as respostas fornecidas pelo cliente para consultar a **Tool MCP Client**.\n* Com base nessas informações, apresente **soluções** relevantes os questionamentos ou dúvidas do usuário.\n* Você deve apresentar somente as informações relevantes a solicitação do cliente. Exemplo: \"Informação sobre Ingressos Cinemark\". Você deve somente as informações referentes a esse benefício.\n* Seja **objetiva**, mas mantenha o foco no que for útil e aplicável.\n* **Nunca ofereça nada fora da Tool MCP Client**.\n\n  > Caso o cliente solicite algo fora da base, **peça desculpas** e pergunte se deseja falar com um especialista.\n  > Se insistir, explique gentilmente a limitação e, se necessário, **encerre educadamente a conversa**.\n\n### 4. **Sobre o Funcionamento de Agentes de IA**\n\n* Se questionada sobre como funciona um Agentes de IA, explique que **você é um exemplo real**, treinado com informações do **Gepaci**, e capaz de atender de forma automatizada e inteligente.\n\n### 5. **Validação da Relevância**\n\nApós apresentar as soluções:\n\n1. Pergunte se as informações foram **úteis e se o usuário precisa de mais alguma ajuda**.\n\n   * Se **não**, pergunte o **motivo** e tente complementar com base na dúvida.\n   * Se **sim**, vá para o tópico **### 7**.\n\n### 6. **Cases de Sucesso**\n\n* Utilize os exemplos disponíveis na **Tool MCP Client**.\n* **Jamais divulgue nomes de clientes**, respeitando a **confidencialidade**.\n\n### 7. **Encerramento do Atendimento**\n\n* Agradeça e encerre o atendimento cordialmente.\n\n### 8. **Uso do Bloco `<Tool MCP Client>`**\n\nSempre que precisar fornecer informações, **consulte apenas este bloco**.\nSe a informação não estiver presente, **não invente**."
+          "systemMessage": "=**INSTRUÇÕES GERAIS PARA O AGENTE \"Gê\"**\n\nVocê é a **Gê**, atendente virtual do **Gepaci**, especializada em fornecer informações sobre os processos de gestão de pessoas.\n\n### 1. **Estilo de Atendimento**\n\n* Seja sempre **educada**, **objetiva**, **compreensiva** e **empática**.\n* Chame o usuário apenas pelo primeiro nome, se necessário.\n* Mantenha um tom **humanizado e acolhedor**.\n* Faça **apenas uma pergunta por vez**. Nunca sobrecarregue o cliente com múltiplas perguntas simultâneas.\n* **Nunca utilize informações externas** ao conteúdo da **Tool Banco Verorial** aplicada na Tools.\n\n### 2. **Início da Conversa**\n\n1. Inicie a conversa chamando o usuário pela primeira parte do nome **{{ $json.nomeUsuario }}** pergunte em que pode ajudar.\n2. Nesse ponto você não precisa solicitar os dados do usuário. Todos eles já foram coletados no banco de dados e podem ser utilizados na conversa, caso necessário.\n3. ATENÇÃO: Utilize sempre mensagens curtas (de no máximo 3 linhas) para que o usuário possa acompanhar o dialogo como uma conversa normal com um humano.\n4. Se o assunto solicitado pelo usuário tiver mais tópicos e a pergunta foi muito abrangente, tente sondar quais informações o usuário precisa para que seja mais preciso na resposta. \n5. Nunca envie a documentação inteira para o usuário. Somente os pontos solicitados.\n6. Não repita informações já passadas. Apenas complemente as informações.\n\n⚠️ *Aguarde a resposta de cada pergunta antes de seguir para a próxima.*\n\n### 3. **Uso da Base de Conhecimento**\n\n* Utilize as respostas fornecidas pelo cliente para consultar a **Tool Banco Verorial**.\n* Com base nessas informações, apresente **soluções** relevantes os questionamentos ou dúvidas do usuário.\n* Você deve apresentar somente as informações relevantes a solicitação do cliente. Exemplo: \"Informação sobre Ingressos Cinemark\". Você deve somente as informações referentes a esse benefício.\n* Seja **objetiva**, mas mantenha o foco no que for útil e aplicável.\n* **Nunca ofereça nada fora da Tool Banco Verorial**.\n\n  > Caso o cliente solicite algo fora da base, **peça desculpas** e pergunte se deseja falar com um especialista.\n  > Se insistir, explique gentilmente a limitação e, se necessário, **encerre educadamente a conversa**.\n\n### 4. **Sobre o Funcionamento de Agentes de IA**\n\n* Se questionada sobre como funciona um Agentes de IA, explique que **você é um exemplo real**, treinado com informações do **Gepaci**, e capaz de atender de forma automatizada e inteligente.\n\n### 5. **Validação da Relevância**\n\nApós apresentar as soluções:\n\n1. Pergunte se as informações foram **úteis e se o usuário precisa de mais alguma ajuda**.\n\n   * Se **não**, pergunte o **motivo** e tente complementar com base na dúvida.\n   * Se **sim**, vá para o tópico **### 7**.\n\n### 6. **Cases de Sucesso**\n\n* Utilize os exemplos disponíveis na **Tool Banco Verorial**.\n* **Jamais divulgue nomes de clientes**, respeitando a **confidencialidade**.\n\n### 7. **Encerramento do Atendimento**\n\n* Agradeça e encerre o atendimento cordialmente.\n\n### 8. **Uso do Bloco `<Tool Banco Verorial>`**\n\nSempre que precisar fornecer informações, **consulte apenas este bloco**.\nSe a informação não estiver presente, **não invente**."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        -3696,
-        2000
+        2640,
+        496
       ],
-      "id": "e1b532fa-7904-4628-8811-7646feb74467",
+      "id": "c60593fd-4d71-4623-967e-6683f8bbb20c",
       "name": "Atendimento",
       "notesInFlow": false,
       "alwaysOutputData": false,
       "executeOnce": false
-    },
-    {
-      "parameters": {
-        "method": "POST",
-        "url": "http://localhost:5678/webhook/a97dd1d1-0b64-4a1f-a7db-7bf982ebd905",
-        "sendBody": true,
-        "bodyParameters": {
-          "parameters": [
-            {
-              "name": "json.chatInput",
-              "value": "={{ $json.inputIdentity }}"
-            }
-          ]
-        },
-        "options": {
-          "redirect": {
-            "redirect": {}
-          },
-          "response": {
-            "response": {
-              "fullResponse": true
-            }
-          }
-        }
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        -4688,
-        1360
-      ],
-      "id": "3b0a593f-9580-44e3-ab78-ba0c7b143d1f",
-      "name": "HTTP Request",
-      "alwaysOutputData": false,
-      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -356,7 +321,7 @@
             {
               "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
               "name": "inputIdentity",
-              "value": "={{ $('Webhook').item.json.body.message }}",
+              "value": "={{ $('Tratar somente Numeros').item.json.messageOnlyNumbers }}",
               "type": "string"
             }
           ]
@@ -366,10 +331,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -4896,
-        1360
+        1536,
+        64
       ],
-      "id": "3757be33-58c2-44e9-89cf-daf00e101215",
+      "id": "2b2c80d6-2392-45d7-a8f7-18be5ba4879a",
       "name": "coletar identificador",
       "onError": "continueRegularOutput"
     },
@@ -400,10 +365,10 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -6144,
-        1792
+        288,
+        496
       ],
-      "id": "ad0cb809-b5e2-454f-8471-4ee37459581e",
+      "id": "d130a352-e2c8-464d-a9ab-d06feb757ab2",
       "name": "Sql Agtesla",
       "alwaysOutputData": true,
       "onError": "continueRegularOutput"
@@ -437,10 +402,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -6304,
-        2064
+        128,
+        768
       ],
-      "id": "71050885-e723-48e3-ae04-e1096a503739",
+      "id": "aec2052a-2e61-4928-ab3a-18c969e424e9",
       "name": "coletar dados usuario",
       "onError": "continueRegularOutput"
     },
@@ -456,7 +421,7 @@
           "conditions": [
             {
               "id": "ec732077-a790-418b-a4f4-7fceeef216e2",
-              "leftValue": "={{ $('Webhook').item.json.body.message }}",
+              "leftValue": "={{ $json.messageOnlyNumbers }}",
               "rightValue": "^[0-9]{6}$",
               "operator": {
                 "type": "string",
@@ -465,7 +430,7 @@
             },
             {
               "id": "60536cd9-5339-4560-a516-39d523053786",
-              "leftValue": "={{ $('Webhook').item.json.body.message }}",
+              "leftValue": "={{ $json.messageOnlyNumbers }}",
               "rightValue": "^[0-9]{11}$",
               "operator": {
                 "type": "string",
@@ -480,10 +445,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5328,
-        1520
+        1280,
+        80
       ],
-      "id": "7179f4a3-c6d7-4b2d-9453-7536ff4740af",
+      "id": "8703ea24-fae3-4943-b1ca-c037df784a46",
       "name": "If"
     },
     {
@@ -496,39 +461,22 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -6352,
-        1328
+        80,
+        32
       ],
-      "id": "ecbd97c9-6a0c-4299-a9bd-24d0a9b403be",
+      "id": "78b3644e-b490-4a61-8af9-efa209ea77ce",
       "name": "Webhook",
       "webhookId": "f64d0604-db70-4a3f-8315-9a9719001fb7"
-    },
-    {
-      "parameters": {
-        "endpointUrl": "http://localhost:5678/mcp/8ffcb6c1-c5d4-4c3c-b0f2-26e844222cd2",
-        "serverTransport": "sse",
-        "options": {
-          "timeout": 60000
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
-      "typeVersion": 1.2,
-      "position": [
-        -3504,
-        2192
-      ],
-      "id": "f80dc6ab-678e-4b30-b20f-87a7376cc393",
-      "name": "MCP Client"
     },
     {
       "parameters": {},
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        -4448,
-        2272
+        3008,
+        1408
       ],
-      "id": "c018d064-2d4b-4b7a-99fc-ee53098d251c",
+      "id": "3ba12f01-7c85-4d12-b5a6-19f2e07dc116",
       "name": "Think"
     },
     {
@@ -558,16 +506,16 @@
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.7,
       "position": [
-        -6688,
-        1824
+        -256,
+        528
       ],
-      "id": "10f917e1-40ca-49a9-bee2-3188e6ba9aec",
+      "id": "84d4b1d7-1dce-43e0-9e14-1a3484c7741c",
       "name": "db_contas",
       "retryOnFail": false,
       "alwaysOutputData": true,
       "credentials": {
         "googleSheetsOAuth2Api": {
-          "id": "oGkyP5ZM4wZRLGva",
+          "id": "O86pRStIuX57Bh6F",
           "name": "Google Sheets account"
         }
       },
@@ -601,10 +549,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5584,
-        1536
+        848,
+        240
       ],
-      "id": "9d1a0ec7-fef9-4bff-9594-9848946a197e",
+      "id": "8d0d89ed-8c1d-4c17-a9e7-48a029c5caef",
       "name": "If2",
       "onError": "continueRegularOutput"
     },
@@ -667,10 +615,10 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -5968,
-        1328
+        464,
+        32
       ],
-      "id": "750fa0eb-a0c4-4da4-a362-3ed97164cee5",
+      "id": "ff637e42-0e66-4e1f-8097-c95881c72a19",
       "name": "coletar dados da conversa",
       "executeOnce": true
     },
@@ -682,11 +630,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -6432,
-        1728
+        0,
+        432
       ],
       "typeVersion": 1,
-      "id": "5cd25da4-09bc-4116-bd6f-963a11dbf552",
+      "id": "ff2c1416-3cef-443c-bd9f-36c4cc01cd78",
       "name": "Sticky Note3"
     },
     {
@@ -718,10 +666,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -5936,
-        1792
+        496,
+        496
       ],
-      "id": "c9608f56-efd1-47ea-86f2-f5b52e91cdd8",
+      "id": "2f7762bc-218e-4643-b1c4-0cd6579f5a92",
       "name": "If3",
       "onError": "continueRegularOutput"
     },
@@ -732,12 +680,12 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -6160,
-        1328
+        272,
+        32
       ],
-      "id": "9e3d0f21-e7ac-492e-8e73-a7ae3d78080e",
+      "id": "19859430-1c5e-47e7-aa85-887c6407d97b",
       "name": "Tratar número",
-      "alwaysOutputData": true,
+      "alwaysOutputData": false,
       "onError": "continueRegularOutput"
     },
     {
@@ -749,11 +697,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -6432,
-        1296
+        0,
+        0
       ],
       "typeVersion": 1,
-      "id": "d2927ecb-c3f7-40fe-9915-3906effc2549",
+      "id": "47e1cb6e-ed09-484d-ad65-3e481a7ceea2",
       "name": "Sticky Note4"
     },
     {
@@ -764,11 +712,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -4992,
-        1296
+        1440,
+        0
       ],
       "typeVersion": 1,
-      "id": "8591d748-f5f6-4f94-8ca0-18a082f3f25a",
+      "id": "a0a6a929-04c2-478d-abc2-47c69bfc8258",
       "name": "Sticky Note5"
     },
     {
@@ -783,10 +731,10 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -6160,
-        1536
+        272,
+        240
       ],
-      "id": "78c4add3-10ef-4cda-b7e2-d5700265fc22",
+      "id": "3e6c5947-dd4f-4b12-aaa1-713196a59e4d",
       "name": "Consultar Status",
       "alwaysOutputData": false,
       "notesInFlow": false,
@@ -796,7 +744,7 @@
       "waitBetweenTries": 120,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -813,15 +761,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -6352,
-        1792
+        80,
+        496
       ],
-      "id": "4fe5985c-9038-4ceb-b921-bcfecd74588e",
+      "id": "f4ccd57c-2201-4134-940e-d941b03f8a6f",
       "name": "Setar Status Inicial",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -839,15 +787,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -5552,
-        1856
+        880,
+        560
       ],
-      "id": "5a50d131-e9b7-465c-838b-3cb9888b2e76",
+      "id": "c7aeef34-6091-472f-8c1b-fc08c7f98f9f",
       "name": "Status direcionamento",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -942,6 +890,31 @@
                 },
                 "conditions": [
                   {
+                    "id": "f3743f36-1131-45b3-9d33-ced97cbf2c57",
+                    "leftValue": "={{ $json.statusAtendimento }}",
+                    "rightValue": "acesso_icopass",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "validar_icopass"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
                     "id": "3735b938-34a3-4117-9b89-561d09ee2e1b",
                     "leftValue": "={{ $json.statusAtendimento }}",
                     "rightValue": "",
@@ -964,10 +937,10 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        -5216,
-        1744
+        1120,
+        464
       ],
-      "id": "9ccbd7ff-f94a-4879-ad5f-08d77e1648c1",
+      "id": "852561e2-c0f4-4ea6-8096-38f3ca073d82",
       "name": "Gerenciar direcionamento"
     },
     {
@@ -980,14 +953,14 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        -4592,
-        2288
+        2864,
+        1424
       ],
-      "id": "2386e3fa-d9f3-47e4-ac31-75e9209b4618",
+      "id": "ddeb4837-1477-46bc-b1b1-867e7af0aca2",
       "name": "Redis Chat Memory",
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       }
@@ -1003,15 +976,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -5952,
-        1536
+        480,
+        240
       ],
-      "id": "078414d4-f3e0-4a50-9e4d-7144d0c0ba14",
+      "id": "1004f89f-5817-4f05-b2cf-f44aa9e980f7",
       "name": "Mensagem atual",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -1025,10 +998,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -3392,
-        1744
+        3232,
+        352
       ],
-      "id": "a79ee57d-b227-4c7b-94a5-698b3337b935",
+      "id": "72096b6b-7e38-4d8f-8df8-1b563447c15a",
       "name": "Loop Over Items"
     },
     {
@@ -1037,10 +1010,10 @@
       "name": "Replace Me",
       "typeVersion": 1,
       "position": [
-        -3136,
-        1760
+        3488,
+        368
       ],
-      "id": "93783152-e589-420d-9810-92e7649f54f6"
+      "id": "89f03713-7a00-42a4-8c5b-bb8b5e48abe4"
     },
     {
       "parameters": {
@@ -1051,11 +1024,11 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -5616,
-        1296
+        816,
+        0
       ],
       "typeVersion": 1,
-      "id": "1be5679c-c4bf-44a2-aebb-2b8a2396047b",
+      "id": "09c13244-9ae9-4484-a549-99bea77b5580",
       "name": "Sticky Note6"
     },
     {
@@ -1070,7 +1043,7 @@
           "conditions": [
             {
               "id": "341efbfa-c910-48de-8435-deda0b23ea41",
-              "leftValue": "={{ $('HTTP Request').item.json.statusCode }}",
+              "leftValue": "={{ $('API Identidade').item.json.statusCode }}",
               "rightValue": 200,
               "operator": {
                 "type": "number",
@@ -1085,10 +1058,10 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -4896,
-        1584
+        1536,
+        288
       ],
-      "id": "09cf7814-0982-474c-a9d8-f2cd90883d6b",
+      "id": "64859877-2444-4e3a-821d-da9cb9da53b0",
       "name": "If1"
     },
     {
@@ -1102,15 +1075,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -4688,
-        1568
+        1744,
+        272
       ],
-      "id": "b0508993-e6a3-4559-bed8-fbad3fca0953",
+      "id": "dd060372-3177-439c-af2d-1319afa30f58",
       "name": "Setar Status Nao Localizado",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -1127,15 +1100,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -4688,
-        1728
+        1968,
+        304
       ],
-      "id": "96ca93b9-16be-4c0c-b6ac-8aa5c2ca7e20",
+      "id": "c1369551-1f28-4d21-b5c4-20304a9701cc",
       "name": "Setar Status Atendimento",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -1153,10 +1126,10 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        -3840,
-        1584
+        2640,
+        288
       ],
-      "id": "286a9f09-8d97-49f8-8943-173788b55c8a",
+      "id": "0585c512-43bb-4f6e-bd1d-aa22ab74cabd",
       "name": "Colaborador Não Encontrado",
       "notesInFlow": false,
       "alwaysOutputData": false,
@@ -1174,15 +1147,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -4064,
-        1376
+        2256,
+        96
       ],
-      "id": "8407d0ab-34f7-4737-a1f8-4042bb304516",
+      "id": "8e80c6d1-4df6-4874-94b7-f9121dd7ca92",
       "name": "Coletar Mensagem Verificacao",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -1200,15 +1173,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -4064,
-        1584
+        2256,
+        288
       ],
-      "id": "bea7aeb9-bd12-471c-ba23-5a73c6e8047f",
+      "id": "96233dae-a9e7-4458-bdbb-062a8e819164",
       "name": "Coletar Mensagem Nao Encontrado",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -1226,15 +1199,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -4096,
-        2000
+        2240,
+        496
       ],
-      "id": "9e78ba44-aec3-43d8-a0a1-4bbe151e00e9",
+      "id": "e42313c1-a52f-4b8f-8541-71bacf40ace8",
       "name": "Coletar Mensagem Atendimento",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -1251,15 +1224,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -5904,
-        2064
+        528,
+        768
       ],
-      "id": "978039ab-1474-4d8a-830d-6dc2261f110a",
+      "id": "d0a39be7-4519-4602-aa7e-21c8f887dbc9",
       "name": "Setar Status Atendimento1",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -1276,15 +1249,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -6096,
-        2064
+        336,
+        768
       ],
-      "id": "7ae94eb8-a57f-47f7-aa92-6520f91e9b86",
+      "id": "a670ae7e-33ee-4c06-8127-27548624e6e4",
       "name": "Setar Nome",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -1299,10 +1272,10 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -6704,
-        2928
+        -432,
+        1632
       ],
-      "id": "23290e99-fc09-48ed-aeef-88e00bde8969",
+      "id": "69c5715f-447d-4f5f-9c66-bf6ed864c709",
       "name": "Variáveis Redis",
       "webhookId": "86838aef-90b0-4708-9836-ddb8f266462f"
     },
@@ -1317,15 +1290,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -6000,
-        2608
+        432,
+        1312
       ],
-      "id": "8843e15f-56a6-4938-8d09-e755e1f28699",
+      "id": "6ec8ead9-093e-402b-9d15-b376b971a438",
       "name": "Setar Nome2",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -1340,10 +1313,10 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        -6288,
-        2592
+        144,
+        1296
       ],
-      "id": "edb3b07f-f8d9-4a54-ae63-027fd4c44961",
+      "id": "97195691-a88a-4d12-8f88-762751f99cac",
       "name": "Loop Over Items1"
     },
     {
@@ -1351,10 +1324,10 @@
       "type": "n8n-nodes-base.manualTrigger",
       "typeVersion": 1,
       "position": [
-        -6672,
-        2496
+        -352,
+        1392
       ],
-      "id": "b1713a14-c59e-4898-817f-26df3f3b8979",
+      "id": "bcd30e44-5201-4519-b2fb-7ffc24910621",
       "name": "When clicking ‘Execute workflow’"
     },
     {
@@ -1364,10 +1337,10 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -6496,
-        2592
+        -64,
+        1296
       ],
-      "id": "b00a7063-c868-4d0e-9714-8f2eba199345",
+      "id": "f850595c-6adf-4938-ab04-7e4c1523666f",
       "name": "Code in JavaScript"
     },
     {
@@ -1379,10 +1352,10 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -6688,
-        2016
+        -256,
+        720
       ],
-      "id": "09e6b2fe-e845-46bb-b314-83632780fc27",
+      "id": "d7d19d2f-67ae-4d36-967b-9bdfea6690c5",
       "name": "Get many rows",
       "alwaysOutputData": true,
       "executeOnce": false,
@@ -1391,7 +1364,7 @@
       "waitBetweenTries": 60,
       "credentials": {
         "supabaseApi": {
-          "id": "UkhcVA2BMMEna2bC",
+          "id": "htCf539ApNjfrbw8",
           "name": "Supabase account"
         }
       },
@@ -1409,15 +1382,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -3888,
-        2000
+        2448,
+        496
       ],
-      "id": "6945b81f-27d5-4fdf-a00b-d32a57a80aa4",
+      "id": "2f387d0c-bf46-4797-9407-92ed03977402",
       "name": "Coletar Nome Usuario",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -1434,15 +1407,15 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -4688,
-        1888
+        1504,
+        512
       ],
-      "id": "ea88d80d-b29e-4aad-bc0a-58b410e51c68",
+      "id": "3763890f-2ac5-40a1-8db9-9dfc225a5098",
       "name": "Setar Nome1",
       "alwaysOutputData": false,
       "credentials": {
         "redis": {
-          "id": "xvle5IxvJpmMxMlw",
+          "id": "MgGckVnF4CAFHnor",
           "name": "Redis account"
         }
       },
@@ -1477,30 +1450,15 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -4480,
-        1360
+        1952,
+        64
       ],
-      "id": "1159d4a5-0823-4159-88b9-792b78fbc1e5",
+      "id": "94ccc482-a866-4bd3-ba35-5291c54e862d",
       "name": "coletar dados usuario1",
       "onError": "continueRegularOutput"
     },
     {
       "parameters": {
-        "promptType": "define",
-        "needsFallback": true,
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -2880,
-        1888
-      ],
-      "id": "8bde81d7-43be-4fb5-8b5b-ce274e5043ce",
-      "name": "AI Admissao"
-    },
-    {
-      "parameters": {
         "workflowId": {
           "__rl": true,
           "value": "p1hfguearSVeknq0",
@@ -1520,126 +1478,14 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        -2800,
-        1760
+        7408,
+        496
       ],
-      "id": "58d1f619-c2bb-4023-84d4-24d2e7e638e8",
+      "id": "9a49d4f3-8f9c-4402-b9d8-3e6659183e96",
       "name": "AI Atendimento"
     },
     {
       "parameters": {
-        "model": {
-          "__rl": true,
-          "value": "gpt-4o-mini",
-          "mode": "list",
-          "cachedResultName": "gpt-4o-mini"
-        },
-        "options": {
-          "temperature": 0.7
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
-      "typeVersion": 1.2,
-      "position": [
-        -1904,
-        2944
-      ],
-      "id": "430bf94b-9a6f-484e-b39d-f0870a82fc30",
-      "name": "OpenAI Chat Model",
-      "credentials": {
-        "openAiApi": {
-          "id": "qwsdKwRzOzG38VlV",
-          "name": "OpenAi account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "content": "Tools e Memory",
-        "height": 352,
-        "width": 672,
-        "color": 6
-      },
-      "type": "n8n-nodes-base.stickyNote",
-      "position": [
-        -1952,
-        2752
-      ],
-      "typeVersion": 1,
-      "id": "75c6e061-f7e7-441f-8790-7ebc5a0f15bf",
-      "name": "Sticky Note7"
-    },
-    {
-      "parameters": {
-        "options": {
-          "temperature": 0.4
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
-      "typeVersion": 1,
-      "position": [
-        -1728,
-        2832
-      ],
-      "id": "24b6c501-720e-4b83-a495-44893d063b62",
-      "name": "Google Gemini Chat Atendimento1",
-      "credentials": {
-        "googlePalmApi": {
-          "id": "pP9dCLnmvtSclqEs",
-          "name": "Google Gemini(PaLM) Api account"
-        }
-      }
-    },
-    {
-      "parameters": {},
-      "type": "@n8n/n8n-nodes-langchain.toolThink",
-      "typeVersion": 1.1,
-      "position": [
-        -1392,
-        2848
-      ],
-      "id": "585284a6-6f36-4164-ad62-49ceaa162a80",
-      "name": "Think1"
-    },
-    {
-      "parameters": {
-        "sessionIdType": "customKey",
-        "sessionKey": "={{ $('Webhook').item.json.body.session }}_{{ $('Webhook').item.json.body.chatId }}",
-        "sessionTTL": 1200,
-        "contextWindowLength": 40
-      },
-      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
-      "typeVersion": 1.5,
-      "position": [
-        -1568,
-        2944
-      ],
-      "id": "d5bb11b6-2be7-4946-8fc7-7269f1cbb417",
-      "name": "Redis Chat Memory1",
-      "credentials": {
-        "redis": {
-          "id": "xvle5IxvJpmMxMlw",
-          "name": "Redis account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "needsFallback": true,
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -2560,
-        1888
-      ],
-      "id": "bc8a2269-62ea-4bb9-89d3-cd6661ca4a02",
-      "name": "AI Auxilio Creche"
-    },
-    {
-      "parameters": {
         "workflowId": {
           "__rl": true,
           "value": "p1hfguearSVeknq0",
@@ -1659,29 +1505,14 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        -2496,
-        1760
+        6736,
+        512
       ],
-      "id": "6a547904-9c64-488a-82ca-0fb6f6ddcc73",
+      "id": "8616b1ff-7391-4c11-8a57-ffdae25f703c",
       "name": "Call Auxilio Creche"
     },
     {
       "parameters": {
-        "promptType": "define",
-        "needsFallback": true,
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -2240,
-        1888
-      ],
-      "id": "a8ab1229-e1f2-493e-b037-abca3478dc38",
-      "name": "AI Convenio Medico"
-    },
-    {
-      "parameters": {
         "workflowId": {
           "__rl": true,
           "value": "p1hfguearSVeknq0",
@@ -1701,29 +1532,14 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        -2160,
-        1760
+        7072,
+        512
       ],
-      "id": "282720a2-6d2d-413f-a0fa-168a0a035bc3",
+      "id": "5ed95652-d7e4-4929-b6ff-7bba2e364951",
       "name": "Call Convenio Medico"
     },
     {
       "parameters": {
-        "promptType": "define",
-        "needsFallback": true,
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -1920,
-        1888
-      ],
-      "id": "0b9bb0a2-a296-421d-812d-56f951310e70",
-      "name": "AI Folha Pagamento"
-    },
-    {
-      "parameters": {
         "workflowId": {
           "__rl": true,
           "value": "p1hfguearSVeknq0",
@@ -1743,71 +1559,14 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        -1840,
-        1760
+        7696,
+        512
       ],
-      "id": "030c0a7e-4bdc-4ec0-b919-acf4d0707d07",
-      "name": "Call Folha Pagamento"
-    },
-    {
-      "parameters": {
-        "promptType": "define",
-        "needsFallback": true,
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -1600,
-        1888
-      ],
-      "id": "91e2c9aa-2e96-478e-92a4-19f204be260c",
-      "name": "AI Frequencia"
-    },
-    {
-      "parameters": {
-        "workflowId": {
-          "__rl": true,
-          "value": "p1hfguearSVeknq0",
-          "mode": "list",
-          "cachedResultUrl": "/workflow/p1hfguearSVeknq0",
-          "cachedResultName": "gepaci-agent"
-        },
-        "workflowInputs": {
-          "mappingMode": "defineBelow",
-          "value": {},
-          "matchingColumns": [],
-          "schema": [],
-          "attemptToConvertTypes": false,
-          "convertFieldsToString": false
-        }
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
-      "typeVersion": 2.2,
-      "position": [
-        -1536,
-        1760
-      ],
-      "id": "680d149c-68a9-464d-b46b-d0d6f9df367a",
+      "id": "39054466-a066-4cb2-9d84-1a33781633f9",
       "name": "AI Frequencia1"
     },
     {
       "parameters": {
-        "promptType": "define",
-        "needsFallback": true,
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -1280,
-        1888
-      ],
-      "id": "05681934-8e58-4bbc-8e00-aba244113411",
-      "name": "AI Parcerias Beneficios"
-    },
-    {
-      "parameters": {
         "workflowId": {
           "__rl": true,
           "value": "p1hfguearSVeknq0",
@@ -1827,29 +1586,14 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        -1216,
-        1760
+        8016,
+        512
       ],
-      "id": "16bb9497-9e7f-41eb-a3a5-30815552e0d1",
+      "id": "a8948be8-dd4c-4c61-9fb7-0bf968baf51d",
       "name": "Call Parcerias Beneficios"
     },
     {
       "parameters": {
-        "promptType": "define",
-        "needsFallback": true,
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -944,
-        1888
-      ],
-      "id": "f20d0b86-c3e1-4f41-ad42-3ea65b8d8b68",
-      "name": "AI Seguro Vida"
-    },
-    {
-      "parameters": {
         "workflowId": {
           "__rl": true,
           "value": "p1hfguearSVeknq0",
@@ -1869,29 +1613,14 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        -880,
-        1760
+        8336,
+        512
       ],
-      "id": "8f725384-ce9e-4bb9-855c-afc0c3fbb795",
+      "id": "fd729028-d41a-4128-a2d3-aaf2a71aa576",
       "name": "Call Seguro Vida"
     },
     {
       "parameters": {
-        "promptType": "define",
-        "needsFallback": true,
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.agent",
-      "typeVersion": 3,
-      "position": [
-        -624,
-        1888
-      ],
-      "id": "c03b4218-a96d-4d55-96b6-5c6a4dfbf8f5",
-      "name": "AI Vale Transporte"
-    },
-    {
-      "parameters": {
         "workflowId": {
           "__rl": true,
           "value": "p1hfguearSVeknq0",
@@ -1911,10 +1640,10 @@
       "type": "@n8n/n8n-nodes-langchain.toolWorkflow",
       "typeVersion": 2.2,
       "position": [
-        -560,
-        1760
+        8656,
+        512
       ],
-      "id": "f6432e05-c56f-437a-9855-e7fffc363ccd",
+      "id": "dde4335a-07d9-412c-aabb-9791efaad5cc",
       "name": "Call Vale Transporte"
     },
     {
@@ -1926,14 +1655,334 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        -3312,
-        1520
+        3168,
+        720
       ],
-      "id": "b454a106-9289-4e88-926a-bf32c939dcb5",
+      "id": "376c4c5a-c4cb-43ac-9a37-f2be3096d31d",
       "name": "AI Nao Localizado"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst mensagem = $('coletar dados da conversa').first().json.message;\nconst onlyNumbers = mensagem\n  .replace(/\\D/g, '')\nconst result = [\n  {\n    messageOnlyNumbers: onlyNumbers\n  }\n];\n\nreturn result;\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1088,
+        80
+      ],
+      "id": "8a12597d-a9cd-41c3-8156-02567a9e4784",
+      "name": "Tratar somente Numeros",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "endpointUrl": "http://localhost:5678/mcp/8ffcb6c1-c5d4-4c3c-b0f2-26e844222cd2",
+        "serverTransport": "sse",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1.2,
+      "position": [
+        7104,
+        80
+      ],
+      "id": "fca6cdef-e78c-4b0a-8408-f4232682e24b",
+      "name": "MCP Client"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2704,
+        1008
+      ],
+      "id": "86188932-15af-4d25-aabd-54d74937c56a",
+      "name": "Embeddings OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "HIV493e91Mlq2ZRT",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4o-mini-2024-07-18",
+          "mode": "list",
+          "cachedResultName": "gpt-4o-mini-2024-07-18"
+        },
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        3056,
+        976
+      ],
+      "id": "4df9d094-0640-4202-ab5a-c5339ddbe36b",
+      "name": "OpenAI Chat Model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "HIV493e91Mlq2ZRT",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "tableName": {
+          "__rl": true,
+          "value": "documents",
+          "mode": "list",
+          "cachedResultName": "documents"
+        },
+        "options": {
+          "queryName": "match_documents"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
+      "typeVersion": 1.3,
+      "position": [
+        2768,
+        864
+      ],
+      "id": "2f2ed3e1-3c04-4f63-a3fc-98a1238ae85d",
+      "name": "Supabase Vector Store",
+      "credentials": {
+        "supabaseApi": {
+          "id": "htCf539ApNjfrbw8",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:5678/webhook/identidade",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "json.chatInput",
+              "value": "={{ $json.inputIdentity }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1744,
+        64
+      ],
+      "id": "0d3f3bac-06bc-44e3-a8d4-df06302cb353",
+      "name": "API Identidade",
+      "alwaysOutputData": false,
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 100,
+      "executeOnce": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:5678/webhook/icopass",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "tokenUser",
+              "value": "={{ $json.inputToken }}"
+            },
+            {
+              "name": "matricula",
+              "value": "={{ $json.matricula }}"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2032,
+        816
+      ],
+      "id": "e2b3254f-be29-4571-ba27-fa76816b89cd",
+      "name": "API IcoPass",
+      "alwaysOutputData": false,
+      "retryOnFail": true,
+      "maxTries": 2,
+      "waitBetweenTries": 100,
+      "executeOnce": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "description": "Contem informações para orientações ao usuário sobre serviços e benefícios ofertados pela empresa.",
+        "topK": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Limit', `Você deve definir esse valor de acordo com o tamanho do retorno do banco vetorial para a pergunta realizada pelo usuário. `, 'number') }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [
+        2768,
+        720
+      ],
+      "id": "ef8ae2d9-2c84-456f-b527-e1d968f580e3",
+      "name": "Banco Verorial"
+    },
+    {
+      "parameters": {
+        "text": "**INSTRUÇÕES PARA COLETA TOKEN ICOPASS**\n\nSua função será orientar o usuário a informar o token para validação de identidade do funcionário usando o APP IcoPass. \n\n\n### 1. **Estilo de Atendimento**\n\n* Seja sempre **educada**, **objetiva**, **compreensiva** e **empática**.\n* Mantenha um tom **humanizado e acolhedor**.\n* Faça **apenas uma pergunta por vez**. Nunca sobrecarregue o cliente com múltiplas perguntas simultâneas.\n* **Nunca utilize informações externas** as orientações desse script\n\n### 1. **Solicitando o Token IcoPass**\n\n1. Informe o usuário que o para seguir com a solicitação desejada o mesmo deve validar sua identidade informando o **ICOMON Token** gerado no app IcoPass.\n2. O acesso no app deve ser feito utilizando o *usuário* e a *senha* de rede que o mesmo utiliza para acesso ao computador.\n3. Se a informação passada não atender aos requisitos, solicite os dados novamente.\n\n*Aguarde a resposta de cada pergunta antes de seguir para a próxima.*\n\n### 3. **Encerramento da Conversa**\n\nSe o colaborados não conseguir validar o token após duas tentativas, finalize a conversa chamando o Agent Tool **AI Nao Localizado**",
+        "needsFallback": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 2.2,
+      "position": [
+        2336,
+        720
+      ],
+      "id": "d499bcc2-7d7c-42a3-a43b-fedf79838c30",
+      "name": "AI Acessos IcoPass"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('coletar dados da conversa').item.json.session }}",
+        "value": "acesso_icopass"
+      },
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        2528,
+        880
+      ],
+      "id": "a433e5db-0cf1-419c-aeed-46f52bf6aef1",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "MgGckVnF4CAFHnor",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ec732077-a790-418b-a4f4-7fceeef216e2",
+              "leftValue": "={{ $json.messageOnlyNumbers }}",
+              "rightValue": "^[0-9]{6}$",
+              "operator": {
+                "type": "string",
+                "operation": "regex"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1616,
+        832
+      ],
+      "id": "cd2ab716-b0ca-4622-b710-56f7a3f624d5",
+      "name": "If IcoPass"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
+              "name": "inputToken",
+              "value": "={{ $('Tratar somente Numeros1').item.json.messageOnlyNumbers }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1856,
+        816
+      ],
+      "id": "ba43b19a-9d92-4a58-b2c5-f4d17f7e3ae2",
+      "name": "coletar token",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "\nconst mensagem = $('coletar dados da conversa').first().json.message;\nconst onlyNumbers = mensagem\n  .replace(/\\D/g, '')\nconst result = [\n  {\n    messageOnlyNumbers: onlyNumbers\n  }\n];\n\nreturn result;\n\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1424,
+        832
+      ],
+      "id": "4a990b73-3179-47ac-b9d0-675c245b9483",
+      "name": "Tratar somente Numeros1",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
     }
   ],
-  "pinData": {},
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {
+        "json": {
+          "nome": "Daniel"
+        }
+      },
+      {
+        "json": {
+          "nome2": "joe"
+        }
+      }
+    ]
+  },
   "connections": {
     "OpenAI Chat Model1": {
       "ai_languageModel": [
@@ -1957,49 +2006,10 @@
             "node": "AI Nao Localizado",
             "type": "ai_languageModel",
             "index": 0
-          }
-        ]
-      ]
-    },
-    "Parcerias": {
-      "ai_tool": [
-        [
+          },
           {
-            "node": "AI Parcerias Beneficios",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Seguro de Vida": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Seguro Vida",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Folha de Pagamento": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Folha Pagamento",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Auxilio Creche": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Auxilio Creche",
-            "type": "ai_tool",
+            "node": "AI Acessos IcoPass",
+            "type": "ai_languageModel",
             "index": 0
           }
         ]
@@ -2007,64 +2017,14 @@
     },
     "Admissao": {
       "ai_tool": [
-        [
-          {
-            "node": "AI Admissao",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Convenio Medico": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Convenio Medico",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Frequencia": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Frequencia",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Vale Transporte": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Vale Transporte",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "coletar identificador": {
       "main": [
         [
           {
-            "node": "HTTP Request",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "coletar dados usuario1",
+            "node": "API Identidade",
             "type": "main",
             "index": 0
           }
@@ -2111,17 +2071,6 @@
         ]
       ]
     },
-    "MCP Client": {
-      "ai_tool": [
-        [
-          {
-            "node": "Atendimento",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Think": {
       "ai_tool": [
         [
@@ -2144,14 +2093,13 @@
             "node": "AI Nao Localizado",
             "type": "ai_tool",
             "index": 0
+          },
+          {
+            "node": "AI Acessos IcoPass",
+            "type": "ai_tool",
+            "index": 0
           }
         ]
-      ]
-    },
-    "db_contas": {
-      "main": [
-        [],
-        []
       ]
     },
     "If2": {
@@ -2249,7 +2197,7 @@
       "main": [
         [
           {
-            "node": "If",
+            "node": "Tratar somente Numeros",
             "type": "main",
             "index": 0
           }
@@ -2270,7 +2218,14 @@
         ],
         [
           {
-            "node": "If",
+            "node": "Tratar somente Numeros1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Tratar somente Numeros",
             "type": "main",
             "index": 0
           }
@@ -2297,6 +2252,11 @@
           },
           {
             "node": "AI Nao Localizado",
+            "type": "ai_memory",
+            "index": 0
+          },
+          {
+            "node": "AI Acessos IcoPass",
             "type": "ai_memory",
             "index": 0
           }
@@ -2488,20 +2448,9 @@
         ]
       ]
     },
-    "Variáveis Redis": {
-      "main": [
-        []
-      ]
-    },
     "When clicking ‘Execute workflow’": {
       "main": [
-        [
-          {
-            "node": "Code in JavaScript",
-            "type": "main",
-            "index": 0
-          }
-        ]
+        []
       ]
     },
     "Code in JavaScript": {
@@ -2537,13 +2486,13 @@
             "node": "AI Nao Localizado",
             "type": "ai_languageModel",
             "index": 1
+          },
+          {
+            "node": "AI Acessos IcoPass",
+            "type": "ai_languageModel",
+            "index": 1
           }
         ]
-      ]
-    },
-    "Get many rows": {
-      "main": [
-        []
       ]
     },
     "Sql Agtesla": {
@@ -2601,190 +2550,6 @@
         ]
       ]
     },
-    "Think1": {
-      "ai_tool": [
-        [
-          {
-            "node": "AI Admissao",
-            "type": "ai_tool",
-            "index": 0
-          },
-          {
-            "node": "AI Auxilio Creche",
-            "type": "ai_tool",
-            "index": 0
-          },
-          {
-            "node": "AI Convenio Medico",
-            "type": "ai_tool",
-            "index": 0
-          },
-          {
-            "node": "AI Folha Pagamento",
-            "type": "ai_tool",
-            "index": 0
-          },
-          {
-            "node": "AI Frequencia",
-            "type": "ai_tool",
-            "index": 0
-          },
-          {
-            "node": "AI Parcerias Beneficios",
-            "type": "ai_tool",
-            "index": 0
-          },
-          {
-            "node": "AI Seguro Vida",
-            "type": "ai_tool",
-            "index": 0
-          },
-          {
-            "node": "AI Vale Transporte",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Redis Chat Memory1": {
-      "ai_memory": [
-        [
-          {
-            "node": "AI Admissao",
-            "type": "ai_memory",
-            "index": 0
-          },
-          {
-            "node": "AI Auxilio Creche",
-            "type": "ai_memory",
-            "index": 0
-          },
-          {
-            "node": "AI Convenio Medico",
-            "type": "ai_memory",
-            "index": 0
-          },
-          {
-            "node": "AI Folha Pagamento",
-            "type": "ai_memory",
-            "index": 0
-          },
-          {
-            "node": "AI Frequencia",
-            "type": "ai_memory",
-            "index": 0
-          },
-          {
-            "node": "AI Parcerias Beneficios",
-            "type": "ai_memory",
-            "index": 0
-          },
-          {
-            "node": "AI Seguro Vida",
-            "type": "ai_memory",
-            "index": 0
-          },
-          {
-            "node": "AI Vale Transporte",
-            "type": "ai_memory",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "OpenAI Chat Model": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Admissao",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "AI Auxilio Creche",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "AI Convenio Medico",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "AI Folha Pagamento",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "AI Frequencia",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "AI Parcerias Beneficios",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "AI Seguro Vida",
-            "type": "ai_languageModel",
-            "index": 0
-          },
-          {
-            "node": "AI Vale Transporte",
-            "type": "ai_languageModel",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Google Gemini Chat Atendimento1": {
-      "ai_languageModel": [
-        [
-          {
-            "node": "AI Admissao",
-            "type": "ai_languageModel",
-            "index": 1
-          },
-          {
-            "node": "AI Auxilio Creche",
-            "type": "ai_languageModel",
-            "index": 1
-          },
-          {
-            "node": "AI Convenio Medico",
-            "type": "ai_languageModel",
-            "index": 1
-          },
-          {
-            "node": "AI Folha Pagamento",
-            "type": "ai_languageModel",
-            "index": 1
-          },
-          {
-            "node": "AI Frequencia",
-            "type": "ai_languageModel",
-            "index": 1
-          },
-          {
-            "node": "AI Parcerias Beneficios",
-            "type": "ai_languageModel",
-            "index": 1
-          },
-          {
-            "node": "AI Seguro Vida",
-            "type": "ai_languageModel",
-            "index": 1
-          },
-          {
-            "node": "AI Vale Transporte",
-            "type": "ai_languageModel",
-            "index": 1
-          }
-        ]
-      ]
-    },
     "Call Auxilio Creche": {
       "ai_tool": [
         [
@@ -2797,17 +2562,6 @@
       ]
     },
     "Call Convenio Medico": {
-      "ai_tool": [
-        [
-          {
-            "node": "MCP Base de Conhecimento",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Call Folha Pagamento": {
       "ai_tool": [
         [
           {
@@ -2869,6 +2623,132 @@
             "node": "Validar Usuario",
             "type": "ai_tool",
             "index": 0
+          },
+          {
+            "node": "AI Acessos IcoPass",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tratar somente Numeros": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Embeddings OpenAI1": {
+      "ai_embedding": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "ai_embedding",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Banco Verorial",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Supabase Vector Store": {
+      "ai_vectorStore": [
+        [
+          {
+            "node": "Banco Verorial",
+            "type": "ai_vectorStore",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API Identidade": {
+      "main": [
+        [
+          {
+            "node": "coletar dados usuario1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Banco Verorial": {
+      "ai_tool": [
+        [
+          {
+            "node": "Atendimento",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "AI Acessos IcoPass": {
+      "ai_tool": [
+        [
+          {
+            "node": "Atendimento",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "ai_tool": [
+        [
+          {
+            "node": "AI Acessos IcoPass",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If IcoPass": {
+      "main": [
+        [
+          {
+            "node": "coletar token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Tratar somente Numeros1": {
+      "main": [
+        [
+          {
+            "node": "If IcoPass",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "coletar token": {
+      "main": [
+        [
+          {
+            "node": "API IcoPass",
+            "type": "main",
+            "index": 0
           }
         ]
       ]
@@ -2877,33 +2757,34 @@
   "active": true,
   "settings": {
     "executionOrder": "v1",
+    "timezone": "America/Sao_Paulo",
     "callerPolicy": "workflowsFromSameOwner",
-    "executionTimeout": 1800,
+    "executionTimeout": -1,
     "availableInMCP": false
   },
-  "versionId": "d76e9c87-7d06-4310-9b9e-45b8242646a7",
+  "versionId": "97d18aeb-2fab-47bb-a668-661e48037680",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "7e7e3575d283f24699fc69f563d93b46080b8f3323aee0041bb6ecefcd574587"
+    "instanceId": "e71ee30208579422913ee1673c6e68fb79d1e7e17d5c1deb0a672e043b70fb7c"
   },
-  "id": "p1hfguearSVeknq0",
+  "id": "iTtlmnCbvGFaNTUv",
   "tags": [
     {
-      "updatedAt": "2025-11-11T11:48:17.552Z",
-      "createdAt": "2025-11-11T11:48:17.552Z",
-      "id": "MfOECdK206BnqUwl",
+      "updatedAt": "2025-11-18T17:53:57.701Z",
+      "createdAt": "2025-11-18T17:53:57.701Z",
+      "id": "1B8R571k8L7Grfph",
       "name": "agentic-ai"
     },
     {
-      "updatedAt": "2025-11-07T19:12:16.759Z",
-      "createdAt": "2025-11-07T19:12:16.759Z",
-      "id": "pocTCRRdzE8XiHFb",
+      "updatedAt": "2025-11-18T17:53:57.660Z",
+      "createdAt": "2025-11-18T17:53:57.660Z",
+      "id": "oeBmAL8MEImk87U7",
       "name": "mcp"
     },
     {
-      "updatedAt": "2025-11-12T23:24:36.398Z",
-      "createdAt": "2025-11-12T23:24:36.398Z",
-      "id": "rfhp8ebJb8G77U7n",
+      "updatedAt": "2025-11-18T17:53:57.671Z",
+      "createdAt": "2025-11-18T17:53:57.671Z",
+      "id": "paH52iQOgZunA4KU",
       "name": "test"
     }
   ]

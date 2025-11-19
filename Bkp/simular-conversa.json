@@ -1,0 +1,64 @@
+{
+  "name": "simular-conversa",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.chatTrigger",
+      "typeVersion": 1.4,
+      "position": [
+        0,
+        0
+      ],
+      "id": "1ac8801a-4ec5-464b-aff3-c9b8d846d4a1",
+      "name": "When chat message received",
+      "webhookId": "1e3b1cae-4ffe-44e7-9366-56a64d575eef",
+      "alwaysOutputData": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "http://localhost:5678/webhook/whatswebhook",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n    \"session\": \"{{ $json.sessionId }}\",\n    \"chatId\": \"5511971415712@c.us\",\n    \"pushName\": \"WANDERSON\",\n    \"payload_id\": \"false_5511971415712@c.us\",\n    \"event\": \"message\",\n    \"fromMe\": \"false\",\n    \"message\": \"{{ $json.chatInput }}\",\n    \"messaging_product\": \"whatsapp\",\n    \"recipient_type\": \"individual\",\n    \"to\": \"+5511971415712\",\n    \"type\": \"contacts\",\n    \"contacts\": [\n        {\n            \"name\": {\n                \"formatted_name\": \"WANDERSON PRADO RAMOS\",\n                \"first_name\": \"WANDERSON\"\n            },\n            \"phones\": [\n                {\n                    \"phone\": \"+55 (11) 95837-1540\",\n                    \"type\": \"WORK\",\n                    \"wa_id\": \"11958371540\"\n                }\n            ]\n        }\n    ]\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        208,
+        0
+      ],
+      "id": "02c2fe72-3f0b-4471-9526-c67bf935fb2e",
+      "name": "HTTP Request",
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "When chat message received": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "0b807bc4-5b2a-45fe-9201-2a9ac2cd348c",
+  "meta": {
+    "instanceId": "e71ee30208579422913ee1673c6e68fb79d1e7e17d5c1deb0a672e043b70fb7c"
+  },
+  "id": "q9F74ytAvtcODATb",
+  "tags": []
+}
