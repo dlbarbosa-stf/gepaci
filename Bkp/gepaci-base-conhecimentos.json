@@ -33,7 +33,8 @@
           "id": "FgxQ1Fn03xF1NboJ",
           "name": "Microsoft Drive account"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -623,7 +624,7 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "5a9cdbd1-15b8-4bc3-ae1b-e3af391a88d8",
+  "versionId": "d5d6b3f8-a94a-42f3-a932-f66ff9e3b98b",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "e71ee30208579422913ee1673c6e68fb79d1e7e17d5c1deb0a672e043b70fb7c"
