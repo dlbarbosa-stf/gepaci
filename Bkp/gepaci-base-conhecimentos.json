@@ -23,8 +23,8 @@
       "type": "n8n-nodes-base.microsoftOneDriveTrigger",
       "typeVersion": 1,
       "position": [
-        -512,
-        416
+        -1264,
+        304
       ],
       "id": "fee62a53-2b01-483b-b7a7-9c20f33e1e62",
       "name": "Microsoft OneDrive Trigger",
@@ -33,20 +33,18 @@
           "id": "FgxQ1Fn03xF1NboJ",
           "name": "Microsoft Drive account"
         }
-      },
-      "disabled": true
+      }
     },
     {
       "parameters": {
-        "operation": "pdf",
-        "binaryPropertyName": "={{ $input.item.binary.data.data }}",
+        "operation": "binaryToPropery",
         "options": {}
       },
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        0,
-        0
+        -240,
+        512
       ],
       "id": "2828ca83-74dd-47b4-805b-33463985cee8",
       "name": "Extract from File",
@@ -71,8 +69,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -128,
-        832
+        -416,
+        864
       ],
       "id": "a13144bc-856f-4d13-8024-cb8e04a8d31f",
       "name": "Download file",
@@ -91,26 +89,11 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        64,
-        832
+        -224,
+        864
       ],
       "id": "5db9b52b-f539-4efc-82a9-1aff04e2dd46",
       "name": "Extract from File1"
-    },
-    {
-      "parameters": {
-        "operation": "toText",
-        "sourceProperty": "={{ $input.item.json.file.mimeType}}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.convertToFile",
-      "typeVersion": 1.1,
-      "position": [
-        320,
-        32
-      ],
-      "id": "6633e1c7-28d5-48e3-a4b7-f9390defd5be",
-      "name": "Convert to File"
     },
     {
       "parameters": {
@@ -126,8 +109,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        704,
-        608
+        384,
+        640
       ],
       "id": "1cdd12d1-f6ce-460d-be81-22cf552c96ec",
       "name": "Supabase Vector Store",
@@ -145,8 +128,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        624,
-        832
+        304,
+        864
       ],
       "id": "dd134bff-7779-4f0b-a095-eae9dd242351",
       "name": "Embeddings OpenAI",
@@ -167,7 +150,7 @@
             "metadataValues": [
               {
                 "name": "file_id",
-                "value": "={{ $('Set Doc Id1').item.json.fileId }}"
+                "value": "={{ $('Set Doc Id').item.json.fileId ? $('Set Doc Id').item.json.fileId : $('Set Doc Id1').item.json.fileId }}"
               }
             ]
           }
@@ -176,8 +159,8 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        848,
-        816
+        528,
+        848
       ],
       "id": "52bbe0ef-b674-4f76-b3f5-57ca04a44c2a",
       "name": "Default Data Loader"
@@ -189,8 +172,8 @@
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        784,
-        1040
+        464,
+        1072
       ],
       "id": "7191af46-90dd-441e-a24e-bef213a33ea4",
       "name": "Recursive Character Text Splitter"
@@ -200,13 +183,13 @@
         "operation": "delete",
         "tableId": "documents",
         "filterType": "string",
-        "filterString": "=metadata->>file_id=eq.{{ $json.fileId }}"
+        "filterString": "=metadata->>file_id=like.{{ $json.fileId }}"
       },
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -128,
-        416
+        -784,
+        512
       ],
       "id": "7daa8148-d859-4507-9af8-1cdccf4f62c8",
       "name": "Delete a row1",
@@ -228,8 +211,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -480,
-        832
+        -768,
+        864
       ],
       "id": "8a7eded9-9134-45a1-8361-efa536c76f68",
       "name": "Delete a row",
@@ -267,8 +250,8 @@
       "type": "n8n-nodes-base.googleDriveTrigger",
       "typeVersion": 1,
       "position": [
-        -928,
-        896
+        -1248,
+        1056
       ],
       "id": "c080abe7-bbb8-445e-94ac-90f43a94fed4",
       "name": "Google File Created",
@@ -304,8 +287,8 @@
       "type": "n8n-nodes-base.googleDriveTrigger",
       "typeVersion": 1,
       "position": [
-        -944,
-        624
+        -1248,
+        864
       ],
       "id": "28ce8cdd-849a-4ba4-9dd7-e86f25cf51c9",
       "name": "Google File Updated",
@@ -313,25 +296,6 @@
         "googleDriveOAuth2Api": {
           "id": "UAzFvMBkpoSqaOK1",
           "name": "Google Drive account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "resource": "folder"
-      },
-      "type": "n8n-nodes-base.microsoftOneDrive",
-      "typeVersion": 1,
-      "position": [
-        160,
-        96
-      ],
-      "id": "e528e9ea-4795-4ce4-a50a-b0eac1f065b6",
-      "name": "Get items in a folder",
-      "credentials": {
-        "microsoftOneDriveOAuth2Api": {
-          "id": "FgxQ1Fn03xF1NboJ",
-          "name": "Microsoft Drive account"
         }
       }
     },
@@ -352,8 +316,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -320,
-        416
+        -976,
+        512
       ],
       "id": "6fba3bc8-0e11-416f-8c62-588fc14e16cb",
       "name": "Set Doc Id"
@@ -375,40 +339,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -656,
-        832
+        -960,
+        864
       ],
       "id": "24e3b6a2-1aa2-4998-b66f-8082c16b8198",
       "name": "Set Doc Id1"
-    },
-    {
-      "parameters": {
-        "url": "={{ $json['@microsoft.graph.downloadUrl'] }}/export?format=text",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        -160,
-        -96
-      ],
-      "id": "215fba7b-db10-4135-ae05-3ddfca2737fa",
-      "name": "HTTP Request"
-    },
-    {
-      "parameters": {
-        "language": "python",
-        "pythonCode": "    import requests\n    import docx2txt\n    from io import BytesIO\n\n    url = \"https://icotel-my.sharepoint.com/personal/dlbarbosa_icomontecnologia_com_br/_layouts/15/download.aspx?UniqueId=6642985d-2a76-48a6-a6f3-07799e0d6200&Translate=false&tempauth=v1.eyJzaXRlaWQiOiJhNjM1NzAzYS1jMGMyLTRkOTItOTk4Yy00ZmIzZWZmMzk3NjIiLCJhcHBfZGlzcGxheW5hbWUiOiJuOG4tZ2VwYWNpIiwiYXBwaWQiOiI0MTNjMzkwYS1hNzE2LTQzYzktOWNmMi0wZjY1ZWVkMjEzOTYiLCJhdWQiOiIwMDAwMDAwMy0wMDAwLTBmZjEtY2UwMC0wMDAwMDAwMDAwMDAvaWNvdGVsLW15LnNoYXJlcG9pbnQuY29tQGU1MjA5YTgxLWZlNGYtNGE4Yi05YTljLWEyMTVmMmYwMDEzMSIsImV4cCI6IjE3NjM0ODE2MDcifQ.CkAKDGVudHJhX2NsYWltcxIwQ01XSzhzZ0dFQUFhRmpaNU56QlJOWFJ6YUZWRGMxaFJYMVI0Y0ZGWFFVRXFBQT09CjIKCmFjdG9yYXBwaWQSJDAwMDAwMDAzLTAwMDAtMDAwMC1jMDAwLTAwMDAwMDAwMDAwMAoKCgRzbmlkEgI2NBILCLC515ymr9M-EAUaDDQwLjEyNi40NS4yOCosWnJaUEp6eWMyME9vK2JCZm1aZWdJNFN0NkEweEkzS0RSR2N1aFEyRWpOYz0wowE4AUIQodqafEyAAKCrCLAMDXvb2EoQaGFzaGVkcHJvb2Z0b2tlblIIWyJrbXNpIl1qJDAwYThmMjE5LTljOTMtZjJhZC05YWU2LWE1YWM1MjE4YTczY3IpMGguZnxtZW1iZXJzaGlwfDEwMDMyMDA1NGMwMTg1ODhAbGl2ZS5jb216ATKCARIJgZog5U_-i0oRmpyiFfLwATGSAQtEYW5pZWwgTGV2aZoBB0JhcmJvc2GiASFkbGJhcmJvc2FAaWNvbW9udGVjbm9sb2dpYS5jb20uYnKqARAxMDAzMjAwNTRDMDE4NTg4sgEOYWxsZmlsZXMud3JpdGXIAQE.xYY-nsL0BeE1ntyKSvW59TDCTweehr3dnvL0z3Xtqck&ApiVersion=2.0\"  # Replace with your actual URL\n    output_filename = \"output.txt\"\n\n    try:\n        # Download the DOCX file\n        response = requests.get(url)\n        response.raise_for_status()  # Raise an exception for HTTP errors\n\n        # Process the DOCX file in memory\n        docx_content = BytesIO(response.content)\n        text = docx2txt.process(docx_content)\n\n        # Save the extracted text to a .txt file\n        with open(output_filename, \"w\", encoding=\"utf-8\") as f:\n            f.write(text)\n\n        print(f\"Successfully downloaded and converted '{url}' to '{output_filename}'\")\n\n    except requests.exceptions.RequestException as e:\n        print(f\"Error downloading the file: {e}\")\n    except Exception as e:\n        print(f\"Error processing the document: {e}\")\n      return output_filename"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        640,
-        128
-      ],
-      "id": "c6718905-75ac-4ec3-aad4-e094d1822f8f",
-      "name": "Code in Python (Beta)",
-      "alwaysOutputData": true
     },
     {
       "parameters": {
@@ -418,8 +353,8 @@
       "type": "n8n-nodes-base.microsoftOneDrive",
       "typeVersion": 1,
       "position": [
-        32,
-        464
+        -416,
+        512
       ],
       "id": "4b12d8f3-7dd6-465d-bc5b-20eaec06563f",
       "name": "Download a file",
@@ -441,11 +376,118 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -304,
-        832
+        -592,
+        864
       ],
       "id": "3e82a514-9839-42a9-b25c-1cecf9e133be",
       "name": "Wait",
+      "webhookId": "b9138ac4-e5d5-417f-9166-6a0661ca7225"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "={{ $json.data }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        240,
+        16
+      ],
+      "id": "36007608-1d3e-4719-8ab1-bcb21c666214",
+      "name": "Split Out"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        560,
+        32
+      ],
+      "id": "9c6230a1-de87-4268-976c-59d66b745ae3",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.mistral.ai/v1/ocr",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer RV0rRmz7cbQb1NAjyYKwVB4ZbiGZbzcl"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"mistral-ocr-latest\",\n  \"document\": {\n    \"type\": \"document_url\",\n    \"document_url\": \"data:application/pdf;base64,{{ $json.data }}\"\n  },\n  \"include_image_base64\": true\n}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "text"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -32,
+        512
+      ],
+      "id": "215fba7b-db10-4135-ae05-3ddfca2737fa",
+      "name": "Mistral API"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute"
+            }
+          ]
+        },
+        "watchFolder": true,
+        "folderId": {
+          "__rl": true,
+          "value": "01ZCRJ5TZH76JWK63PVNDZNCDWEY6OW2WX",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.microsoftOneDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        -1264,
+        512
+      ],
+      "id": "ec377c90-5b3a-4eac-b8aa-9905bc2a2348",
+      "name": "Microsoft OneDrive Trigger1",
+      "credentials": {
+        "microsoftOneDriveOAuth2Api": {
+          "id": "FgxQ1Fn03xF1NboJ",
+          "name": "Microsoft Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 10
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -592,
+        512
+      ],
+      "id": "7ec38ddb-5ea0-4d95-b23c-398ff5aaf1ab",
+      "name": "Wait1",
       "webhookId": "b9138ac4-e5d5-417f-9166-6a0661ca7225"
     }
   ],
@@ -532,7 +574,7 @@
       "main": [
         [
           {
-            "node": "Download a file",
+            "node": "Wait1",
             "type": "main",
             "index": 0
           }
@@ -583,22 +625,11 @@
         ]
       ]
     },
-    "HTTP Request": {
-      "main": [
-        [
-          {
-            "node": "Extract from File",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Download a file": {
       "main": [
         [
           {
-            "node": "Supabase Vector Store",
+            "node": "Extract from File",
             "type": "main",
             "index": 0
           }
@@ -615,6 +646,66 @@
           }
         ]
       ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Mistral API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        []
+      ]
+    },
+    "Mistral API": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft OneDrive Trigger1": {
+      "main": [
+        [
+          {
+            "node": "Set Doc Id",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait1": {
+      "main": [
+        [
+          {
+            "node": "Download a file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
@@ -624,7 +715,7 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "d5d6b3f8-a94a-42f3-a932-f66ff9e3b98b",
+  "versionId": "69b543da-9743-4a0e-af2b-8bdc54dc51c6",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "e71ee30208579422913ee1673c6e68fb79d1e7e17d5c1deb0a672e043b70fb7c"

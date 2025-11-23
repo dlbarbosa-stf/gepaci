@@ -5,9 +5,9 @@
       "parameters": {
         "model": {
           "__rl": true,
-          "value": "gpt-4.1-mini",
+          "value": "gpt-5.1",
           "mode": "list",
-          "cachedResultName": "gpt-4.1-mini"
+          "cachedResultName": "gpt-5.1"
         },
         "options": {
           "temperature": 0.7
@@ -1382,20 +1382,6 @@
     },
     {
       "parameters": {
-        "description": "Contem informações para orientações ao usuário sobre serviços e benefícios ofertados pela empresa.",
-        "topK": 8
-      },
-      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
-      "typeVersion": 1.1,
-      "position": [
-        2912,
-        864
-      ],
-      "id": "ef8ae2d9-2c84-456f-b527-e1d968f580e3",
-      "name": "Banco Verorial"
-    },
-    {
-      "parameters": {
         "text": "**INSTRUÇÕES PARA COLETA TOKEN ICOPASS**\n\nSua função será orientar o usuário a informar o token para validação de identidade do funcionário usando o APP IcoPass. \n\n\n### 1. **Estilo de Atendimento**\n\n* Seja sempre **educada**, **objetiva**, **compreensiva** e **empática**.\n* Mantenha um tom **humanizado e acolhedor**.\n* Faça **apenas uma pergunta por vez**. Nunca sobrecarregue o cliente com múltiplas perguntas simultâneas.\n* **Nunca utilize informações externas** as orientações desse script\n\n### 1. **Solicitando o Token IcoPass**\n\n1. O atendimento já foi iniciado por outro agente e você pode iniciar a abordagem sem precisar de uma saudação ou nova apresentação.\n2. Informe o usuário que o para seguir com a solicitação desejada o mesmo deve validar sua identidade informando o **ICOMON Token** gerado no app IcoPass.\n3. O acesso no app deve ser feito utilizando o *usuário* e a *senha* de rede que o mesmo utiliza para acesso ao computador.\n4. Se a informação passada não atender aos requisitos, solicite os dados novamente.\n\n*Aguarde a resposta de cada pergunta antes de seguir para a próxima.*\n\n### 3. **Encerramento da Conversa**\n\nSe o colaborados não conseguir validar o token após duas tentativas, finalize a conversa chamando o Agent Tool **AI Nao Localizado**",
         "needsFallback": true,
         "options": {}
@@ -1724,6 +1710,37 @@
         }
       },
       "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {},
+      "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
+      "typeVersion": 1,
+      "position": [
+        3056,
+        1232
+      ],
+      "id": "02b8da86-35be-4e98-be3f-c24c0be8aed1",
+      "name": "Reranker Cohere",
+      "credentials": {
+        "cohereApi": {
+          "id": "4K9XXxDqJVHFJDFD",
+          "name": "CohereApi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "description": "Contem informações para orientações ao usuário sobre serviços e benefícios ofertados pela empresa.",
+        "topK": 8
+      },
+      "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
+      "typeVersion": 1.1,
+      "position": [
+        2912,
+        864
+      ],
+      "id": "ef8ae2d9-2c84-456f-b527-e1d968f580e3",
+      "name": "Banco Vetorial"
     }
   ],
   "pinData": {
@@ -2348,7 +2365,7 @@
       "ai_languageModel": [
         [
           {
-            "node": "Banco Verorial",
+            "node": "Banco Vetorial",
             "type": "ai_languageModel",
             "index": 0
           }
@@ -2359,7 +2376,7 @@
       "ai_vectorStore": [
         [
           {
-            "node": "Banco Verorial",
+            "node": "Banco Vetorial",
             "type": "ai_vectorStore",
             "index": 0
           }
@@ -2372,17 +2389,6 @@
           {
             "node": "If1",
             "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Banco Verorial": {
-      "ai_tool": [
-        [
-          {
-            "node": "Atendimento",
-            "type": "ai_tool",
             "index": 0
           }
         ]
@@ -2544,6 +2550,22 @@
           }
         ]
       ]
+    },
+    "Reranker Cohere": {
+      "ai_reranker": [
+        []
+      ]
+    },
+    "Banco Vetorial": {
+      "ai_tool": [
+        [
+          {
+            "node": "Atendimento",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
@@ -2553,7 +2575,7 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "46b3e762-c8a5-400b-8c07-ad26613156c6",
+  "versionId": "c22740f2-97a3-464a-b87c-e734ed07bf74",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "e71ee30208579422913ee1673c6e68fb79d1e7e17d5c1deb0a672e043b70fb7c"
