@@ -16,8 +16,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        2896,
-        1488
+        3152,
+        1504
       ],
       "id": "1cfe5519-3c47-4768-bd10-e5e25a5ad5fc",
       "name": "OpenAI Chat Model1",
@@ -37,8 +37,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2672,
-        1408
+        2976,
+        1424
       ],
       "typeVersion": 1,
       "id": "d115af5c-4b64-4c25-ae5a-1f1755032ef3",
@@ -53,8 +53,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2736,
-        1568
+        2992,
+        1584
       ],
       "id": "d1b61362-bd8e-4c6a-a021-d7b6ba4df48e",
       "name": "Google Gemini Chat Atendimento",
@@ -74,8 +74,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2320,
-        -192
+        2368,
+        -176
       ],
       "typeVersion": 1,
       "id": "37cb17f1-a86c-435f-b5c6-07f8964a7b01",
@@ -93,7 +93,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        2944,
+        3152,
         -80
       ],
       "id": "de3f9608-3922-477d-be4b-cf8e16ef2bd1",
@@ -114,7 +114,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        2944,
+        3152,
         576
       ],
       "id": "c60593fd-4d71-4623-967e-6683f8bbb20c",
@@ -140,7 +140,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1712,
+        1792,
         -112
       ],
       "id": "2b2c80d6-2392-45d7-a8f7-18be5ba4879a",
@@ -174,8 +174,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        288,
-        320
+        336,
+        352
       ],
       "id": "d130a352-e2c8-464d-a9ab-d06feb757ab2",
       "name": "Sql Agtesla",
@@ -211,8 +211,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        80,
-        592
+        128,
+        624
       ],
       "id": "aec2052a-2e61-4928-ab3a-18c969e424e9",
       "name": "coletar dados usuario",
@@ -254,7 +254,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1472,
+        1552,
         -48
       ],
       "id": "8703ea24-fae3-4943-b1ca-c037df784a46",
@@ -270,8 +270,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        80,
-        -144
+        -1168,
+        -80
       ],
       "id": "78b3644e-b490-4a61-8af9-efa209ea77ce",
       "name": "Webhook",
@@ -282,8 +282,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        3232,
-        1504
+        3488,
+        1520
       ],
       "id": "3ba12f01-7c85-4d12-b5a6-19f2e07dc116",
       "name": "Think"
@@ -316,8 +316,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        896,
-        64
+        1008,
+        96
       ],
       "id": "8d0d89ed-8c1d-4c17-a9e7-48a029c5caef",
       "name": "If2",
@@ -366,7 +366,7 @@
             {
               "id": "6c3fee67-5a3e-4daf-b7e0-8a987bf24dc1",
               "name": "message",
-              "value": "={{ $('Webhook').item.json.body.message }}",
+              "value": "={{ $('Set Buffer Mensagens').item.json.messageBuffer }}",
               "type": "string"
             },
             {
@@ -382,8 +382,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        464,
-        -144
+        272,
+        -112
       ],
       "id": "ff637e42-0e66-4e1f-8097-c95881c72a19",
       "name": "coletar dados da conversa",
@@ -397,8 +397,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        0,
-        256
+        16,
+        272
       ],
       "typeVersion": 1,
       "id": "ff2c1416-3cef-443c-bd9f-36c4cc01cd78",
@@ -433,8 +433,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        496,
-        320
+        544,
+        352
       ],
       "id": "2f7762bc-218e-4643-b1c4-0cd6579f5a92",
       "name": "If3",
@@ -442,13 +442,13 @@
     },
     {
       "parameters": {
-        "jsCode": "\nconst whatsapp = $input.first().json.body.contacts[0].phones[0].phone;\nconst onlyPhone = whatsapp\n  .replace(/\\D/g, '')\n  .replace(/^55/, '');\nconst result = [\n  {\n    foneTratado: onlyPhone\n  }\n];\n\nreturn result;\n\n"
+        "jsCode": "\nconst whatsapp = $('Webhook').first().json.body.contacts[0].phones[0].phone;\nconst onlyPhone = whatsapp\n  .replace(/\\D/g, '')\n  .replace(/^55/, '');\nconst result = [\n  {\n    foneTratado: onlyPhone\n  }\n];\n\nreturn result;\n\n"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        272,
-        -144
+        80,
+        -112
       ],
       "id": "19859430-1c5e-47e7-aa85-887c6407d97b",
       "name": "Tratar número",
@@ -460,12 +460,12 @@
         "content": "Inicio",
         "height": 400,
         "width": 784,
-        "color": 3
+        "color": 6
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        0,
-        -176
+        16,
+        -160
       ],
       "typeVersion": 1,
       "id": "47e1cb6e-ed09-484d-ad65-3e481a7ceea2",
@@ -479,8 +479,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1440,
-        -192
+        1456,
+        -176
       ],
       "typeVersion": 1,
       "id": "a0a6a929-04c2-478d-abc2-47c69bfc8258",
@@ -498,8 +498,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        272,
-        64
+        80,
+        96
       ],
       "id": "3e6c5947-dd4f-4b12-aaa1-713196a59e4d",
       "name": "Consultar Status",
@@ -528,8 +528,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        80,
-        320
+        128,
+        352
       ],
       "id": "f4ccd57c-2201-4134-940e-d941b03f8a6f",
       "name": "Setar Status Inicial",
@@ -554,8 +554,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        896,
-        496
+        1008,
+        528
       ],
       "id": "c7aeef34-6091-472f-8c1b-fc08c7f98f9f",
       "name": "Status direcionamento",
@@ -704,8 +704,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        1136,
-        448
+        1248,
+        480
       ],
       "id": "852561e2-c0f4-4ea6-8096-38f3ca073d82",
       "name": "Gerenciar direcionamento"
@@ -720,8 +720,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        3056,
-        1600
+        3312,
+        1616
       ],
       "id": "ddeb4837-1477-46bc-b1b1-867e7af0aca2",
       "name": "Redis Chat Memory",
@@ -743,8 +743,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        480,
-        64
+        288,
+        96
       ],
       "id": "1004f89f-5817-4f05-b2cf-f44aa9e980f7",
       "name": "Mensagem atual",
@@ -765,7 +765,7 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        3408,
+        3616,
         304
       ],
       "id": "72096b6b-7e38-4d8f-8df8-1b563447c15a",
@@ -777,7 +777,7 @@
       "name": "Replace Me",
       "typeVersion": 1,
       "position": [
-        3664,
+        3872,
         320
       ],
       "id": "89f03713-7a00-42a4-8c5b-bb8b5e48abe4"
@@ -791,8 +791,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        816,
-        -176
+        832,
+        -160
       ],
       "typeVersion": 1,
       "id": "09c13244-9ae9-4484-a549-99bea77b5580",
@@ -825,7 +825,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1696,
+        1776,
         96
       ],
       "id": "64859877-2444-4e3a-821d-da9cb9da53b0",
@@ -842,7 +842,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1920,
+        2000,
         80
       ],
       "id": "dd060372-3177-439c-af2d-1319afa30f58",
@@ -867,7 +867,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1696,
+        1776,
         304
       ],
       "id": "c1369551-1f28-4d21-b5c4-20304a9701cc",
@@ -893,7 +893,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        2928,
+        3136,
         176
       ],
       "id": "0585c512-43bb-4f6e-bd1d-aa22ab74cabd",
@@ -914,7 +914,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2480,
+        2688,
         -64
       ],
       "id": "8e80c6d1-4df6-4874-94b7-f9121dd7ca92",
@@ -940,7 +940,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2496,
+        2704,
         272
       ],
       "id": "96233dae-a9e7-4458-bdbb-062a8e819164",
@@ -966,7 +966,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2496,
+        2704,
         576
       ],
       "id": "e42313c1-a52f-4b8f-8541-71bacf40ace8",
@@ -991,8 +991,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        624,
-        592
+        672,
+        624
       ],
       "id": "d0a39be7-4519-4602-aa7e-21c8f887dbc9",
       "name": "Setar Status Atendimento1",
@@ -1016,8 +1016,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        448,
-        592
+        496,
+        624
       ],
       "id": "a670ae7e-33ee-4c06-8127-27548624e6e4",
       "name": "Setar Nome",
@@ -1032,86 +1032,6 @@
     },
     {
       "parameters": {
-        "httpMethod": "POST",
-        "path": "86838aef-90b0-4708-9836-ddb8f266462f",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.webhook",
-      "typeVersion": 2.1,
-      "position": [
-        -432,
-        1632
-      ],
-      "id": "69c5715f-447d-4f5f-9c66-bf6ed864c709",
-      "name": "Variáveis Redis",
-      "webhookId": "86838aef-90b0-4708-9836-ddb8f266462f"
-    },
-    {
-      "parameters": {
-        "operation": "set",
-        "key": "={{ $('Webhook').item.json.body.session }}_name",
-        "value": "={{ $json.dadosCliente.Nome }}",
-        "expire": true,
-        "ttl": 1000
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        432,
-        1312
-      ],
-      "id": "6ec8ead9-093e-402b-9d15-b376b971a438",
-      "name": "Setar Nome2",
-      "alwaysOutputData": false,
-      "credentials": {
-        "redis": {
-          "id": "MgGckVnF4CAFHnor",
-          "name": "Redis account"
-        }
-      },
-      "onError": "continueRegularOutput"
-    },
-    {
-      "parameters": {
-        "options": {
-          "reset": false
-        }
-      },
-      "type": "n8n-nodes-base.splitInBatches",
-      "typeVersion": 3,
-      "position": [
-        144,
-        1296
-      ],
-      "id": "97195691-a88a-4d12-8f88-762751f99cac",
-      "name": "Loop Over Items1"
-    },
-    {
-      "parameters": {},
-      "type": "n8n-nodes-base.manualTrigger",
-      "typeVersion": 1,
-      "position": [
-        -352,
-        1392
-      ],
-      "id": "bcd30e44-5201-4519-b2fb-7ffc24910621",
-      "name": "When clicking ‘Execute workflow’"
-    },
-    {
-      "parameters": {
-        "jsCode": "return [\n\t{\n\t\tjson: {\n\t\t\t\"nome\": \"Daniel\",\n\t\t}\n\t},\n\t{\n\t\tjson: {\n\t\t\t\"nome\": \"joe\",\n\t\t}\n\t}\n];"
-      },
-      "type": "n8n-nodes-base.code",
-      "typeVersion": 2,
-      "position": [
-        -64,
-        1296
-      ],
-      "id": "f850595c-6adf-4938-ab04-7e4c1523666f",
-      "name": "Code in JavaScript"
-    },
-    {
-      "parameters": {
         "operation": "get",
         "propertyName": "nomeUsuario",
         "key": "={{ $('coletar dados da conversa').item.json.session }}_nome",
@@ -1122,7 +1042,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2704,
+        2912,
         576
       ],
       "id": "2f387d0c-bf46-4797-9407-92ed03977402",
@@ -1147,7 +1067,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1920,
+        2000,
         304
       ],
       "id": "3763890f-2ac5-40a1-8db9-9dfc225a5098",
@@ -1190,7 +1110,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2160,
+        2368,
         112
       ],
       "id": "94ccc482-a866-4bd3-ba35-5291c54e862d",
@@ -1206,7 +1126,7 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        3488,
+        3696,
         896
       ],
       "id": "376c4c5a-c4cb-43ac-9a37-f2be3096d31d",
@@ -1219,8 +1139,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1104,
-        -48
+        1216,
+        -16
       ],
       "id": "8a12597d-a9cd-41c3-8156-02567a9e4784",
       "name": "Tratar somente Numeros",
@@ -1234,7 +1154,7 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        2880,
+        3088,
         1168
       ],
       "id": "86188932-15af-4d25-aabd-54d74937c56a",
@@ -1259,7 +1179,7 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3232,
+        3440,
         1136
       ],
       "id": "4df9d094-0640-4202-ab5a-c5339ddbe36b",
@@ -1286,7 +1206,7 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        2912,
+        3120,
         1024
       ],
       "id": "2f2ed3e1-3c04-4f63-a3fc-98a1238ae85d",
@@ -1325,7 +1245,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1984,
+        2064,
         -112
       ],
       "id": "0d3f3bac-06bc-44e3-a8d4-df06302cb353",
@@ -1368,7 +1288,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        2112,
+        2192,
         608
       ],
       "id": "e2b3254f-be29-4571-ba27-fa76816b89cd",
@@ -1389,7 +1309,7 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        2512,
+        2720,
         880
       ],
       "id": "d499bcc2-7d7c-42a3-a43b-fedf79838c30",
@@ -1422,7 +1342,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1616,
+        1696,
         624
       ],
       "id": "cd2ab716-b0ca-4622-b710-56f7a3f624d5",
@@ -1451,7 +1371,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1952,
+        2032,
         608
       ],
       "id": "ba43b19a-9d92-4a58-b2c5-f4d17f7e3ae2",
@@ -1465,7 +1385,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1456,
+        1536,
         624
       ],
       "id": "4a990b73-3179-47ac-b9d0-675c245b9483",
@@ -1484,8 +1404,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        256,
-        592
+        304,
+        624
       ],
       "id": "4c766add-9fb0-49b6-81ea-fcf8d7af35cf",
       "name": "Setar Matricula",
@@ -1509,7 +1429,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2160,
+        2368,
         304
       ],
       "id": "d1ba5db6-0a84-4612-a502-23022bd90a93",
@@ -1534,7 +1454,7 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        3200,
+        3408,
         864
       ],
       "id": "a433e5db-0cf1-419c-aeed-46f52bf6aef1",
@@ -1557,7 +1477,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2032,
+        2112,
         864
       ],
       "id": "f47976af-1146-45f7-9518-b648f6b3c107",
@@ -1582,7 +1502,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1792,
+        1872,
         784
       ],
       "id": "478977c8-f7aa-46da-95dc-43d166a70a7c",
@@ -1623,7 +1543,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1472,
+        1552,
         880
       ],
       "id": "70c2d0cb-99cd-4f5d-9da0-04b25dd8fe4d",
@@ -1641,7 +1561,7 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        1696,
+        1776,
         1072
       ],
       "id": "dc1ba906-e2b6-4c1e-be7d-6494f8445063",
@@ -1658,7 +1578,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2032,
+        2112,
         1072
       ],
       "id": "af7a962b-4cf8-426d-82a8-89af111c88a6",
@@ -1678,8 +1598,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1440,
-        512
+        1456,
+        528
       ],
       "typeVersion": 1,
       "id": "33c54879-2c3f-433e-96d7-a1d15b313747",
@@ -1697,7 +1617,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1792,
+        1872,
         608
       ],
       "id": "fa02a1f8-fe5c-4e27-a477-1434982980ec",
@@ -1716,8 +1636,8 @@
       "type": "@n8n/n8n-nodes-langchain.rerankerCohere",
       "typeVersion": 1,
       "position": [
-        3056,
-        1232
+        3104,
+        1248
       ],
       "id": "02b8da86-35be-4e98-be3f-c24c0be8aed1",
       "name": "Reranker Cohere",
@@ -1736,27 +1656,205 @@
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1.1,
       "position": [
-        2912,
+        3120,
         864
       ],
       "id": "ef8ae2d9-2c84-456f-b527-e1d968f580e3",
       "name": "Banco Vetorial"
-    }
-  ],
-  "pinData": {
-    "When clicking ‘Execute workflow’": [
-      {
-        "json": {
-          "nome": "Daniel"
-        }
+    },
+    {
+      "parameters": {
+        "operation": "push",
+        "list": "={{$('Coletar Msg ID').item.json.sessionId }}_buffer",
+        "messageData": "={{ $('Coletar Msg ID').item.json.inputMessage}}",
+        "tail": true
       },
-      {
-        "json": {
-          "nome2": "joe"
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -688,
+        -80
+      ],
+      "id": "1fa797f4-b027-4b8f-812a-c9bee02d12dd",
+      "name": "Set Buffer Mensagem",
+      "credentials": {
+        "redis": {
+          "id": "MgGckVnF4CAFHnor",
+          "name": "Redis account"
         }
       }
-    ]
-  },
+    },
+    {
+      "parameters": {
+        "amount": 8
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        -432,
+        -80
+      ],
+      "id": "05498ecf-e895-4e6a-b62d-e5ba678f8ed8",
+      "name": "Wait",
+      "webhookId": "4927fddc-4044-4fbf-a7e8-3c49ec4739fe"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "37f9a613-db78-4c71-99ac-b09f483e90fd",
+              "leftValue": "={{ $json.validarMensagem.last() }}",
+              "rightValue": "={{ $('Coletar Msg ID').item.json.inputMessage }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -928,
+        240
+      ],
+      "id": "3e5eadee-dd83-461e-9081-13cc5a35c74a",
+      "name": "If5"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        -608,
+        416
+      ],
+      "id": "812fe15a-0814-4c07-8ebb-bfc25c4ddd82",
+      "name": "No Operation, do nothing"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "validarMensagem",
+        "key": "={{$('Coletar Msg ID').item.json.sessionId }}_buffer",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -208,
+        -80
+      ],
+      "id": "6e47f74a-20b7-450e-b371-505ec99250a9",
+      "name": "Coletar Buffer Mensagem",
+      "credentials": {
+        "redis": {
+          "id": "MgGckVnF4CAFHnor",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "dd8e3dd6-3fd4-4169-83c1-5a9941b50ede",
+              "name": "messageBuffer",
+              "value": "={{ $('Coletar Buffer Mensagem').item.json.validarMensagem.join('\\n') }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -608,
+        224
+      ],
+      "id": "92bee6a2-c892-4096-8710-31ecf708d7df",
+      "name": "Set Buffer Mensagens"
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{$('Coletar Msg ID').item.json.sessionId }}_buffer"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -336,
+        224
+      ],
+      "id": "0340263e-76ac-415a-9371-48b6d7ab27d3",
+      "name": "Delete Buffer Mensagem",
+      "credentials": {
+        "redis": {
+          "id": "MgGckVnF4CAFHnor",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c9a6b8d5-f2f4-4ddb-bba4-16047924a289",
+              "name": "inputMessage",
+              "value": "={{ $json.body.message }}",
+              "type": "string"
+            },
+            {
+              "id": "23c6d005-52e1-4e41-922f-7bb53e0c901d",
+              "name": "sessionId",
+              "value": "={{ $json.body.session }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -960,
+        -80
+      ],
+      "id": "cf1da910-6e93-4926-9ffb-5a8820abf518",
+      "name": "Coletar Msg ID"
+    },
+    {
+      "parameters": {
+        "content": "Inicio / Buffer Mensagens",
+        "height": 752,
+        "width": 1216,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -1248,
+        -176
+      ],
+      "typeVersion": 1,
+      "id": "5c61eb2e-0038-4e2a-a068-1066d958e94d",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {},
   "connections": {
     "OpenAI Chat Model1": {
       "ai_languageModel": [
@@ -1838,7 +1936,7 @@
       "main": [
         [
           {
-            "node": "Tratar número",
+            "node": "Coletar Msg ID",
             "type": "main",
             "index": 0
           }
@@ -2204,45 +2302,6 @@
         ]
       ]
     },
-    "Loop Over Items1": {
-      "main": [
-        [],
-        [
-          {
-            "node": "Setar Nome2",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Setar Nome2": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "When clicking ‘Execute workflow’": {
-      "main": [
-        []
-      ]
-    },
-    "Code in JavaScript": {
-      "main": [
-        [
-          {
-            "node": "Loop Over Items1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Google Gemini Chat Atendimento": {
       "ai_languageModel": [
         [
@@ -2566,6 +2625,90 @@
           }
         ]
       ]
+    },
+    "Set Buffer Mensagem": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Coletar Buffer Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Set Buffer Mensagens",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "No Operation, do nothing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Coletar Buffer Mensagem": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Buffer Mensagens": {
+      "main": [
+        [
+          {
+            "node": "Delete Buffer Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Delete Buffer Mensagem": {
+      "main": [
+        [
+          {
+            "node": "Tratar número",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Coletar Msg ID": {
+      "main": [
+        [
+          {
+            "node": "Set Buffer Mensagem",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
@@ -2575,7 +2718,7 @@
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "c22740f2-97a3-464a-b87c-e734ed07bf74",
+  "versionId": "3aa9218f-fa88-4a42-bf23-320c440fdc25",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "e71ee30208579422913ee1673c6e68fb79d1e7e17d5c1deb0a672e043b70fb7c"
