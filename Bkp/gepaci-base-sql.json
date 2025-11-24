@@ -22,16 +22,24 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT * FROM [VW_LINHAS_GENESIS_SCL] WHERE [ID] = 1;"
+        "query": "SELECT * FROM VW_LINHAS_GENESIS_SCL WHERE LINHA_GENESIS = '{{ $json.body.json.phoneNumber }}';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        -320,
-        128
+        -352,
+        304
       ],
       "id": "cbb8760a-0eb8-4bfe-a28d-9713e2463295",
-      "name": "Microsoft SQL"
+      "name": "Microsoft SQL",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "GrDMcktgutAEy8qT",
+          "name": "Microsoft SQL account"
+        }
+      },
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -49,8 +57,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -320,
-        304
+        -352,
+        128
       ],
       "id": "d2b9ef4c-8fdd-4f16-8e30-d17d60400d60",
       "name": "Get a row",
@@ -70,7 +78,7 @@
       "main": [
         [
           {
-            "node": "Get a row",
+            "node": "Microsoft SQL",
             "type": "main",
             "index": 0
           }
@@ -82,8 +90,9 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "838af672-832f-4dfe-8024-dac1056d154d",
+  "versionId": "7fe54fd0-5665-4eb7-9885-ddbd92dd06e5",
   "meta": {
+    "templateCredsSetupCompleted": true,
     "instanceId": "e71ee30208579422913ee1673c6e68fb79d1e7e17d5c1deb0a672e043b70fb7c"
   },
   "id": "ZVogERkQFDAhm1c5",

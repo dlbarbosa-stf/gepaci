@@ -143,15 +143,15 @@
     },
     {
       "parameters": {
-        "content": "API identidade",
-        "height": 608,
+        "content": "API identidade\n\nDocumentação Swagger: https://apiwhatsapp.icomon.com.vc/swagger/index.html",
+        "height": 704,
         "width": 944,
         "color": 6
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         0,
-        0
+        -96
       ],
       "typeVersion": 1,
       "id": "f1d90e23-5cb9-47ec-8978-3f01ab91a237",
@@ -283,7 +283,7 @@
       "typeVersion": 4.3,
       "position": [
         544,
-        688
+        768
       ],
       "id": "338d0f78-6237-4375-8a9d-ca41d2f31205",
       "name": "requestToken1"
@@ -349,22 +349,22 @@
       "typeVersion": 3.3,
       "position": [
         96,
-        1040
+        1120
       ],
       "id": "7b396539-5eb9-4ab0-ad15-983118642919",
       "name": "Switch"
     },
     {
       "parameters": {
-        "content": "API IcoPass",
-        "height": 608,
+        "content": "API IcoPass\n\nDocumentação Swagger: https://loginunicoapiexternos.icomon.com.vc/swagger/index.html",
+        "height": 736,
         "width": 944,
         "color": 5
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         0,
-        640
+        624
       ],
       "typeVersion": 1,
       "id": "70a074fd-295c-4497-be19-4c18e2fbbddc",
@@ -394,7 +394,7 @@
       "typeVersion": 3.4,
       "position": [
         320,
-        688
+        768
       ],
       "id": "01a03d7a-77b3-45ca-b71b-d71d76f46edb",
       "name": "coletar identificador1",
@@ -428,7 +428,7 @@
       "typeVersion": 2.1,
       "position": [
         96,
-        688
+        768
       ],
       "id": "6dea896c-b64c-4d4e-b77c-042b3639e66e",
       "name": "Webhook IcoPass",
@@ -475,7 +475,7 @@
       "typeVersion": 4.3,
       "position": [
         736,
-        688
+        768
       ],
       "id": "59147543-9496-45f4-bdb1-45de37494046",
       "name": "validarIcoPass",
@@ -518,7 +518,7 @@
       "typeVersion": 3.4,
       "position": [
         400,
-        912
+        992
       ],
       "id": "7eb16b6f-3731-4526-b0b3-423083c70127",
       "name": "Token Valido"
@@ -547,7 +547,7 @@
       "typeVersion": 3.4,
       "position": [
         400,
-        1104
+        1184
       ],
       "id": "19b285eb-723d-43d4-8bea-9422bbbf779d",
       "name": "Token Invalido"
@@ -694,7 +694,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "33d68e78-a40e-41bf-ad86-2e164e67da64",
+  "versionId": "0af68910-8a23-4305-bff5-3aac8b2f965e",
   "meta": {
     "instanceId": "e71ee30208579422913ee1673c6e68fb79d1e7e17d5c1deb0a672e043b70fb7c"
   },

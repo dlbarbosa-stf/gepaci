@@ -43,8 +43,8 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        -240,
-        512
+        -544,
+        736
       ],
       "id": "2828ca83-74dd-47b4-805b-33463985cee8",
       "name": "Extract from File",
@@ -69,8 +69,8 @@
       "type": "n8n-nodes-base.googleDrive",
       "typeVersion": 3,
       "position": [
-        -416,
-        864
+        -352,
+        976
       ],
       "id": "a13144bc-856f-4d13-8024-cb8e04a8d31f",
       "name": "Download file",
@@ -89,8 +89,8 @@
       "type": "n8n-nodes-base.extractFromFile",
       "typeVersion": 1,
       "position": [
-        -224,
-        864
+        -176,
+        976
       ],
       "id": "5db9b52b-f539-4efc-82a9-1aff04e2dd46",
       "name": "Extract from File1"
@@ -109,8 +109,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        384,
-        640
+        448,
+        864
       ],
       "id": "1cdd12d1-f6ce-460d-be81-22cf552c96ec",
       "name": "Supabase Vector Store",
@@ -128,8 +128,8 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        304,
-        864
+        368,
+        1088
       ],
       "id": "dd134bff-7779-4f0b-a095-eae9dd242351",
       "name": "Embeddings OpenAI",
@@ -150,7 +150,7 @@
             "metadataValues": [
               {
                 "name": "file_id",
-                "value": "={{ $('Set Doc Id').item.json.fileId ? $('Set Doc Id').item.json.fileId : $('Set Doc Id1').item.json.fileId }}"
+                "value": "={{ $('Set Doc Id').item.json.fileId }}"
               }
             ]
           }
@@ -159,8 +159,8 @@
       "type": "@n8n/n8n-nodes-langchain.documentDefaultDataLoader",
       "typeVersion": 1.1,
       "position": [
-        528,
-        848
+        592,
+        1072
       ],
       "id": "52bbe0ef-b674-4f76-b3f5-57ca04a44c2a",
       "name": "Default Data Loader"
@@ -172,8 +172,8 @@
       "type": "@n8n/n8n-nodes-langchain.textSplitterRecursiveCharacterTextSplitter",
       "typeVersion": 1,
       "position": [
-        464,
-        1072
+        528,
+        1296
       ],
       "id": "7191af46-90dd-441e-a24e-bef213a33ea4",
       "name": "Recursive Character Text Splitter"
@@ -183,7 +183,7 @@
         "operation": "delete",
         "tableId": "documents",
         "filterType": "string",
-        "filterString": "=metadata->>file_id=like.{{ $json.fileId }}"
+        "filterString": "=metadata->>file_id=eq.{{ $json.fileId }}"
       },
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
@@ -211,8 +211,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        -768,
-        864
+        -704,
+        976
       ],
       "id": "8a7eded9-9134-45a1-8361-efa536c76f68",
       "name": "Delete a row",
@@ -250,8 +250,8 @@
       "type": "n8n-nodes-base.googleDriveTrigger",
       "typeVersion": 1,
       "position": [
-        -1248,
-        1056
+        -1184,
+        1168
       ],
       "id": "c080abe7-bbb8-445e-94ac-90f43a94fed4",
       "name": "Google File Created",
@@ -260,7 +260,8 @@
           "id": "UAzFvMBkpoSqaOK1",
           "name": "Google Drive account"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -287,8 +288,8 @@
       "type": "n8n-nodes-base.googleDriveTrigger",
       "typeVersion": 1,
       "position": [
-        -1248,
-        864
+        -1184,
+        976
       ],
       "id": "28ce8cdd-849a-4ba4-9dd7-e86f25cf51c9",
       "name": "Google File Updated",
@@ -297,7 +298,8 @@
           "id": "UAzFvMBkpoSqaOK1",
           "name": "Google Drive account"
         }
-      }
+      },
+      "disabled": true
     },
     {
       "parameters": {
@@ -339,8 +341,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -960,
-        864
+        -896,
+        976
       ],
       "id": "24e3b6a2-1aa2-4998-b66f-8082c16b8198",
       "name": "Set Doc Id1"
@@ -376,40 +378,12 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -592,
-        864
+        -528,
+        976
       ],
       "id": "3e82a514-9839-42a9-b25c-1cecf9e133be",
       "name": "Wait",
       "webhookId": "b9138ac4-e5d5-417f-9166-6a0661ca7225"
-    },
-    {
-      "parameters": {
-        "fieldToSplitOut": "={{ $json.data }}",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.splitOut",
-      "typeVersion": 1,
-      "position": [
-        240,
-        16
-      ],
-      "id": "36007608-1d3e-4719-8ab1-bcb21c666214",
-      "name": "Split Out"
-    },
-    {
-      "parameters": {
-        "aggregate": "aggregateAllItemData",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.aggregate",
-      "typeVersion": 1,
-      "position": [
-        560,
-        32
-      ],
-      "id": "9c6230a1-de87-4268-976c-59d66b745ae3",
-      "name": "Aggregate"
     },
     {
       "parameters": {
@@ -438,8 +412,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -32,
-        512
+        -352,
+        736
       ],
       "id": "215fba7b-db10-4135-ae05-3ddfca2737fa",
       "name": "Mistral API"
@@ -453,6 +427,7 @@
             }
           ]
         },
+        "simple": false,
         "watchFolder": true,
         "folderId": {
           "__rl": true,
@@ -478,7 +453,7 @@
     },
     {
       "parameters": {
-        "amount": 10
+        "amount": 1
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
@@ -489,6 +464,49 @@
       "id": "7ec38ddb-5ea0-4d95-b23c-398ff5aaf1ab",
       "name": "Wait1",
       "webhookId": "b9138ac4-e5d5-417f-9166-6a0661ca7225"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "78846d49-27d5-4713-b534-ad2bcf4c36e1",
+              "name": "=data",
+              "value": "={{ JSON.parse($json.data).pages[0].markdown}}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -176,
+        736
+      ],
+      "id": "d1eb7f66-480c-4e85-a16c-2418767d49d4",
+      "name": "Texto Markdown"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.mistralAi",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        480
+      ],
+      "id": "773429da-f68f-4e8c-9781-a381bf39be89",
+      "name": "Extract text",
+      "credentials": {
+        "mistralCloudApi": {
+          "id": "lE5RfKBHQjpzLeh1",
+          "name": "Mistral Cloud account"
+        }
+      },
+      "disabled": true
     }
   ],
   "pinData": {},
@@ -658,27 +676,11 @@
         ]
       ]
     },
-    "Split Out": {
-      "main": [
-        [
-          {
-            "node": "Aggregate",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Aggregate": {
-      "main": [
-        []
-      ]
-    },
     "Mistral API": {
       "main": [
         [
           {
-            "node": "Supabase Vector Store",
+            "node": "Texto Markdown",
             "type": "main",
             "index": 0
           }
@@ -706,16 +708,32 @@
           }
         ]
       ]
+    },
+    "Texto Markdown": {
+      "main": [
+        [
+          {
+            "node": "Supabase Vector Store",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract text": {
+      "main": [
+        []
+      ]
     }
   },
-  "active": true,
+  "active": false,
   "settings": {
     "executionOrder": "v1",
     "timezone": "America/Sao_Paulo",
     "callerPolicy": "workflowsFromSameOwner",
     "availableInMCP": false
   },
-  "versionId": "69b543da-9743-4a0e-af2b-8bdc54dc51c6",
+  "versionId": "5ada10cc-3d51-439a-8a77-5639ad261cf7",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "e71ee30208579422913ee1673c6e68fb79d1e7e17d5c1deb0a672e043b70fb7c"
