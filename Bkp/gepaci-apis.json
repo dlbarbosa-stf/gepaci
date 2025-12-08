@@ -32,8 +32,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        544,
-        144
+        944,
+        -96
       ],
       "id": "49ac2760-5ae3-467c-b22b-8bc664d2557b",
       "name": "requestToken"
@@ -70,8 +70,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        736,
-        144
+        448,
+        128
       ],
       "id": "e3ec0013-b7d1-4b2a-824a-0e7eca5c8cb2",
       "name": "buscarFuncionario"
@@ -135,8 +135,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        96,
-        496
+        752,
+        128
       ],
       "id": "8f56b827-6965-49ad-8288-f45b077f2073",
       "name": "Switch1"
@@ -144,14 +144,14 @@
     {
       "parameters": {
         "content": "API identidade\n\nDocumentação Swagger: https://apiwhatsapp.icomon.com.vc/swagger/index.html",
-        "height": 704,
-        "width": 944,
+        "height": 784,
+        "width": 1376,
         "color": 6
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        0,
-        0
+        32,
+        -288
       ],
       "typeVersion": 1,
       "id": "de3ac6ab-f041-40bb-9fae-dbcd35511092",
@@ -164,7 +164,7 @@
             {
               "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
               "name": "inputIdentity",
-              "value": "={{ $json.body.json.chatInput }}",
+              "value": "={{ $json.body.chatInput }}",
               "type": "string"
             }
           ]
@@ -174,8 +174,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        320,
-        144
+        336,
+        -112
       ],
       "id": "989a7484-348f-4bbe-abce-a475b49bd538",
       "name": "coletar identificador",
@@ -187,19 +187,19 @@
           "assignments": [
             {
               "id": "b1bbef1f-aade-4643-a58b-90a6e7b54cac",
-              "name": "body.nome",
+              "name": "nome",
               "value": "={{ $('buscarFuncionario').item.json.body.nome }}",
               "type": "string"
             },
             {
               "id": "8ce69bca-e03f-4819-b323-343385885b0a",
-              "name": "body.funcao",
+              "name": "funcao",
               "value": "={{ $('buscarFuncionario').item.json.body.funcao }}",
               "type": "string"
             },
             {
               "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
-              "name": "body.colaborador",
+              "name": "colaborador",
               "value": "OK",
               "type": "string"
             },
@@ -216,8 +216,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        400,
-        368
+        1040,
+        112
       ],
       "id": "aff97e63-5810-4705-9436-7916cde92fe1",
       "name": "Colaborador Encontrado"
@@ -245,8 +245,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        400,
-        560
+        1056,
+        304
       ],
       "id": "e6243d3f-cea9-4f92-9a6e-b7ddb090e286",
       "name": "Não Encontrado"
@@ -282,8 +282,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        496,
-        864
+        1040,
+        736
       ],
       "id": "ab132c4d-a12e-4b87-b61d-2927bbcbc9de",
       "name": "requestToken1"
@@ -348,8 +348,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        112,
-        1104
+        608,
+        976
       ],
       "id": "67844ecb-e325-4fa9-a4b6-e7c0ad51674b",
       "name": "Switch"
@@ -357,14 +357,14 @@
     {
       "parameters": {
         "content": "API IcoPass\n\nDocumentação Swagger: https://loginunicoapiexternos.icomon.com.vc/swagger/index.html",
-        "height": 1072,
-        "width": 1056,
+        "height": 1280,
+        "width": 1440,
         "color": 5
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        0,
-        720
+        32,
+        560
       ],
       "typeVersion": 1,
       "id": "0355ae7c-d130-4c74-a4e7-767d79480200",
@@ -380,8 +380,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        96,
-        144
+        112,
+        -112
       ],
       "id": "878a641c-e690-464c-b49c-c8ce6f5e8064",
       "name": "Webhook Identidade",
@@ -397,8 +397,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        112,
-        864
+        144,
+        720
       ],
       "id": "aadca73a-5024-4452-be4a-39641d029c2f",
       "name": "Webhook IcoPass",
@@ -413,7 +413,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('requestToken1').item.json.body.token }}"
+              "value": "=Bearer {{ $json.body.token }}"
             }
           ]
         },
@@ -444,8 +444,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        704,
-        864
+        384,
+        976
       ],
       "id": "6e3fb701-9d34-421e-8b66-393a942dbcfa",
       "name": "validarIcoPass",
@@ -487,8 +487,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        848,
-        1088
+        832,
+        960
       ],
       "id": "44419281-b6e1-4a59-b2a9-b04df4e196a6",
       "name": "Token Valido"
@@ -516,8 +516,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        272,
-        1376
+        352,
+        1200
       ],
       "id": "f291c50d-7972-4075-847b-49bd6413bb39",
       "name": "Token Invalido"
@@ -529,8 +529,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        80,
-        1376
+        160,
+        1200
       ],
       "id": "e1e4c95a-001c-42ab-adcf-6eec765ed8f0",
       "name": "Message Error"
@@ -563,8 +563,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        448,
-        1376
+        528,
+        1200
       ],
       "id": "ce800ef7-0dc2-478e-a2b2-79a13fc383fc",
       "name": "If"
@@ -578,7 +578,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('requestToken1').item.json.body.token }}"
+              "value": "=Bearer {{ $('Set Token Banco1').item.json.body.token }}"
             }
           ]
         },
@@ -609,8 +609,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        96,
-        1616
+        832,
+        1184
       ],
       "id": "b4a2d904-b76b-4426-872c-fc22616e9432",
       "name": "validarIcoPass1",
@@ -640,8 +640,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        304,
-        864
+        352,
+        720
       ],
       "id": "b4bdc339-7bc6-46eb-86ef-00495cc46071",
       "name": "coletar identificador1",
@@ -707,8 +707,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        288,
-        1616
+        176,
+        1440
       ],
       "id": "a40c4ead-bdcf-4fde-8962-da37edfb5801",
       "name": "Switch2"
@@ -719,7 +719,7 @@
           "assignments": [
             {
               "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
-              "name": "body.colaborador",
+              "name": "colaborador",
               "value": "NAO ENCONTRADO",
               "type": "string"
             },
@@ -736,7 +736,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        848,
+        944,
         1632
       ],
       "id": "bfe4853a-00e6-4bb6-bb38-ad4eeaeb844b",
@@ -749,7 +749,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        576,
+        624,
         1632
       ],
       "id": "d2b130c3-e9c7-4f23-9425-35946dafc529",
@@ -790,11 +790,299 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        848,
-        1440
+        944,
+        1424
       ],
       "id": "ebcbb80e-4cb9-4e1d-bf8b-9718c3c6f8b0",
       "name": "Token Valido1"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "accessToken",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "apiName",
+              "keyValue": "identidade"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "active"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        544,
+        -112
+      ],
+      "id": "1bcf58c9-5d17-478f-b496-e634c0224425",
+      "name": "Get Token",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "Z179aOzdGDkmnopp",
+          "name": "Supabase account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "59d6b7db-6cde-4a02-a5bd-e2c438082e21",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "active",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "9f72767e-1757-423b-ab36-3bb86f723ab8",
+              "leftValue": "={{ $json.apiName }}",
+              "rightValue": "identidade",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        752,
+        -112
+      ],
+      "id": "46c5b696-c526-49fb-802a-39f8344f3f37",
+      "name": "If1",
+      "alwaysOutputData": false,
+      "executeOnce": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "accessToken",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "apiName",
+              "condition": "eq",
+              "keyValue": "identidade"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "clientToken",
+              "fieldValue": "={{ $json.body.accessToken }}"
+            },
+            {
+              "fieldId": "status",
+              "fieldValue": "active"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1184,
+        -96
+      ],
+      "id": "cd1cc2bc-5c94-4f86-9077-979459a82eae",
+      "name": "Update token",
+      "credentials": {
+        "supabaseApi": {
+          "id": "Z179aOzdGDkmnopp",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa8bb98e-3dd4-4db2-abfb-9db6730f2135",
+              "name": "body.accessToken",
+              "value": "={{ $json.clientToken }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        160,
+        128
+      ],
+      "id": "28c9a660-00bd-494a-9694-bf2605152685",
+      "name": "Set Token Banco"
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "tableId": "accessToken",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "apiName",
+              "keyValue": "icopass"
+            },
+            {
+              "keyName": "status",
+              "keyValue": "active"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        576,
+        720
+      ],
+      "id": "7ab9b0e7-ecef-4783-8e1a-50ed117bb335",
+      "name": "Get Token1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "supabaseApi": {
+          "id": "Z179aOzdGDkmnopp",
+          "name": "Supabase account"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "59d6b7db-6cde-4a02-a5bd-e2c438082e21",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "active",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            },
+            {
+              "id": "9f72767e-1757-423b-ab36-3bb86f723ab8",
+              "leftValue": "={{ $json.apiName }}",
+              "rightValue": "icopass",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        816,
+        720
+      ],
+      "id": "97df732b-b1d5-41b7-994e-51da83297658",
+      "name": "If2",
+      "alwaysOutputData": false,
+      "executeOnce": false,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa8bb98e-3dd4-4db2-abfb-9db6730f2135",
+              "name": "body.token",
+              "value": "={{ $json.clientToken }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        160,
+        976
+      ],
+      "id": "298bb1f5-1b19-4d5f-94c0-1d5dd9c8de80",
+      "name": "Set Token Banco1"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "accessToken",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "apiName",
+              "condition": "eq",
+              "keyValue": "icopass"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "clientToken",
+              "fieldValue": "={{ $json.body.token }}"
+            },
+            {
+              "fieldId": "status",
+              "fieldValue": "active"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabase",
+      "typeVersion": 1,
+      "position": [
+        1248,
+        736
+      ],
+      "id": "8c8b6179-4c8b-4128-a90a-50f02a6480ed",
+      "name": "Update token1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "Z179aOzdGDkmnopp",
+          "name": "Supabase account"
+        }
+      }
     }
   ],
   "pinData": {},
@@ -803,7 +1091,7 @@
       "main": [
         [
           {
-            "node": "buscarFuncionario",
+            "node": "Update token",
             "type": "main",
             "index": 0
           }
@@ -843,7 +1131,7 @@
       "main": [
         [
           {
-            "node": "requestToken",
+            "node": "Get Token",
             "type": "main",
             "index": 0
           }
@@ -854,7 +1142,7 @@
       "main": [
         [
           {
-            "node": "validarIcoPass",
+            "node": "Update token1",
             "type": "main",
             "index": 0
           }
@@ -960,7 +1248,7 @@
       "main": [
         [
           {
-            "node": "requestToken1",
+            "node": "Get Token1",
             "type": "main",
             "index": 0
           }
@@ -995,14 +1283,120 @@
           }
         ]
       ]
+    },
+    "Get Token": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Set Token Banco",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "requestToken",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update token": {
+      "main": [
+        [
+          {
+            "node": "Set Token Banco",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Token Banco": {
+      "main": [
+        [
+          {
+            "node": "buscarFuncionario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Token1": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Set Token Banco1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "requestToken1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update token1": {
+      "main": [
+        [
+          {
+            "node": "Set Token Banco1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Token Banco1": {
+      "main": [
+        [
+          {
+            "node": "validarIcoPass",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "timezone": "America/Sao_Paulo",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false
   },
-  "versionId": "b20f06f2-dace-407e-8098-a1afcbbb8580",
+  "versionId": "53b9496d-5341-4394-b155-1e6323729a9e",
   "meta": {
+    "templateCredsSetupCompleted": true,
     "instanceId": "c13cee92dfa69db8294a82c6dfa57e3a1199207e843eec919de3f2ec003607aa"
   },
   "id": "LsVc19JltVKaDhdR",
