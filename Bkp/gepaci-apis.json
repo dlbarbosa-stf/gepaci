@@ -348,7 +348,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        608,
+        832,
         976
       ],
       "id": "67844ecb-e325-4fa9-a4b6-e7c0ad51674b",
@@ -444,7 +444,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        384,
+        608,
         976
       ],
       "id": "6e3fb701-9d34-421e-8b66-393a942dbcfa",
@@ -487,7 +487,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        832,
+        1056,
         960
       ],
       "id": "44419281-b6e1-4a59-b2a9-b04df4e196a6",
@@ -516,7 +516,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        352,
+        608,
         1200
       ],
       "id": "f291c50d-7972-4075-847b-49bd6413bb39",
@@ -529,7 +529,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        160,
+        384,
         1200
       ],
       "id": "e1e4c95a-001c-42ab-adcf-6eec765ed8f0",
@@ -563,7 +563,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        528,
+        832,
         1200
       ],
       "id": "ce800ef7-0dc2-478e-a2b2-79a13fc383fc",
@@ -609,7 +609,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        832,
+        1056,
         1184
       ],
       "id": "b4a2d904-b76b-4426-872c-fc22616e9432",
@@ -707,7 +707,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        176,
+        400,
         1440
       ],
       "id": "a40c4ead-bdcf-4fde-8962-da37edfb5801",
@@ -736,8 +736,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        944,
-        1632
+        1072,
+        1616
       ],
       "id": "bfe4853a-00e6-4bb6-bb38-ad4eeaeb844b",
       "name": "Token Invalido1"
@@ -749,8 +749,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        624,
-        1632
+        656,
+        1616
       ],
       "id": "d2b130c3-e9c7-4f23-9425-35946dafc529",
       "name": "Message Error1"
@@ -790,7 +790,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        944,
+        1072,
         1424
       ],
       "id": "ebcbb80e-4cb9-4e1d-bf8b-9718c3c6f8b0",
@@ -1037,7 +1037,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        160,
+        384,
         976
       ],
       "id": "298bb1f5-1b19-4d5f-94c0-1d5dd9c8de80",
@@ -1392,9 +1392,10 @@
     "executionOrder": "v1",
     "timezone": "America/Sao_Paulo",
     "callerPolicy": "workflowsFromSameOwner",
-    "availableInMCP": false
+    "availableInMCP": false,
+    "timeSavedPerExecution": 1
   },
-  "versionId": "53b9496d-5341-4394-b155-1e6323729a9e",
+  "versionId": "f0069efe-bc02-45e3-b2bf-fac2591ea09b",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "c13cee92dfa69db8294a82c6dfa57e3a1199207e843eec919de3f2ec003607aa"

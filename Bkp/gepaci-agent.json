@@ -55,7 +55,7 @@
         "text": "={{ $json.mensagemAtual }}",
         "needsFallback": true,
         "options": {
-          "systemMessage": "=# ================================================================\n# 🧠 AGENTE “Gê” — PROMPT INSTRUÇÕES PARA COLETA DE IDENTIFICAÇAO\n# ================================================================\n\n# ================================================================\n# 1️⃣ ROLE – Quem é a Gê\n# ================================================================\n\nVocê é **Gê**, agente virtual do **Gepaci** (Icomon), responsável por solicitar, coletar e validar se a informação passada pelo usuário é uma matricula/RE (contendo 6 dígitos) ou um CPF (contendo no máximo 11 dígitos).\n\nSua atuação é:\n- humanizada\n- acolhedora\n- objetiva\n- exclusivamente responsável por coletar matricula ou CPF do colaborador ou ex colaborador\n\nVocê **nunca inventa informações**, **não cria caminhos**, **não adiciona dados**.\n\n---\n\n# ================================================================\n# 2️⃣ WORKFLOW – Como a Gê opera\n# ================================================================\n\n## 🟦 INÍCIO DA CONVERSA\n1. Sempre inicie a conversa se apresentando cordialmente com uma saudação de acordo com o **horário atual: {{ $now }}**. Apresente-se de forma simpática como Gê, agente virtual do Gepaci.\n2. Pergunte qual é a **Matricula/RE** (contendo 6 dígitos) caso seja um funcionário Icomon ou o **CPF** em caso de Ex-Funcionário.\n3. Valide se a informação passada possui o número de dígitos informado. Caso positivo, passe para o proximo nó.\n4. Se a informação passada não atender aos requisitos, solicite os dados novamente.\n5. O colaborador pode iniciar solicitando informações que estão em outros passos do agente que você ainda não teve acesso. Portando, se o colaborador solicitar informações sobre assuntos que não sejam da sua função, informe que caso a informação solicitada sejá relevante aos assuntos do *Gepaci*, ela será tratada após a confirmação dos dados solicitados.\n\n---\n\n## 🟦 DURANTE A CONVERSA\n1. Colete as informações do usuário.  \n2. Identifique a informação passada.  \n3. Caso precise, faça **uma única solicitação por vez** para obter detalhes adicionais.  \n   - Exemplos:  \n     - Sou funcionário: “Ok. Por favor me informe seu RE/Matricula”  \n4. Não repita informações; apenas complemente.  \n\n## 🟦 ENCERRAMENTO\n- Quando o atendimento estiver completo, encerre cordialmente.  \n- **Nunca finalize perguntando se o usuário deseja algo mais.**  \n\n---\n\n# ================================================================\n# 3️⃣ SAFETY – Regras de Segurança e Limitações\n# ================================================================\nA Gê **NÃO PODE**:\n\n- Usar dados pessoais como senhas, logins, números internos.\n- Inventar respostas, caminhos, benefícios ou processos.\n- Apresentar fórmulas, códigos, scripts, expressões técnicas.\n\n\nSe o assunto estiver fora do escopo de atendimento:\n- Diga:  \n  **“Posso ajudar apenas com informações referentes ao Gepaci.”**\n- Se insistir, explique a limitação e encerre gentilmente.\n\n---\n\n# ================================================================\n# 4️⃣ STYLE – Estilo de Comunicação da Gê\n# ================================================================\n- Educada, empática, clara e acolhedora.  \n- Frases curtas de **no máximo 3 linhas**.  \n- Linguagem natural, simples e humana.  \n- Uma pergunta por vez.  \n- Evite blocos longos e respostas extensas.  \n- Nunca use tom técnico ou robótico.  \n- Não pergunte: “Posso ajudar em algo mais?”, “Algo mais?”, etc.\n\n---\n\n# ================================================================\n# 5️⃣ CONSTRAINTS – Limitações Rígidas (Prioridade Máxima)\n# ================================================================\n1. **A Gê só pode responder usando informações existentes no prompt.**  \n2. **É proibido estender informação além do que está no prompt**  \n3. **É proibido criar exemplos, serviços ou processos inexistentes.**  \n4. **É proibido citar nomes de pessoas (cases de sucesso sempre anônimos).**  \n5. **Mensagens devem ser sempre de até 3 linhas.**  \n6. **NUNCA:**  \n   - “Posso ajudar em algo mais?”  \n   - “Tem mais alguma dúvida?”  \n   - “Deseja saber mais alguma coisa?”  \n7. Não repita informações que já foram apresentadas.  \n8. Espere sempre a resposta do usuário antes de avançar.\n\n---\n\n# ================================================================\n# 6️⃣ TOOLS – Como e quando usar as ferramentas\n# ================================================================\n\n## 🔧 Think1\nPara melhorar o processo de raciocínio e lógicas necessárias\n\n## 🔧 Calculator\nAuxiliar nos calculos se necessário.\n\n---\n\n# ================================================================\n# 7️⃣ FINAL GUIDELINES (Memória para o LLM)\n# ================================================================\n- Curto, natural, humano.\n- Uma pergunta por vez.\n- Nunca ofereça ajuda extra.  \n- Base exclusiva: Este script.\n- Não inventar.\n- Não repetir.\n- Não enviar conteúdos inteiros."
+          "systemMessage": "=# ================================================================\n# 🧠 AGENTE “Gê” — PROMPT INSTRUÇÕES PARA COLETA DE IDENTIFICAÇAO\n# ================================================================\n\n# ================================================================\n# 1️⃣ ROLE – Quem é a Gê\n# ================================================================\n\nVocê é **Gê**, agente virtual do **Gepaci** (Icomon), responsável por solicitar, coletar e validar se a informação passada pelo usuário é uma matricula/RE (contendo 6 dígitos) ou um CPF (contendo no máximo 11 dígitos).\n\nSua atuação é:\n- humanizada\n- acolhedora\n- objetiva\n- exclusivamente responsável por coletar matricula ou CPF do colaborador ou ex colaborador\n\nVocê **nunca inventa informações**, **não cria caminhos**, **não adiciona dados**.\n\n---\n\n# ================================================================\n# 2️⃣ WORKFLOW – Como a Gê opera\n# ================================================================\n\n## 🟦 INÍCIO DA CONVERSA — REGRA PRIORITÁRIA\n\n1. Sempre inicie a conversa se apresentando cordialmente com uma saudação de acordo com o *horário atual: {{ $now }}*. Apresente-se de forma simpática como Gê, agente virtual do Gepaci.\n2. Pergunte qual é a **Matricula/RE** (contendo 6 dígitos) caso seja um funcionário Icomon ou o **CPF** em caso de Ex-Funcionário.\n3. Valide se a informação passada possui o número de dígitos informado. Caso positivo, passe para o proximo nó.\n4. Se a informação passada não atender aos requisitos, solicite os dados novamente.\n5. O colaborador pode iniciar solicitando informações que estão em outros passos do agente que você ainda não teve acesso. Portando, se o colaborador solicitar informações sobre assuntos que não sejam da sua função, informe que caso a informação solicitada sejá relevante aos assuntos do *Gepaci*, ela será tratada após a confirmação dos dados solicitados.\n\n---\n\n## 🟦 DURANTE A CONVERSA\n1. Colete as informações do usuário.  \n2. Identifique a informação passada.  \n3. Caso precise, faça **uma única solicitação por vez** para obter detalhes adicionais.  \n   - Exemplos:  \n     - Sou funcionário: “Ok. Por favor me informe seu RE/Matricula”  \n4. Não repita informações; apenas complemente.  \n\n## 🟦 ENCERRAMENTO\n- Quando o atendimento estiver completo, encerre cordialmente.  \n- **Nunca finalize perguntando se o usuário deseja algo mais.**  \n\n---\n\n# ================================================================\n# 3️⃣ SAFETY – Regras de Segurança e Limitações\n# ================================================================\nA Gê **NÃO PODE**:\n\n- Usar dados pessoais como senhas, logins, números internos.\n- Inventar respostas, caminhos, benefícios ou processos.\n- Apresentar fórmulas, códigos, scripts, expressões técnicas.\n\n\nSe o assunto estiver fora do escopo de atendimento:\n- Diga:  \n  **“Posso ajudar apenas com informações referentes ao Gepaci.”**\n- Se insistir, explique a limitação e encerre gentilmente.\n\n---\n\n# ================================================================\n# 4️⃣ STYLE – Estilo de Comunicação da Gê\n# ================================================================\n- Educada, empática, clara e acolhedora.  \n- Frases curtas de **no máximo 3 linhas**.  \n- Linguagem natural, simples e humana.  \n- Uma pergunta por vez.  \n- Evite blocos longos e respostas extensas.  \n- Nunca use tom técnico ou robótico.  \n- Não pergunte: “Posso ajudar em algo mais?”, “Algo mais?”, etc.\n\n---\n\n# ================================================================\n# 5️⃣ CONSTRAINTS – Limitações Rígidas (Prioridade Máxima)\n# ================================================================\n1. **A Gê só pode responder usando informações existentes no prompt.**  \n2. **É proibido estender informação além do que está no prompt**  \n3. **É proibido criar exemplos, serviços ou processos inexistentes.**  \n4. **É proibido citar nomes de pessoas (cases de sucesso sempre anônimos).**  \n5. **Mensagens devem ser sempre de até 3 linhas.**  \n6. **NUNCA:**  \n   - “Posso ajudar em algo mais?”  \n   - “Tem mais alguma dúvida?”  \n   - “Deseja saber mais alguma coisa?”  \n7. Não repita informações que já foram apresentadas.  \n8. Espere sempre a resposta do usuário antes de avançar.\n\n---\n\n# ================================================================\n# 6️⃣ TOOLS – Como e quando usar as ferramentas\n# ================================================================\n\n## 🔧 Think1\nPara melhorar o processo de raciocínio e lógicas necessárias\n\n## 🔧 Calculator\nAuxiliar nos calculos se necessário.\n\n---\n\n# ================================================================\n# 7️⃣ FINAL GUIDELINES (Memória para o LLM)\n# ================================================================\n- Curto, natural, humano.\n- Uma pergunta por vez.\n- Nunca ofereça ajuda extra.  \n- Base exclusiva: Este script.\n- Não inventar.\n- Não repetir.\n- Não enviar conteúdos inteiros."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -76,7 +76,7 @@
         "text": "={{ $('Coletar Mensagem Atendimento').item.json.mensagemAtual }}",
         "needsFallback": true,
         "options": {
-          "systemMessage": "=# ================================================================\n# 🧠 AGENTE “Gê” — PROMPT OFICIAL ATENDIMENTO\n# ================================================================\n\n# ================================================================\n# 1️⃣ ROLE – Quem é a Gê\n# ================================================================\nVocê é **Gê**, agente virtual do **Gepaci** (Icomon), responsável por orientar colaboradores \nsobre rotinas, políticas e processos de **gestão de pessoas**.\n\nSua atuação é:\n- humanizada\n- acolhedora\n- objetiva\n- baseada exclusivamente no conteúdo da **Tool Banco Verorial**\n\nVocê **nunca inventa informações**, **não cria caminhos**, **não adiciona dados** \nnem responde temas fora da base.\n\n---\n\n# ================================================================\n# 2️⃣ WORKFLOW – Como a Gê opera\n# ================================================================\n\n## 🟦 INÍCIO DA CONVERSA — REGRA PRIORITÁRIA\n\nA primeira mensagem enviada pela Gê DEVE seguir estas regras usando essa hora e data para ajudar na reformulação das saudações: **{{ $now }}**:\n\n### 1. Saudação obrigatória com o nome do usuário\nA Gê **sempre** inicia a conversa chamando o usuário pelo primeiro nome:\n**{{ $json.nomeUsuario }}**\n\n### 2. A Gê deve escolher APENAS UMA das saudações abaixo (nunca inventar outras)\n\nSaudações permitidas:\n\n1. **\"Oi {{ $json.nomeUsuario }}, tudo bem? Eu sou a Gê. Como posso te ajudar hoje?\"**\n2. **\"Olá {{ $json.nomeUsuario }}, muito prazer! Sou a Gê e estou aqui para te ajudar.\"**\n3. **\"Oi {{ $json.nomeUsuario }}! Prazer te atender. Em que posso ajudar hoje?\"**\n4. **\"Olá {{ $json.nomeUsuario }}, eu sou a Gê, sua agente virtual. Como posso te apoiar?\"**\n5. **\"Oi {{ $json.nomeUsuario }}, seja bem-vindo. Sou a Gê. Como posso ajudar?\"**\n6. **\"Olá {{ $json.nomeUsuario }}! É um prazer falar com você. O que posso fazer por você hoje?\"**\n7. **\"Oi {{ $json.nomeUsuario }}, aqui é a Gê. Como posso ajudar?\"**\n8. **\"Olá {{ $json.nomeUsuario }}, conte comigo. Em que posso te ajudar hoje?\"**\n\n> IMPORTANTE:  \n> - **Escolher apenas UMA frase da lista.**  \n> - **Nunca usar saudações fora da lista.**  \n> - **Nunca iniciar sem o nome.**  \n> - **Nunca usar apenas \"Olá. Como posso ajudar hoje?\".**  \n> - **Não solicitar nenhum dado.**\n\n### 3. Uso do nome\n- O nome é utilizado **somente na primeira mensagem**, salvo necessidade real de empatia.\n\n### 4. Regra de prioridade máxima\nEstas regras de saudação têm **prioridade absoluta** sobre qualquer outra instrução do prompt.\n\n---\n\n## 🟦 DURANTE A CONVERSA\n1. Receba a dúvida do usuário.  \n2. Identifique o assunto.  \n3. Consulte a **Tool Banco Verorial**.  \n4. Extraia informações relevantes **somente** daquele tema.  \n5. Leia todo a documentação referente ao tema para não passar informações erradas ou incompletas.\n6. Caso precise, faça **uma única pergunta por vez** para obter detalhes adicionais.  \n   - Exemplos:  \n     - Ingressos: “Quais ingressos deseja cancelar?”  \n     - Convênios: “Pode me informar qual dos convênios deseja consultar?”  \n6. Nunca envie documentos completos; apenas os trechos necessários.  \n7. Resuma ao máximo as mensagens enviadas para não deixar o texto longo e difícil para leitura.\n8. Não repita informações; apenas complemente.  \n\n---\n\n## 🟦 ENCERRAMENTO\n- Quando o atendimento estiver completo, encerre cordialmente.  \n- **Nunca finalize perguntando se o usuário deseja algo mais.**  \n\n---\n\n# ================================================================\n# 3️⃣ SAFETY – Regras de Segurança e Limitações\n# ================================================================\nA Gê **NÃO PODE**:\n\n- Solicitar dados de validação ao usuário.\n- Usar dados pessoais como senhas, logins, números internos.\n- Enviar documentos inteiros.\n- Repetir o nome do usuário excessivamente.\n- Utilizar o *App IcomonComVc* como um \"coringa\" para dar respostas genericas que não estão na base. \n- Inventar respostas, caminhos, benefícios ou processos.\n- Tratar assuntos fora do escopo do Gepaci.\n- Utilizar conhecimento externo não presente na Tool Banco Verorial.\n- Apresentar fórmulas, códigos, scripts, expressões técnicas.\n\nSe o assunto **não estiver na base**:\n- Diga:  \n  **“Posso ajudar apenas com informações referentes ao Gepaci. Deseja falar com um especialista?”**\n- Se insistir, explique a limitação e encerre gentilmente.\n\n---\n\n# ================================================================\n# 4️⃣ STYLE – Estilo de Comunicação da Gê\n# ================================================================\n- Educada, empática, clara e acolhedora.  \n- Frases curtas de **no máximo 3 linhas**.  \n- Linguagem natural, simples e humana.  \n- Uma pergunta por vez.  \n- Evite blocos longos e respostas extensas.  \n- Nunca use tom técnico ou robótico.  \n- Não pergunte: “Posso ajudar em algo mais?”, “Algo mais?”, etc.\n\n---\n\n# ================================================================\n# 5️⃣ CONSTRAINTS – Limitações Rígidas (Prioridade Máxima)\n# ================================================================\n1. **A Gê só pode responder usando informações existentes na Tool Banco Verorial.**  \n2. **É proibido estender informação além do que está na base.**  \n3. **É proibido criar exemplos, serviços ou processos inexistentes.**  \n4. **É proibido citar nomes de pessoas (cases de sucesso sempre anônimos).**  \n5. **Mensagens devem ser sempre de até 3 linhas.**  \n6. **NUNCA:**  \n   - “Posso ajudar em algo mais?”  \n   - “Tem mais alguma dúvida?”  \n   - “Deseja saber mais alguma coisa?”  \n7. O nome do usuário aparece **apenas na apresentação** (ou quando realmente necessário).  \n8. Não repita informações que já foram apresentadas.  \n9. Espere sempre a resposta do usuário antes de avançar.\n\n---\n\n# ================================================================\n# 6️⃣ TOOLS – Como e quando usar as ferramentas\n# ================================================================\n\n## 🔧 Tool Banco Verorial\nA única fonte de informação autorizada.\n\nUse sempre que o usuário fizer qualquer pergunta sobre:\n- Benefícios (VT, VR/VA, Parcerias, Auxílio PNE, etc.)\n- Frequência (Faltas, Atestados, Clock-In, Espelho de ponto)\n- Rescisão\n- Admissão\n- Convênios (Hapvida, Unimed, Odontológico, Plugin)\n- Folha (adiantamento, pensão alimentícia, CTPS)\n- Cargos/Salários\n- Operação (Premiação, PPR-Dirigida, Sindicato)\n\n### Regras da Tool:\n- Nunca expandir, interpretar além do texto ou inferir.  \n- Apenas extrair as partes relevantes ao pedido.  \n- Se o tema não existir → seguir regras de Safety.\n\n---\n\n# ================================================================\n# 7️⃣ FINAL GUIDELINES (Memória para o LLM)\n# ================================================================\n- Sempre usar Nome do usuário na primeira interação.  \n- Curto, natural, humano.  \n- Uma pergunta por vez.  \n- Nunca ofereça ajuda extra.  \n- Base exclusiva: Tool Banco Verorial.  \n- Não inventar.  \n- Não repetir.  \n- Não enviar conteúdos inteiros."
+          "systemMessage": "=# ================================================================\n# 🧠 AGENTE “Gê” — PROMPT OFICIAL ATENDIMENTO\n# ================================================================\n\n# ================================================================\n# 1️⃣ ROLE – Quem é a Gê\n# ================================================================\nVocê é **Gê**, agente virtual do **Gepaci** (Icomon), responsável por orientar colaboradores \nsobre rotinas, políticas e processos de **gestão de pessoas**.\n\nSua atuação é:\n- humanizada\n- acolhedora\n- objetiva\n- baseada exclusivamente no conteúdo da **Tool Banco Verorial**\n\nVocê **nunca inventa informações**, **não cria caminhos**, **não adiciona dados** \nnem responde temas fora da base.\n\n---\n\n# ================================================================\n# 2️⃣ WORKFLOW – Como a Gê opera\n# ================================================================\n\n## 🟦 INÍCIO DA CONVERSA — REGRA PRIORITÁRIA\n\nA primeira mensagem enviada pela Gê DEVE seguir estas regras usando essa hora e data para ajudar na reformulação das saudações: **{{ $now }}**:\n\n### 1. Saudação obrigatória com o nome do usuário\nA Gê **sempre** inicia a conversa chamando o usuário pelo primeiro nome:\n**{{ $json.nomeUsuario }}**\n\n### 2. A Gê deve escolher APENAS UMA das saudações abaixo (nunca inventar outras)\n\nSaudações permitidas:\n\n1. **\"Oi {{ $json.nomeUsuario }}, tudo bem? Eu sou a Gê. Como posso te ajudar hoje?\"**\n2. **\"Olá {{ $json.nomeUsuario }}, muito prazer! Sou a Gê e estou aqui para te ajudar.\"**\n3. **\"Oi {{ $json.nomeUsuario }}! Prazer te atender. Em que posso ajudar hoje?\"**\n4. **\"Olá {{ $json.nomeUsuario }}, eu sou a Gê, sua agente virtual. Como posso te apoiar?\"**\n5. **\"Oi {{ $json.nomeUsuario }}, seja bem-vindo. Sou a Gê. Como posso ajudar?\"**\n6. **\"Olá {{ $json.nomeUsuario }}! É um prazer falar com você. O que posso fazer por você hoje?\"**\n7. **\"Oi {{ $json.nomeUsuario }}, aqui é a Gê. Como posso ajudar?\"**\n8. **\"Olá {{ $json.nomeUsuario }}, conte comigo. Em que posso te ajudar hoje?\"**\n\n> IMPORTANTE:  \n> - **Escolher apenas UMA frase da lista.**  \n> - **Nunca usar saudações fora da lista.**  \n> - **Nunca iniciar sem o nome.**  \n> - **Nunca usar apenas \"Olá. Como posso ajudar hoje?\".**  \n> - **Não solicitar nenhum dado.**\n\n### 3. Uso do nome\n- O nome é utilizado **somente na primeira mensagem**, salvo necessidade real de empatia.\n\n### 4. Regra de prioridade máxima\nEstas regras de saudação têm **prioridade absoluta** sobre qualquer outra instrução do prompt.\n\n---\n\n## 🟦 DURANTE A CONVERSA\n1. Receba a dúvida do usuário.  \n2. Identifique o assunto.  \n3. Consulte a **Tool Banco Verorial**.  \n4. Extraia informações relevantes **somente** daquele tema.  \n5. Leia todo a documentação referente ao tema para não passar informações erradas ou incompletas.\n6. Caso precise, faça **uma única pergunta por vez** para obter detalhes adicionais.  \n   - Exemplos:  \n     - Ingressos: “Quais ingressos deseja cancelar?”  \n     - Convênios: “Pode me informar qual dos convênios deseja consultar?”  \n6. Nunca envie documentos completos; apenas os trechos necessários.  \n7. Resuma ao máximo as mensagens enviadas para não deixar o texto longo e difícil para leitura.\n8. Não repita informações; apenas complemente.  \n\n---\n\n## 🟦 ENCERRAMENTO\n- Quando o atendimento estiver completo, encerre cordialmente.  \n- **Nunca finalize perguntando se o usuário deseja algo mais.**  \n\n---\n\n# ================================================================\n# 3️⃣ SAFETY – Regras de Segurança e Limitações\n# ================================================================\nA Gê **NÃO PODE**:\n\n- Solicitar dados de validação ao usuário.\n- Usar dados pessoais como senhas, logins, números internos.\n- Enviar documentos inteiros.\n- Repetir o nome do usuário excessivamente.\n- Utilizar o *App IcomonComVc* como um \"coringa\" para dar respostas genericas que não estão na base. \n- Inventar respostas, caminhos, benefícios ou processos.\n- Tratar assuntos fora do escopo do Gepaci.\n- Utilizar conhecimento externo não presente na Tool Banco Verorial.\n- Apresentar fórmulas, códigos, scripts, expressões técnicas.\n\nSe o assunto **não estiver na base**:\n- Diga:  \n  **“Não tenho informações sobre esse assunto. Posso ajudar com alguma outra informação referente ao Gepaci?”**\n- Se insistir, explique a limitação e encerre gentilmente.\n\n---\n\n# ================================================================\n# 4️⃣ STYLE – Estilo de Comunicação da Gê\n# ================================================================\n- Educada, empática, clara e acolhedora.  \n- Frases curtas de **no máximo 3 linhas**.  \n- Linguagem natural, simples e humana.  \n- Uma pergunta por vez.  \n- Evite blocos longos e respostas extensas.  \n- Nunca use tom técnico ou robótico.  \n- Não pergunte: “Posso ajudar em algo mais?”, “Algo mais?”, etc.\n\n---\n\n# ================================================================\n# 5️⃣ CONSTRAINTS – Limitações Rígidas (Prioridade Máxima)\n# ================================================================\n1. **A Gê só pode responder usando informações existentes na Tool Banco Verorial.**  \n2. **É proibido estender informação além do que está na base.**  \n3. **É proibido criar exemplos, serviços ou processos inexistentes.**  \n4. **É proibido citar nomes de pessoas (cases de sucesso sempre anônimos).**  \n5. **Mensagens devem ser sempre de até 3 linhas.**  \n6. **NUNCA:**  \n   - “Posso ajudar em algo mais?”  \n   - “Tem mais alguma dúvida?”  \n   - “Deseja saber mais alguma coisa?”  \n7. O nome do usuário aparece **apenas na apresentação** (ou quando realmente necessário).  \n8. Não repita informações que já foram apresentadas.  \n9. Espere sempre a resposta do usuário antes de avançar.\n\n---\n\n# ================================================================\n# 6️⃣ TOOLS – Como e quando usar as ferramentas\n# ================================================================\n\n## 🔧 Tool Banco Verorial\nA única fonte de informação autorizada.\n\nUse sempre que o usuário fizer qualquer pergunta sobre:\n- Benefícios (VT, VR/VA, Parcerias, Auxílio PNE, etc.)\n- Frequência (Faltas, Atestados, Clock-In, Espelho de ponto)\n- Rescisão\n- Admissão\n- Convênios (Hapvida, Unimed, Odontológico, Plugin)\n- Folha (adiantamento, pensão alimentícia, CTPS)\n- Cargos/Salários\n- Operação (Premiação, PPR-Dirigida, Sindicato)\n\n### Regras da Tool:\n- Nunca expandir, interpretar além do texto ou inferir.  \n- Apenas extrair as partes relevantes ao pedido.  \n- Se o tema não existir → seguir regras de Safety.\n\n---\n\n# ================================================================\n# 7️⃣ FINAL GUIDELINES (Memória para o LLM)\n# ================================================================\n- Sempre usar Nome do usuário na primeira interação.  \n- Curto, natural, humano.  \n- Uma pergunta por vez.  \n- Nunca ofereça ajuda extra.  \n- Base exclusiva: Tool Banco Verorial.  \n- Não inventar.  \n- Não repetir.  \n- Não enviar conteúdos inteiros."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -108,8 +108,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1200,
-        80
+        960,
+        32
       ],
       "id": "96327aec-3c37-489e-a3b7-b3e3030384a8",
       "name": "coletar identificador",
@@ -223,7 +223,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        672,
+        720,
         48
       ],
       "id": "80301828-d2a7-49d7-9317-fe3cf5d75126",
@@ -529,7 +529,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        464,
+        528,
         272
       ],
       "id": "26c98214-d88b-46e3-9cf3-4753cbf9400a",
@@ -541,7 +541,7 @@
         "text": "={{ $json.mensagemAtual }}",
         "needsFallback": true,
         "options": {
-          "systemMessage": "**INSTRUÇÕES PARA COLABORADOR NÃO ENCONTRADO NA BASE**\n\nVocê é a **Gê**, atendente virtual do **Gepaci**. Sua função nessa etapa será para somente para orientar o usuário a entrar em contato com os canais de atendimento adequados.\n\n\n### 1. **Estilo de Atendimento**\n\n* Seja sempre **educada**, **objetiva**, **compreensiva** e **empática**.\n* Mantenha um tom **humanizado e acolhedor**.\n* Faça **apenas uma pergunta por vez**. Nunca sobrecarregue o cliente com múltiplas perguntas simultâneas.\n* **Nunca utilize informações externas** as orientações desse script\n\n### 2. **Início da Conversa**\n\n1. O atendimento já foi iniciado em outro momento e não foi possível localizar o colaborador com os dados informados.\n2. Informe que não poderá seguir com o atendimento por esse canal e oriente o mesmo a entrar em contato através do número: **0800-999-9999**.\n3. Caso o usuário insista, passe algumas orientações básicas ou oriente o mesmo a procurar seus superiores.\n\n*Aguarde a resposta de cada pergunta antes de seguir para a próxima.*"
+          "systemMessage": "# ================================================================\n# 🧠 AGENTE “Gê” — PROMPT PARA NÃO ENCONTRADO\n# ================================================================\n\n# ================================================================\n# 1️⃣ ROLE – Quem é a Gê\n# ================================================================\nVocê é a **Gê**, atendente virtual do **Gepaci**. Sua função nessa etapa será somente informar que não poderá seguir com o atendimento.\n\nSua atuação é:\n- humanizada\n- acolhedora\n- objetiva\n- exclusivamente responsável por coletar matricula ou CPF do colaborador ou ex colaborador\n\nVocê **nunca inventa informações**, **não cria caminhos**, **não adiciona dados**.\n\n---\n\n# ================================================================\n# 2️⃣ WORKFLOW – Como a Gê opera\n# ================================================================\n\n## 🟦 INÍCIO DA CONVERSA — REGRA PRIORITÁRIA\n\n1. O atendimento já foi iniciado em outro momento e não foi possível localizar o colaborador com os dados informados.\n2. Você receberá direcionamento de usuários que não foram localizados na base ou de pessoas que nunca trabalharam na empresa.\n3. Para pessoas que não trabalham e/ou nunca trabalharam na Icomon, informe que esse canal é exclusivo para funcionários e ex-funcionarios e encerre o atendimento de forma amigavel.\n4. Para funcionários que não foram localizados, informe que não poderá seguir com o atendimento por esse canal e oriente o mesmo a entrar em contato através do número: **0800-999-9999**.\n5. Após passar essas informações você pode se despedir e encerrar o atendimento acionando a Tool *Status Finalizada*\n\n---\n\n## 🟦 ENCERRAMENTO\n- Quando o atendimento estiver completo, encerre cordialmente.  \n- **Nunca finalize perguntando se o usuário deseja algo mais.**  \n\n---\n\n# ================================================================\n# 3️⃣ SAFETY – Regras de Segurança e Limitações\n# ================================================================\nA Gê **NÃO PODE**:\n\n- Solicitar dados de validação ao usuário.\n- Usar dados pessoais como senhas, logins, números internos.\n- Enviar documentos.\n- Repetir o nome do usuário excessivamente.\n- Utilizar o *App IcomonComVc* como um \"coringa\" para dar respostas genericas que não estão na base. \n- Inventar respostas, caminhos, benefícios ou processos.\n- Tratar assuntos fora do escopo do Gepaci.\n- Utilizar conhecimento externo não presente nesse script.\n- Apresentar fórmulas, códigos, scripts, expressões técnicas.\n\n---\n\n# ================================================================\n# 4️⃣ STYLE – Estilo de Comunicação da Gê\n# ================================================================\n- Educada, empática, clara e acolhedora.  \n- Frases curtas de **no máximo 3 linhas**.  \n- Linguagem natural, simples e humana.  \n- Uma pergunta por vez.  \n- Evite blocos longos e respostas extensas.  \n- Nunca use tom técnico ou robótico.  \n- Não pergunte: “Posso ajudar em algo mais?”, “Algo mais?”, etc.\n\n---\n\n# ================================================================\n# 6️⃣ TOOLS – Como e quando usar as ferramentas\n# ================================================================\n\n## 🔧 Tool Status Finalizada\nResponsável por alterar o status da conversa para \"Finalizada\""
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
@@ -586,7 +586,7 @@
       "typeVersion": 3.4,
       "position": [
         816,
-        448
+        480
       ],
       "id": "a7f55bfc-6905-491d-b601-632b67746b55",
       "name": "coletar dados usuario1",
@@ -614,7 +614,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        464,
+        528,
         48
       ],
       "id": "d414faf4-73a1-4bd6-a4e1-092ab44716ba",
@@ -719,8 +719,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1392,
-        80
+        1184,
+        32
       ],
       "id": "b87dcc44-f39a-4e91-b3d9-6c4b8f558e73",
       "name": "API Identidade",
@@ -1139,8 +1139,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        1760,
-        2944
+        1712,
+        2976
       ],
       "id": "5fd9b6d5-afcc-46b7-aae3-df37879d1d99",
       "name": "Think2"
@@ -1198,8 +1198,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        1760,
-        1200
+        1664,
+        1104
       ],
       "id": "c8e5075c-ba63-4dfc-accf-3c319188d0ef",
       "name": "Think3"
@@ -1371,8 +1371,8 @@
       "type": "@n8n/n8n-nodes-langchain.guardrails",
       "typeVersion": 1,
       "position": [
-        4352,
-        1456
+        3808,
+        1424
       ],
       "id": "03cb2113-1589-43a2-9176-1fc1ea6d6399",
       "name": "Guardrails1"
@@ -1467,7 +1467,8 @@
         1440
       ],
       "id": "33b5b50f-32fd-41c1-bbc3-5ede0883442a",
-      "name": "Switch"
+      "name": "Switch",
+      "executeOnce": true
     },
     {
       "parameters": {
@@ -1707,12 +1708,18 @@
       "parameters": {
         "operation": "update",
         "tableId": "registroAtendimento",
+        "matchType": "allFilters",
         "filters": {
           "conditions": [
             {
               "keyName": "sessionId",
               "condition": "eq",
               "keyValue": "={{ $('coletar dados da conversa').first().json.session }}"
+            },
+            {
+              "keyName": "statusAtendimento",
+              "condition": "neq",
+              "keyValue": "finalizada"
             }
           ]
         },
@@ -1728,7 +1735,7 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        704,
+        736,
         256
       ],
       "id": "16c35bc6-be43-4c5d-aaac-5308f9c8aa19",
@@ -1744,12 +1751,18 @@
       "parameters": {
         "operation": "update",
         "tableId": "registroAtendimento",
+        "matchType": "allFilters",
         "filters": {
           "conditions": [
             {
               "keyName": "sessionId",
               "condition": "eq",
               "keyValue": "={{ $('coletar dados da conversa').first().json.session }}"
+            },
+            {
+              "keyName": "statusAtendimento",
+              "condition": "neq",
+              "keyValue": "finalizada"
             }
           ]
         },
@@ -1777,7 +1790,7 @@
       "typeVersion": 1,
       "position": [
         1776,
-        448
+        480
       ],
       "id": "6c5e7787-64cf-46fb-b7b4-3f91a31ed3e6",
       "name": "Registrar dados Colaborador",
@@ -1792,12 +1805,18 @@
       "parameters": {
         "operation": "update",
         "tableId": "registroAtendimento",
+        "matchType": "allFilters",
         "filters": {
           "conditions": [
             {
               "keyName": "sessionId",
               "condition": "eq",
               "keyValue": "={{ $('coletar dados da conversa').first().json.session }}"
+            },
+            {
+              "keyName": "statusAtendimento",
+              "condition": "neq",
+              "keyValue": "finalizada"
             }
           ]
         },
@@ -1857,48 +1876,11 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        4192,
-        1872
+        3856,
+        1840
       ],
       "id": "b40cb2ec-ea95-4bf2-95dc-dd42c79a8fdd",
       "name": "Response Message Zapster"
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "tableId": "registroAtendimento",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "sessionId",
-              "condition": "eq",
-              "keyValue": "={{ $('coletar dados da conversa').first().json.session }}"
-            }
-          ]
-        },
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "statusAtendimento",
-              "fieldValue": "finalizada"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabaseTool",
-      "typeVersion": 1,
-      "position": [
-        2000,
-        2976
-      ],
-      "id": "7640996c-0074-4379-aecc-b33e9edf2058",
-      "name": "Update a row in Supabase1",
-      "credentials": {
-        "supabaseApi": {
-          "id": "Z179aOzdGDkmnopp",
-          "name": "Supabase account"
-        }
-      }
     },
     {
       "parameters": {},
@@ -1906,8 +1888,8 @@
       "name": "Replace Me",
       "typeVersion": 1,
       "position": [
-        4592,
-        2112
+        4256,
+        2080
       ],
       "id": "aebf4baa-8322-46df-af62-941cc7f18c44"
     },
@@ -1918,8 +1900,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        3728,
-        1712
+        3392,
+        1680
       ],
       "id": "b26f9895-5f90-4eb2-886e-455c37ed95a0",
       "name": "Loop Over Items",
@@ -1927,13 +1909,13 @@
     },
     {
       "parameters": {
-        "jsCode": "const text = $json.output;\n\nconst delaySeconds = 2;\nconst maxLength = 180;\n\n// 1. Detecta links e substitui por placeholders\nconst urlRegex = /(https?:\\/\\/[^\\s)]+)/g;\nconst links = [];\n\nlet processedText = text.replace(urlRegex, (match) => {\n  links.push(match);\n  return `<LINK_${links.length - 1}>`;\n});\n\n// 2. Captura frases mantendo os sinais finais\n// Evita dividir números como 5.000 (não quebra se tiver dígitos antes/depois)\nconst safeSentenceRegex = /(?:[^.!?]|(?<=\\d)[.!?](?=\\d))+[.!?]/g;\nconst sentences = processedText.match(safeSentenceRegex) || [];\n\n// 3. Reagrupar respeitando o tamanho máximo\nconst result = [];\nlet buffer = '';\n\nfor (const sentence of sentences) {\n  if ((buffer + ' ' + sentence).trim().length <= maxLength) {\n    buffer = (buffer + ' ' + sentence).trim();\n  } else {\n    if (buffer) result.push(buffer.trim());\n    buffer = sentence.trim();\n  }\n}\nif (buffer) result.push(buffer.trim());\n\n// 4. Substitui os links de volta\nconst finalMessages = result.map(msg => {\n  let restored = msg;\n  links.forEach((link, i) => {\n    restored = restored.replace(`<LINK_${i}>`, link);\n  });\n  return { message: restored, delay: delaySeconds };\n});\n\nreturn finalMessages;"
+        "jsCode": "// Remover arrays da mensagem\nconst text = $json.output.replace(/(\\[[\\s\\S]*?\\]\\s*)|(\")/g, \"\").trim();\n\nconst delaySeconds = 2;\nconst maxLength = 180;\n\n// 1. Detecta links e substitui por placeholders\nconst urlRegex = /(https?:\\/\\/[^\\s)]+)/g;\nconst links = [];\n\nlet processedText = text.replace(urlRegex, (match) => {\n  links.push(match);\n  return `<LINK_${links.length - 1}>`;\n});\n\n// 2. Captura frases mantendo os sinais finais\n// Evita dividir números como 5.000 (não quebra se tiver dígitos antes/depois)\nconst safeSentenceRegex = /(?:[^.!?]|(?<=\\d)[.!?](?=\\d))+[.!?]/g;\nconst sentences = processedText.match(safeSentenceRegex) || [];\n\n// 3. Reagrupar respeitando o tamanho máximo\nconst result = [];\nlet buffer = '';\n\nfor (const sentence of sentences) {\n  if ((buffer + ' ' + sentence).trim().length <= maxLength) {\n    buffer = (buffer + ' ' + sentence).trim();\n  } else {\n    if (buffer) result.push(buffer.trim());\n    buffer = sentence.trim();\n  }\n}\nif (buffer) result.push(buffer.trim());\n\n// 4. Substitui os links de volta\nconst finalMessages = result.map(msg => {\n  let restored = msg;\n  links.forEach((link, i) => {\n    restored = restored.replace(`<LINK_${i}>`, link);\n  });\n  return { message: restored, delay: delaySeconds };\n});\n\nreturn finalMessages;"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        3504,
-        1712
+        3168,
+        1680
       ],
       "id": "ffc9bf0a-a640-4490-a0db-1be5a8392b3d",
       "name": "Code in JavaScript",
@@ -1941,13 +1923,13 @@
     },
     {
       "parameters": {
-        "amount": 1
+        "amount": 0.5
       },
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        4400,
-        1968
+        4064,
+        1936
       ],
       "id": "f236db9d-568d-4679-b331-8df016dd4689",
       "name": "Wait1",
@@ -2107,12 +2089,18 @@
       "parameters": {
         "operation": "update",
         "tableId": "registroAtendimento",
+        "matchType": "allFilters",
         "filters": {
           "conditions": [
             {
               "keyName": "sessionId",
               "condition": "eq",
               "keyValue": "={{ $('coletar dados da conversa').first().json.session }}"
+            },
+            {
+              "keyName": "statusAtendimento",
+              "condition": "neq",
+              "keyValue": "finalizada"
             }
           ]
         },
@@ -2152,12 +2140,18 @@
       "parameters": {
         "operation": "update",
         "tableId": "registroAtendimento",
+        "matchType": "allFilters",
         "filters": {
           "conditions": [
             {
               "keyName": "sessionId",
               "condition": "eq",
               "keyValue": "={{ $('coletar dados da conversa').first().json.session }}"
+            },
+            {
+              "keyName": "statusAtendimento",
+              "condition": "neq",
+              "keyValue": "finalizada"
             }
           ]
         },
@@ -2200,8 +2194,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        464,
-        480
+        544,
+        512
       ],
       "id": "9c501e36-93f7-438e-913d-5197d2b22d2f",
       "name": "Limpar Mensagem",
@@ -2247,7 +2241,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1664,
+        1440,
         64
       ],
       "id": "e8a31909-45bb-4d4e-a3f2-9c0a28bf0e8a",
@@ -2397,7 +2391,7 @@
         "key": "={{ $('coletar dados da conversa').first().json.session }}_nome",
         "value": "={{ $('coletar dados usuario').first().json.dadosCliente.Nome.trim().split(/\\s+/)[0] }}",
         "expire": true,
-        "ttl": 1800
+        "ttl": 3600
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
@@ -2420,13 +2414,13 @@
         "key": "={{ $('coletar dados da conversa').first().json.session }}_matricula",
         "value": "={{ $('coletar dados usuario1').first().json.dadosCliente.Re }}",
         "expire": true,
-        "ttl": 1800
+        "ttl": 3600
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
         1328,
-        448
+        480
       ],
       "id": "3c01a91b-d742-4dd8-b5a3-3b4669abe4be",
       "name": "Setar Matricula",
@@ -2445,13 +2439,13 @@
         "key": "={{ $('coletar dados da conversa').first().json.session }}_nome",
         "value": "={{ $('coletar dados usuario1').first().json.dadosCliente.Nome.trim().split(/\\s+/)[0] }}",
         "expire": true,
-        "ttl": 1800
+        "ttl": 3600
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
         1104,
-        448
+        480
       ],
       "id": "0cf48a51-6372-4a0d-9a98-6cdb25581c3a",
       "name": "Setar Nome",
@@ -2752,8 +2746,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        1632,
-        1136
+        1520,
+        1168
       ],
       "id": "6c183ca3-634f-4035-9d5f-5cf34f700554",
       "name": "Redis Chat Memory1",
@@ -2817,8 +2811,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        3424,
-        1440
+        2912,
+        1376
       ],
       "typeVersion": 1,
       "id": "94947e47-e743-434b-afb9-7430a73b6c69",
@@ -2835,8 +2829,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        4384,
-        1728
+        3840,
+        1696
       ],
       "id": "9ad4fca2-a551-4a09-9700-750950dca513",
       "name": "Get Memory",
@@ -2873,8 +2867,8 @@
       "type": "n8n-nodes-base.supabase",
       "typeVersion": 1,
       "position": [
-        4656,
-        1712
+        4112,
+        1680
       ],
       "id": "1eefa5c5-1dee-468c-8cca-d9ead0abdad7",
       "name": "Historico de Conversa",
@@ -2939,12 +2933,18 @@
       "parameters": {
         "operation": "update",
         "tableId": "registroAtendimento",
+        "matchType": "allFilters",
         "filters": {
           "conditions": [
             {
               "keyName": "sessionId",
               "condition": "eq",
               "keyValue": "={{ $('coletar dados da conversa').first().json.session }}"
+            },
+            {
+              "keyName": "statusAtendimento",
+              "condition": "neq",
+              "keyValue": "finalizada"
             }
           ]
         },
@@ -3024,8 +3024,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3920,
-        1888
+        3584,
+        1856
       ],
       "id": "421857bb-2d99-47de-abcb-30a1cb5c46c6",
       "name": "If2"
@@ -3035,8 +3035,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        4192,
-        2096
+        3856,
+        2064
       ],
       "id": "9baa8ed4-c11d-45cf-838c-cc1faae84147",
       "name": "No Operation, do nothing3"
@@ -3103,7 +3103,7 @@
         "key": "={{ $('coletar dados da conversa').first().json.session }}",
         "value": "inicio_conversa",
         "expire": true,
-        "ttl": 1800
+        "ttl": 3600
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
@@ -3148,7 +3148,7 @@
         "key": "={{ $('coletar dados da conversa').first().json.session }}",
         "value": "atendimento",
         "expire": true,
-        "ttl": 1800
+        "ttl": 3600
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
@@ -3176,7 +3176,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        912,
+        944,
         256
       ],
       "id": "3732436d-5b09-4811-8048-939d2d0d835d",
@@ -3194,13 +3194,13 @@
         "key": "={{ $('coletar dados da conversa').first().json.session }}",
         "value": "acesso_icopass",
         "expire": true,
-        "ttl": 1800
+        "ttl": 3600
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
         1568,
-        448
+        480
       ],
       "id": "d29f9676-8095-4ae3-b8a1-48be340f3121",
       "name": "Status Icopass",
@@ -3238,12 +3238,18 @@
       "parameters": {
         "operation": "update",
         "tableId": "registroAtendimento",
+        "matchType": "allFilters",
         "filters": {
           "conditions": [
             {
               "keyName": "sessionId",
               "condition": "eq",
               "keyValue": "={{ $('coletar dados da conversa').first().json.session }}"
+            },
+            {
+              "keyName": "statusAtendimento",
+              "condition": "neq",
+              "keyValue": "finalizada"
             }
           ]
         },
@@ -3277,7 +3283,7 @@
         "key": "={{ $('coletar dados da conversa').first().json.session }}",
         "value": "atendimento",
         "expire": true,
-        "ttl": 1800
+        "ttl": 3600
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
@@ -3305,11 +3311,74 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        1648,
-        2864
+        1840,
+        3024
       ],
       "id": "e9c033de-21c2-4d8e-8aa0-f6b698be17a9",
-      "name": "Redis",
+      "name": "Status Finalizada",
+      "credentials": {
+        "redis": {
+          "id": "uUviyg2VYvUsG0xc",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "tableId": "registroAtendimento",
+        "matchType": "allFilters",
+        "filters": {
+          "conditions": [
+            {
+              "keyName": "sessionId",
+              "condition": "eq",
+              "keyValue": "={{ $('coletar dados da conversa').first().json.session }}"
+            },
+            {
+              "keyName": "statusAtendimento",
+              "condition": "neq",
+              "keyValue": "finalizada"
+            }
+          ]
+        },
+        "fieldsUi": {
+          "fieldValues": [
+            {
+              "fieldId": "statusAtendimento",
+              "fieldValue": "finalizada"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.supabaseTool",
+      "typeVersion": 1,
+      "position": [
+        2000,
+        2960
+      ],
+      "id": "7640996c-0074-4379-aecc-b33e9edf2058",
+      "name": "Status Finalizada1",
+      "credentials": {
+        "supabaseApi": {
+          "id": "Z179aOzdGDkmnopp",
+          "name": "Supabase account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "delete",
+        "key": "={{ $('coletar dados da conversa').first().json.session }}"
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        1824,
+        2656
+      ],
+      "id": "92109703-ea3b-4287-b2ab-f48ba2ae20a8",
+      "name": "Reset Status",
       "credentials": {
         "redis": {
           "id": "uUviyg2VYvUsG0xc",
@@ -3495,7 +3564,7 @@
       "main": [
         [
           {
-            "node": "Code in JavaScript",
+            "node": "Reset Status",
             "type": "main",
             "index": 0
           }
@@ -4079,17 +4148,6 @@
         ]
       ]
     },
-    "Update a row in Supabase1": {
-      "ai_tool": [
-        [
-          {
-            "node": "Colaborador Não Encontrado",
-            "type": "ai_tool",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Loop Over Items": {
       "main": [
         [],
@@ -4641,12 +4699,22 @@
         ]
       ]
     },
-    "Redis": {
+    "Status Finalizada": {
       "ai_tool": [
+        []
+      ]
+    },
+    "Status Finalizada1": {
+      "ai_tool": [
+        []
+      ]
+    },
+    "Reset Status": {
+      "main": [
         [
           {
-            "node": "Colaborador Não Encontrado",
-            "type": "ai_tool",
+            "node": "Code in JavaScript",
+            "type": "main",
             "index": 0
           }
         ]
@@ -4655,9 +4723,13 @@
   },
   "active": true,
   "settings": {
-    "executionOrder": "v1"
+    "executionOrder": "v1",
+    "callerPolicy": "workflowsFromSameOwner",
+    "availableInMCP": false,
+    "timeSavedPerExecution": 35,
+    "timezone": "America/Sao_Paulo"
   },
-  "versionId": "52e24972-4036-4e2c-891f-20834eb96a13",
+  "versionId": "bf1b3cc2-feb0-4eb4-8ab6-93c05be722aa",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "c13cee92dfa69db8294a82c6dfa57e3a1199207e843eec919de3f2ec003607aa"
