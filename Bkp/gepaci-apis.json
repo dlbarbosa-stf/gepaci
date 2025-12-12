@@ -145,7 +145,7 @@
       "parameters": {
         "content": "API identidade\n\nDocumentação Swagger: https://apiwhatsapp.icomon.com.vc/swagger/index.html",
         "height": 784,
-        "width": 1376,
+        "width": 1360,
         "color": 6
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -195,6 +195,12 @@
               "id": "8ce69bca-e03f-4819-b323-343385885b0a",
               "name": "funcao",
               "value": "={{ $('buscarFuncionario').item.json.body.funcao }}",
+              "type": "string"
+            },
+            {
+              "id": "6acf9b2b-6720-41ef-bf1f-6294034b1435",
+              "name": "situacao",
+              "value": "={{ $('buscarFuncionario').item.json.body.situacao }}",
               "type": "string"
             },
             {
@@ -282,7 +288,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1040,
+        1008,
         736
       ],
       "id": "ab132c4d-a12e-4b87-b61d-2927bbcbc9de",
@@ -348,7 +354,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        832,
+        576,
         976
       ],
       "id": "67844ecb-e325-4fa9-a4b6-e7c0ad51674b",
@@ -358,7 +364,7 @@
       "parameters": {
         "content": "API IcoPass\n\nDocumentação Swagger: https://loginunicoapiexternos.icomon.com.vc/swagger/index.html",
         "height": 1280,
-        "width": 1440,
+        "width": 1376,
         "color": 5
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -397,7 +403,7 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        144,
+        128,
         720
       ],
       "id": "aadca73a-5024-4452-be4a-39641d029c2f",
@@ -444,7 +450,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        608,
+        368,
         976
       ],
       "id": "6e3fb701-9d34-421e-8b66-393a942dbcfa",
@@ -487,7 +493,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1056,
+        896,
         960
       ],
       "id": "44419281-b6e1-4a59-b2a9-b04df4e196a6",
@@ -516,7 +522,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        608,
+        592,
         1200
       ],
       "id": "f291c50d-7972-4075-847b-49bd6413bb39",
@@ -529,7 +535,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        384,
+        208,
         1200
       ],
       "id": "e1e4c95a-001c-42ab-adcf-6eec765ed8f0",
@@ -563,7 +569,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        832,
+        816,
         1200
       ],
       "id": "ce800ef7-0dc2-478e-a2b2-79a13fc383fc",
@@ -609,7 +615,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1056,
+        1040,
         1184
       ],
       "id": "b4a2d904-b76b-4426-872c-fc22616e9432",
@@ -640,7 +646,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        352,
+        336,
         720
       ],
       "id": "b4bdc339-7bc6-46eb-86ef-00495cc46071",
@@ -707,7 +713,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        400,
+        384,
         1440
       ],
       "id": "a40c4ead-bdcf-4fde-8962-da37edfb5801",
@@ -736,7 +742,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1072,
+        1056,
         1616
       ],
       "id": "bfe4853a-00e6-4bb6-bb38-ad4eeaeb844b",
@@ -749,7 +755,7 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        656,
+        640,
         1616
       ],
       "id": "d2b130c3-e9c7-4f23-9425-35946dafc529",
@@ -790,45 +796,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1072,
+        1056,
         1424
       ],
       "id": "ebcbb80e-4cb9-4e1d-bf8b-9718c3c6f8b0",
       "name": "Token Valido1"
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "tableId": "accessToken",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "apiName",
-              "keyValue": "identidade"
-            },
-            {
-              "keyName": "status",
-              "keyValue": "active"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        544,
-        -112
-      ],
-      "id": "1bcf58c9-5d17-478f-b496-e634c0224425",
-      "name": "Get Token",
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "Z179aOzdGDkmnopp",
-          "name": "Supabase account"
-        }
-      },
-      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -844,16 +816,6 @@
               "id": "59d6b7db-6cde-4a02-a5bd-e2c438082e21",
               "leftValue": "={{ $json.status }}",
               "rightValue": "active",
-              "operator": {
-                "type": "string",
-                "operation": "equals",
-                "name": "filter.operator.equals"
-              }
-            },
-            {
-              "id": "9f72767e-1757-423b-ab36-3bb86f723ab8",
-              "leftValue": "={{ $json.apiName }}",
-              "rightValue": "identidade",
               "operator": {
                 "type": "string",
                 "operation": "equals",
@@ -879,47 +841,6 @@
     },
     {
       "parameters": {
-        "operation": "update",
-        "tableId": "accessToken",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "apiName",
-              "condition": "eq",
-              "keyValue": "identidade"
-            }
-          ]
-        },
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "clientToken",
-              "fieldValue": "={{ $json.body.accessToken }}"
-            },
-            {
-              "fieldId": "status",
-              "fieldValue": "active"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        1184,
-        -96
-      ],
-      "id": "cd1cc2bc-5c94-4f86-9077-979459a82eae",
-      "name": "Update token",
-      "credentials": {
-        "supabaseApi": {
-          "id": "Z179aOzdGDkmnopp",
-          "name": "Supabase account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "assignments": {
           "assignments": [
             {
@@ -940,40 +861,6 @@
       ],
       "id": "28c9a660-00bd-494a-9694-bf2605152685",
       "name": "Set Token Banco"
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "tableId": "accessToken",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "apiName",
-              "keyValue": "icopass"
-            },
-            {
-              "keyName": "status",
-              "keyValue": "active"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        576,
-        720
-      ],
-      "id": "7ab9b0e7-ecef-4783-8e1a-50ed117bb335",
-      "name": "Get Token1",
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "Z179aOzdGDkmnopp",
-          "name": "Supabase account"
-        }
-      },
-      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -1011,7 +898,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        816,
+        800,
         720
       ],
       "id": "97df732b-b1d5-41b7-994e-51da83297658",
@@ -1037,7 +924,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        384,
+        160,
         976
       ],
       "id": "298bb1f5-1b19-4d5f-94c0-1d5dd9c8de80",
@@ -1045,44 +932,91 @@
     },
     {
       "parameters": {
-        "operation": "update",
-        "tableId": "accessToken",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "apiName",
-              "condition": "eq",
-              "keyValue": "icopass"
-            }
-          ]
-        },
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "clientToken",
-              "fieldValue": "={{ $json.body.token }}"
-            },
-            {
-              "fieldId": "status",
-              "fieldValue": "active"
-            }
-          ]
+        "operation": "executeQuery",
+        "query": "SELECT status, clientToken\n  FROM [db_Gepaci].[dbo].[accessToken]\n  WHERE apiName = 'identidade'\n  AND status = 'active';"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        -112
+      ],
+      "id": "1f52c239-86d1-4e9a-bd1e-873e536ec9f5",
+      "name": "Get Token2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "d1VJXdOhxYJikLtU",
+          "name": "db_Gepaci"
         }
       },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT status, clientToken\n  FROM [db_Gepaci].[dbo].[accessToken]\n  WHERE apiName = 'icopass'\n  AND status = 'active';"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
       "position": [
-        1248,
+        576,
+        720
+      ],
+      "id": "6ac673ba-3317-4131-bfad-8cfe16075d5b",
+      "name": "Get Token3",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "d1VJXdOhxYJikLtU",
+          "name": "db_Gepaci"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Update na tabela\nUPDATE [db_Gepaci].[dbo].[accessToken]\n  SET status = 'active',\n    clientToken = '{{ $json.body.accessToken }}'\n  WHERE apiName = 'identidade';\n\n-- Select com retorno do novo token\nSELECT status, clientToken\n  FROM [db_Gepaci].[dbo].[accessToken]\n  WHERE apiName = 'identidade'\n  AND status = 'active';"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        1136,
+        -96
+      ],
+      "id": "15daed2f-78a4-485d-bbdd-2a748b74f647",
+      "name": "Update e Get Token",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "d1VJXdOhxYJikLtU",
+          "name": "db_Gepaci"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE [db_Gepaci].[dbo].[accessToken]\n  SET status = 'active',\n    clientToken = '{{ $json.body.token }}'\n  WHERE apiName = 'icopass';\n\n-- Select com retorno do novo token\nSELECT status, clientToken\n  FROM [db_Gepaci].[dbo].[accessToken]\n  WHERE apiName = 'icopass'\n  AND status = 'active';"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        1184,
         736
       ],
-      "id": "8c8b6179-4c8b-4128-a90a-50f02a6480ed",
-      "name": "Update token1",
+      "id": "cd9f135a-6d01-4be7-b0ac-46a4cda1b71c",
+      "name": "Update e Get Token1",
+      "alwaysOutputData": true,
       "credentials": {
-        "supabaseApi": {
-          "id": "Z179aOzdGDkmnopp",
-          "name": "Supabase account"
+        "microsoftSql": {
+          "id": "d1VJXdOhxYJikLtU",
+          "name": "db_Gepaci"
         }
-      }
+      },
+      "onError": "continueRegularOutput"
     }
   ],
   "pinData": {},
@@ -1091,7 +1025,7 @@
       "main": [
         [
           {
-            "node": "Update token",
+            "node": "Update e Get Token",
             "type": "main",
             "index": 0
           }
@@ -1131,7 +1065,7 @@
       "main": [
         [
           {
-            "node": "Get Token",
+            "node": "Get Token2",
             "type": "main",
             "index": 0
           }
@@ -1142,7 +1076,7 @@
       "main": [
         [
           {
-            "node": "Update token1",
+            "node": "Update e Get Token1",
             "type": "main",
             "index": 0
           }
@@ -1248,7 +1182,7 @@
       "main": [
         [
           {
-            "node": "Get Token1",
+            "node": "Get Token3",
             "type": "main",
             "index": 0
           }
@@ -1284,17 +1218,6 @@
         ]
       ]
     },
-    "Get Token": {
-      "main": [
-        [
-          {
-            "node": "If1",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "If1": {
       "main": [
         [
@@ -1313,33 +1236,11 @@
         ]
       ]
     },
-    "Update token": {
-      "main": [
-        [
-          {
-            "node": "Set Token Banco",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Set Token Banco": {
       "main": [
         [
           {
             "node": "buscarFuncionario",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Get Token1": {
-      "main": [
-        [
-          {
-            "node": "If2",
             "type": "main",
             "index": 0
           }
@@ -1364,22 +1265,55 @@
         ]
       ]
     },
-    "Update token1": {
+    "Set Token Banco1": {
       "main": [
         [
           {
-            "node": "Set Token Banco1",
+            "node": "validarIcoPass",
             "type": "main",
             "index": 0
           }
         ]
       ]
     },
-    "Set Token Banco1": {
+    "Get Token2": {
       "main": [
         [
           {
-            "node": "validarIcoPass",
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Token3": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update e Get Token": {
+      "main": [
+        [
+          {
+            "node": "Set Token Banco",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update e Get Token1": {
+      "main": [
+        [
+          {
+            "node": "Set Token Banco1",
             "type": "main",
             "index": 0
           }
@@ -1395,7 +1329,7 @@
     "availableInMCP": false,
     "timeSavedPerExecution": 1
   },
-  "versionId": "f0069efe-bc02-45e3-b2bf-fac2591ea09b",
+  "versionId": "76f9410e-6f66-439d-aebe-cc1971bac9be",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "c13cee92dfa69db8294a82c6dfa57e3a1199207e843eec919de3f2ec003607aa"
