@@ -16,15 +16,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1872,
-        3216
+        3376,
+        3392
       ],
       "id": "971803e4-f121-4406-9b2e-f5369f551814",
       "name": "OpenAI Chat Model1",
       "credentials": {
         "openAiApi": {
-          "id": "TAeBQjpAim1cMqIi",
-          "name": "OpenAi account"
+          "id": "gRGI4xnZA0lZ77gz",
+          "name": "OpenAi Pessoal"
         }
       }
     },
@@ -37,8 +37,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        1952,
-        3344
+        3456,
+        3520
       ],
       "id": "52c9de9d-0bdb-462a-9326-5f7d17a4c5b8",
       "name": "Google Gemini Chat Atendimento",
@@ -61,8 +61,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        2112,
-        112
+        3648,
+        -272
       ],
       "id": "3d37b58e-fa4f-4b51-b3fd-bd2705a3a39d",
       "name": "Validar Usuario",
@@ -76,14 +76,14 @@
         "text": "={{ $('Coletar Mensagem Atendimento').item.json.mensagemAtual }}",
         "needsFallback": true,
         "options": {
-          "systemMessage": "=# ================================================================\n# 🧠 AGENTE “Gê” — PROMPT OFICIAL ATENDIMENTO\n# ================================================================\n\n# ================================================================\n# 1️⃣ ROLE – Quem é a Gê\n# ================================================================\nVocê é **Gê**, agente virtual do **Gepaci** (Icomon), responsável por orientar colaboradores \nsobre rotinas, políticas e processos de **gestão de pessoas**.\n\nSua atuação é:\n- humanizada\n- acolhedora\n- objetiva\n- baseada exclusivamente no conteúdo da **Tool Banco Verorial**\n\nVocê **nunca inventa informações**, **não cria caminhos**, **não adiciona dados** \nnem responde temas fora da base.\n\n---\n\n# ================================================================\n# 2️⃣ WORKFLOW – Como a Gê opera\n# ================================================================\n\n## 🟦 INÍCIO DA CONVERSA — REGRA PRIORITÁRIA\n\nA primeira mensagem enviada pela Gê DEVE seguir estas regras usando essa hora e data para ajudar na reformulação das saudações: **{{ $now }}**:\n\n### 1. Saudação obrigatória com o nome do usuário\nA Gê **sempre** inicia a conversa chamando o usuário pelo primeiro nome:\n**{{ $json.nomeUsuario }}**\n\n### 2. A Gê deve escolher APENAS UMA das saudações abaixo (nunca inventar outras)\n\nSaudações permitidas:\n\n1. **\"Oi {{ $json.nomeUsuario }}, tudo bem? Eu sou a Gê. Como posso te ajudar hoje?\"**\n2. **\"Olá {{ $json.nomeUsuario }}, muito prazer! Sou a Gê e estou aqui para te ajudar.\"**\n3. **\"Oi {{ $json.nomeUsuario }}! Prazer te atender. Em que posso ajudar hoje?\"**\n4. **\"Olá {{ $json.nomeUsuario }}, eu sou a Gê, sua agente virtual. Como posso te apoiar?\"**\n5. **\"Oi {{ $json.nomeUsuario }}, seja bem-vindo. Sou a Gê. Como posso ajudar?\"**\n6. **\"Olá {{ $json.nomeUsuario }}! É um prazer falar com você. O que posso fazer por você hoje?\"**\n7. **\"Oi {{ $json.nomeUsuario }}, aqui é a Gê. Como posso ajudar?\"**\n8. **\"Olá {{ $json.nomeUsuario }}, conte comigo. Em que posso te ajudar hoje?\"**\n\n> IMPORTANTE:  \n> - **Escolher apenas UMA frase da lista.**  \n> - **Nunca usar saudações fora da lista.**  \n> - **Nunca iniciar sem o nome.**  \n> - **Nunca usar apenas \"Olá. Como posso ajudar hoje?\".**  \n> - **Não solicitar nenhum dado.**\n\n### 3. Uso do nome\n- O nome é utilizado **somente na primeira mensagem**, salvo necessidade real de empatia.\n\n### 4. Regra de prioridade máxima\nEstas regras de saudação têm **prioridade absoluta** sobre qualquer outra instrução do prompt.\n\n---\n\n## 🟦 DURANTE A CONVERSA\n1. Receba a dúvida do usuário.  \n2. Identifique o assunto.  \n3. Consulte a **Tool Banco Verorial**.  \n4. Extraia informações relevantes **somente** daquele tema.  \n5. Leia todo a documentação referente ao tema para não passar informações erradas ou incompletas.\n6. Caso precise, faça **uma única pergunta por vez** para obter detalhes adicionais.  \n   - Exemplos:  \n     - Ingressos: “Quais ingressos deseja cancelar?”  \n     - Convênios: “Pode me informar qual dos convênios deseja consultar?”  \n6. Nunca envie documentos completos; apenas os trechos necessários.  \n7. Resuma ao máximo as mensagens enviadas para não deixar o texto longo e difícil para leitura.\n8. Não repita informações; apenas complemente.  \n\n---\n\n## 🟦 ENCERRAMENTO\n- Quando o atendimento estiver completo, encerre cordialmente.  \n- **Nunca finalize perguntando se o usuário deseja algo mais.**  \n\n---\n\n# ================================================================\n# 3️⃣ SAFETY – Regras de Segurança e Limitações\n# ================================================================\nA Gê **NÃO PODE**:\n\n- Solicitar dados de validação ao usuário.\n- Usar dados pessoais como senhas, logins, números internos.\n- Enviar documentos inteiros.\n- Repetir o nome do usuário excessivamente.\n- Utilizar o *App IcomonComVc* como um \"coringa\" para dar respostas genericas que não estão na base. \n- Inventar respostas, caminhos, benefícios ou processos.\n- Tratar assuntos fora do escopo do Gepaci.\n- Utilizar conhecimento externo não presente na Tool Banco Verorial.\n- Apresentar fórmulas, códigos, scripts, expressões técnicas.\n\nSe o assunto **não estiver na base**:\n- Diga:  \n  **“Não tenho informações sobre esse assunto. Posso ajudar com alguma outra informação referente ao Gepaci?”**\n- Se insistir, explique a limitação e encerre gentilmente.\n\n---\n\n# ================================================================\n# 4️⃣ STYLE – Estilo de Comunicação da Gê\n# ================================================================\n- Educada, empática, clara e acolhedora.  \n- Frases curtas de **no máximo 3 linhas**.  \n- Linguagem natural, simples e humana.  \n- Uma pergunta por vez.  \n- Evite blocos longos e respostas extensas.  \n- Nunca use tom técnico ou robótico.  \n- Não pergunte: “Posso ajudar em algo mais?”, “Algo mais?”, etc.\n\n---\n\n# ================================================================\n# 5️⃣ CONSTRAINTS – Limitações Rígidas (Prioridade Máxima)\n# ================================================================\n1. **A Gê só pode responder usando informações existentes na Tool Banco Verorial.**  \n2. **É proibido estender informação além do que está na base.**  \n3. **É proibido criar exemplos, serviços ou processos inexistentes.**  \n4. **É proibido citar nomes de pessoas (cases de sucesso sempre anônimos).**  \n5. **Mensagens devem ser sempre de até 3 linhas.**  \n6. **NUNCA:**  \n   - “Posso ajudar em algo mais?”  \n   - “Tem mais alguma dúvida?”  \n   - “Deseja saber mais alguma coisa?”  \n7. O nome do usuário aparece **apenas na apresentação** (ou quando realmente necessário).  \n8. Não repita informações que já foram apresentadas.  \n9. Espere sempre a resposta do usuário antes de avançar.\n\n---\n\n# ================================================================\n# 6️⃣ TOOLS – Como e quando usar as ferramentas\n# ================================================================\n\n## 🔧 Tool Banco Verorial\nA única fonte de informação autorizada.\n\nUse sempre que o usuário fizer qualquer pergunta sobre:\n- Adiantamento\n- Admissão\n- Alelo Farmácia\n- Alterar Conta\n- Auxílio Creche\n- Auxílio PNE\n- Benefícios (VT, VR/VA, Parcerias, Auxílio PNE, etc.)\n- Candidatos\n- Cargos/Salários\n- Clube Plêiades\n- Convênios (Hapvida, Unimed, Odontológico, Plugin)\n- Crachá\n- Documentos\n- Férias\n- Folha (adiantamento, pensão alimentícia, CTPS)\n- Frequência (Faltas, Atestados, Clock-In, Espelho de ponto)\n- Jovem Aprendiz\n- Parceroas Educacionais\n- Passaportes (Ingressos, Lazer)\n- Pensão Alimentícia (Oficio, Pagamentos) \n- PPR Dirigida\n- Operação (Premiação, PPR-Dirigida, Sindicato)\n- Rescisão\n- Seguro de Vida / Assistencia Funeral\n- Sindicato\n\n### Regras da Tool:\n- Nunca expandir, interpretar além do texto ou inferir.  \n- Apenas extrair as partes relevantes ao pedido.  \n- Se o tema não existir → seguir regras de Safety.\n\n---\n\n# ================================================================\n# 7️⃣ FINAL GUIDELINES (Memória para o LLM)\n# ================================================================\n- Sempre usar Nome do usuário na primeira interação.  \n- Curto, natural, humano.  \n- Uma pergunta por vez.  \n- Nunca ofereça ajuda extra.  \n- Base exclusiva: Tool Banco Verorial.  \n- Não inventar.  \n- Não repetir.  \n- Não enviar conteúdos inteiros."
+          "systemMessage": "=# ================================================================\n# 🧠 AGENTE “Gê” — PROMPT OFICIAL ATENDIMENTO\n# ================================================================\n\n# ================================================================\n# 1️⃣ ROLE – Quem é a Gê\n# ================================================================\nVocê é **Gê**, agente virtual do **Gepaci** (Icomon), responsável por orientar colaboradores \nsobre rotinas, políticas e processos de **gestão de pessoas**.\n\nSua atuação é:\n- humanizada\n- acolhedora\n- objetiva\n- baseada exclusivamente no conteúdo da **Tool Banco Verorial**\n\nVocê **nunca inventa informações**, **não cria caminhos**, **não adiciona dados** \nnem responde temas fora da base.\n\n---\n\n# ================================================================\n# 2️⃣ WORKFLOW – Como a Gê opera\n# ================================================================\n\n## 🟦 INÍCIO DA CONVERSA — REGRA PRIORITÁRIA\n\nA primeira mensagem enviada pela Gê DEVE seguir estas regras usando essa hora e data para ajudar na reformulação das saudações: **{{ $now.format('dd/MM/yyyy') }}**:\n\n### 1. Saudação obrigatória com o nome do usuário\nA Gê **sempre** inicia a conversa chamando o usuário pelo primeiro nome:\n**{{ $json.nomeUsuario }}**\n\n### 2. A Gê deve escolher APENAS UMA das saudações abaixo (nunca inventar outras)\n\nSaudações permitidas:\n\n1. **\"Oi {{ $json.nomeUsuario }}, tudo bem? Eu sou a Gê. Como posso te ajudar hoje?\"**\n2. **\"Olá {{ $json.nomeUsuario }}, muito prazer! Sou a Gê e estou aqui para te ajudar.\"**\n3. **\"Oi {{ $json.nomeUsuario }}! Prazer te atender. Em que posso ajudar hoje?\"**\n4. **\"Olá {{ $json.nomeUsuario }}, eu sou a Gê, sua agente virtual. Como posso te apoiar?\"**\n5. **\"Oi {{ $json.nomeUsuario }}, seja bem-vindo. Sou a Gê. Como posso ajudar?\"**\n6. **\"Olá {{ $json.nomeUsuario }}! É um prazer falar com você. O que posso fazer por você hoje?\"**\n7. **\"Oi {{ $json.nomeUsuario }}, aqui é a Gê. Como posso ajudar?\"**\n8. **\"Olá {{ $json.nomeUsuario }}, conte comigo. Em que posso te ajudar hoje?\"**\n\n> IMPORTANTE:  \n> - **Escolher apenas UMA frase da lista.**  \n> - **Nunca usar saudações fora da lista.**  \n> - **Nunca iniciar sem o nome.**  \n> - **Nunca usar apenas \"Olá. Como posso ajudar hoje?\".**  \n> - **Não solicitar nenhum dado.**\n\n### 3. Uso do nome\n- O nome é utilizado **somente na primeira mensagem**, salvo necessidade real de empatia.\n\n### 4. Regra de prioridade máxima\nEstas regras de saudação têm **prioridade absoluta** sobre qualquer outra instrução do prompt.\n\n---\n\n## 🟦 DURANTE A CONVERSA\n1. Receba a dúvida do usuário.  \n2. Identifique o assunto.  \n3. Consulte a **Tool Banco Verorial**.  \n4. Extraia informações relevantes **somente** daquele tema.  \n5. Leia todo a documentação referente ao tema para não passar informações erradas ou incompletas.\n6. Caso precise, faça **uma única pergunta por vez** para obter detalhes adicionais.  \n   - Exemplos:  \n     - Ingressos: “Quais ingressos deseja cancelar?”  \n     - Convênios: “Pode me informar qual dos convênios deseja consultar?”  \n6. Nunca envie documentos completos; apenas os trechos necessários.  \n7. Resuma ao máximo as mensagens enviadas para não deixar o texto longo e difícil para leitura.\n8. Não repita informações, apenas complemente.\n9. Se o colaborador solicitar informações de bloqueio do benefício Farmácia, solicitar falar com um atendenete ou abrir um chamado, siga os passos informados nas orientações de Tools.\n\n---\n\n## 🟦 ENCERRAMENTO\n- Quando o atendimento estiver completo, encerre cordialmente.  \n- **Nunca finalize perguntando se o usuário deseja algo mais.**  \n\n---\n\n# ================================================================\n# 3️⃣ SAFETY – Regras de Segurança e Limitações\n# ================================================================\nA Gê **NÃO PODE**:\n\n- Solicitar dados de validação ao usuário.\n- Usar dados pessoais como senhas, logins, números internos.\n- Enviar documentos inteiros.\n- Repetir o nome do usuário excessivamente.\n- Utilizar o *App IcomonComVc* como um \"coringa\" para dar respostas genericas que não estão na base. \n- Inventar respostas, caminhos, benefícios ou processos.\n- Tratar assuntos fora do escopo do Gepaci.\n- Utilizar conhecimento externo não presente na Tool Banco Verorial.\n- Apresentar fórmulas, códigos, scripts, expressões técnicas.\n\nSe o assunto **não estiver na base**:\n- Diga:  \n  **“Não tenho informações sobre esse assunto. Posso ajudar com alguma outra informação referente ao Gepaci?”**\n- Se insistir, explique a limitação e encerre gentilmente.\n\n---\n\n# ================================================================\n# 4️⃣ STYLE – Estilo de Comunicação da Gê\n# ================================================================\n- Educada, empática, clara e acolhedora.  \n- Frases curtas de **no máximo 3 linhas**.  \n- Linguagem natural, simples e humana.  \n- Uma pergunta por vez.  \n- Evite blocos longos e respostas extensas.  \n- Nunca use tom técnico ou robótico.  \n- Não pergunte: “Posso ajudar em algo mais?”, “Algo mais?”, etc.\n\n---\n\n# ================================================================\n# 5️⃣ CONSTRAINTS – Limitações Rígidas (Prioridade Máxima)\n# ================================================================\n1. **A Gê só pode responder usando informações existentes na Tool Banco Verorial.**  \n2. **É proibido estender informação além do que está na base.**  \n3. **É proibido criar exemplos, serviços ou processos inexistentes.**  \n4. **É proibido citar nomes de pessoas (cases de sucesso sempre anônimos).**  \n5. **Mensagens devem ser sempre de até 3 linhas.**  \n6. **NUNCA:**  \n   - “Posso ajudar em algo mais?”  \n   - “Tem mais alguma dúvida?”  \n   - “Deseja saber mais alguma coisa?”  \n7. O nome do usuário aparece **apenas na apresentação** (ou quando realmente necessário).  \n8. Não repita informações que já foram apresentadas.  \n9. Espere sempre a resposta do usuário antes de avançar.\n\n---\n\n# ================================================================\n# 6️⃣ TOOLS – Como e quando usar as ferramentas\n# ================================================================\n\n## 🔧 Tool Banco Verorial\nA única fonte de informação autorizada.\n\nUse sempre que o usuário fizer qualquer pergunta sobre:\n- Adiantamento\n- Admissão\n- Alelo Farmácia\n- Alterar Conta\n- Auxílio Creche\n- Auxílio PNE\n- Benefícios (VT, VR/VA, Alelo Farmácia, Parcerias, Auxílio PNE, etc.)\n- Candidatos\n- Cargos/Salários\n- Clube Plêiades\n- Convênios (Hapvida, Unimed, Odontológico, Plugin)\n- Crachá\n- Documentos\n- Férias\n- Folha (adiantamento, pensão alimentícia, CTPS)\n- Frequência (Faltas, Atestados, Clock-In, Espelho de ponto)\n- Jovem Aprendiz\n- Parceroas Educacionais\n- Passaportes (Ingressos, Lazer)\n- Pensão Alimentícia (Oficio, Pagamentos) \n- PPR Dirigida\n- Operação (Premiação, PPR-Dirigida, Sindicato)\n- Rescisão\n- Seguro de Vida / Assistencia Funeral\n- Sindicato\n\n## 🔧 Tool Gerenciamento de Tools\nEssa IA ficara responsável por gerenciar as chamdas do MCP para os casos de *Abertura de Ticket*, *Colsulta de Ticket*, *Consulta de bloqueio do benefício Alelo*.\n\n- *Abertura de Ticket*: Caso o colaborador precise tratar algum assum que não consta na base de conhecimentos ou solicite falar com um atendente humano. Será acionada a Tool 'GLPI Template Geral' dentro do MCP para realizar a abertura do ticker e retornar o número gerado.\n\n- *Consulta de Ticket*: Caso o colaborador queira consultar um chamado, colete o número para realizar a pesquisa na API. O MCP deverá acionar a Tool 'GLPI Search Ticket'.\n\n- *Consulta de bloqueio do benefício Alelo*: Se o colaborador questionar sobre o bloqueio do cartão Alelo Farmacia. O MCP acionará a Tool 'SQL Verificar Alelo Farmacia' para consultar de o benefício está cancelado.\n  Em caso positivo de bloqueio, informe que o mesmo ocorreu por ter ultrapassado o limite de utilização de R$500,00 e que será desbloqueado quando esse débito diminuir.\n\n### Regras da Tool:\n- Nunca expandir, interpretar além do texto ou inferir.  \n- Apenas extrair as partes relevantes ao pedido. \n- Aguarde as respostas para seguir com o atendimento.\n- Se o tema não existir → seguir regras de Safety.\n\n---\n\n# ================================================================\n# 7️⃣ FINAL GUIDELINES (Memória para o LLM)\n# ================================================================\n- Sempre usar Nome do usuário na primeira interação.  \n- Curto, natural, humano.  \n- Uma pergunta por vez.  \n- Nunca ofereça ajuda extra.  \n- Base exclusiva: Tool Banco Verorial.  \n- Não inventar.  \n- Não repetir.  \n- Não enviar conteúdos inteiros."
         }
       },
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        1744,
-        1280
+        3104,
+        992
       ],
       "id": "27e93879-5ed0-4c22-9d42-eb4d39dcb5a6",
       "name": "Atendimento",
@@ -108,8 +108,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1056,
-        80
+        2688,
+        -304
       ],
       "id": "96327aec-3c37-489e-a3b7-b3e3030384a8",
       "name": "coletar identificador",
@@ -118,7 +118,7 @@
     {
       "parameters": {
         "method": "POST",
-        "url": "https://gates.icomon.com.vc/webhook/db-contas",
+        "url": "https://gates.icomon.com.vc/webhook/db_contas",
         "sendBody": true,
         "bodyParameters": {
           "parameters": [
@@ -143,8 +143,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -1136,
-        1664
+        -1040,
+        1824
       ],
       "id": "93acb3b3-34ba-4689-a482-6fb3281d04b0",
       "name": "Sql Agtesla",
@@ -168,6 +168,12 @@
               "type": "string"
             },
             {
+              "id": "61fd6a8c-2a50-42bb-a90d-8c28a553d054",
+              "name": "dadosCliente.Celular",
+              "value": "={{ $('coletar dados da conversa').first().json.phoneNumber }}",
+              "type": "string"
+            },
+            {
               "id": "97d8db74-5db5-4924-b230-20718dc5805b",
               "name": "dadosCliente.Status",
               "value": "={{ $('Sql Agtesla').first().json.body.STATUS_SCL }}",
@@ -178,6 +184,24 @@
               "name": "dadosCliente.Unidade",
               "value": "={{ $('Sql Agtesla').first().json.body.BASE_SCL }}",
               "type": "string"
+            },
+            {
+              "id": "a64c2d7b-f38b-4f4d-9139-e90a12708ed1",
+              "name": "dadosCliente.ReGestor",
+              "value": "={{ $('Coletar Dados Gestor').first().json.body.MatriculaGestor ? $('Coletar Dados Gestor').first().json.body.MatriculaGestor : '' }}",
+              "type": "string"
+            },
+            {
+              "id": "009d32f8-9f8f-4b09-a054-fab08e957b90",
+              "name": "dadosCliente.NomeGestor",
+              "value": "={{ $('Coletar Dados Gestor').first().json.body.Gestor ? $('Coletar Dados Gestor').first().json.body.Gestor : ''}}",
+              "type": "string"
+            },
+            {
+              "id": "ab1330a0-b69c-4d4e-9e86-228b72f54c31",
+              "name": "dadosCliente.CelularGestor",
+              "value": "={{ $('Coletar Dados Gestor').first().json.body.CelularGestor ? $('Coletar Dados Gestor').first().json.body.CelularGestor : '' }}",
+              "type": "string"
             }
           ]
         },
@@ -186,8 +210,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1568,
-        1968
+        -1456,
+        2128
       ],
       "id": "521c45f9-22ca-4a22-8dd6-c03196a6811f",
       "name": "coletar dados usuario",
@@ -229,8 +253,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        816,
-        96
+        2240,
+        -288
       ],
       "id": "80301828-d2a7-49d7-9317-fe3cf5d75126",
       "name": "If"
@@ -245,8 +269,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -4832,
-        1344
+        -4896,
+        1488
       ],
       "id": "8e3a8f69-518a-4a59-9028-3d048e8526ee",
       "name": "Webhook",
@@ -257,8 +281,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        2288,
-        3296
+        3792,
+        3472
       ],
       "id": "d9815fc2-90f6-48cd-b807-5fae0327e8c4",
       "name": "Think"
@@ -267,12 +291,12 @@
       "parameters": {
         "content": "Consultar Bando db_contas",
         "height": 656,
-        "width": 848
+        "width": 1264
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1680,
-        1536
+        -1760,
+        1712
       ],
       "typeVersion": 1,
       "id": "8ffa2558-ea21-4e74-940b-62defd3bc804",
@@ -307,8 +331,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -960,
-        1664
+        -864,
+        1824
       ],
       "id": "18afdfe7-8363-4a3a-9aaf-77c20c6d193e",
       "name": "If3",
@@ -321,8 +345,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -4608,
-        1472
+        -4672,
+        1616
       ],
       "id": "1cb5e9b4-6166-4d54-8acc-aca86dc660a1",
       "name": "Tratar número",
@@ -332,14 +356,14 @@
     {
       "parameters": {
         "content": "Inicio",
-        "height": 560,
-        "width": 816,
+        "height": 432,
+        "width": 800,
         "color": 6
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -1680,
-        896
+        -1776,
+        1216
       ],
       "typeVersion": 1,
       "id": "b683087a-6de2-4d36-b2bd-81d16e24378b",
@@ -509,8 +533,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        -112,
-        1536
+        592,
+        1680
       ],
       "id": "6eb21237-fde9-4671-984e-30724cfb49c6",
       "name": "Gerenciar direcionamento",
@@ -526,8 +550,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -704,
-        1056
+        0,
+        1264
       ],
       "typeVersion": 1,
       "id": "8b11589c-7884-46f9-b5b7-d9ba91ce97f6",
@@ -560,8 +584,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        624,
-        320
+        2016,
+        -64
       ],
       "id": "26c98214-d88b-46e3-9cf3-4753cbf9400a",
       "name": "If1"
@@ -578,8 +602,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        1584,
-        3920
+        3328,
+        4144
       ],
       "id": "82434df7-dc5d-4251-bc9a-2828746d563e",
       "name": "Colaborador Não Encontrado",
@@ -604,6 +628,12 @@
               "type": "string"
             },
             {
+              "id": "1e7b55d7-7742-4118-81b8-12ebe06020ef",
+              "name": "dadosCliente.Celular",
+              "value": "={{ $('coletar dados da conversa').first().json.phoneNumber }}",
+              "type": "string"
+            },
+            {
               "id": "97d8db74-5db5-4924-b230-20718dc5805b",
               "name": "dadosCliente.Status",
               "value": "={{ $('API Identidade').first().json.body.colaborador }}",
@@ -614,6 +644,30 @@
               "name": "dadosCliente.Situacao",
               "value": "={{ $('API Identidade').first().json.body.situacao }}",
               "type": "string"
+            },
+            {
+              "id": "48e78ff2-6916-4f9b-b4b4-ef58c06d63d5",
+              "name": "dadosCliente.ReGestor",
+              "value": "={{ $('Coletar Dados Gestor1').first().json.body.MatriculaGestor ? $('Coletar Dados Gestor1').first().json.body.MatriculaGestor : ''}}",
+              "type": "string"
+            },
+            {
+              "id": "568faa70-8924-4afe-a588-51192442b797",
+              "name": "dadosCliente.NomeGestor",
+              "value": "={{ $('Coletar Dados Gestor1').first().json.body.Gestor ? $('Coletar Dados Gestor1').first().json.body.Gestor : '' }}",
+              "type": "string"
+            },
+            {
+              "id": "dc81495f-10ac-4921-9a0a-e81ddefe3f1e",
+              "name": "dadosCliente.CelularGestor",
+              "value": "={{ $('Coletar Dados Gestor1').first().json.body.CelularGestor ? $('Coletar Dados Gestor1').first().json.body.CelularGestor : ''}}",
+              "type": "string"
+            },
+            {
+              "id": "36c5e1ff-16ea-4123-a576-1edde34d10b0",
+              "name": "dadosCliente.Unidade",
+              "value": "={{ $('Coletar Dados Gestor1').first().json.body.Base ? $('Coletar Dados Gestor1').first().json.body.Base : '' }}",
+              "type": "string"
             }
           ]
         },
@@ -622,8 +676,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        624,
-        592
+        2288,
+        208
       ],
       "id": "a7f55bfc-6905-491d-b601-632b67746b55",
       "name": "coletar dados usuario1",
@@ -638,8 +692,8 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        2288,
-        3104
+        3792,
+        3280
       ],
       "id": "62b97e3c-9f89-405d-801c-8096cfbb8bfa",
       "name": "AI Nao Localizado"
@@ -651,8 +705,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        624,
-        96
+        1984,
+        -288
       ],
       "id": "d414faf4-73a1-4bd6-a4e1-092ab44716ba",
       "name": "Tratar somente Numeros",
@@ -666,15 +720,15 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1808,
-        1792
+        3424,
+        1888
       ],
       "id": "466ca055-4d86-45e0-809f-edbf28e83745",
       "name": "Embeddings OpenAI1",
       "credentials": {
         "openAiApi": {
-          "id": "TAeBQjpAim1cMqIi",
-          "name": "OpenAi account"
+          "id": "gRGI4xnZA0lZ77gz",
+          "name": "OpenAi Pessoal"
         }
       }
     },
@@ -691,15 +745,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        2224,
-        1728
+        3824,
+        1792
       ],
       "id": "79fd1853-7707-46c3-9358-a0953ab73d25",
       "name": "OpenAI Chat Model2",
       "credentials": {
         "openAiApi": {
-          "id": "TAeBQjpAim1cMqIi",
-          "name": "OpenAi account"
+          "id": "gRGI4xnZA0lZ77gz",
+          "name": "OpenAi Pessoal"
         }
       }
     },
@@ -716,8 +770,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        1888,
-        1664
+        3488,
+        1728
       ],
       "id": "9a36e11d-50fb-4e90-90be-31302eced309",
       "name": "Supabase Vector Store",
@@ -756,8 +810,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1280,
-        80
+        2928,
+        -304
       ],
       "id": "b87dcc44-f39a-4e91-b3d9-6c4b8f558e73",
       "name": "API Identidade",
@@ -800,8 +854,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1152,
-        3168
+        2736,
+        3392
       ],
       "id": "663f85c8-8dd2-4dd4-878f-f21561b16cac",
       "name": "API IcoPass",
@@ -839,8 +893,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1120,
-        2928
+        2704,
+        3152
       ],
       "id": "9c6cac50-83d1-4d96-8a43-060a0c322bd0",
       "name": "If IcoPass"
@@ -852,8 +906,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        832,
-        2928
+        2208,
+        3152
       ],
       "id": "69f8f7e8-bdee-47dd-826d-19221dde5e22",
       "name": "Tratar somente Numeros1",
@@ -896,8 +950,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        560,
-        3504
+        1936,
+        3728
       ],
       "id": "cc8e1083-25cb-4e9b-af1a-d0108d74cd6e",
       "name": "If4"
@@ -910,8 +964,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1.1,
       "position": [
-        2032,
-        1488
+        3632,
+        1552
       ],
       "id": "a8ee12b3-4c0e-4d3c-a567-dfaa11fec4b6",
       "name": "Banco Vetorial"
@@ -923,8 +977,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -2256,
-        1296
+        -2320,
+        1440
       ],
       "id": "0a0dc75e-97f2-434e-b030-6dfabd5b2485",
       "name": "Wait",
@@ -958,8 +1012,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -2736,
-        1664
+        -2800,
+        1808
       ],
       "id": "f74a668a-eaff-4a14-bcd2-97fc2b59fe87",
       "name": "If5"
@@ -969,8 +1023,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -2464,
-        1856
+        -2528,
+        2000
       ],
       "id": "0a2b3322-fdb5-4058-8bca-921e93d20082",
       "name": "No Operation, do nothing"
@@ -992,8 +1046,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2464,
-        1648
+        -2528,
+        1792
       ],
       "id": "a8475cd6-3bf8-44f6-9dde-094fd9ccecf8",
       "name": "Set Buffer Mensagens"
@@ -1021,8 +1075,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2720,
-        1296
+        -2784,
+        1440
       ],
       "id": "2637df29-75f6-4486-9f31-be515d8c14ff",
       "name": "Coletar Msg ID"
@@ -1036,8 +1090,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -2864,
-        1072
+        -2928,
+        1216
       ],
       "typeVersion": 1,
       "id": "9c9ff505-f453-491e-939c-a687c5fe7896",
@@ -1055,8 +1109,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        1984,
-        2960
+        3488,
+        3136
       ],
       "id": "1f05edf0-a605-4eaa-a63e-455d3c321d26",
       "name": "Acesso IcoPass",
@@ -1079,15 +1133,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1952,
-        320
+        3488,
+        -64
       ],
       "id": "fe9aba7d-fc73-4ef8-ba71-c932decc727e",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": "TAeBQjpAim1cMqIi",
-          "name": "OpenAi account"
+          "id": "gRGI4xnZA0lZ77gz",
+          "name": "OpenAi Pessoal"
         }
       }
     },
@@ -1100,8 +1154,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2112,
-        384
+        3648,
+        0
       ],
       "id": "e8694f71-9e55-45ae-a499-92474b39a2c8",
       "name": "Google Gemini Chat Atendimento1",
@@ -1117,8 +1171,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        2336,
-        384
+        3872,
+        0
       ],
       "id": "496fc450-b937-47dc-aa4f-56bf84c22c7a",
       "name": "Think1"
@@ -1138,15 +1192,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1168,
-        4208
+        3200,
+        4432
       ],
       "id": "9917dda5-0159-467b-8c19-5717d2cdf447",
       "name": "OpenAI Chat Model3",
       "credentials": {
         "openAiApi": {
-          "id": "TAeBQjpAim1cMqIi",
-          "name": "OpenAi account"
+          "id": "gRGI4xnZA0lZ77gz",
+          "name": "OpenAi Pessoal"
         }
       }
     },
@@ -1159,8 +1213,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        1584,
-        4192
+        3328,
+        4368
       ],
       "id": "5db0ddfb-47a3-4707-ba00-ac3c000864f4",
       "name": "Google Gemini Chat Atendimento2",
@@ -1176,8 +1230,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        1824,
-        4240
+        3568,
+        4400
       ],
       "id": "5fd9b6d5-afcc-46b7-aae3-df37879d1d99",
       "name": "Think2"
@@ -1197,15 +1251,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1024,
-        1520
+        2688,
+        1296
       ],
       "id": "a4e93720-a622-4270-98cf-9affed738fc5",
       "name": "OpenAI Chat Model4",
       "credentials": {
         "openAiApi": {
-          "id": "TAeBQjpAim1cMqIi",
-          "name": "OpenAi account"
+          "id": "gRGI4xnZA0lZ77gz",
+          "name": "OpenAi Pessoal"
         }
       }
     },
@@ -1218,8 +1272,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        1392,
-        1568
+        2896,
+        1264
       ],
       "id": "ad2fed01-88ba-48fb-b0cc-c99f22111408",
       "name": "Google Gemini Chat Atendimento3",
@@ -1235,8 +1289,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        1792,
-        1472
+        3312,
+        1280
       ],
       "id": "c8e5075c-ba63-4dfc-accf-3c319188d0ef",
       "name": "Think3"
@@ -1244,14 +1298,14 @@
     {
       "parameters": {
         "content": "Verificar Usuário",
-        "height": 1088,
-        "width": 2176,
+        "height": 1136,
+        "width": 2320,
         "color": 7
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        448,
-        48
+        1776,
+        -320
       ],
       "typeVersion": 1,
       "id": "d0d43277-10b8-4077-8c66-08acbcc4d707",
@@ -1266,8 +1320,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        480,
-        3856
+        1808,
+        4080
       ],
       "typeVersion": 1,
       "id": "9d62e119-4d1f-47a7-b879-dd8dabd49e7f",
@@ -1276,14 +1330,14 @@
     {
       "parameters": {
         "content": "Atendimento",
-        "height": 688,
-        "width": 2192,
+        "height": 1296,
+        "width": 2336,
         "color": 7
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        480,
-        1248
+        1744,
+        880
       ],
       "typeVersion": 1,
       "id": "44eea021-c3c0-4a2c-84f4-aea5aa86f780",
@@ -1298,8 +1352,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        464,
-        2848
+        1792,
+        3072
       ],
       "typeVersion": 1,
       "id": "75e1d581-7dff-4682-b989-11fcf2c9efdb",
@@ -1310,8 +1364,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        2432,
-        320
+        3968,
+        -64
       ],
       "id": "d62e9bf6-ce10-491a-8f79-15338129f36f",
       "name": "Calculator"
@@ -1347,8 +1401,8 @@
       "type": "@n8n/n8n-nodes-langchain.guardrails",
       "typeVersion": 1,
       "position": [
-        -4640,
-        1776
+        -4704,
+        1920
       ],
       "id": "2bf80890-d462-4210-ba70-15ade416f302",
       "name": "Guardrails"
@@ -1367,8 +1421,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        -4752,
-        1936
+        -4816,
+        2080
       ],
       "id": "f426fa65-a811-4821-b4fe-536bf3917710",
       "name": "OpenAI Chat Model5",
@@ -1384,8 +1438,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -4256,
-        1920
+        -4320,
+        2064
       ],
       "id": "321b6a39-bc1e-43d4-9c52-6b20438bfa8e",
       "name": "No Operation, do nothing1"
@@ -1408,8 +1462,8 @@
       "type": "@n8n/n8n-nodes-langchain.guardrails",
       "typeVersion": 1,
       "position": [
-        3600,
-        1408
+        6960,
+        1760
       ],
       "id": "03cb2113-1589-43a2-9176-1fc1ea6d6399",
       "name": "Guardrails1"
@@ -1500,8 +1554,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        -4176,
-        1440
+        -4240,
+        1584
       ],
       "id": "33b5b50f-32fd-41c1-bbc3-5ede0883442a",
       "name": "Switch",
@@ -1524,8 +1578,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3552,
-        1152
+        -3616,
+        1296
       ],
       "id": "ca7b83a9-8d7d-4004-9908-ef34d30867d5",
       "name": "Mensagem"
@@ -1547,8 +1601,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3872,
-        1472
+        -3936,
+        1616
       ],
       "id": "2e21f48b-86fb-4935-91da-92d335fcccab",
       "name": "Mensagem Audio"
@@ -1563,8 +1617,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -3664,
-        1472
+        -3728,
+        1616
       ],
       "id": "5f8a9813-63c5-4246-bef5-e07b57117a08",
       "name": "HTTP Request"
@@ -1578,8 +1632,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2,
       "position": [
-        -3456,
-        1472
+        -3520,
+        1616
       ],
       "id": "3c2ad423-5874-4bff-bae8-b71675fefae7",
       "name": "Transcribe a recording",
@@ -1607,8 +1661,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3248,
-        1472
+        -3312,
+        1616
       ],
       "id": "f8b7eca4-cb32-4f1b-8a85-172a6cfc0e59",
       "name": "Edit Fields"
@@ -1630,8 +1684,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3840,
-        1728
+        -3904,
+        1872
       ],
       "id": "df8dad95-0d23-4fd3-9e5a-f75a2ef6e14d",
       "name": "Mensagem Imagem"
@@ -1653,8 +1707,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2,
       "position": [
-        -3568,
-        1728
+        -3632,
+        1872
       ],
       "id": "51e97a1d-4bbf-43b7-860f-c50d496f68c6",
       "name": "Analyze image",
@@ -1682,8 +1736,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3328,
-        1728
+        -3392,
+        1872
       ],
       "id": "b24228c8-da84-4663-944f-c8a0e12e4c37",
       "name": "Edit Fields1"
@@ -1716,8 +1770,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -1376,
-        1024
+        -1408,
+        1312
       ],
       "id": "94bb2893-3bef-46a2-aca2-f4500bada06c",
       "name": "If6",
@@ -1734,8 +1788,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -4944,
-        1072
+        -5008,
+        1216
       ],
       "typeVersion": 1,
       "id": "06f44719-e41c-4912-a620-04599327c927",
@@ -1746,8 +1800,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -3792,
-        2032
+        -3856,
+        2176
       ],
       "id": "8840a87f-7b20-4ba1-a8dd-f2e6ab174362",
       "name": "No Operation, do nothing2"
@@ -1773,8 +1827,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        3648,
-        1824
+        7248,
+        2160
       ],
       "id": "b40cb2ec-ea95-4bf2-95dc-dd42c79a8fdd",
       "name": "Response Message Zapster"
@@ -1785,8 +1839,8 @@
       "name": "Replace Me",
       "typeVersion": 1,
       "position": [
-        4048,
-        2064
+        7648,
+        2400
       ],
       "id": "aebf4baa-8322-46df-af62-941cc7f18c44"
     },
@@ -1797,8 +1851,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        3184,
-        1664
+        6784,
+        2000
       ],
       "id": "b26f9895-5f90-4eb2-886e-455c37ed95a0",
       "name": "Loop Over Items",
@@ -1811,8 +1865,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2960,
-        1664
+        6560,
+        2000
       ],
       "id": "ffc9bf0a-a640-4490-a0db-1be5a8392b3d",
       "name": "Code in JavaScript",
@@ -1825,8 +1879,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        3856,
-        1920
+        7456,
+        2256
       ],
       "id": "f236db9d-568d-4679-b331-8df016dd4689",
       "name": "Wait1",
@@ -1842,8 +1896,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2064,
-        1296
+        -2128,
+        1440
       ],
       "id": "00414b74-7991-44d1-a8c0-c6f0577f31e8",
       "name": "Coletar Buffer Mensagem",
@@ -1864,8 +1918,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2480,
-        1296
+        -2544,
+        1440
       ],
       "id": "5ce013e4-30ba-4f62-bb02-6286b33ab7ad",
       "name": "Set Buffer Mensagem",
@@ -1884,8 +1938,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2048,
-        1648
+        -2112,
+        1792
       ],
       "id": "7b5a919e-19c2-4b23-a1cc-cdf93760336d",
       "name": "Delete Buffer Mensagem",
@@ -1907,8 +1961,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2256,
-        1648
+        -2320,
+        1792
       ],
       "id": "b3a90139-3833-4f6d-a698-ef36d2f680f6",
       "name": "Mensagem atual",
@@ -1929,8 +1983,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1584,
-        1024
+        -1616,
+        1312
       ],
       "id": "70ff0a78-0e15-4fe1-b6f6-6c92aa9354b0",
       "name": "Consultar Status",
@@ -1944,94 +1998,6 @@
     },
     {
       "parameters": {
-        "tableId": "registroAtendimento",
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "sessionId",
-              "fieldValue": "={{ $('coletar dados da conversa').first().json.session }}"
-            },
-            {
-              "fieldId": "mensagemAtual",
-              "fieldValue": "={{ $('Set Buffer Mensagens').first().json.messageBuffer }}"
-            },
-            {
-              "fieldId": "statusAtendimento",
-              "fieldValue": "inicio_conversa"
-            },
-            {
-              "fieldId": "telefoneContato",
-              "fieldValue": "={{ $('coletar dados da conversa').first().json.phoneNumber }}"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        -1056,
-        1232
-      ],
-      "id": "d65566c1-6e61-42c0-83f0-fc73a71d8361",
-      "name": "Criar Registro",
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "Z179aOzdGDkmnopp",
-          "name": "Supabase account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "tableId": "registroAtendimento",
-        "matchType": "allFilters",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "sessionId",
-              "condition": "eq",
-              "keyValue": "={{ $('coletar dados da conversa').first().json.session }}"
-            },
-            {
-              "keyName": "statusAtendimento",
-              "condition": "neq",
-              "keyValue": "finalizada"
-            }
-          ]
-        },
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "mensagemAtual",
-              "fieldValue": "={{ $('Set Buffer Mensagens').first().json.messageBuffer }}"
-            },
-            {
-              "fieldId": "statusAtendimento",
-              "fieldValue": "={{ $('Consultar Status').first().json.statusAtendimento}}"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        -976,
-        1008
-      ],
-      "id": "c4cfac7b-ad95-439a-91ab-899c23126fe8",
-      "name": "Update Registro",
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "Z179aOzdGDkmnopp",
-          "name": "Supabase account"
-        }
-      }
-    },
-    {
-      "parameters": {
         "operation": "set",
         "key": "={{ $('coletar dados da conversa').first().json.session }}_message",
         "expire": true,
@@ -2040,8 +2006,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        528,
-        976
+        2016,
+        608
       ],
       "id": "9c501e36-93f7-438e-913d-5197d2b22d2f",
       "name": "Limpar Mensagem",
@@ -2063,8 +2029,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1632,
-        1664
+        -1536,
+        1824
       ],
       "id": "86850dfc-f72a-4481-b4ad-fa2d8ef5632c",
       "name": "Primeira Mensagem",
@@ -2087,8 +2053,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1536,
-        112
+        3248,
+        -272
       ],
       "id": "e8a31909-45bb-4d4e-a3f2-9c0a28bf0e8a",
       "name": "Coletar Mensagem Verificacao",
@@ -2113,8 +2079,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        912,
-        1280
+        2080,
+        992
       ],
       "id": "d9114516-8250-4b29-9f64-12b6565e0638",
       "name": "Coletar Mensagem Atendimento",
@@ -2139,8 +2105,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1472,
-        2912
+        3056,
+        3136
       ],
       "id": "40ebe27e-1220-4df3-9f1f-c54bad629f7e",
       "name": "Coletar Mensagem IcoPass",
@@ -2163,8 +2129,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        912,
-        3920
+        2656,
+        4144
       ],
       "id": "7015425f-0b1a-4482-b4ab-c031c3bfded2",
       "name": "Coletar Mensagem Nao Encontrado",
@@ -2198,8 +2164,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        832,
-        3168
+        2208,
+        3392
       ],
       "id": "06be9b54-b214-4224-89b0-e6f5df86ebe1",
       "name": "Coletar Token",
@@ -2217,8 +2183,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        544,
-        3168
+        1920,
+        3392
       ],
       "id": "df9091e7-0512-435d-b194-5dc60a645adb",
       "name": "Coletar Matricula Usuario",
@@ -2242,8 +2208,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -992,
-        1968
+        -656,
+        2128
       ],
       "id": "3416f614-8bd6-4a91-a2e2-eeec15ff9e53",
       "name": "Setar Nome Colaborador",
@@ -2265,8 +2231,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1072,
-        592
+        2928,
+        208
       ],
       "id": "3c01a91b-d742-4dd8-b5a3-3b4669abe4be",
       "name": "Setar Matricula",
@@ -2290,8 +2256,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        848,
-        592
+        2720,
+        208
       ],
       "id": "0cf48a51-6372-4a0d-9a98-6cdb25581c3a",
       "name": "Setar Nome",
@@ -2314,8 +2280,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1504,
-        3520
+        3088,
+        3744
       ],
       "id": "5e08329d-b013-4f7e-9ab6-f3f863d0c02d",
       "name": "Resgatar Mensagem Inicial",
@@ -2337,8 +2303,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1776,
-        3520
+        3312,
+        3744
       ],
       "id": "42f75d03-6bc8-464e-8962-98eba05b0a4c",
       "name": "Mensagem atual1",
@@ -2361,8 +2327,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1344,
-        1280
+        2576,
+        992
       ],
       "id": "08590d7a-8cf5-4bbb-9a62-588a936897a2",
       "name": "Coletar Nome Usuario",
@@ -2446,8 +2412,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -4400,
-        1472
+        -4464,
+        1616
       ],
       "id": "3f470f38-fced-437d-962f-5853ec8796f7",
       "name": "coletar dados da conversa",
@@ -2463,8 +2429,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        2240,
-        336
+        3776,
+        -48
       ],
       "id": "50f138b8-b21e-41d4-b5cb-c51671ff0ff6",
       "name": "Redis Chat Memory",
@@ -2478,15 +2444,15 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('coletar dados da conversa').first().json.session }}_memoryAtendimento",
+        "sessionKey": "={{ $('coletar dados da conversa').first().json.session }}_memory",
         "sessionTTL": 1800,
         "contextWindowLength": 40
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        1648,
-        1536
+        3008,
+        1280
       ],
       "id": "6c183ca3-634f-4035-9d5f-5cf34f700554",
       "name": "Redis Chat Memory1",
@@ -2507,8 +2473,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        2096,
-        3312
+        3600,
+        3488
       ],
       "id": "a5dde1da-790a-4d65-b2b9-47929d0ca11b",
       "name": "Redis Chat Memory2",
@@ -2529,8 +2495,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        1712,
-        4304
+        3456,
+        4448
       ],
       "id": "64d5698b-98a6-45cf-83b8-be0e76df1700",
       "name": "Redis Chat Memory3",
@@ -2550,74 +2516,12 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        2912,
-        1376
+        6464,
+        1728
       ],
       "typeVersion": 1,
       "id": "94947e47-e743-434b-afb9-7430a73b6c69",
       "name": "Sticky Note2"
-    },
-    {
-      "parameters": {
-        "operation": "get",
-        "propertyName": "memoryHist",
-        "key": "={{ $('coletar dados da conversa').item.json.session }}_memory",
-        "keyType": "list",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.redis",
-      "typeVersion": 1,
-      "position": [
-        3616,
-        1632
-      ],
-      "id": "9ad4fca2-a551-4a09-9700-750950dca513",
-      "name": "Get Memory",
-      "credentials": {
-        "redis": {
-          "id": "uUviyg2VYvUsG0xc",
-          "name": "Redis account"
-        }
-      },
-      "onError": "continueRegularOutput"
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "tableId": "registroAtendimento",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "sessionId",
-              "condition": "eq",
-              "keyValue": "={{ $('coletar dados da conversa').item.json.session }}"
-            }
-          ]
-        },
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "historicoConversa",
-              "fieldValue": "={{ $('Get Memory').item.json.memoryHist }}"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
-      "position": [
-        3840,
-        1632
-      ],
-      "id": "1eefa5c5-1dee-468c-8cca-d9ead0abdad7",
-      "name": "Historico de Conversa",
-      "credentials": {
-        "supabaseApi": {
-          "id": "Z179aOzdGDkmnopp",
-          "name": "Supabase account"
-        }
-      },
-      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
@@ -2636,8 +2540,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1536,
-        3344
+        3056,
+        3552
       ],
       "id": "c2709730-0662-4f4a-9c3f-3ff0cb40b9ea",
       "name": "Retorno API"
@@ -2654,8 +2558,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        560,
-        2928
+        1936,
+        3152
       ],
       "id": "fd365afc-2377-46d3-a4c0-657c0b259528",
       "name": "Coletar IcoPass Token",
@@ -2696,8 +2600,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3376,
-        1840
+        6976,
+        2176
       ],
       "id": "421857bb-2d99-47de-abcb-30a1cb5c46c6",
       "name": "If2"
@@ -2707,8 +2611,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        3648,
-        2048
+        7248,
+        2384
       ],
       "id": "9baa8ed4-c11d-45cf-838c-cc1faae84147",
       "name": "No Operation, do nothing3"
@@ -2718,8 +2622,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        2192,
-        3392
+        3696,
+        3568
       ],
       "id": "3ed1e7ed-2869-4d83-bf5c-78f24cc6ac9f",
       "name": "Calculator1"
@@ -2735,8 +2639,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1456,
-        1664
+        -1360,
+        1824
       ],
       "id": "33c22cba-0909-4fa2-bef2-079abe869a0d",
       "name": "Status Inicial",
@@ -2757,8 +2661,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -448,
-        1600
+        256,
+        1744
       ],
       "id": "9fed9b6e-b88a-4731-b3b7-e6ed8dad78ed",
       "name": "Status direcionamento",
@@ -2780,8 +2684,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1168,
-        1968
+        -848,
+        2128
       ],
       "id": "441e6df2-3948-4849-8696-9389b8116051",
       "name": "Status Atendimento",
@@ -2803,8 +2707,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1072,
-        304
+        2528,
+        -80
       ],
       "id": "3732436d-5b09-4811-8048-939d2d0d835d",
       "name": "Nao Localizado",
@@ -2826,8 +2730,8 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        2512,
-        3280
+        4016,
+        3456
       ],
       "id": "f421417e-bd0e-4bc7-acd7-875fcf993abb",
       "name": "Status inicio_conversa",
@@ -2835,49 +2739,6 @@
         "redis": {
           "id": "uUviyg2VYvUsG0xc",
           "name": "Redis account"
-        }
-      }
-    },
-    {
-      "parameters": {
-        "operation": "update",
-        "tableId": "registroAtendimento",
-        "matchType": "allFilters",
-        "filters": {
-          "conditions": [
-            {
-              "keyName": "sessionId",
-              "condition": "eq",
-              "keyValue": "={{ $('coletar dados da conversa').first().json.session }}"
-            },
-            {
-              "keyName": "statusAtendimento",
-              "condition": "neq",
-              "keyValue": "finalizada"
-            }
-          ]
-        },
-        "fieldsUi": {
-          "fieldValues": [
-            {
-              "fieldId": "statusAtendimento",
-              "fieldValue": "inicio_conversa"
-            }
-          ]
-        }
-      },
-      "type": "n8n-nodes-base.supabaseTool",
-      "typeVersion": 1,
-      "position": [
-        2752,
-        3280
-      ],
-      "id": "26f6a423-feba-4da5-a797-ad5c514d2499",
-      "name": "Status inicio_conversa1",
-      "credentials": {
-        "supabaseApi": {
-          "id": "Z179aOzdGDkmnopp",
-          "name": "Supabase account"
         }
       }
     },
@@ -2892,8 +2753,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1264,
-        3520
+        2848,
+        3744
       ],
       "id": "994dc62a-4edd-42e5-88e6-30cdf7f707b5",
       "name": "Status Atendimento1",
@@ -2912,8 +2773,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1936,
-        3920
+        3680,
+        4144
       ],
       "id": "92109703-ea3b-4287-b2ab-f48ba2ae20a8",
       "name": "Reset Status",
@@ -2933,26 +2794,24 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -4384,
-        2544
+        -4448,
+        2688
       ],
       "id": "ad2dd85e-0637-48fb-837a-01c55ac82fde",
-      "name": "HTTP Request1",
-      "disabled": true
+      "name": "HTTP Request1"
     },
     {
       "parameters": {
-        "command": "curl -X POST 'https://api.telegram.org/bot8546416561:AAFTcJQIRWVc7yXOcuef_1paenb7qAdjeJk/setWebhook'  -d 'url=https://gates.icomon.com.vc/webhook-test/63cce62c-4eaa-40eb-88e0-cbf2fa2f35aa/webhook'"
+        "command": "curl -X POST 'https://api.telegram.org/bot8546416561:AAFTcJQIRWVc7yXOcuef_1paenb7qAdjeJk/setWebhook'  -d 'url=https://gates.icomon.com.vc/webhook/63cce62c-4eaa-40eb-88e0-cbf2fa2f35aa/webhook'"
       },
       "type": "n8n-nodes-base.executeCommand",
       "typeVersion": 1,
       "position": [
-        -4176,
-        2544
+        -4240,
+        2688
       ],
       "id": "9dd9012c-fcd7-4e1e-a9b2-2aa18527d42a",
-      "name": "Execute Command",
-      "disabled": true
+      "name": "Execute Command"
     },
     {
       "parameters": {
@@ -2962,8 +2821,8 @@
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        -1296,
-        1664
+        -1200,
+        1824
       ],
       "id": "e3084cfb-dc99-4594-8950-701af8225be9",
       "name": "Criar Registro1",
@@ -2972,18 +2831,19 @@
           "id": "d1VJXdOhxYJikLtU",
           "name": "db_Gepaci"
         }
-      }
+      },
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE [db_Gepaci].[dbo].[reports]\n  SET mensagemAtual = '{{ $('Set Buffer Mensagens').first().json.messageBuffer }}',\n    Status = '{{ $('Consultar Status').first().json.statusAtendimento}}'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n\nUPDATE ud\n  SET mensagemAtual = '{{ $('Set Buffer Mensagens').first().json.messageBuffer }}',\n    Status = '{{ $('Consultar Status').first().json.statusAtendimento}}'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        -1168,
-        1008
+        -1200,
+        1296
       ],
       "id": "3ea0f008-6a29-4ab3-af83-3b9e6e1f0341",
       "name": "Update Registro1",
@@ -2997,13 +2857,13 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE [db_Gepaci].[dbo].[reports]\n  SET Status = 'finalizada'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n\t)\n\nUPDATE ud\n  SET Status = 'finalizada'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        864,
-        304
+        2272,
+        -80
       ],
       "id": "e74fad7b-3cd5-4504-84d7-a9bd0b231ebe",
       "name": "Setar Status Finalizado",
@@ -3017,13 +2877,13 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE [db_Gepaci].[dbo].[reports]\n  SET Status = 'atendimento'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n  \nUPDATE ud\n  SET Status = 'atendimento'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        1040,
-        3520
+        2624,
+        3744
       ],
       "id": "44f4fbda-49cc-4854-9572-12bea493935d",
       "name": "Setar Status Atendimento",
@@ -3037,13 +2897,13 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE [db_Gepaci].[dbo].[reports]\n  SET Nome_do_Contato = '{{ $('coletar dados usuario').first().json.dadosCliente.Nome }}',\n    Matricula = '{{ $('coletar dados usuario').first().json.dadosCliente.Re }}',\n    Status = 'atendimento',\n    Unidade = '{{ $('coletar dados usuario').first().json.dadosCliente.Unidade }}'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n\nUPDATE ud\n  SET Nome_do_Contato = '{{ $('coletar dados usuario').first().json.dadosCliente.Nome }}',\n    Matricula = '{{ $('coletar dados usuario').first().json.dadosCliente.Re }}',\n    Status = 'atendimento',\n    Unidade = '{{ $('coletar dados usuario').first().json.dadosCliente.Unidade }}'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        -1360,
-        1968
+        -1040,
+        2128
       ],
       "id": "47534e0d-997e-4a63-8d12-14a0cd50981c",
       "name": "Dados Colaborador1",
@@ -3052,18 +2912,19 @@
           "id": "d1VJXdOhxYJikLtU",
           "name": "db_Gepaci"
         }
-      }
+      },
+      "onError": "continueRegularOutput"
     },
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE [db_Gepaci].[dbo].[reports]\n  SET Status = 'inicio_conversa'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n\nUPDATE ud\n  SET Status = 'inicio_conversa'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSqlTool",
       "typeVersion": 1.1,
       "position": [
-        2384,
-        3376
+        3888,
+        3552
       ],
       "id": "e8aeba0a-d229-4a08-b707-73fa2345ca00",
       "name": "Microsoft SQL",
@@ -3112,8 +2973,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1280,
-        592
+        3248,
+        352
       ],
       "id": "6351684a-0a19-4fd0-9909-4d45be857f63",
       "name": "If7"
@@ -3129,8 +2990,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1552,
-        576
+        3504,
+        336
       ],
       "id": "faff5000-e626-48cf-a427-b6e8d5ea1000",
       "name": "Status Ex Funcionario",
@@ -3144,13 +3005,13 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE [db_Gepaci].[dbo].[reports]\n  SET Status = 'ex_funcionario',\n    Nome_do_Contato = '{{ $('coletar dados usuario1').first().json.dadosCliente.Nome }}',\n    Matricula = '{{ $('coletar dados usuario1').first().json.dadosCliente.Re }}'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n\t)\n\nUPDATE ud\n  SET Status = 'ex_funcionario',\n    Nome_do_Contato = '{{ $('coletar dados usuario1').first().json.dadosCliente.Nome }}',\n    Matricula = '{{ $('coletar dados usuario1').first().json.dadosCliente.Re }}'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        1808,
-        576
+        3696,
+        336
       ],
       "id": "934f7d48-9091-42fe-9429-aa38b9ae90b5",
       "name": "Status Ex Funcionario1",
@@ -3164,13 +3025,13 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE [db_Gepaci].[dbo].[reports]\n  SET Status = 'acesso_icopass',\n    Nome_do_Contato = '{{ $('coletar dados usuario1').first().json.dadosCliente.Nome }}',\n    Matricula = '{{ $('coletar dados usuario1').first().json.dadosCliente.Re }}'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n\nUPDATE ud\n  SET Status = 'acesso_icopass',\n    Nome_do_Contato = '{{ $('coletar dados usuario1').first().json.dadosCliente.Nome }}',\n    Matricula = '{{ $('coletar dados usuario1').first().json.dadosCliente.Re }}',\n    Unidade = '{{ $('coletar dados usuario1').first().json.dadosCliente.Unidade }}'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        1824,
-        784
+        3712,
+        560
       ],
       "id": "cd017c9f-0007-4bc1-a031-884f5740def3",
       "name": "Setar Status IcoPass",
@@ -3192,8 +3053,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1552,
-        784
+        3504,
+        560
       ],
       "id": "d29f9676-8095-4ae3-b8a1-48be340f3121",
       "name": "Status IcoPass",
@@ -3211,15 +3072,15 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1792,
-        2592
+        3152,
+        2848
       ],
       "id": "d0b4c02f-0428-4c94-ae26-310e810abb77",
       "name": "Embeddings OpenAI",
       "credentials": {
         "openAiApi": {
-          "id": "TAeBQjpAim1cMqIi",
-          "name": "OpenAi account"
+          "id": "gRGI4xnZA0lZ77gz",
+          "name": "OpenAi Pessoal"
         }
       }
     },
@@ -3236,15 +3097,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        2208,
-        2528
+        3536,
+        2768
       ],
       "id": "45e65f46-5587-4221-8f3e-ce434f034165",
       "name": "OpenAI Chat Model6",
       "credentials": {
         "openAiApi": {
-          "id": "TAeBQjpAim1cMqIi",
-          "name": "OpenAi account"
+          "id": "gRGI4xnZA0lZ77gz",
+          "name": "OpenAi Pessoal"
         }
       }
     },
@@ -3261,8 +3122,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        1872,
-        2464
+        3200,
+        2704
       ],
       "id": "d107e39d-45bb-42b8-a496-8c7ccaab4406",
       "name": "Supabase Vector Store1",
@@ -3281,8 +3142,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1.1,
       "position": [
-        2016,
-        2288
+        3344,
+        2528
       ],
       "id": "ca699980-9a87-4ea6-ab7d-0e1691735fd8",
       "name": "Banco Vetorial1"
@@ -3302,15 +3163,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        1008,
-        2320
+        2704,
+        2528
       ],
       "id": "23f4430e-867b-4431-a9c8-498f1469c931",
       "name": "OpenAI Chat Model7",
       "credentials": {
         "openAiApi": {
-          "id": "TAeBQjpAim1cMqIi",
-          "name": "OpenAi account"
+          "id": "gRGI4xnZA0lZ77gz",
+          "name": "OpenAi Pessoal"
         }
       }
     },
@@ -3323,8 +3184,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        1376,
-        2368
+        2816,
+        2624
       ],
       "id": "7f93ec64-6fbf-41d1-aee1-739d989da2cc",
       "name": "Google Gemini Chat Atendimento4",
@@ -3340,8 +3201,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        1776,
-        2272
+        3104,
+        2512
       ],
       "id": "e53f1bd9-6791-4ace-a94f-f2e30655126c",
       "name": "Think4"
@@ -3355,8 +3216,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        464,
-        2048
+        1792,
+        2272
       ],
       "typeVersion": 1,
       "id": "c9e7e516-95cd-49bd-b07f-1c414e9d434e",
@@ -3374,8 +3235,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1328,
-        2080
+        2656,
+        2320
       ],
       "id": "b72c4720-0d30-4c2e-be81-88f1cb54fd37",
       "name": "Coletar Nome Usuario1",
@@ -3398,8 +3259,8 @@
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        1632,
-        2336
+        2960,
+        2576
       ],
       "id": "2e5e8f92-c4f8-4ea2-9255-176583243194",
       "name": "Redis Chat Memory4",
@@ -3422,8 +3283,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        896,
-        2080
+        2224,
+        2320
       ],
       "id": "b07e98a8-62b7-414c-897e-55a249c1d223",
       "name": "Coletar Mensagem Ex Funcionario",
@@ -3448,14 +3309,378 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        1728,
-        2080
+        3056,
+        2320
       ],
       "id": "185904fb-c3b3-4555-b9a8-b7d626c5356f",
       "name": "Ex Funionario",
       "notesInFlow": false,
       "alwaysOutputData": false,
       "executeOnce": false
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://gates.icomon.com.vc/webhook/db_siga",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "matricula",
+              "value": "={{ $('Sql Agtesla').first().json.body.RE_SCL }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -1664,
+        2128
+      ],
+      "id": "a81203ec-c500-47b4-9dc8-d9ee3131370c",
+      "name": "Coletar Dados Gestor",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://gates.icomon.com.vc/webhook/db_siga",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "matricula",
+              "value": "={{ $('coletar identificador').first().json.inputIdentity }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2080,
+        208
+      ],
+      "id": "7bc14b93-8acb-42f5-84cf-04dacb074b37",
+      "name": "Coletar Dados Gestor1",
+      "alwaysOutputData": true
+    },
+    {
+      "parameters": {
+        "content": "MCP Funcionalidades Atendimento\n\nTools com ações complementares para o atendimento.",
+        "height": 560,
+        "width": 1344
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        6448,
+        912
+      ],
+      "typeVersion": 1,
+      "id": "a0264716-e89a-408d-abe3-bd23d0a025be",
+      "name": "Sticky Note11"
+    },
+    {
+      "parameters": {
+        "path": "funcionalidades_atendimento"
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
+      "typeVersion": 2,
+      "position": [
+        6944,
+        1024
+      ],
+      "id": "a35f03d4-3e9c-44b1-a6b6-60aef1b36b4b",
+      "name": "MCP Funcionalidades Atendimento",
+      "webhookId": "e5d0c767-cd0e-45db-9531-c2746d31a30e"
+    },
+    {
+      "parameters": {
+        "endpointUrl": "https://gates.icomon.com.vc/mcp/funcionalidades_atendimento",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
+      "typeVersion": 1.2,
+      "position": [
+        3120,
+        1792
+      ],
+      "id": "bbb87eb0-87ef-49c7-8a94-c751c10c9c93",
+      "name": "MCP Client Funcionalidades Atendimento"
+    },
+    {
+      "parameters": {
+        "toolDescription": "Você deve coletar o valor da matricula para que a API possa realizar a consulta do beneficio na base de dados. \n\nApós a consulta, você deve verificar se o colaborador consta na base ou não.",
+        "method": "POST",
+        "url": "https://gates.icomon.com.vc/webhook/db_gestao_solicitacao",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "matricula",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters0_Value', `RE ou matricula coletada ou validada pelas integrações anteriores atrelada a variável 'dadosCliente.Re'. Dado contem 6 dígitos. `, 'string') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.3,
+      "position": [
+        7328,
+        1248
+      ],
+      "id": "e7f09a6b-03aa-4ba2-8ca7-6ce923d324ec",
+      "name": "SQL Verificar Alelo Farmacia"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $('coletar dados da conversa').first().json.session }}_memory",
+        "sessionTTL": 1800,
+        "contextWindowLength": 40
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
+      "typeVersion": 1.5,
+      "position": [
+        3008,
+        1744
+      ],
+      "id": "4a45e6cf-93cc-40ab-a5e3-45491ef2b421",
+      "name": "Redis Tickets Memory",
+      "credentials": {
+        "redis": {
+          "id": "uUviyg2VYvUsG0xc",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "value": "gpt-4.1",
+          "mode": "list",
+          "cachedResultName": "gpt-4.1"
+        },
+        "options": {
+          "temperature": 0.4
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
+      "typeVersion": 1.2,
+      "position": [
+        2720,
+        1728
+      ],
+      "id": "a3f28b83-2768-4f0a-957f-256e0d425ced",
+      "name": "OpenAI Chat Model8",
+      "credentials": {
+        "openAiApi": {
+          "id": "gRGI4xnZA0lZ77gz",
+          "name": "OpenAi Pessoal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {
+          "temperature": 0.4
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        1792
+      ],
+      "id": "f57ae357-f056-4bec-a019-1ca2913b7c8d",
+      "name": "Google Gemini Chat Atendimento5",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "X1oAnEr5jdcC8xz6",
+          "name": "Google Gemini(PaLM) Api account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "IA Gerenciadora de ferramentas.",
+        "text": "={{ $('Coletar Mensagem Atendimento').item.json.mensagemAtual }}",
+        "needsFallback": true,
+        "options": {
+          "systemMessage": "=# ================================================================\n# 🧠 AGENTE “Gê” — INSTRUÇÕES PARA GERENCIAMENTO DE TOOLS\n# ================================================================\n\n# ================================================================\n# 1️⃣ ROLE – Quem é a Gê\n# ================================================================\n\nVocê é uma extensão da **Gê**, atendente virtual do **Gepaci**. Sua função nessa etapa será de identificar as requicições que serão feitas para as funcionalidade no *Tool MCP Client Funcionalidades Atendimento*.\n\n# ================================================================\n# 2️⃣ WORKFLOW \n# ================================================================\n\n- Inicie acionando a Tool Redis para coletar os valores que utilizará no MCP.\n\n- Você não deve dialogar com o usuário. Apenas analisar a demanda e acionar as Tools necessárias para executar a tarefa.\n\n- Deve ser acionada para as ocasiões de:\n\n- *Abertura de Ticket*: Caso o colaborador precise tratar algum assum que não consta na base de conhecimentos ou solicite falar com um atendente humano. Será acionada a Tool 'GLPI Template Geral' dentro do MCP para realizar a abertura do ticker e retornar o número gerado.\n\n- *Consulta de Ticket*: Caso o colaborador queira consultar um chamado, colete o número para realizar a pesquisa na API. O MCP deverá acionar a Tool 'GLPI Search Ticket'.\n\n- *Consulta de bloqueio do benefício Alelo*: Se o colaborador questionar sobre o bloqueio do cartão Alelo Farmacia. O MCP acionará a Tool 'SQL Verificar Alelo Farmacia' para consultar de o benefício está cancelado.\n  Em caso positivo de bloqueio, informe que o mesmo ocorreu por ter ultrapassado o limite de utilização de R$500,00 e que será desbloqueado quando esse débito diminuir."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agentTool",
+      "typeVersion": 2.2,
+      "position": [
+        2896,
+        1536
+      ],
+      "id": "07fb17ea-d8d6-45d5-b24f-8aebe5f649d7",
+      "name": "Gerenciamento de Tools"
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('coletar dados da conversa').first().json.session }}_memoryVariable",
+        "value": "={{ $('coletar dados usuario1').first().json.dadosCliente }}",
+        "expire": true,
+        "ttl": 3600
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        2496,
+        208
+      ],
+      "id": "aa93958f-fad9-403a-b6e3-603e8b9dbe86",
+      "name": "Memory Variables",
+      "credentials": {
+        "redis": {
+          "id": "uUviyg2VYvUsG0xc",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "set",
+        "key": "={{ $('coletar dados da conversa').first().json.session }}_memoryVariable",
+        "value": "={{ $('coletar dados usuario').first().json.dadosCliente }}",
+        "expire": true,
+        "ttl": 3600
+      },
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        -1248,
+        2128
+      ],
+      "id": "1f111264-1efa-4218-aa09-a4725b63b10e",
+      "name": "Memory Variables1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "redis": {
+          "id": "uUviyg2VYvUsG0xc",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "get",
+        "propertyName": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Name', ``, 'string') }}",
+        "key": "={{ $('coletar dados da conversa').first().json.session }}_memoryVariable",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.redisTool",
+      "typeVersion": 1,
+      "position": [
+        3216,
+        1728
+      ],
+      "id": "3ebc069d-7567-4ed4-b5c7-6fd24d77f8a4",
+      "name": "Redis",
+      "credentials": {
+        "redis": {
+          "id": "uUviyg2VYvUsG0xc",
+          "name": "Redis account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "toolDescription": "Você deve coletar dados para abertura de ticket na API GLPI e adicionar cada valor em seu devido argumento/chave. \n\nApós a abertura do chamado, informar o número do ticket gerado. ",
+        "method": "POST",
+        "url": "https://gates.icomon.com.vc/webhook/glpi/create_ticket",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "nomeColaborador",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters0_Value', `Nome do colaborador usado na conversa adicionado na variável 'dadosCliente.Nome'.`, 'string') }}"
+            },
+            {
+              "name": "matricula",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters1_Value', `RE ou matricula coletada ou validada pelas integrações anteriores atrelada a variável 'dadosCliente.Re'. Dado contem 6 dígitos. `, 'string') }}"
+            },
+            {
+              "name": "telefoneColaborador",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters2_Value', `Valor da variável 'phoneNumber' usada na conversa.`, 'string') }}"
+            },
+            {
+              "name": "nomeGestor",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters3_Value', `Nome do gestor foi coletado no banco e armazenada na variável 'dadosCliente.NomeGestor'.`, 'string') }}"
+            },
+            {
+              "name": "telefoneGestor",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters4_Value', `Telefone do gestor coletado no banco e armazenado na variável 'dadosCliente.CelularGestor'.`, 'string') }}"
+            },
+            {
+              "name": "localidade",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters5_Value', `Local de trabalho do colaborador coletado no banco e armazenada na variável 'dadosCliente.Unidade'.`, 'string') }}"
+            },
+            {
+              "name": "matriculaGestor",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters6_Value', `Local de trabalho do colaborador coletado no banco e armazenada na variável 'dadosCliente.ReGestor'.`, 'string') }}"
+            },
+            {
+              "name": "titulo",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters7_Value', `Analise a requisição do colaborador e gere um titulo para ela. Exemplo: Automação - Robôs | Desenvolvimento`, 'string') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.3,
+      "position": [
+        6784,
+        1232
+      ],
+      "id": "2490ef2e-a17f-4e04-80f9-08bf2b7e7b09",
+      "name": "GLPI Template Geral"
+    },
+    {
+      "parameters": {
+        "toolDescription": "=Você deve coletar o ticket para realizar a consulta na API. \n\n- Se o ticket for encontrado, você deve coletar as informações para que o agente possa passar para o colaborador iniciando pelo Status de Atendimento.\n\n- Em caso negativo na busca, informa que o número de ticket informado não foi localizado.",
+        "url": "https://gates.icomon.com.vc/webhook/glpi/search_ticket",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "numeroChamado",
+              "value": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('parameters0_Value', `Número do ticket informado pelo usuário para realizar a pesquisa. `, 'string') }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequestTool",
+      "typeVersion": 4.3,
+      "position": [
+        7072,
+        1248
+      ],
+      "id": "ae5af7f6-e811-4311-98bb-a11e5e53f8d6",
+      "name": "GLPI Search Ticket"
     }
   ],
   "pinData": {},
@@ -3491,7 +3716,7 @@
       "main": [
         [
           {
-            "node": "Dados Colaborador1",
+            "node": "Memory Variables1",
             "type": "main",
             "index": 0
           }
@@ -3549,7 +3774,7 @@
         ],
         [
           {
-            "node": "coletar dados usuario",
+            "node": "Coletar Dados Gestor",
             "type": "main",
             "index": 0
           }
@@ -3631,7 +3856,7 @@
         ],
         [
           {
-            "node": "coletar dados usuario1",
+            "node": "Coletar Dados Gestor1",
             "type": "main",
             "index": 0
           }
@@ -3680,7 +3905,7 @@
       "main": [
         [
           {
-            "node": "Setar Nome",
+            "node": "Memory Variables",
             "type": "main",
             "index": 0
           }
@@ -4293,22 +4518,6 @@
         ]
       ]
     },
-    "Criar Registro": {
-      "main": [
-        []
-      ]
-    },
-    "Update Registro": {
-      "main": [
-        [
-          {
-            "node": "Status direcionamento",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
     "Limpar Mensagem": {
       "main": [
         [
@@ -4518,22 +4727,6 @@
         ]
       ]
     },
-    "Get Memory": {
-      "main": [
-        [
-          {
-            "node": "Historico de Conversa",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Historico de Conversa": {
-      "main": [
-        []
-      ]
-    },
     "Retorno API": {
       "main": [
         [
@@ -4640,11 +4833,6 @@
         ]
       ]
     },
-    "Status inicio_conversa1": {
-      "ai_tool": [
-        []
-      ]
-    },
     "Status Atendimento1": {
       "main": [
         [
@@ -4687,7 +4875,7 @@
       "main": [
         [
           {
-            "node": "Update Registro",
+            "node": "Status direcionamento",
             "type": "main",
             "index": 0
           }
@@ -4909,6 +5097,165 @@
           }
         ]
       ]
+    },
+    "Coletar Dados Gestor": {
+      "main": [
+        [
+          {
+            "node": "coletar dados usuario",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Coletar Dados Gestor1": {
+      "main": [
+        [
+          {
+            "node": "coletar dados usuario1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Ex Funionario": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MCP Client Funcionalidades Atendimento": {
+      "ai_tool": [
+        [
+          {
+            "node": "Gerenciamento de Tools",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SQL Verificar Alelo Farmacia": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Funcionalidades Atendimento",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Tickets Memory": {
+      "ai_memory": [
+        [
+          {
+            "node": "Gerenciamento de Tools",
+            "type": "ai_memory",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Gemini Chat Atendimento5": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Gerenciamento de Tools",
+            "type": "ai_languageModel",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "OpenAI Chat Model8": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Gerenciamento de Tools",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gerenciamento de Tools": {
+      "ai_tool": [
+        [
+          {
+            "node": "Atendimento",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory Variables": {
+      "main": [
+        [
+          {
+            "node": "Setar Nome",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Memory Variables1": {
+      "main": [
+        [
+          {
+            "node": "Dados Colaborador1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis": {
+      "ai_tool": [
+        [
+          {
+            "node": "Gerenciamento de Tools",
+            "type": "ai_tool",
+            "index": 0
+          },
+          {
+            "node": "Atendimento",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI Template Geral": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Funcionalidades Atendimento",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GLPI Search Ticket": {
+      "ai_tool": [
+        [
+          {
+            "node": "MCP Funcionalidades Atendimento",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
@@ -4919,7 +5266,7 @@
     "timeSavedPerExecution": 35,
     "timezone": "America/Sao_Paulo"
   },
-  "versionId": "ebeb6d3e-ed6e-434c-94fd-7ae44577b4d6",
+  "versionId": "32c98d09-2e0a-4925-9d6d-8b8b82c8d2a7",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "c13cee92dfa69db8294a82c6dfa57e3a1199207e843eec919de3f2ec003607aa"
@@ -4927,16 +5274,16 @@
   "id": "Jigl1UburULdx8ub",
   "tags": [
     {
-      "updatedAt": "2025-12-02T17:44:17.488Z",
-      "createdAt": "2025-12-01T14:07:28.553Z",
-      "id": "l1WJO2gYoiZjBRpa",
-      "name": "agent-ia"
-    },
-    {
       "updatedAt": "2025-12-02T17:43:42.671Z",
       "createdAt": "2025-12-02T17:43:42.671Z",
       "id": "DAVqu1ffZ94tmOAL",
       "name": "prod"
+    },
+    {
+      "updatedAt": "2025-12-02T17:44:17.488Z",
+      "createdAt": "2025-12-01T14:07:28.553Z",
+      "id": "l1WJO2gYoiZjBRpa",
+      "name": "agent-ia"
     }
   ]
 }

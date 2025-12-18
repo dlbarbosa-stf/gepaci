@@ -1,0 +1,18 @@
+{
+    "entities_id": 0, // Unica: Icomon Tecnologia
+    "name": "Automação - Robôs | Desenvolvimento", // Título do Ticket
+    "date": "2025-12-15 10:56:36",
+    "closedate": null,
+    "solvedate": null,
+    "status": 1, // 1-Novo , 2-Em andamento (atribuido), 3- Em atendimento (planejado), 4- Pendente, 5-Solucionado, 6-Fechado
+    "requesttypes_id": 1, // Grupo de atendimento,
+    "groups_id_tech": 1, //1-Grupo de atendimento N1, 329-GP - Comunicação - Atendimento
+    "content": "&#60;div&#62;&#60;h1&#62;Dados do formulário&#60;/h1&#62;&#60;h2&#62;Dados do Requerente&#60;/h2&#62;&#60;div&#62;&#60;b&#62;1) Deseja abrir o chamado para outro solicitante? : &#60;/b&#62;Não&#60;/div&#62;&#60;div&#62;&#60;b&#62;2) Insira o RE : &#60;/b&#62;999451&#60;/div&#62;&#60;div&#62;&#60;b&#62;3) Telefone de contato : &#60;/b&#62;11921296268&#60;/div&#62;&#60;div&#62;&#60;b&#62;4) Telefone de contato (Gestor) : &#60;/b&#62;11975481435&#60;/div&#62;&#60;div&#62;&#60;b&#62;5) Gestor responsável : &#60;/b&#62;TALITA DE SOUSA CARASSOLI&#60;/div&#62;&#60;div&#62;&#60;b&#62;6) Localização : &#60;/b&#62;São Paulo &#38;#62; Vila Guilherme&#60;/div&#62;&#60;div&#62;&#60;b&#62;7) Local de trabalho : &#60;/b&#62;Empresa&#60;/div&#62;&#60;div&#62;&#60;b&#62;8) Existe numero de patrimônio : &#60;/b&#62;Não&#60;/div&#62;&#60;div&#62;&#60;b&#62;9) Contrato de locação esta ativo? : &#60;/b&#62;Sim&#60;/div&#62;&#60;div&#62;&#38;nbsp;&#60;/div&#62;&#60;h2&#62;Automação - Robôs&#60;/h2&#62;&#60;div&#62;&#60;b&#62;10) Tipo de solicitação : &#60;/b&#62;Desenvolvimento&#60;/div&#62;&#60;div&#62;&#60;b&#62;11) Preencher as informações : &#60;/b&#62;&#60;table class=\"table\" style=\"width: 100%; height: 70px;\"&#62;\n&#60;thead&#62;\n&#60;tr style=\"height: 33px;\"&#62;\n&#60;th style=\"width: 13.1181%; height: 33px;\" scope=\"col\"&#62;Finalidade do uso&#60;/th&#62;\n&#60;th style=\"width: 11.2008%; height: 33px;\" scope=\"col\"&#62;cargo&#60;/th&#62;\n&#60;th style=\"width: 10.4945%; height: 33px;\" scope=\"col\"&#62;coordenador&#60;/th&#62;\n&#60;th style=\"width: 13.6585%; height: 33px;\" scope=\"col\"&#62;gerente&#60;/th&#62;\n&#60;th style=\"width: 8.87992%; height: 33px;\" scope=\"col\"&#62;Anexar aprovação do gerente&#60;/th&#62;\n&#60;/tr&#62;\n&#60;/thead&#62;\n&#60;tbody&#62;\n&#60;tr style=\"height: 37px;\"&#62;\n&#60;th style=\"width: 13.1181%; height: 37px;\" scope=\"row\"&#62; &#60;/th&#62;\n&#60;td style=\"width: 11.2008%; height: 37px;\"&#62; &#60;/td&#62;\n&#60;td style=\"width: 10.4945%; height: 37px;\"&#62; &#60;/td&#62;\n&#60;td style=\"width: 12.7144%; height: 37px;\"&#62; &#60;/td&#62;\n&#60;td style=\"width: 9.28355%; height: 37px;\"&#62; &#60;/td&#62;\n&#60;/tr&#62;\n&#60;/tbody&#62;\n&#60;/table&#62;&#60;/div&#62;&#60;div&#62;&#60;b&#62;12) Anexo : &#60;/b&#62;Nenhum documento anexado&#60;/div&#62;&#60;/div&#62;", // Script do Ticket
+    "urgency": 3,
+    "impact": 3,
+    "priority": 3,
+    "itilcategories_id": 0,
+    "type": 2, // 1-Requisição, 2-Incident
+    // "locations_id": 2, // ID da Base / Localidade
+    "global_validation": 1
+}

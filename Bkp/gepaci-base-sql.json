@@ -3,82 +3,310 @@
   "nodes": [
     {
       "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM VW_LINHAS_GENESIS_SCL WHERE LINHA_GENESIS = '{{ $json.body.json.phoneNumber }}';\n"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        -176,
+        -16
+      ],
+      "id": "fb774662-a0b8-413c-8f8c-3523b0cbea1a",
+      "name": "Microsoft SQL",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "f6wiWHvixdbJJFY1",
+          "name": "db_Contas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT \n\t\t\t[SRA].[RA_MAT] AS Matricula,\n\t\t\t[SRA].[RA_NOME] AS NomeColaborador,\n\t\t\t[SRA].[RA_DESCRE_] AS Base,\n\t\t\t[SRA].[RA_XMGER2] AS MatriculaGestor,\n\t\t\t[SRA].[RA_ICOGER2]  AS Gestor,\n\t\t\t\tCONCAT([G].[RA_DDDCELU],[G].[RA_NUMCELU]) CelularGestor\n\t\tFROM [db_Siga].[DBO].[SRA020] SRA\n\n\t\tINNER JOIN (SELECT [RA_NOME], [RA_SITATUAL], [RA_MAT],[RA_DDDCELU],[RA_NUMCELU] FROM [db_Siga].[DBO].[SRA020]) G\n\t\t\tON [SRA].[RA_MAT] = '{{ $json.body.matricula }}'\n\t\t\t AND\n\t\t\t  [G].[RA_MAT] = [SRA].[RA_XMGER2]\n\t\t\t AND\n\t\t\t  [SRA].[RA_SITATUAL] NOT IN (SELECT [SRA].[RA_SITATUAL] FROM [db_Siga].[DBO].[SRA020] WHERE [SRA].[RA_MAT] = '{{ $json.body.json.matricula }}' AND [SRA].[RA_SITATUAL]  = 'D')\n\t\t\t AND\n\t\t\t  [G].[RA_SITATUAL] NOT IN (SELECT [G].[RA_SITATUAL] FROM [db_Siga].[DBO].[SRA020] WHERE [G].[RA_NOME] = [SRA].[RA_ICOGER2] AND [G].[RA_SITATUAL]  = 'D')\n\t\t\t  \t\t\t  \n\tUNION ALL\n\n\t\t\tSELECT \n\t\t\t[SRA].[RA_MAT] AS Matricula,\n\t\t\t[SRA].[RA_NOME] AS NomeColaborador,\n\t\t\t[SRA].[RA_DESCRE_] AS Base,\n\t\t\t[SRA].[RA_XMGER2] AS MatriculaGestor,\n\t\t\t[SRA].[RA_ICOGER2]  AS Gestor,\n\t\t\tCONCAT([G].[RA_DDDCELU],[G].[RA_NUMCELU]) CelularGestor\n\t\tFROM [db_Siga].[DBO].[SRA370] SRA\n\n\t\tINNER JOIN (SELECT [RA_NOME], [RA_SITATUAL], [RA_MAT],[RA_DDDCELU],[RA_NUMCELU] FROM [db_Siga].[DBO].[SRA370]) G\t\t\t\n\t\t\tON [SRA].[RA_MAT] = '{{ $json.body.json.matricula }}'\n\t\t\t AND\n\t\t\t  [G].[RA_MAT] = [SRA].[RA_XMGER2]\n\t\t\t AND\n\t\t\t  [SRA].[RA_SITATUAL] NOT IN (SELECT [SRA].[RA_SITATUAL] FROM [db_Siga].[DBO].[SRA370] WHERE [SRA].[RA_MAT] = '{{ $json.body.json.matricula }}' AND [SRA].[RA_SITATUAL]  = 'D')\n\t\t\t AND\n\t\t\t  [G].[RA_SITATUAL] NOT IN (SELECT [G].[RA_SITATUAL] FROM [db_Siga].[DBO].[SRA370] WHERE [G].[RA_NOME] = [SRA].[RA_ICOGER2] AND [G].[RA_SITATUAL]  = 'D');"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        -176,
+        368
+      ],
+      "id": "e61eb5c5-efb2-40b1-9dac-45f28c693549",
+      "name": "Microsoft SQL1",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "f6wiWHvixdbJJFY1",
+          "name": "db_Contas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "content": "Consulta colaborador com a View VW_LINHAS_GENESIS_SCL",
+        "height": 288,
+        "width": 624
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -560,
+        -96
+      ],
+      "typeVersion": 1,
+      "id": "f04ed245-c45e-4cf1-bf67-74001397b242",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "Select nas tabelas das base Siga\npara coleta de dados do gestor e localidade",
+        "height": 368,
+        "width": 640,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -576,
+        240
+      ],
+      "typeVersion": 1,
+      "id": "53f45d8e-9310-45be-bfc7-1c7541e93d75",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT * FROM [db_GestaoSolicitacoes].[DBO].[Solicitacao]\n WHERE \n  ReSolicitante = '{{ $json.body.matricula }}'\n AND \n  TipoSolicitacaoId = (SELECT id FROM [db_GestaoSolicitacoes].[DBO].[TipoSolicitacao] WHERE id = 29)\n AND\n  DataCriacao BETWEEN '2025-01-01 18:43:00' AND GETDATE()\n AND\n  DataCancelamento IS NOT NULL;"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        496,
+        48
+      ],
+      "id": "8c262571-5503-42c8-858c-71ee2e38897c",
+      "name": "Microsoft SQL2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "f6wiWHvixdbJJFY1",
+          "name": "db_Contas"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "content": "Consulta de colaboradores\ncom benefício Alelo Farmácia bloqueado",
+        "height": 496,
+        "width": 960,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        224,
+        -96
+      ],
+      "typeVersion": 1,
+      "id": "82f6c3b3-8f00-40e1-86a7-9413e46699cc",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
         "httpMethod": "POST",
-        "path": "db-contas",
+        "path": "db_gestao_solicitacao",
         "responseMode": "lastNode",
         "options": {}
       },
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -560,
-        304
+        304,
+        48
       ],
-      "id": "d5b76d30-cac3-4df6-8c8e-226d118f1bb0",
-      "name": "Webhook",
+      "id": "41fa8c28-32e1-45cf-b9f7-7865f01136f5",
+      "name": "Webhook db_GestaoSolicitacoes",
       "webhookId": "ab867a92-b2dc-45f7-af57-a88339617451",
       "alwaysOutputData": false
     },
     {
       "parameters": {
-        "operation": "executeQuery",
-        "query": "SELECT * FROM VW_LINHAS_GENESIS_SCL WHERE LINHA_GENESIS = '{{ $json.body.json.phoneNumber }}';"
+        "httpMethod": "POST",
+        "path": "db_contas",
+        "responseMode": "lastNode",
+        "options": {}
       },
-      "type": "n8n-nodes-base.microsoftSql",
-      "typeVersion": 1.1,
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
       "position": [
-        -352,
-        304
+        -384,
+        -16
       ],
-      "id": "cbb8760a-0eb8-4bfe-a28d-9713e2463295",
-      "name": "Microsoft SQL",
-      "alwaysOutputData": true,
-      "credentials": {
-        "microsoftSql": {
-          "id": "GrDMcktgutAEy8qT",
-          "name": "Microsoft SQL account"
-        }
-      },
-      "onError": "continueRegularOutput"
+      "id": "a6e164eb-2e66-4fdd-b5cc-a166b0b8a1d2",
+      "name": "Webhook db_Contas",
+      "webhookId": "ab867a92-b2dc-45f7-af57-a88339617451",
+      "alwaysOutputData": false
     },
     {
       "parameters": {
-        "operation": "get",
-        "tableId": "VW_LINHAS_GENESIS_SCL",
-        "filters": {
+        "httpMethod": "POST",
+        "path": "db_siga",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -368,
+        368
+      ],
+      "id": "f43c4c12-4f57-4300-b8cb-63512b943bc4",
+      "name": "Webhook db_Siga",
+      "webhookId": "ab867a92-b2dc-45f7-af57-a88339617451",
+      "alwaysOutputData": false
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
           "conditions": [
             {
-              "keyName": "LINHA_GENESIS",
-              "keyValue": "={{ $json.body.json.phoneNumber }}"
+              "id": "863f93b8-e601-43a7-bfbf-5a2d54fb0f6b",
+              "leftValue": "={{ $json }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "object",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        704,
+        48
+      ],
+      "id": "29cd9206-f7a4-4db9-89cd-e53e167b22c0",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "608f44fd-ee48-40d3-92b8-a6c4e307ca80",
+              "name": "retornoFarmacia",
+              "value": "Não consta na base de solicitação de bloqueio.",
+              "type": "string"
             }
           ]
-        }
+        },
+        "options": {}
       },
-      "type": "n8n-nodes-base.supabase",
-      "typeVersion": 1,
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
       "position": [
-        -352,
-        128
+        944,
+        208
       ],
-      "id": "d2b9ef4c-8fdd-4f16-8e30-d17d60400d60",
-      "name": "Get a row",
-      "alwaysOutputData": true,
-      "credentials": {
-        "supabaseApi": {
-          "id": "htCf539ApNjfrbw8",
-          "name": "Supabase account"
-        }
+      "id": "d3c90f3d-3467-4d9e-9d7f-8389d1f0d933",
+      "name": "Não Localizado"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "608f44fd-ee48-40d3-92b8-a6c4e307ca80",
+              "name": "retornoFarmacia",
+              "value": "Beneficio consta como bloqueado no sistema.",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
       },
-      "onError": "continueRegularOutput"
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        944,
+        32
+      ],
+      "id": "a8951864-c74e-46a3-81f5-b01b0fd7d26b",
+      "name": "Localizado"
     }
   ],
   "pinData": {},
   "connections": {
-    "Webhook": {
+    "Webhook db_GestaoSolicitacoes": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook db_Contas": {
       "main": [
         [
           {
             "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook db_Siga": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL2": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Localizado",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Não Localizado",
             "type": "main",
             "index": 0
           }
@@ -90,17 +318,17 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "7fe54fd0-5665-4eb7-9885-ddbd92dd06e5",
+  "versionId": "c21da236-30e1-481b-b698-9edd6be31389",
   "meta": {
     "templateCredsSetupCompleted": true,
-    "instanceId": "e71ee30208579422913ee1673c6e68fb79d1e7e17d5c1deb0a672e043b70fb7c"
+    "instanceId": "c13cee92dfa69db8294a82c6dfa57e3a1199207e843eec919de3f2ec003607aa"
   },
-  "id": "ZVogERkQFDAhm1c5",
+  "id": "lpx2aQ1lRlOy9SHB",
   "tags": [
     {
-      "updatedAt": "2025-11-18T17:53:11.353Z",
-      "createdAt": "2025-11-18T17:53:11.353Z",
-      "id": "PGdCYMjHTSZlTEwQ",
+      "updatedAt": "2025-12-01T14:09:19.524Z",
+      "createdAt": "2025-12-01T14:09:19.524Z",
+      "id": "FNWAqBgYwlUUUrB8",
       "name": "sql"
     }
   ]
