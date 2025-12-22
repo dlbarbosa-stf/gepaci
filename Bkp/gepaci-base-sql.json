@@ -26,7 +26,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT \n\t\t\t[SRA].[RA_MAT] AS Matricula,\n\t\t\t[SRA].[RA_NOME] AS NomeColaborador,\n\t\t\t[SRA].[RA_DESCRE_] AS Base,\n\t\t\t[SRA].[RA_XMGER2] AS MatriculaGestor,\n\t\t\t[SRA].[RA_ICOGER2]  AS Gestor,\n\t\t\t\tCONCAT([G].[RA_DDDCELU],[G].[RA_NUMCELU]) CelularGestor\n\t\tFROM [db_Siga].[DBO].[SRA020] SRA\n\n\t\tINNER JOIN (SELECT [RA_NOME], [RA_SITATUAL], [RA_MAT],[RA_DDDCELU],[RA_NUMCELU] FROM [db_Siga].[DBO].[SRA020]) G\n\t\t\tON [SRA].[RA_MAT] = '{{ $json.body.matricula }}'\n\t\t\t AND\n\t\t\t  [G].[RA_MAT] = [SRA].[RA_XMGER2]\n\t\t\t AND\n\t\t\t  [SRA].[RA_SITATUAL] NOT IN (SELECT [SRA].[RA_SITATUAL] FROM [db_Siga].[DBO].[SRA020] WHERE [SRA].[RA_MAT] = '{{ $json.body.json.matricula }}' AND [SRA].[RA_SITATUAL]  = 'D')\n\t\t\t AND\n\t\t\t  [G].[RA_SITATUAL] NOT IN (SELECT [G].[RA_SITATUAL] FROM [db_Siga].[DBO].[SRA020] WHERE [G].[RA_NOME] = [SRA].[RA_ICOGER2] AND [G].[RA_SITATUAL]  = 'D')\n\t\t\t  \t\t\t  \n\tUNION ALL\n\n\t\t\tSELECT \n\t\t\t[SRA].[RA_MAT] AS Matricula,\n\t\t\t[SRA].[RA_NOME] AS NomeColaborador,\n\t\t\t[SRA].[RA_DESCRE_] AS Base,\n\t\t\t[SRA].[RA_XMGER2] AS MatriculaGestor,\n\t\t\t[SRA].[RA_ICOGER2]  AS Gestor,\n\t\t\tCONCAT([G].[RA_DDDCELU],[G].[RA_NUMCELU]) CelularGestor\n\t\tFROM [db_Siga].[DBO].[SRA370] SRA\n\n\t\tINNER JOIN (SELECT [RA_NOME], [RA_SITATUAL], [RA_MAT],[RA_DDDCELU],[RA_NUMCELU] FROM [db_Siga].[DBO].[SRA370]) G\t\t\t\n\t\t\tON [SRA].[RA_MAT] = '{{ $json.body.json.matricula }}'\n\t\t\t AND\n\t\t\t  [G].[RA_MAT] = [SRA].[RA_XMGER2]\n\t\t\t AND\n\t\t\t  [SRA].[RA_SITATUAL] NOT IN (SELECT [SRA].[RA_SITATUAL] FROM [db_Siga].[DBO].[SRA370] WHERE [SRA].[RA_MAT] = '{{ $json.body.json.matricula }}' AND [SRA].[RA_SITATUAL]  = 'D')\n\t\t\t AND\n\t\t\t  [G].[RA_SITATUAL] NOT IN (SELECT [G].[RA_SITATUAL] FROM [db_Siga].[DBO].[SRA370] WHERE [G].[RA_NOME] = [SRA].[RA_ICOGER2] AND [G].[RA_SITATUAL]  = 'D');"
+        "query": "SELECT \n\t\t\t[SRA].[RA_MAT] AS Matricula,\n\t\t\t[SRA].[RA_NOME] AS NomeColaborador,\n            CONCAT([SRA].[RA_DDDCELU],[SRA].[RA_NUMCELU]) AS CelularColaborador,\n\t\t\t[SRA].[RA_DESCRE_] AS Base,\n\t\t\t[SRA].[RA_XMGER2] AS MatriculaGestor,\n\t\t\t[SRA].[RA_ICOGER2]  AS Gestor,\n\t\t\t\tCONCAT([G].[RA_DDDCELU],[G].[RA_NUMCELU]) CelularGestor\n\t\tFROM [db_Siga].[DBO].[SRA020] SRA\n\n\t\tINNER JOIN (SELECT [RA_NOME], [RA_SITATUAL], [RA_MAT],[RA_DDDCELU],[RA_NUMCELU] FROM [db_Siga].[DBO].[SRA020]) G\n\t\t\tON [SRA].[RA_MAT] = '{{ $json.body.matricula }}'\n\t\t\t AND\n\t\t\t  [G].[RA_MAT] = [SRA].[RA_XMGER2]\n\t\t\t AND\n\t\t\t  [SRA].[RA_SITATUAL] NOT IN (SELECT [SRA].[RA_SITATUAL] FROM [db_Siga].[DBO].[SRA020] WHERE [SRA].[RA_MAT] = '{{ $json.body.json.matricula }}' AND [SRA].[RA_SITATUAL]  = 'D')\n\t\t\t AND\n\t\t\t  [G].[RA_SITATUAL] NOT IN (SELECT [G].[RA_SITATUAL] FROM [db_Siga].[DBO].[SRA020] WHERE [G].[RA_NOME] = [SRA].[RA_ICOGER2] AND [G].[RA_SITATUAL]  = 'D')\n\t\t\t  \t\t\t  \n\tUNION ALL\n\n\t\t\tSELECT \n\t\t\t[SRA].[RA_MAT] AS Matricula,\n\t\t\t[SRA].[RA_NOME] AS NomeColaborador,\n            CONCAT([SRA].[RA_DDDCELU],[SRA].[RA_NUMCELU]) AS CelularColaborador,\n\t\t\t[SRA].[RA_DESCRE_] AS Base,\n\t\t\t[SRA].[RA_XMGER2] AS MatriculaGestor,\n\t\t\t[SRA].[RA_ICOGER2]  AS Gestor,\n\t\t\tCONCAT([G].[RA_DDDCELU],[G].[RA_NUMCELU]) CelularGestor\n\t\tFROM [db_Siga].[DBO].[SRA370] SRA\n\n\t\tINNER JOIN (SELECT [RA_NOME], [RA_SITATUAL], [RA_MAT],[RA_DDDCELU],[RA_NUMCELU] FROM [db_Siga].[DBO].[SRA370]) G\t\t\t\n\t\t\tON [SRA].[RA_MAT] = '{{ $json.body.json.matricula }}'\n\t\t\t AND\n\t\t\t  [G].[RA_MAT] = [SRA].[RA_XMGER2]\n\t\t\t AND\n\t\t\t  [SRA].[RA_SITATUAL] NOT IN (SELECT [SRA].[RA_SITATUAL] FROM [db_Siga].[DBO].[SRA370] WHERE [SRA].[RA_MAT] = '{{ $json.body.json.matricula }}' AND [SRA].[RA_SITATUAL]  = 'D')\n\t\t\t AND\n\t\t\t  [G].[RA_SITATUAL] NOT IN (SELECT [G].[RA_SITATUAL] FROM [db_Siga].[DBO].[SRA370] WHERE [G].[RA_NOME] = [SRA].[RA_ICOGER2] AND [G].[RA_SITATUAL]  = 'D');"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
@@ -62,7 +62,7 @@
     },
     {
       "parameters": {
-        "content": "Select nas tabelas das base Siga\npara coleta de dados do gestor e localidade",
+        "content": "Select nas tabelas da base Siga\npara coleta de dados do gestor e localidade",
         "height": 368,
         "width": 640,
         "color": 2
@@ -318,7 +318,7 @@
   "settings": {
     "executionOrder": "v1"
   },
-  "versionId": "c21da236-30e1-481b-b698-9edd6be31389",
+  "versionId": "a7d757e9-9a9c-4d87-9c0d-e403f45e0ccf",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "c13cee92dfa69db8294a82c6dfa57e3a1199207e843eec919de3f2ec003607aa"

@@ -16,15 +16,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3376,
-        3392
+        3328,
+        3424
       ],
       "id": "971803e4-f121-4406-9b2e-f5369f551814",
       "name": "OpenAI Chat Model1",
       "credentials": {
         "openAiApi": {
-          "id": "gRGI4xnZA0lZ77gz",
-          "name": "OpenAi Pessoal"
+          "id": "TAeBQjpAim1cMqIi",
+          "name": "OpenAi account"
         }
       }
     },
@@ -37,8 +37,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        3456,
-        3520
+        3408,
+        3552
       ],
       "id": "52c9de9d-0bdb-462a-9326-5f7d17a4c5b8",
       "name": "Google Gemini Chat Atendimento",
@@ -61,8 +61,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        3648,
-        -272
+        3600,
+        -240
       ],
       "id": "3d37b58e-fa4f-4b51-b3fd-bd2705a3a39d",
       "name": "Validar Usuario",
@@ -82,8 +82,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        3104,
-        992
+        3056,
+        1024
       ],
       "id": "27e93879-5ed0-4c22-9d42-eb4d39dcb5a6",
       "name": "Atendimento",
@@ -108,8 +108,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2688,
-        -304
+        2640,
+        -272
       ],
       "id": "96327aec-3c37-489e-a3b7-b3e3030384a8",
       "name": "coletar identificador",
@@ -124,7 +124,7 @@
           "parameters": [
             {
               "name": "json.phoneNumber",
-              "value": "={{ $('coletar dados da conversa').first().json.phoneNumber }}"
+              "value": "={{ $('Merge').item.json.phoneNumber }}"
             }
           ]
         },
@@ -143,7 +143,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -1040,
+        -1184,
         1824
       ],
       "id": "93acb3b3-34ba-4689-a482-6fb3281d04b0",
@@ -170,7 +170,19 @@
             {
               "id": "61fd6a8c-2a50-42bb-a90d-8c28a553d054",
               "name": "dadosCliente.Celular",
-              "value": "={{ $('coletar dados da conversa').first().json.phoneNumber }}",
+              "value": "={{ $('Merge').first().json.phoneNumber ? $('Merge').first().json.phoneNumber : ''}}",
+              "type": "string"
+            },
+            {
+              "id": "a64c2d7b-f38b-4f4d-9139-e90a12708ed1",
+              "name": "dadosCliente.ReGestor",
+              "value": "={{ $('Coletar Dados Gestor').first().json.body.MatriculaGestor ? $('Coletar Dados Gestor').first().json.body.MatriculaGestor : '' }}",
+              "type": "string"
+            },
+            {
+              "id": "02407521-05e3-489e-bbc7-513389ddcf1d",
+              "name": "dadosCliente.EhGestor",
+              "value": "={{ $('API Eh Gestor').first().json.body.ehGestor }}",
               "type": "string"
             },
             {
@@ -183,12 +195,6 @@
               "id": "8b2ef658-5225-4bf1-b6e5-cb18cb1a47f3",
               "name": "dadosCliente.Unidade",
               "value": "={{ $('Sql Agtesla').first().json.body.BASE_SCL }}",
-              "type": "string"
-            },
-            {
-              "id": "a64c2d7b-f38b-4f4d-9139-e90a12708ed1",
-              "name": "dadosCliente.ReGestor",
-              "value": "={{ $('Coletar Dados Gestor').first().json.body.MatriculaGestor ? $('Coletar Dados Gestor').first().json.body.MatriculaGestor : '' }}",
               "type": "string"
             },
             {
@@ -210,8 +216,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -1456,
-        2128
+        -1264,
+        2368
       ],
       "id": "521c45f9-22ca-4a22-8dd6-c03196a6811f",
       "name": "coletar dados usuario",
@@ -253,8 +259,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2240,
-        -288
+        2192,
+        -256
       ],
       "id": "80301828-d2a7-49d7-9317-fe3cf5d75126",
       "name": "If"
@@ -269,8 +275,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        -4896,
-        1488
+        -7008,
+        1072
       ],
       "id": "8e3a8f69-518a-4a59-9028-3d048e8526ee",
       "name": "Webhook",
@@ -281,8 +287,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        3792,
-        3472
+        3744,
+        3504
       ],
       "id": "d9815fc2-90f6-48cd-b807-5fae0327e8c4",
       "name": "Think"
@@ -290,8 +296,8 @@
     {
       "parameters": {
         "content": "Consultar Bando db_contas",
-        "height": 656,
-        "width": 1264
+        "height": 928,
+        "width": 1456
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
@@ -331,7 +337,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -864,
+        -1008,
         1824
       ],
       "id": "18afdfe7-8363-4a3a-9aaf-77c20c6d193e",
@@ -345,8 +351,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        -4672,
-        1616
+        -6752,
+        1072
       ],
       "id": "1cb5e9b4-6166-4d54-8acc-aca86dc660a1",
       "name": "Tratar número",
@@ -534,7 +540,7 @@
       "typeVersion": 3.3,
       "position": [
         592,
-        1680
+        1728
       ],
       "id": "6eb21237-fde9-4671-984e-30724cfb49c6",
       "name": "Gerenciar direcionamento",
@@ -584,8 +590,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2016,
-        -64
+        1968,
+        -32
       ],
       "id": "26c98214-d88b-46e3-9cf3-4753cbf9400a",
       "name": "If1"
@@ -602,8 +608,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        3328,
-        4144
+        2864,
+        4192
       ],
       "id": "82434df7-dc5d-4251-bc9a-2828746d563e",
       "name": "Colaborador Não Encontrado",
@@ -628,9 +634,15 @@
               "type": "string"
             },
             {
+              "id": "a98c88f3-f27f-436d-8cfa-c09ac041dd68",
+              "name": "dadosCliente.EhGestor",
+              "value": "={{ $('API Identidade').first().json.body.ehGestor }}",
+              "type": "boolean"
+            },
+            {
               "id": "1e7b55d7-7742-4118-81b8-12ebe06020ef",
               "name": "dadosCliente.Celular",
-              "value": "={{ $('coletar dados da conversa').first().json.phoneNumber }}",
+              "value": "={{ $('Merge').first().json.phoneNumber ? $('Merge').first().json.phoneNumber : $('Coletar Dados Gestor1').first().json.body.CelularColaborador }}",
               "type": "string"
             },
             {
@@ -676,8 +688,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2288,
-        208
+        2384,
+        272
       ],
       "id": "a7f55bfc-6905-491d-b601-632b67746b55",
       "name": "coletar dados usuario1",
@@ -692,8 +704,8 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        3792,
-        3280
+        3744,
+        3312
       ],
       "id": "62b97e3c-9f89-405d-801c-8096cfbb8bfa",
       "name": "AI Nao Localizado"
@@ -705,8 +717,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        1984,
-        -288
+        1936,
+        -256
       ],
       "id": "d414faf4-73a1-4bd6-a4e1-092ab44716ba",
       "name": "Tratar somente Numeros",
@@ -720,15 +732,15 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3424,
-        1888
+        3376,
+        1920
       ],
       "id": "466ca055-4d86-45e0-809f-edbf28e83745",
       "name": "Embeddings OpenAI1",
       "credentials": {
         "openAiApi": {
-          "id": "gRGI4xnZA0lZ77gz",
-          "name": "OpenAi Pessoal"
+          "id": "TAeBQjpAim1cMqIi",
+          "name": "OpenAi account"
         }
       }
     },
@@ -745,15 +757,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3824,
-        1792
+        3776,
+        1824
       ],
       "id": "79fd1853-7707-46c3-9358-a0953ab73d25",
       "name": "OpenAI Chat Model2",
       "credentials": {
         "openAiApi": {
-          "id": "gRGI4xnZA0lZ77gz",
-          "name": "OpenAi Pessoal"
+          "id": "TAeBQjpAim1cMqIi",
+          "name": "OpenAi account"
         }
       }
     },
@@ -770,8 +782,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        3488,
-        1728
+        3440,
+        1760
       ],
       "id": "9a36e11d-50fb-4e90-90be-31302eced309",
       "name": "Supabase Vector Store",
@@ -810,8 +822,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        2928,
-        -304
+        2880,
+        -272
       ],
       "id": "b87dcc44-f39a-4e91-b3d9-6c4b8f558e73",
       "name": "API Identidade",
@@ -854,8 +866,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        2736,
-        3392
+        2688,
+        3424
       ],
       "id": "663f85c8-8dd2-4dd4-878f-f21561b16cac",
       "name": "API IcoPass",
@@ -893,8 +905,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2704,
-        3152
+        2656,
+        3184
       ],
       "id": "9c6cac50-83d1-4d96-8a43-060a0c322bd0",
       "name": "If IcoPass"
@@ -906,8 +918,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        2208,
-        3152
+        2160,
+        3184
       ],
       "id": "69f8f7e8-bdee-47dd-826d-19221dde5e22",
       "name": "Tratar somente Numeros1",
@@ -950,8 +962,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1936,
-        3728
+        1888,
+        3760
       ],
       "id": "cc8e1083-25cb-4e9b-af1a-d0108d74cd6e",
       "name": "If4"
@@ -964,8 +976,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1.1,
       "position": [
-        3632,
-        1552
+        3584,
+        1584
       ],
       "id": "a8ee12b3-4c0e-4d3c-a567-dfaa11fec4b6",
       "name": "Banco Vetorial"
@@ -977,7 +989,7 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        -2320,
+        -2304,
         1440
       ],
       "id": "0a0dc75e-97f2-434e-b030-6dfabd5b2485",
@@ -1012,7 +1024,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        -2800,
+        -2784,
         1808
       ],
       "id": "f74a668a-eaff-4a14-bcd2-97fc2b59fe87",
@@ -1023,7 +1035,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -2528,
+        -2512,
         2000
       ],
       "id": "0a2b3322-fdb5-4058-8bca-921e93d20082",
@@ -1046,7 +1058,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2528,
+        -2512,
         1792
       ],
       "id": "a8475cd6-3bf8-44f6-9dde-094fd9ccecf8",
@@ -1065,7 +1077,7 @@
             {
               "id": "23c6d005-52e1-4e41-922f-7bb53e0c901d",
               "name": "sessionId",
-              "value": "={{ $('coletar dados da conversa').first().json.session }}",
+              "value": "={{ $('Merge').first().json.session }}",
               "type": "string"
             }
           ]
@@ -1075,7 +1087,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -2784,
+        -2768,
         1440
       ],
       "id": "2637df29-75f6-4486-9f31-be515d8c14ff",
@@ -1090,8 +1102,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -2928,
-        1216
+        -2912,
+        1232
       ],
       "typeVersion": 1,
       "id": "9c9ff505-f453-491e-939c-a687c5fe7896",
@@ -1109,8 +1121,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        3488,
-        3136
+        3440,
+        3168
       ],
       "id": "1f05edf0-a605-4eaa-a63e-455d3c321d26",
       "name": "Acesso IcoPass",
@@ -1133,15 +1145,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3488,
-        -64
+        3440,
+        -32
       ],
       "id": "fe9aba7d-fc73-4ef8-ba71-c932decc727e",
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": "gRGI4xnZA0lZ77gz",
-          "name": "OpenAi Pessoal"
+          "id": "TAeBQjpAim1cMqIi",
+          "name": "OpenAi account"
         }
       }
     },
@@ -1154,8 +1166,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        3648,
-        0
+        3600,
+        32
       ],
       "id": "e8694f71-9e55-45ae-a499-92474b39a2c8",
       "name": "Google Gemini Chat Atendimento1",
@@ -1171,8 +1183,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        3872,
-        0
+        3824,
+        32
       ],
       "id": "496fc450-b937-47dc-aa4f-56bf84c22c7a",
       "name": "Think1"
@@ -1192,15 +1204,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3200,
-        4432
+        2736,
+        4480
       ],
       "id": "9917dda5-0159-467b-8c19-5717d2cdf447",
       "name": "OpenAI Chat Model3",
       "credentials": {
         "openAiApi": {
-          "id": "gRGI4xnZA0lZ77gz",
-          "name": "OpenAi Pessoal"
+          "id": "TAeBQjpAim1cMqIi",
+          "name": "OpenAi account"
         }
       }
     },
@@ -1213,8 +1225,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        3328,
-        4368
+        2864,
+        4416
       ],
       "id": "5db0ddfb-47a3-4707-ba00-ac3c000864f4",
       "name": "Google Gemini Chat Atendimento2",
@@ -1230,8 +1242,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        3568,
-        4400
+        3104,
+        4448
       ],
       "id": "5fd9b6d5-afcc-46b7-aae3-df37879d1d99",
       "name": "Think2"
@@ -1251,15 +1263,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        2688,
-        1296
+        2640,
+        1328
       ],
       "id": "a4e93720-a622-4270-98cf-9affed738fc5",
       "name": "OpenAI Chat Model4",
       "credentials": {
         "openAiApi": {
-          "id": "gRGI4xnZA0lZ77gz",
-          "name": "OpenAi Pessoal"
+          "id": "TAeBQjpAim1cMqIi",
+          "name": "OpenAi account"
         }
       }
     },
@@ -1272,8 +1284,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2896,
-        1264
+        2848,
+        1296
       ],
       "id": "ad2fed01-88ba-48fb-b0cc-c99f22111408",
       "name": "Google Gemini Chat Atendimento3",
@@ -1289,8 +1301,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        3312,
-        1280
+        3264,
+        1312
       ],
       "id": "c8e5075c-ba63-4dfc-accf-3c319188d0ef",
       "name": "Think3"
@@ -1298,14 +1310,14 @@
     {
       "parameters": {
         "content": "Verificar Usuário",
-        "height": 1136,
+        "height": 1200,
         "width": 2320,
         "color": 7
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
         1776,
-        -320
+        -384
       ],
       "typeVersion": 1,
       "id": "d0d43277-10b8-4077-8c66-08acbcc4d707",
@@ -1315,7 +1327,7 @@
       "parameters": {
         "content": "Colaborador Não Encontrado",
         "height": 608,
-        "width": 2176,
+        "width": 2384,
         "color": 7
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -1336,7 +1348,7 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1744,
+        1776,
         880
       ],
       "typeVersion": 1,
@@ -1347,7 +1359,7 @@
       "parameters": {
         "content": "Atendimento icoPass",
         "height": 912,
-        "width": 2192,
+        "width": 2384,
         "color": 7
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -1364,8 +1376,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        3968,
-        -64
+        3920,
+        -32
       ],
       "id": "d62e9bf6-ce10-491a-8f79-15338129f36f",
       "name": "Calculator"
@@ -1401,8 +1413,8 @@
       "type": "@n8n/n8n-nodes-langchain.guardrails",
       "typeVersion": 1,
       "position": [
-        -4704,
-        1920
+        -9504,
+        80
       ],
       "id": "2bf80890-d462-4210-ba70-15ade416f302",
       "name": "Guardrails"
@@ -1421,8 +1433,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.3,
       "position": [
-        -4816,
-        2080
+        -9616,
+        240
       ],
       "id": "f426fa65-a811-4821-b4fe-536bf3917710",
       "name": "OpenAI Chat Model5",
@@ -1438,8 +1450,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -4320,
-        2064
+        -9120,
+        224
       ],
       "id": "321b6a39-bc1e-43d4-9c52-6b20438bfa8e",
       "name": "No Operation, do nothing1"
@@ -1462,8 +1474,8 @@
       "type": "@n8n/n8n-nodes-langchain.guardrails",
       "typeVersion": 1,
       "position": [
-        6960,
-        1760
+        6080,
+        1952
       ],
       "id": "03cb2113-1589-43a2-9176-1fc1ea6d6399",
       "name": "Guardrails1"
@@ -1554,8 +1566,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        -4240,
-        1584
+        -4976,
+        1408
       ],
       "id": "33b5b50f-32fd-41c1-bbc3-5ede0883442a",
       "name": "Switch",
@@ -1568,7 +1580,7 @@
             {
               "id": "2a4b60f9-a8ce-4c7b-aeb0-7bbfb330435d",
               "name": "message",
-              "value": "={{ $('coletar dados da conversa').first().json.message }}",
+              "value": "={{ $('Merge').first().json.message }}",
               "type": "string"
             }
           ]
@@ -1578,8 +1590,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3616,
-        1296
+        -4080,
+        880
       ],
       "id": "ca7b83a9-8d7d-4004-9908-ef34d30867d5",
       "name": "Mensagem"
@@ -1591,7 +1603,7 @@
             {
               "id": "98b629e5-0279-4781-90db-645894bea1ed",
               "name": "audioUrl",
-              "value": "={{ $('coletar dados da conversa').first().json.message_audio }}",
+              "value": "={{ $('Merge').item.json.message_audio }}",
               "type": "string"
             }
           ]
@@ -1601,8 +1613,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3936,
-        1616
+        -4512,
+        1424
       ],
       "id": "2e21f48b-86fb-4935-91da-92d335fcccab",
       "name": "Mensagem Audio"
@@ -1617,8 +1629,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -3728,
-        1616
+        -4064,
+        1248
       ],
       "id": "5f8a9813-63c5-4246-bef5-e07b57117a08",
       "name": "HTTP Request"
@@ -1632,8 +1644,8 @@
       "type": "@n8n/n8n-nodes-langchain.openAi",
       "typeVersion": 2,
       "position": [
-        -3520,
-        1616
+        -3760,
+        1440
       ],
       "id": "3c2ad423-5874-4bff-bae8-b71675fefae7",
       "name": "Transcribe a recording",
@@ -1661,8 +1673,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3312,
-        1616
+        -3568,
+        1440
       ],
       "id": "f8b7eca4-cb32-4f1b-8a85-172a6cfc0e59",
       "name": "Edit Fields"
@@ -1674,7 +1686,7 @@
             {
               "id": "98b629e5-0279-4781-90db-645894bea1ed",
               "name": "imagem",
-              "value": "={{ $('coletar dados da conversa').first().json.message_image }}",
+              "value": "={{ $('Merge').first().json.message_image }}",
               "type": "string"
             }
           ]
@@ -1684,40 +1696,11 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3904,
-        1872
+        -4496,
+        1888
       ],
       "id": "df8dad95-0d23-4fd3-9e5a-f75a2ef6e14d",
       "name": "Mensagem Imagem"
-    },
-    {
-      "parameters": {
-        "resource": "image",
-        "operation": "analyze",
-        "modelId": {
-          "__rl": true,
-          "value": "gpt-4o-mini",
-          "mode": "list",
-          "cachedResultName": "GPT-4O-MINI"
-        },
-        "text": "Sua função será analisar a imagem e retornar um texto descritivo do que ela contem.",
-        "imageUrls": "={{$json.imagem}}",
-        "options": {}
-      },
-      "type": "@n8n/n8n-nodes-langchain.openAi",
-      "typeVersion": 2,
-      "position": [
-        -3632,
-        1872
-      ],
-      "id": "51e97a1d-4bbf-43b7-860f-c50d496f68c6",
-      "name": "Analyze image",
-      "credentials": {
-        "openAiApi": {
-          "id": "TAeBQjpAim1cMqIi",
-          "name": "OpenAi account"
-        }
-      }
     },
     {
       "parameters": {
@@ -1726,7 +1709,7 @@
             {
               "id": "7cec2e3b-4094-477a-bdb2-bb79b92923f2",
               "name": "message",
-              "value": "=<contextoImage>\n\n  Descrição da imagem enviada pelo cliente.\n\n  <detalheMensagem>\n    {{ $json['0'].content[0].text }}\n  </detalheMensagem>\n\n  <mensagemUsuario>\n\n  </mensagemUsuario>\n\n</contextoImage>",
+              "value": "=<contextoImage>\n\n  Descrição da imagem enviada pelo cliente.\n\n  <detalheMensagem>\n    {{ $json['0'].content[0].text }}\n  </detalheMensagem>\n\n  <mensagemUsuario>\n\n    {{ $('Merge').first().json.text_imagem }}\n\n  </mensagemUsuario>\n\n</contextoImage>",
               "type": "string"
             }
           ]
@@ -1736,7 +1719,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -3392,
+        -3664,
         1872
       ],
       "id": "b24228c8-da84-4663-944f-c8a0e12e4c37",
@@ -1782,14 +1765,14 @@
     {
       "parameters": {
         "content": "Inicio / Tratamento de Mensagens",
-        "height": 1152,
-        "width": 1936,
+        "height": 1632,
+        "width": 4128,
         "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        -5008,
-        1216
+        -7136,
+        800
       ],
       "typeVersion": 1,
       "id": "06f44719-e41c-4912-a620-04599327c927",
@@ -1800,7 +1783,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        -3856,
+        -4496,
         2176
       ],
       "id": "8840a87f-7b20-4ba1-a8dd-f2e6ab174362",
@@ -1821,14 +1804,14 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"recipient\": \"{{ $('coletar dados da conversa').first().json.recipientLid }}\",\n  \"text\": \"{{ $('Loop Over Items').first().json.message.replace(/(\\r\\n|\\n|\\r)/gm, \" \") }}\",\n  \"instance_id\": \"8ulek0ah8an7vwi49w450\",\n  \"auto_delete\": false,\n  \"auto_mention\": true,\n  \"view_once\": false,\n  \"link_preview\": true,\n  \"mentions\": \"everyone\"\n}",
+        "jsonBody": "={\n  \"recipient\": \"{{ $('Merge').first().json.recipientLid }}\",\n  \"text\": \"{{ $('Loop Over Items').first().json.message.replace(/(\\r\\n|\\n|\\r)/gm, \" \") }}\",\n  \"instance_id\": \"8ulek0ah8an7vwi49w450\",\n  \"auto_delete\": false,\n  \"auto_mention\": true,\n  \"view_once\": false,\n  \"link_preview\": true,\n  \"mentions\": \"everyone\"\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        7248,
-        2160
+        6816,
+        2240
       ],
       "id": "b40cb2ec-ea95-4bf2-95dc-dd42c79a8fdd",
       "name": "Response Message Zapster"
@@ -1839,8 +1822,8 @@
       "name": "Replace Me",
       "typeVersion": 1,
       "position": [
-        7648,
-        2400
+        7504,
+        2528
       ],
       "id": "aebf4baa-8322-46df-af62-941cc7f18c44"
     },
@@ -1851,8 +1834,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        6784,
-        2000
+        6112,
+        2192
       ],
       "id": "b26f9895-5f90-4eb2-886e-455c37ed95a0",
       "name": "Loop Over Items",
@@ -1865,8 +1848,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        6560,
-        2000
+        5888,
+        2192
       ],
       "id": "ffc9bf0a-a640-4490-a0db-1be5a8392b3d",
       "name": "Code in JavaScript",
@@ -1879,8 +1862,8 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        7456,
-        2256
+        7184,
+        2448
       ],
       "id": "f236db9d-568d-4679-b331-8df016dd4689",
       "name": "Wait1",
@@ -1896,7 +1879,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2128,
+        -2112,
         1440
       ],
       "id": "00414b74-7991-44d1-a8c0-c6f0577f31e8",
@@ -1918,7 +1901,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2544,
+        -2528,
         1440
       ],
       "id": "5ce013e4-30ba-4f62-bb02-6286b33ab7ad",
@@ -1938,7 +1921,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2112,
+        -2096,
         1792
       ],
       "id": "7b5a919e-19c2-4b23-a1cc-cdf93760336d",
@@ -1953,7 +1936,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_message",
+        "key": "={{ $('Merge').item.json.session }}_message",
         "value": "={{ $('Set Buffer Mensagens').first().json.messageBuffer }}",
         "expire": true,
         "ttl": 1800
@@ -1961,7 +1944,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -2320,
+        -2304,
         1792
       ],
       "id": "b3a90139-3833-4f6d-a698-ef36d2f680f6",
@@ -1977,7 +1960,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "statusAtendimento",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}",
+        "key": "={{ $('Merge').item.json.session }}",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
@@ -1999,15 +1982,15 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_message",
+        "key": "={{ $('Merge').first().json.session }}_message",
         "expire": true,
         "ttl": 360
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2016,
-        608
+        1968,
+        640
       ],
       "id": "9c501e36-93f7-438e-913d-5197d2b22d2f",
       "name": "Limpar Mensagem",
@@ -2021,7 +2004,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_firstMessage",
+        "key": "={{ $('Merge').item.json.session }}_firstMessage",
         "value": "={{ $('Set Buffer Mensagens').first().json.messageBuffer }}",
         "expire": true,
         "ttl": 1800
@@ -2029,7 +2012,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1536,
+        -1680,
         1824
       ],
       "id": "86850dfc-f72a-4481-b4ad-fa2d8ef5632c",
@@ -2045,7 +2028,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "mensagemAtual",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_message",
+        "key": "={{ $('Merge').first().json.session }}_message",
         "options": {
           "dotNotation": true
         }
@@ -2053,8 +2036,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3248,
-        -272
+        3200,
+        -240
       ],
       "id": "e8a31909-45bb-4d4e-a3f2-9c0a28bf0e8a",
       "name": "Coletar Mensagem Verificacao",
@@ -2071,7 +2054,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "mensagemAtual",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_message",
+        "key": "={{ $('Merge').first().json.session }}_message",
         "options": {
           "dotNotation": true
         }
@@ -2079,8 +2062,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2080,
-        992
+        2032,
+        1024
       ],
       "id": "d9114516-8250-4b29-9f64-12b6565e0638",
       "name": "Coletar Mensagem Atendimento",
@@ -2097,7 +2080,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "mensagemAtual",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_message",
+        "key": "={{ $('Merge').first().json.session }}_message",
         "options": {
           "dotNotation": true
         }
@@ -2105,8 +2088,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3056,
-        3136
+        3008,
+        3168
       ],
       "id": "40ebe27e-1220-4df3-9f1f-c54bad629f7e",
       "name": "Coletar Mensagem IcoPass",
@@ -2123,14 +2106,14 @@
       "parameters": {
         "operation": "get",
         "propertyName": "mensagemAtual",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_message",
+        "key": "={{ $('Merge').first().json.session }}_message",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2656,
-        4144
+        2192,
+        4192
       ],
       "id": "7015425f-0b1a-4482-b4ab-c031c3bfded2",
       "name": "Coletar Mensagem Nao Encontrado",
@@ -2164,8 +2147,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2208,
-        3392
+        2160,
+        3424
       ],
       "id": "06be9b54-b214-4224-89b0-e6f5df86ebe1",
       "name": "Coletar Token",
@@ -2175,7 +2158,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "matricula",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_matricula",
+        "key": "={{ $('Merge').first().json.session }}_matricula",
         "options": {
           "dotNotation": false
         }
@@ -2183,8 +2166,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1920,
-        3392
+        1872,
+        3424
       ],
       "id": "df9091e7-0512-435d-b194-5dc60a645adb",
       "name": "Coletar Matricula Usuario",
@@ -2200,7 +2183,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_nome",
+        "key": "={{ $('Merge').first().json.session }}_nome",
         "value": "={{ $('coletar dados usuario').first().json.dadosCliente.Nome.trim().split(/\\s+/)[0] }}",
         "expire": true,
         "ttl": 3600
@@ -2208,8 +2191,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -656,
-        2128
+        -464,
+        2240
       ],
       "id": "3416f614-8bd6-4a91-a2e2-eeec15ff9e53",
       "name": "Setar Nome Colaborador",
@@ -2223,7 +2206,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_matricula",
+        "key": "={{ $('Merge').first().json.session }}_matricula",
         "value": "={{ $('coletar dados usuario1').first().json.dadosCliente.Re }}",
         "expire": true,
         "ttl": 3600
@@ -2231,8 +2214,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2928,
-        208
+        2976,
+        272
       ],
       "id": "3c01a91b-d742-4dd8-b5a3-3b4669abe4be",
       "name": "Setar Matricula",
@@ -2248,7 +2231,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_nome",
+        "key": "={{ $('Merge').first().json.session }}_nome",
         "value": "={{ $('coletar dados usuario1').first().json.dadosCliente.Nome.trim().split(/\\s+/)[0] }}",
         "expire": true,
         "ttl": 3600
@@ -2256,8 +2239,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2720,
-        208
+        2784,
+        272
       ],
       "id": "0cf48a51-6372-4a0d-9a98-6cdb25581c3a",
       "name": "Setar Nome",
@@ -2274,14 +2257,14 @@
       "parameters": {
         "operation": "get",
         "propertyName": "mensagemInicial",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_firstMessage",
+        "key": "={{ $('Merge').first().json.session }}_firstMessage",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3088,
-        3744
+        3040,
+        3776
       ],
       "id": "5e08329d-b013-4f7e-9ab6-f3f863d0c02d",
       "name": "Resgatar Mensagem Inicial",
@@ -2295,7 +2278,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_message",
+        "key": "={{ $('Merge').first().json.session }}_message",
         "value": "={{ $('Resgatar Mensagem Inicial').first().json.mensagemInicial }}",
         "expire": true,
         "ttl": 1800
@@ -2303,8 +2286,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3312,
-        3744
+        3264,
+        3776
       ],
       "id": "42f75d03-6bc8-464e-8962-98eba05b0a4c",
       "name": "Mensagem atual1",
@@ -2319,7 +2302,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "nomeUsuario",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_nome",
+        "key": "={{ $('Merge').first().json.session }}_nome",
         "options": {
           "dotNotation": false
         }
@@ -2327,8 +2310,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2576,
-        992
+        2528,
+        1024
       ],
       "id": "08590d7a-8cf5-4bbb-9a62-588a936897a2",
       "name": "Coletar Nome Usuario",
@@ -2345,6 +2328,12 @@
       "parameters": {
         "assignments": {
           "assignments": [
+            {
+              "id": "c72057c2-cf84-42f8-99df-1689ed150de3",
+              "name": "contactType",
+              "value": "whatsapp",
+              "type": "string"
+            },
             {
               "id": "b60e9583-6fe9-45ff-ac2f-aadaaa27c51f",
               "name": "session",
@@ -2412,8 +2401,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        -4464,
-        1616
+        -6336,
+        1072
       ],
       "id": "3f470f38-fced-437d-962f-5853ec8796f7",
       "name": "coletar dados da conversa",
@@ -2422,15 +2411,15 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('coletar dados da conversa').first().json.session }}_memory",
+        "sessionKey": "={{ $('Merge').first().json.session }}_memory",
         "sessionTTL": 1800,
         "contextWindowLength": 40
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        3776,
-        -48
+        3728,
+        -16
       ],
       "id": "50f138b8-b21e-41d4-b5cb-c51671ff0ff6",
       "name": "Redis Chat Memory",
@@ -2444,15 +2433,15 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('coletar dados da conversa').first().json.session }}_memory",
+        "sessionKey": "={{ $('Merge').first().json.session }}_memory",
         "sessionTTL": 1800,
         "contextWindowLength": 40
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        3008,
-        1280
+        2960,
+        1312
       ],
       "id": "6c183ca3-634f-4035-9d5f-5cf34f700554",
       "name": "Redis Chat Memory1",
@@ -2466,15 +2455,15 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('coletar dados da conversa').first().json.session }}_memory",
+        "sessionKey": "={{ $('Merge').first().json.session }}_memory",
         "sessionTTL": 1800,
         "contextWindowLength": 40
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        3600,
-        3488
+        3552,
+        3520
       ],
       "id": "a5dde1da-790a-4d65-b2b9-47929d0ca11b",
       "name": "Redis Chat Memory2",
@@ -2488,15 +2477,15 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('coletar dados da conversa').first().json.session }}_memory",
+        "sessionKey": "={{ $('Merge').first().json.session }}_memory",
         "sessionTTL": 1800,
         "contextWindowLength": 40
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        3456,
-        4448
+        2992,
+        4496
       ],
       "id": "64d5698b-98a6-45cf-83b8-be0e76df1700",
       "name": "Redis Chat Memory3",
@@ -2510,14 +2499,14 @@
     {
       "parameters": {
         "content": "Saída/Resposta Agente",
-        "height": 944,
-        "width": 1360,
+        "height": 1248,
+        "width": 2112,
         "color": 4
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        6464,
-        1728
+        5600,
+        1760
       ],
       "typeVersion": 1,
       "id": "94947e47-e743-434b-afb9-7430a73b6c69",
@@ -2540,8 +2529,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        3056,
-        3552
+        3008,
+        3584
       ],
       "id": "c2709730-0662-4f4a-9c3f-3ff0cb40b9ea",
       "name": "Retorno API"
@@ -2550,7 +2539,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "mensagemAtual",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_message",
+        "key": "={{ $('Merge').first().json.session }}_message",
         "options": {
           "dotNotation": true
         }
@@ -2558,8 +2547,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        1936,
-        3152
+        1888,
+        3184
       ],
       "id": "fd365afc-2377-46d3-a4c0-657c0b259528",
       "name": "Coletar IcoPass Token",
@@ -2600,8 +2589,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        6976,
-        2176
+        6320,
+        2272
       ],
       "id": "421857bb-2d99-47de-abcb-30a1cb5c46c6",
       "name": "If2"
@@ -2611,8 +2600,8 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        7248,
-        2384
+        6544,
+        2512
       ],
       "id": "9baa8ed4-c11d-45cf-838c-cc1faae84147",
       "name": "No Operation, do nothing3"
@@ -2622,8 +2611,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolCalculator",
       "typeVersion": 1,
       "position": [
-        3696,
-        3568
+        3648,
+        3600
       ],
       "id": "3ed1e7ed-2869-4d83-bf5c-78f24cc6ac9f",
       "name": "Calculator1"
@@ -2631,7 +2620,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}",
+        "key": "={{ $('Merge').item.json.session }}",
         "value": "inicio_conversa",
         "expire": true,
         "ttl": 3600
@@ -2639,7 +2628,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1360,
+        -1504,
         1824
       ],
       "id": "33c22cba-0909-4fa2-bef2-079abe869a0d",
@@ -2655,14 +2644,14 @@
       "parameters": {
         "operation": "get",
         "propertyName": "statusAtendimento",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}",
+        "key": "={{ $('Merge').first().json.session }}",
         "options": {}
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        256,
-        1744
+        224,
+        1824
       ],
       "id": "9fed9b6e-b88a-4731-b3b7-e6ed8dad78ed",
       "name": "Status direcionamento",
@@ -2676,7 +2665,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}",
+        "key": "={{ $('Merge').first().json.session }}",
         "value": "atendimento",
         "expire": true,
         "ttl": 3600
@@ -2684,8 +2673,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -848,
-        2128
+        -704,
+        2368
       ],
       "id": "441e6df2-3948-4849-8696-9389b8116051",
       "name": "Status Atendimento",
@@ -2699,7 +2688,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}",
+        "key": "={{ $('Merge').first().json.session }}",
         "value": "finalizada",
         "expire": true,
         "ttl": 1800
@@ -2707,8 +2696,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2528,
-        -80
+        2480,
+        -48
       ],
       "id": "3732436d-5b09-4811-8048-939d2d0d835d",
       "name": "Nao Localizado",
@@ -2722,7 +2711,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}",
+        "key": "={{ $('Merge').first().json.session }}",
         "value": "inicio_conversa",
         "expire": true,
         "ttl": 500
@@ -2730,8 +2719,8 @@
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        4016,
-        3456
+        3968,
+        3488
       ],
       "id": "f421417e-bd0e-4bc7-acd7-875fcf993abb",
       "name": "Status inicio_conversa",
@@ -2745,7 +2734,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}",
+        "key": "={{ $('Merge').first().json.session }}",
         "value": "atendimento",
         "expire": true,
         "ttl": 3600
@@ -2753,8 +2742,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2848,
-        3744
+        2800,
+        3776
       ],
       "id": "994dc62a-4edd-42e5-88e6-30cdf7f707b5",
       "name": "Status Atendimento1",
@@ -2768,13 +2757,13 @@
     {
       "parameters": {
         "operation": "delete",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}"
+        "key": "={{ $('Merge').first().json.session }}"
       },
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3680,
-        4144
+        3216,
+        4192
       ],
       "id": "92109703-ea3b-4287-b2ab-f48ba2ae20a8",
       "name": "Reset Status",
@@ -2787,41 +2776,13 @@
     },
     {
       "parameters": {
-        "method": "POST",
-        "url": "https://api.telegram.org/bot8546416561:AAFTcJQIRWVc7yXOcuef_1paenb7qAdjeJk/getWebhookinfo",
-        "options": {}
-      },
-      "type": "n8n-nodes-base.httpRequest",
-      "typeVersion": 4.3,
-      "position": [
-        -4448,
-        2688
-      ],
-      "id": "ad2dd85e-0637-48fb-837a-01c55ac82fde",
-      "name": "HTTP Request1"
-    },
-    {
-      "parameters": {
-        "command": "curl -X POST 'https://api.telegram.org/bot8546416561:AAFTcJQIRWVc7yXOcuef_1paenb7qAdjeJk/setWebhook'  -d 'url=https://gates.icomon.com.vc/webhook/63cce62c-4eaa-40eb-88e0-cbf2fa2f35aa/webhook'"
-      },
-      "type": "n8n-nodes-base.executeCommand",
-      "typeVersion": 1,
-      "position": [
-        -4240,
-        2688
-      ],
-      "id": "9dd9012c-fcd7-4e1e-a9b2-2aa18527d42a",
-      "name": "Execute Command"
-    },
-    {
-      "parameters": {
         "operation": "executeQuery",
-        "query": "INSERT INTO [db_Gepaci].[dbo].[reports]\n\t(sessionId, mensagemAtual, Status, Identificador_do_Contato, Numero_de_Atendimento)\n\tVALUES \n\t('{{ $('coletar dados da conversa').first().json.session }}', '{{ $('Set Buffer Mensagens').first().json.messageBuffer }}', 'inicio_conversa' , '{{ $('coletar dados da conversa').first().json.phoneCompleto }}', '{{ $('coletar dados da conversa').first().json.phoneNumber }}');"
+        "query": "INSERT INTO [db_Gepaci].[dbo].[reports]\n\t(sessionId, mensagemAtual, Status, Identificador_do_Contato, Numero_de_Atendimento)\n\tVALUES \n\t('{{ $('Merge').item.json.session }}', '{{ $('Set Buffer Mensagens').first().json.messageBuffer }}', 'inicio_conversa' , '{{ $('Merge').first().json.phoneCompleto ? $('Merge').first().json.phoneCompleto : '' }}', '{{ $('Merge').item.json.phoneNumber }}');"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        -1200,
+        -1344,
         1824
       ],
       "id": "e3084cfb-dc99-4594-8950-701af8225be9",
@@ -2837,7 +2798,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n\nUPDATE ud\n  SET mensagemAtual = '{{ $('Set Buffer Mensagens').first().json.messageBuffer }}',\n    Status = '{{ $('Consultar Status').first().json.statusAtendimento}}'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('Merge').item.json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n\nUPDATE ud\n  SET mensagemAtual = '{{ $('Set Buffer Mensagens').first().json.messageBuffer }}',\n    Status = '{{ $('Consultar Status').first().json.statusAtendimento}}'\n  WHERE sessionId = '{{ $('Merge').item.json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
@@ -2857,13 +2818,13 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n\t)\n\nUPDATE ud\n  SET Status = 'finalizada'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('Merge').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n\t)\n\nUPDATE ud\n  SET Status = 'finalizada'\n  WHERE sessionId = '{{ $('Merge').first().json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        2272,
-        -80
+        2224,
+        -48
       ],
       "id": "e74fad7b-3cd5-4504-84d7-a9bd0b231ebe",
       "name": "Setar Status Finalizado",
@@ -2877,13 +2838,13 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n  \nUPDATE ud\n  SET Status = 'atendimento'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('Merge').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n  \nUPDATE ud\n  SET Status = 'atendimento'\n  WHERE sessionId = '{{ $('Merge').first().json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        2624,
-        3744
+        2576,
+        3776
       ],
       "id": "44f4fbda-49cc-4854-9572-12bea493935d",
       "name": "Setar Status Atendimento",
@@ -2897,13 +2858,13 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n\nUPDATE ud\n  SET Nome_do_Contato = '{{ $('coletar dados usuario').first().json.dadosCliente.Nome }}',\n    Matricula = '{{ $('coletar dados usuario').first().json.dadosCliente.Re }}',\n    Status = 'atendimento',\n    Unidade = '{{ $('coletar dados usuario').first().json.dadosCliente.Unidade }}'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('Merge').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n\nUPDATE ud\n  SET Nome_do_Contato = '{{ $('coletar dados usuario').first().json.dadosCliente.Nome }}',\n    Matricula = '{{ $('coletar dados usuario').first().json.dadosCliente.Re }}',\n    Status = 'atendimento',\n    Unidade = '{{ $('coletar dados usuario').first().json.dadosCliente.Unidade }}'\n  WHERE sessionId = '{{ $('Merge').first().json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        -1040,
-        2128
+        -880,
+        2368
       ],
       "id": "47534e0d-997e-4a63-8d12-14a0cd50981c",
       "name": "Dados Colaborador1",
@@ -2923,8 +2884,8 @@
       "type": "n8n-nodes-base.microsoftSqlTool",
       "typeVersion": 1.1,
       "position": [
-        3888,
-        3552
+        3840,
+        3584
       ],
       "id": "e8aeba0a-d229-4a08-b707-73fa2345ca00",
       "name": "Microsoft SQL",
@@ -2973,7 +2934,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        3248,
+        3200,
         352
       ],
       "id": "6351684a-0a19-4fd0-9909-4d45be857f63",
@@ -2982,7 +2943,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}",
+        "key": "={{ $('Merge').first().json.session }}",
         "value": "ex_funcionario",
         "expire": true,
         "ttl": 3600
@@ -2990,7 +2951,7 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3504,
+        3552,
         336
       ],
       "id": "faff5000-e626-48cf-a427-b6e8d5ea1000",
@@ -3005,12 +2966,12 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n\t)\n\nUPDATE ud\n  SET Status = 'ex_funcionario',\n    Nome_do_Contato = '{{ $('coletar dados usuario1').first().json.dadosCliente.Nome }}',\n    Matricula = '{{ $('coletar dados usuario1').first().json.dadosCliente.Re }}'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('Merge').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n\t)\n\nUPDATE ud\n  SET Status = 'ex_funcionario',\n    Nome_do_Contato = '{{ $('coletar dados usuario1').first().json.dadosCliente.Nome }}',\n    Matricula = '{{ $('coletar dados usuario1').first().json.dadosCliente.Re }}'\n  WHERE sessionId = '{{ $('Merge').first().json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        3696,
+        3760,
         336
       ],
       "id": "934f7d48-9091-42fe-9429-aa38b9ae90b5",
@@ -3025,13 +2986,13 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n\nUPDATE ud\n  SET Status = 'acesso_icopass',\n    Nome_do_Contato = '{{ $('coletar dados usuario1').first().json.dadosCliente.Nome }}',\n    Matricula = '{{ $('coletar dados usuario1').first().json.dadosCliente.Re }}',\n    Unidade = '{{ $('coletar dados usuario1').first().json.dadosCliente.Unidade }}'\n  WHERE sessionId = '{{ $('coletar dados da conversa').first().json.session }}'\n  AND Status != 'finalizada';"
+        "query": ";with ud as( SELECT TOP (1) * FROM [db_Gepaci].[dbo].[reports]\n\tWHERE sessionId = '{{ $('Merge').first().json.session }}'\n\tAND Status != 'finalizada'\n\tORDER BY id DESC\n)\n\nUPDATE ud\n  SET Status = 'acesso_icopass',\n    Nome_do_Contato = '{{ $('coletar dados usuario1').first().json.dadosCliente.Nome }}',\n  Numero_de_Atendimento = '{{ $('coletar dados usuario1').first().json.dadosCliente.Celular }}',\n  Identificador_do_Contato = '55{{ $('coletar dados usuario1').first().json.dadosCliente.Celular }}',\n    Matricula = '{{ $('coletar dados usuario1').first().json.dadosCliente.Re }}',\n    Unidade = '{{ $('coletar dados usuario1').first().json.dadosCliente.Unidade }}'\n  WHERE sessionId = '{{ $('Merge').first().json.session }}'\n  AND Status != 'finalizada';"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        3712,
-        560
+        3744,
+        592
       ],
       "id": "cd017c9f-0007-4bc1-a031-884f5740def3",
       "name": "Setar Status IcoPass",
@@ -3045,7 +3006,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}",
+        "key": "={{ $('Merge').first().json.session }}",
         "value": "acesso_icopass",
         "expire": true,
         "ttl": 3600
@@ -3053,8 +3014,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        3504,
-        560
+        3520,
+        592
       ],
       "id": "d29f9676-8095-4ae3-b8a1-48be340f3121",
       "name": "Status IcoPass",
@@ -3072,15 +3033,15 @@
       "type": "@n8n/n8n-nodes-langchain.embeddingsOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3152,
-        2848
+        3056,
+        2912
       ],
       "id": "d0b4c02f-0428-4c94-ae26-310e810abb77",
       "name": "Embeddings OpenAI",
       "credentials": {
         "openAiApi": {
-          "id": "gRGI4xnZA0lZ77gz",
-          "name": "OpenAi Pessoal"
+          "id": "TAeBQjpAim1cMqIi",
+          "name": "OpenAi account"
         }
       }
     },
@@ -3097,15 +3058,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        3536,
-        2768
+        3488,
+        2800
       ],
       "id": "45e65f46-5587-4221-8f3e-ce434f034165",
       "name": "OpenAI Chat Model6",
       "credentials": {
         "openAiApi": {
-          "id": "gRGI4xnZA0lZ77gz",
-          "name": "OpenAi Pessoal"
+          "id": "TAeBQjpAim1cMqIi",
+          "name": "OpenAi account"
         }
       }
     },
@@ -3122,8 +3083,8 @@
       "type": "@n8n/n8n-nodes-langchain.vectorStoreSupabase",
       "typeVersion": 1.3,
       "position": [
-        3200,
-        2704
+        3152,
+        2736
       ],
       "id": "d107e39d-45bb-42b8-a496-8c7ccaab4406",
       "name": "Supabase Vector Store1",
@@ -3142,8 +3103,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolVectorStore",
       "typeVersion": 1.1,
       "position": [
-        3344,
-        2528
+        3296,
+        2560
       ],
       "id": "ca699980-9a87-4ea6-ab7d-0e1691735fd8",
       "name": "Banco Vetorial1"
@@ -3163,15 +3124,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        2704,
-        2528
+        2656,
+        2560
       ],
       "id": "23f4430e-867b-4431-a9c8-498f1469c931",
       "name": "OpenAI Chat Model7",
       "credentials": {
         "openAiApi": {
-          "id": "gRGI4xnZA0lZ77gz",
-          "name": "OpenAi Pessoal"
+          "id": "TAeBQjpAim1cMqIi",
+          "name": "OpenAi account"
         }
       }
     },
@@ -3184,8 +3145,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2816,
-        2624
+        2768,
+        2656
       ],
       "id": "7f93ec64-6fbf-41d1-aee1-739d989da2cc",
       "name": "Google Gemini Chat Atendimento4",
@@ -3201,8 +3162,8 @@
       "type": "@n8n/n8n-nodes-langchain.toolThink",
       "typeVersion": 1.1,
       "position": [
-        3104,
-        2512
+        3056,
+        2544
       ],
       "id": "e53f1bd9-6791-4ace-a94f-f2e30655126c",
       "name": "Think4"
@@ -3210,8 +3171,8 @@
     {
       "parameters": {
         "content": "Ex-Funcionário",
-        "height": 688,
-        "width": 2192,
+        "height": 736,
+        "width": 2336,
         "color": 7
       },
       "type": "n8n-nodes-base.stickyNote",
@@ -3227,7 +3188,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "nomeUsuario",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_nome",
+        "key": "={{ $('Merge').first().json.session }}_nome",
         "options": {
           "dotNotation": false
         }
@@ -3235,8 +3196,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2656,
-        2320
+        2608,
+        2352
       ],
       "id": "b72c4720-0d30-4c2e-be81-88f1cb54fd37",
       "name": "Coletar Nome Usuario1",
@@ -3252,15 +3213,15 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('coletar dados da conversa').first().json.session }}_memoryAtendimento",
+        "sessionKey": "={{ $('Merge').first().json.session }}_memoryAtendimento",
         "sessionTTL": 1800,
         "contextWindowLength": 40
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        2960,
-        2576
+        2912,
+        2608
       ],
       "id": "2e5e8f92-c4f8-4ea2-9255-176583243194",
       "name": "Redis Chat Memory4",
@@ -3275,7 +3236,7 @@
       "parameters": {
         "operation": "get",
         "propertyName": "mensagemAtual",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_message",
+        "key": "={{ $('Merge').first().json.session }}_message",
         "options": {
           "dotNotation": true
         }
@@ -3283,8 +3244,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2224,
-        2320
+        2176,
+        2352
       ],
       "id": "b07e98a8-62b7-414c-897e-55a249c1d223",
       "name": "Coletar Mensagem Ex Funcionario",
@@ -3309,8 +3270,8 @@
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 3,
       "position": [
-        3056,
-        2320
+        3008,
+        2352
       ],
       "id": "185904fb-c3b3-4555-b9a8-b7d626c5356f",
       "name": "Ex Funionario",
@@ -3342,8 +3303,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        -1664,
-        2128
+        -1488,
+        2480
       ],
       "id": "a81203ec-c500-47b4-9dc8-d9ee3131370c",
       "name": "Coletar Dados Gestor",
@@ -3373,8 +3334,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        2080,
-        208
+        2176,
+        384
       ],
       "id": "7bc14b93-8acb-42f5-84cf-04dacb074b37",
       "name": "Coletar Dados Gestor1",
@@ -3388,8 +3349,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        6448,
-        912
+        5584,
+        944
       ],
       "typeVersion": 1,
       "id": "a0264716-e89a-408d-abe3-bd23d0a025be",
@@ -3402,8 +3363,8 @@
       "type": "@n8n/n8n-nodes-langchain.mcpTrigger",
       "typeVersion": 2,
       "position": [
-        6944,
-        1024
+        6080,
+        1056
       ],
       "id": "a35f03d4-3e9c-44b1-a6b6-60aef1b36b4b",
       "name": "MCP Funcionalidades Atendimento",
@@ -3417,8 +3378,8 @@
       "type": "@n8n/n8n-nodes-langchain.mcpClientTool",
       "typeVersion": 1.2,
       "position": [
-        3120,
-        1792
+        3072,
+        1824
       ],
       "id": "bbb87eb0-87ef-49c7-8a94-c751c10c9c93",
       "name": "MCP Client Funcionalidades Atendimento"
@@ -3442,8 +3403,8 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.3,
       "position": [
-        7328,
-        1248
+        6464,
+        1280
       ],
       "id": "e7f09a6b-03aa-4ba2-8ca7-6ce923d324ec",
       "name": "SQL Verificar Alelo Farmacia"
@@ -3451,15 +3412,15 @@
     {
       "parameters": {
         "sessionIdType": "customKey",
-        "sessionKey": "={{ $('coletar dados da conversa').first().json.session }}_memory",
+        "sessionKey": "={{ $('Merge').first().json.session }}_memory",
         "sessionTTL": 1800,
         "contextWindowLength": 40
       },
       "type": "@n8n/n8n-nodes-langchain.memoryRedisChat",
       "typeVersion": 1.5,
       "position": [
-        3008,
-        1744
+        2960,
+        1776
       ],
       "id": "4a45e6cf-93cc-40ab-a5e3-45491ef2b421",
       "name": "Redis Tickets Memory",
@@ -3485,15 +3446,15 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
       "position": [
-        2720,
-        1728
+        2672,
+        1760
       ],
       "id": "a3f28b83-2768-4f0a-957f-256e0d425ced",
       "name": "OpenAI Chat Model8",
       "credentials": {
         "openAiApi": {
-          "id": "gRGI4xnZA0lZ77gz",
-          "name": "OpenAi Pessoal"
+          "id": "TAeBQjpAim1cMqIi",
+          "name": "OpenAi account"
         }
       }
     },
@@ -3506,8 +3467,8 @@
       "type": "@n8n/n8n-nodes-langchain.lmChatGoogleGemini",
       "typeVersion": 1,
       "position": [
-        2880,
-        1792
+        2832,
+        1824
       ],
       "id": "f57ae357-f056-4bec-a019-1ca2913b7c8d",
       "name": "Google Gemini Chat Atendimento5",
@@ -3530,8 +3491,8 @@
       "type": "@n8n/n8n-nodes-langchain.agentTool",
       "typeVersion": 2.2,
       "position": [
-        2896,
-        1536
+        2816,
+        1552
       ],
       "id": "07fb17ea-d8d6-45d5-b24f-8aebe5f649d7",
       "name": "Gerenciamento de Tools"
@@ -3539,7 +3500,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_memoryVariable",
+        "key": "={{ $('Merge').first().json.session }}_memoryVariable",
         "value": "={{ $('coletar dados usuario1').first().json.dadosCliente }}",
         "expire": true,
         "ttl": 3600
@@ -3547,8 +3508,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        2496,
-        208
+        2592,
+        272
       ],
       "id": "aa93958f-fad9-403a-b6e3-603e8b9dbe86",
       "name": "Memory Variables",
@@ -3562,7 +3523,7 @@
     {
       "parameters": {
         "operation": "set",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_memoryVariable",
+        "key": "={{ $('Merge').first().json.session }}_memoryVariable",
         "value": "={{ $('coletar dados usuario').first().json.dadosCliente }}",
         "expire": true,
         "ttl": 3600
@@ -3570,8 +3531,8 @@
       "type": "n8n-nodes-base.redis",
       "typeVersion": 1,
       "position": [
-        -1248,
-        2128
+        -1072,
+        2368
       ],
       "id": "1f111264-1efa-4218-aa09-a4725b63b10e",
       "name": "Memory Variables1",
@@ -3587,14 +3548,14 @@
       "parameters": {
         "operation": "get",
         "propertyName": "={{ /*n8n-auto-generated-fromAI-override*/ $fromAI('Name', ``, 'string') }}",
-        "key": "={{ $('coletar dados da conversa').first().json.session }}_memoryVariable",
+        "key": "={{ $('Merge').first().json.session }}_memoryVariable",
         "options": {}
       },
       "type": "n8n-nodes-base.redisTool",
       "typeVersion": 1,
       "position": [
-        3216,
-        1728
+        3168,
+        1760
       ],
       "id": "3ebc069d-7567-4ed4-b5c7-6fd24d77f8a4",
       "name": "Redis",
@@ -3652,8 +3613,8 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.3,
       "position": [
-        6784,
-        1232
+        5920,
+        1264
       ],
       "id": "2490ef2e-a17f-4e04-80f9-08bf2b7e7b09",
       "name": "GLPI Template Geral"
@@ -3676,11 +3637,705 @@
       "type": "n8n-nodes-base.httpRequestTool",
       "typeVersion": 4.3,
       "position": [
-        7072,
-        1248
+        6208,
+        1280
       ],
       "id": "ae5af7f6-e811-4311-98bb-a11e5e53f8d6",
       "name": "GLPI Search Ticket"
+    },
+    {
+      "parameters": {
+        "updates": [
+          "message"
+        ],
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegramTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -7008,
+        1600
+      ],
+      "id": "5b58cf08-fdf8-4039-a241-86b29a99e0fc",
+      "name": "Telegram Trigger",
+      "webhookId": "671e4c66-ac5d-4be9-b7f4-301b13ef4d94",
+      "credentials": {
+        "telegramApi": {
+          "id": "tXP0eu17cHrnpEfC",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "3aca9db5-8cba-4f4c-9a8e-c13369edea79",
+              "name": "contactType",
+              "value": "telegram",
+              "type": "string"
+            },
+            {
+              "id": "b60e9583-6fe9-45ff-ac2f-aadaaa27c51f",
+              "name": "session",
+              "value": "={{ $('Telegram Trigger').first().json.message.chat.id }}_{{ $('Telegram Trigger').first().json.message.chat.first_name.trim().split(/\\s+/)[0] }}",
+              "type": "string"
+            },
+            {
+              "id": "6c3fee67-5a3e-4daf-b7e0-8a987bf24dc1",
+              "name": "message",
+              "value": "={{ $('Telegram Trigger').first().json.message.text }}",
+              "type": "string"
+            },
+            {
+              "id": "1f37ee26-a963-497c-b693-a14afd0bdff1",
+              "name": "chatId",
+              "value": "={{ $('Telegram Trigger').first().json.message.from.id }}",
+              "type": "string"
+            },
+            {
+              "id": "01a74efd-5d4e-4869-b157-8611c12facf8",
+              "name": "pushName",
+              "value": "={{ $('Telegram Trigger').first().json.message.from.first_name }}",
+              "type": "string"
+            },
+            {
+              "id": "36b91569-2721-46ab-b458-6c2c00c1f659",
+              "name": "typeMessage",
+              "value": "={{ $json.typeMessage }}",
+              "type": "string"
+            },
+            {
+              "id": "c06f028b-6543-451e-ab4c-ef99e6feea7d",
+              "name": "phoneNumber",
+              "value": "=",
+              "type": "string"
+            },
+            {
+              "id": "82000d21-cf1e-4dec-8320-aa5486956519",
+              "name": "message_audio",
+              "value": "={{ $json.message.voice.file_id }}",
+              "type": "string"
+            },
+            {
+              "id": "7f4e7ff8-3496-4e3a-94ff-885e66647e43",
+              "name": "message_image",
+              "value": "={{ $('Telegram Trigger').first().json.message.photo[0].file_id }}",
+              "type": "string"
+            },
+            {
+              "id": "2f766984-7289-423b-b7b0-e0a055721604",
+              "name": "text_image",
+              "value": "={{ $('Telegram Trigger').first().json.message.caption }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -5776,
+        1600
+      ],
+      "id": "ce47aa35-8444-4383-8319-f00a42281390",
+      "name": "coletar dados da telegram",
+      "executeOnce": true
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        -5248,
+        1424
+      ],
+      "id": "7afe70e5-2cfa-443a-99c3-3aa96fbbe73f",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.message.text }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    },
+                    "id": "da4246b9-2368-48c7-9ef3-1a36dfa64d41"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "text"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "fc0f11b2-0a47-46a1-bf5a-e2f14cb42108",
+                    "leftValue": "={{ $json.message.voice.file_id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "voice"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "75b2f971-578f-4aca-9978-1d8b50ccad1e",
+                    "leftValue": "={{ $json.message.photo[0].file_id }}",
+                    "rightValue": "",
+                    "operator": {
+                      "type": "string",
+                      "operation": "notEmpty",
+                      "singleValue": true
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "photo"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -6720,
+        1584
+      ],
+      "id": "35e0a023-1b06-4f24-a312-8f087394a9ff",
+      "name": "Switch1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "98ca19e9-f20e-46f7-a7a9-35552c8df4fc",
+              "name": "typeMessage",
+              "value": "text",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -6352,
+        1376
+      ],
+      "id": "c7c3b85d-e6f5-406b-9338-3ea520597d6d",
+      "name": "typeText"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "98ca19e9-f20e-46f7-a7a9-35552c8df4fc",
+              "name": "typeMessage",
+              "value": "audio",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -6352,
+        1600
+      ],
+      "id": "46abf2c6-b96f-4f08-a374-456d21fa9f78",
+      "name": "typeVoice"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "98ca19e9-f20e-46f7-a7a9-35552c8df4fc",
+              "name": "typeMessage",
+              "value": "image",
+              "type": "string"
+            },
+            {
+              "id": "7b8dd8e9-c831-44b1-b1f6-db96572f69d1",
+              "name": "=message_image",
+              "value": "={{ $('Telegram Trigger').first().json.message.photo[0].file_id }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -6352,
+        1856
+      ],
+      "id": "1b620abb-5b1c-4b29-937b-7bb18136a4be",
+      "name": "typeImage"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Merge').item.json.contactType }}",
+                    "rightValue": "whatsapp",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "31c95a95-085c-4d52-bb78-5ff06a284233"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "whatsapp"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a8e52eec-39e3-4fef-85e1-701c030a2aef",
+                    "leftValue": "={{ $('Merge').item.json.contactType }}",
+                    "rightValue": "telegram",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "telegram"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        6528,
+        2256
+      ],
+      "id": "7ba19d98-5af3-4e54-a01d-6691a2bc2564",
+      "name": "Validar Tipo Resposta"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Merge').first().json.chatId }}",
+        "text": "={{ $('Loop Over Items').first().json.message.replace(/(\\r\\n|\\n|\\r)/gm, \" \") }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        6832,
+        2448
+      ],
+      "id": "e3ba0e33-457b-4055-8847-8e49b6326934",
+      "name": "Send a text message",
+      "webhookId": "51d558cf-abc9-4a9e-b0db-05a7de209dac",
+      "credentials": {
+        "telegramApi": {
+          "id": "tXP0eu17cHrnpEfC",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Mensagem Imagem').first().json.imagem }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -4096,
+        2096
+      ],
+      "id": "bb8ebd10-663e-4e09-ba1b-c777a3694365",
+      "name": "Get a image",
+      "webhookId": "5545b0e6-d12b-4ac9-871f-f0092b46e562",
+      "credentials": {
+        "telegramApi": {
+          "id": "tXP0eu17cHrnpEfC",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "file",
+        "fileId": "={{ $('Telegram Trigger').first().json.message.voice.file_id }}",
+        "additionalFields": {}
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        -4048,
+        1440
+      ],
+      "id": "4be02a28-467c-4b2f-a562-e9c5df16d7f3",
+      "name": "Get a audio",
+      "webhookId": "5545b0e6-d12b-4ac9-871f-f0092b46e562",
+      "credentials": {
+        "telegramApi": {
+          "id": "tXP0eu17cHrnpEfC",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "Sua função será analisar a imagem e retornar um texto descritivo do que ela contem.",
+        "imageUrls": "={{ $('Mensagem Imagem').first().json.imagem }}",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2,
+      "position": [
+        -3984,
+        1872
+      ],
+      "id": "51e97a1d-4bbf-43b7-860f-c50d496f68c6",
+      "name": "Analyze image whatsapp",
+      "credentials": {
+        "openAiApi": {
+          "id": "TAeBQjpAim1cMqIi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Merge').item.json.contactType }}",
+                    "rightValue": "whatsapp",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "31c95a95-085c-4d52-bb78-5ff06a284233"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "whatsapp"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a8e52eec-39e3-4fef-85e1-701c030a2aef",
+                    "leftValue": "={{ $('Merge').item.json.contactType }}",
+                    "rightValue": "telegram",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "telegram"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -4320,
+        1888
+      ],
+      "id": "a6409c05-f1df-4e50-9190-9797640aeae3",
+      "name": "Validar Tipo Entrada"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "text": "Sua função será analisar a imagem e retornar um texto descritivo do que ela contem.",
+        "inputType": "base64",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 2,
+      "position": [
+        -3888,
+        2096
+      ],
+      "id": "c9137432-fd8f-417b-8d2d-32c99383585e",
+      "name": "Analyze image instagram",
+      "credentials": {
+        "openAiApi": {
+          "id": "TAeBQjpAim1cMqIi",
+          "name": "OpenAi account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Merge').item.json.contactType }}",
+                    "rightValue": "whatsapp",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "31c95a95-085c-4d52-bb78-5ff06a284233"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "whatsapp"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a8e52eec-39e3-4fef-85e1-701c030a2aef",
+                    "leftValue": "={{ $('Merge').item.json.contactType }}",
+                    "rightValue": "telegram",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "telegram"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        -4336,
+        1424
+      ],
+      "id": "5759f7ac-f003-46d9-bd86-3964851e2e2f",
+      "name": "Validar Tipo Entrada1"
+    },
+    {
+      "parameters": {
+        "url": "https://gates.icomon.com.vc/webhook/ehgestor",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "chatInput",
+              "value": "={{ $('Sql Agtesla').first().json.body.RE_SCL }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -1680,
+        2080
+      ],
+      "id": "55cbbea3-a9be-47e5-a64b-06194cb03525",
+      "name": "API Eh Gestor"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ca0a786c-5953-4be9-a12d-a22eacef9f8d",
+              "leftValue": "={{ $('API Identidade').first().json.body.ehGestor }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -1680,
+        2384
+      ],
+      "id": "2d93c1e6-fa18-4c6f-9dfb-644328de7134",
+      "name": "If8"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "bb3ee806-7eab-49e3-ae72-3c98c5afaf6b",
+              "leftValue": "={{ $('API Identidade').first().json.body.ehGestor }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1968,
+        288
+      ],
+      "id": "ecc671b4-f500-4f8d-af57-7ec5422067e6",
+      "name": "If9"
     }
   ],
   "pinData": {},
@@ -3774,7 +4429,7 @@
         ],
         [
           {
-            "node": "Coletar Dados Gestor",
+            "node": "API Eh Gestor",
             "type": "main",
             "index": 0
           }
@@ -3856,7 +4511,7 @@
         ],
         [
           {
-            "node": "Coletar Dados Gestor1",
+            "node": "If9",
             "type": "main",
             "index": 0
           }
@@ -4283,7 +4938,7 @@
       "main": [
         [
           {
-            "node": "HTTP Request",
+            "node": "Validar Tipo Entrada1",
             "type": "main",
             "index": 0
           }
@@ -4338,18 +4993,7 @@
       "main": [
         [
           {
-            "node": "Analyze image",
-            "type": "main",
-            "index": 0
-          }
-        ]
-      ]
-    },
-    "Analyze image": {
-      "main": [
-        [
-          {
-            "node": "Edit Fields1",
+            "node": "Validar Tipo Entrada",
             "type": "main",
             "index": 0
           }
@@ -4676,7 +5320,7 @@
       "main": [
         [
           {
-            "node": "Switch",
+            "node": "Merge",
             "type": "main",
             "index": 0
           }
@@ -4753,7 +5397,7 @@
       "main": [
         [
           {
-            "node": "Response Message Zapster",
+            "node": "Validar Tipo Resposta",
             "type": "main",
             "index": 0
           }
@@ -4853,11 +5497,6 @@
             "index": 0
           }
         ]
-      ]
-    },
-    "HTTP Request1": {
-      "main": [
-        []
       ]
     },
     "Criar Registro1": {
@@ -5256,6 +5895,253 @@
           }
         ]
       ]
+    },
+    "Telegram Trigger": {
+      "main": [
+        [
+          {
+            "node": "Switch1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "coletar dados da telegram": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch1": {
+      "main": [
+        [
+          {
+            "node": "typeText",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "typeVoice",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "typeImage",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "typeText": {
+      "main": [
+        [
+          {
+            "node": "coletar dados da telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "typeVoice": {
+      "main": [
+        [
+          {
+            "node": "coletar dados da telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "typeImage": {
+      "main": [
+        [
+          {
+            "node": "coletar dados da telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar Tipo Resposta": {
+      "main": [
+        [
+          {
+            "node": "Response Message Zapster",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a image": {
+      "main": [
+        [
+          {
+            "node": "Analyze image instagram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze image whatsapp": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar Tipo Entrada": {
+      "main": [
+        [
+          {
+            "node": "Analyze image whatsapp",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a image",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get a audio": {
+      "main": [
+        [
+          {
+            "node": "Transcribe a recording",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze image instagram": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validar Tipo Entrada1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Get a audio",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "API Eh Gestor": {
+      "main": [
+        [
+          {
+            "node": "If8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If9": {
+      "main": [
+        [
+          {
+            "node": "coletar dados usuario1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Coletar Dados Gestor1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If8": {
+      "main": [
+        [
+          {
+            "node": "coletar dados usuario",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Coletar Dados Gestor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
@@ -5266,7 +6152,7 @@
     "timeSavedPerExecution": 35,
     "timezone": "America/Sao_Paulo"
   },
-  "versionId": "32c98d09-2e0a-4925-9d6d-8b8b82c8d2a7",
+  "versionId": "2b3e1527-b029-4c18-9f5c-7a3b162eff69",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "c13cee92dfa69db8294a82c6dfa57e3a1199207e843eec919de3f2ec003607aa"

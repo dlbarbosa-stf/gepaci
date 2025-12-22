@@ -70,7 +70,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        448,
+        400,
         128
       ],
       "id": "e3ec0013-b7d1-4b2a-824a-0e7eca5c8cb2",
@@ -135,7 +135,7 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        752,
+        704,
         128
       ],
       "id": "8f56b827-6965-49ad-8288-f45b077f2073",
@@ -198,21 +198,27 @@
               "type": "string"
             },
             {
+              "id": "de4ca59d-6e55-43db-9409-ed6f2f99ad66",
+              "name": "ehGestor",
+              "value": "={{ $('ehGestor').item.json.body.ehGestor }}",
+              "type": "boolean"
+            },
+            {
               "id": "6acf9b2b-6720-41ef-bf1f-6294034b1435",
               "name": "situacao",
               "value": "={{ $('buscarFuncionario').item.json.body.situacao }}",
               "type": "string"
             },
             {
-              "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
-              "name": "colaborador",
-              "value": "OK",
-              "type": "string"
-            },
-            {
               "id": "2bd4e2c3-c065-4420-93be-75cc0adcbbcf",
               "name": "chatInput",
               "value": "Dados informados e validados com sucesso.",
+              "type": "string"
+            },
+            {
+              "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
+              "name": "colaborador",
+              "value": "OK",
               "type": "string"
             }
           ]
@@ -222,7 +228,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1056,
+        1200,
         112
       ],
       "id": "aff97e63-5810-4705-9436-7916cde92fe1",
@@ -251,8 +257,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1056,
-        304
+        1200,
+        320
       ],
       "id": "e6243d3f-cea9-4f92-9a6e-b7ddb090e286",
       "name": "Não Encontrado"
@@ -288,8 +294,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1008,
-        736
+        1040,
+        1664
       ],
       "id": "ab132c4d-a12e-4b87-b61d-2927bbcbc9de",
       "name": "requestToken1"
@@ -354,8 +360,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        576,
-        976
+        608,
+        1904
       ],
       "id": "67844ecb-e325-4fa9-a4b6-e7c0ad51674b",
       "name": "Switch"
@@ -369,8 +375,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        32,
-        560
+        48,
+        1440
       ],
       "typeVersion": 1,
       "id": "0355ae7c-d130-4c74-a4e7-767d79480200",
@@ -403,8 +409,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        128,
-        720
+        160,
+        1648
       ],
       "id": "aadca73a-5024-4452-be4a-39641d029c2f",
       "name": "Webhook IcoPass",
@@ -450,8 +456,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        368,
-        976
+        400,
+        1904
       ],
       "id": "6e3fb701-9d34-421e-8b66-393a942dbcfa",
       "name": "validarIcoPass",
@@ -493,8 +499,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        896,
-        960
+        928,
+        1888
       ],
       "id": "44419281-b6e1-4a59-b2a9-b04df4e196a6",
       "name": "Token Valido"
@@ -522,8 +528,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        592,
-        1200
+        624,
+        2128
       ],
       "id": "f291c50d-7972-4075-847b-49bd6413bb39",
       "name": "Token Invalido"
@@ -535,8 +541,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        208,
-        1200
+        240,
+        2128
       ],
       "id": "e1e4c95a-001c-42ab-adcf-6eec765ed8f0",
       "name": "Message Error"
@@ -569,8 +575,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        816,
-        1200
+        848,
+        2128
       ],
       "id": "ce800ef7-0dc2-478e-a2b2-79a13fc383fc",
       "name": "If"
@@ -615,8 +621,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1040,
-        1184
+        1072,
+        2112
       ],
       "id": "b4a2d904-b76b-4426-872c-fc22616e9432",
       "name": "validarIcoPass1",
@@ -646,8 +652,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        336,
-        720
+        368,
+        1648
       ],
       "id": "b4bdc339-7bc6-46eb-86ef-00495cc46071",
       "name": "coletar identificador1",
@@ -713,8 +719,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        384,
-        1440
+        416,
+        2368
       ],
       "id": "a40c4ead-bdcf-4fde-8962-da37edfb5801",
       "name": "Switch2"
@@ -742,8 +748,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1056,
-        1616
+        1088,
+        2544
       ],
       "id": "bfe4853a-00e6-4bb6-bb38-ad4eeaeb844b",
       "name": "Token Invalido1"
@@ -755,8 +761,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        640,
-        1616
+        672,
+        2544
       ],
       "id": "d2b130c3-e9c7-4f23-9425-35946dafc529",
       "name": "Message Error1"
@@ -796,8 +802,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1056,
-        1424
+        1088,
+        2352
       ],
       "id": "ebcbb80e-4cb9-4e1d-bf8b-9718c3c6f8b0",
       "name": "Token Valido1"
@@ -856,7 +862,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        160,
+        112,
         128
       ],
       "id": "28c9a660-00bd-494a-9694-bf2605152685",
@@ -898,8 +904,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        800,
-        720
+        832,
+        1648
       ],
       "id": "97df732b-b1d5-41b7-994e-51da83297658",
       "name": "If2",
@@ -924,8 +930,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        160,
-        976
+        192,
+        1904
       ],
       "id": "298bb1f5-1b19-4d5f-94c0-1d5dd9c8de80",
       "name": "Set Token Banco1"
@@ -960,8 +966,8 @@
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        576,
-        720
+        608,
+        1648
       ],
       "id": "6ac673ba-3317-4131-bfad-8cfe16075d5b",
       "name": "Get Token3",
@@ -1004,8 +1010,8 @@
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        1184,
-        736
+        1216,
+        1664
       ],
       "id": "cd9f135a-6d01-4be7-b0ac-46a4cda1b71c",
       "name": "Update e Get Token1",
@@ -1586,7 +1592,8 @@
         1632
       ],
       "id": "170c18f0-af0e-4970-8aff-ebc2f19ab089",
-      "name": "Schedule Trigger"
+      "name": "Schedule Trigger",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1629,7 +1636,8 @@
         2048
       ],
       "id": "0688c66e-1fef-44c8-bee1-0f267477584c",
-      "name": "Response Message Zapster"
+      "name": "Response Message Zapster",
+      "disabled": true
     },
     {
       "parameters": {},
@@ -1640,7 +1648,8 @@
         4160,
         2560
       ],
-      "id": "45ef510f-93d1-47e5-9c13-73bee6a07305"
+      "id": "45ef510f-93d1-47e5-9c13-73bee6a07305",
+      "disabled": true
     },
     {
       "parameters": {
@@ -1668,7 +1677,8 @@
       ],
       "id": "68c686f2-28b3-4c51-985f-be3ab84c4f3e",
       "name": "Wait1",
-      "webhookId": "d3569ea4-8aac-4739-8f2b-3770d057d58f"
+      "webhookId": "d3569ea4-8aac-4739-8f2b-3770d057d58f",
+      "disabled": true
     },
     {
       "parameters": {},
@@ -1924,6 +1934,396 @@
       ],
       "id": "3c4735c9-cc60-4237-9f94-2836613179fa",
       "name": "If7"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://apiwhatsapp.icomon.com.vc/identidade/autenticar",
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "email",
+              "value": "integracao@mutant.com.br"
+            },
+            {
+              "name": "senha",
+              "value": "Heh#EL8@ScR%Gp$m"
+            }
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        944,
+        768
+      ],
+      "id": "303f9476-b242-4dc5-adc1-418cad1cf93a",
+      "name": "requestToken5"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "37271610-ca3e-479a-a814-8ff315091d2a",
+                    "leftValue": "={{ $json.statusCode }}",
+                    "rightValue": 200,
+                    "operator": {
+                      "type": "number",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "encontrado"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.statusCode }}",
+                    "rightValue": 200,
+                    "operator": {
+                      "type": "number",
+                      "operation": "notEquals"
+                    },
+                    "id": "244bbc4d-47f3-4f9a-803b-27850f3b2904"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "naoEncontrado"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        752,
+        992
+      ],
+      "id": "331ec160-e6f0-411c-8634-d9da4a2227eb",
+      "name": "Switch3"
+    },
+    {
+      "parameters": {
+        "content": "API EhGestor\n\nDocumentação Swagger: https://apiwhatsapp.icomon.com.vc/swagger/index.html",
+        "height": 784,
+        "width": 1360,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        32,
+        576
+      ],
+      "typeVersion": 1,
+      "id": "f8f2fe85-cfe3-442e-870b-1caaff933658",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
+              "name": "inputIdentity",
+              "value": "={{ $json.body.chatInput }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        336,
+        752
+      ],
+      "id": "00ef8cf7-d6f6-421c-9009-d9efea3f6bd2",
+      "name": "coletar identificador2",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b1bbef1f-aade-4643-a58b-90a6e7b54cac",
+              "name": "ehGestor",
+              "value": "={{ $('ehGestor1').item.json.body.ehGestor }}",
+              "type": "boolean"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1056,
+        976
+      ],
+      "id": "781c6b77-8d6a-44af-a487-b14e76b8d800",
+      "name": "Colaborador Encontrado1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
+              "name": "body.colaborador",
+              "value": "NAO ENCONTRADO",
+              "type": "string"
+            },
+            {
+              "id": "6b8f4a3e-ba82-4a83-b1fb-07f462d233a9",
+              "name": "chatInput",
+              "value": "Usuário não localizado",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1056,
+        1168
+      ],
+      "id": "6753190d-951a-4d95-bcb5-45ec152128c5",
+      "name": "Não Encontrado1"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "59d6b7db-6cde-4a02-a5bd-e2c438082e21",
+              "leftValue": "={{ $json.status }}",
+              "rightValue": "active",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        752,
+        752
+      ],
+      "id": "bdef230d-c987-4c16-90b9-731a66707a00",
+      "name": "If8",
+      "alwaysOutputData": false,
+      "executeOnce": true,
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "fa8bb98e-3dd4-4db2-abfb-9db6730f2135",
+              "name": "body.accessToken",
+              "value": "={{ $json.clientToken }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        160,
+        992
+      ],
+      "id": "97e376ce-6df9-4a70-9d13-de87bcf7890b",
+      "name": "Set Token Banco2"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT status, clientToken\n  FROM [db_Gepaci].[dbo].[accessToken]\n  WHERE apiName = 'identidade'\n  AND status = 'active';"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        560,
+        752
+      ],
+      "id": "792025b0-ff9f-402c-b2dd-ba1db6778eb6",
+      "name": "Get Token",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "d1VJXdOhxYJikLtU",
+          "name": "db_Gepaci"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "-- Update na tabela\nUPDATE [db_Gepaci].[dbo].[accessToken]\n  SET status = 'active',\n    clientToken = '{{ $json.body.accessToken }}'\n  WHERE apiName = 'identidade';\n\n-- Select com retorno do novo token\nSELECT status, clientToken\n  FROM [db_Gepaci].[dbo].[accessToken]\n  WHERE apiName = 'identidade'\n  AND status = 'active';"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        1136,
+        768
+      ],
+      "id": "f1540c66-ce8e-4bc9-a69b-dca46e1d3486",
+      "name": "Update e Get Token2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "d1VJXdOhxYJikLtU",
+          "name": "db_Gepaci"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "path": "ehgestor",
+        "responseMode": "lastNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        112,
+        752
+      ],
+      "id": "a15ee950-aa9b-4fdc-8595-b5c8e30deb87",
+      "name": "Webhook EhGestor",
+      "webhookId": "a97dd1d1-0b64-4a1f-a7db-7bf982ebd905"
+    },
+    {
+      "parameters": {
+        "url": "=https://apiwhatsapp.icomon.com.vc/funcionarios/{{ $('coletar identificador').item.json.inputIdentity }}/EhGestor",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $('Set Token Banco').item.json.body.accessToken }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        992,
+        112
+      ],
+      "id": "abd24425-aa65-4122-8fa9-93fd1d7afcc6",
+      "name": "ehGestor"
+    },
+    {
+      "parameters": {
+        "url": "=https://apiwhatsapp.icomon.com.vc/funcionarios/{{ $('coletar identificador2').item.json.inputIdentity }}/EhGestor",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "=Bearer {{ $json.body.accessToken }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "options": {
+          "redirect": {
+            "redirect": {}
+          },
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        448,
+        992
+      ],
+      "id": "4ae63194-c932-4fbf-b34c-cce99376010c",
+      "name": "ehGestor1"
     }
   ],
   "pinData": {},
@@ -1954,7 +2354,7 @@
       "main": [
         [
           {
-            "node": "Colaborador Encontrado",
+            "node": "ehGestor",
             "type": "main",
             "index": 0
           }
@@ -2481,6 +2881,130 @@
           }
         ]
       ]
+    },
+    "requestToken5": {
+      "main": [
+        [
+          {
+            "node": "Update e Get Token2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch3": {
+      "main": [
+        [
+          {
+            "node": "Colaborador Encontrado1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Não Encontrado1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "coletar identificador2": {
+      "main": [
+        [
+          {
+            "node": "Get Token",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If8": {
+      "main": [
+        [
+          {
+            "node": "Set Token Banco2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "requestToken5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Token Banco2": {
+      "main": [
+        [
+          {
+            "node": "ehGestor1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Token": {
+      "main": [
+        [
+          {
+            "node": "If8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update e Get Token2": {
+      "main": [
+        [
+          {
+            "node": "Set Token Banco2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook EhGestor": {
+      "main": [
+        [
+          {
+            "node": "coletar identificador2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ehGestor": {
+      "main": [
+        [
+          {
+            "node": "Colaborador Encontrado",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "ehGestor1": {
+      "main": [
+        [
+          {
+            "node": "Switch3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
@@ -2491,7 +3015,7 @@
     "availableInMCP": false,
     "timeSavedPerExecution": 1
   },
-  "versionId": "2e8afa2a-368e-4e15-b8bf-997266dcb705",
+  "versionId": "9248f0a6-8922-40c7-82ba-c6663ae61f16",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "c13cee92dfa69db8294a82c6dfa57e3a1199207e843eec919de3f2ec003607aa"
