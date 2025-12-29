@@ -32,8 +32,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        944,
-        -96
+        992,
+        -176
       ],
       "id": "49ac2760-5ae3-467c-b22b-8bc664d2557b",
       "name": "requestToken"
@@ -70,8 +70,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        400,
-        128
+        384,
+        80
       ],
       "id": "e3ec0013-b7d1-4b2a-824a-0e7eca5c8cb2",
       "name": "buscarFuncionario"
@@ -135,8 +135,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        704,
-        128
+        640,
+        80
       ],
       "id": "8f56b827-6965-49ad-8288-f45b077f2073",
       "name": "Switch1"
@@ -144,14 +144,14 @@
     {
       "parameters": {
         "content": "API identidade\n\nDocumentação Swagger: https://apiwhatsapp.icomon.com.vc/swagger/index.html",
-        "height": 784,
+        "height": 816,
         "width": 1360,
         "color": 6
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        32,
-        -288
+        80,
+        -368
       ],
       "typeVersion": 1,
       "id": "de3ac6ab-f041-40bb-9fae-dbcd35511092",
@@ -164,7 +164,7 @@
             {
               "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
               "name": "inputIdentity",
-              "value": "={{ $json.body.chatInput }}",
+              "value": "={{ $json.body.chatInput.padStart(6, '0') }}",
               "type": "string"
             }
           ]
@@ -174,8 +174,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        336,
-        -112
+        384,
+        -192
       ],
       "id": "989a7484-348f-4bbe-abce-a475b49bd538",
       "name": "coletar identificador",
@@ -228,8 +228,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1200,
-        112
+        1184,
+        64
       ],
       "id": "aff97e63-5810-4705-9436-7916cde92fe1",
       "name": "Colaborador Encontrado"
@@ -257,8 +257,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1200,
-        320
+        1168,
+        272
       ],
       "id": "e6243d3f-cea9-4f92-9a6e-b7ddb090e286",
       "name": "Não Encontrado"
@@ -294,8 +294,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1040,
-        1664
+        1072,
+        1552
       ],
       "id": "ab132c4d-a12e-4b87-b61d-2927bbcbc9de",
       "name": "requestToken1"
@@ -360,8 +360,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        608,
-        1904
+        640,
+        1792
       ],
       "id": "67844ecb-e325-4fa9-a4b6-e7c0ad51674b",
       "name": "Switch"
@@ -375,8 +375,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        48,
-        1440
+        80,
+        1328
       ],
       "typeVersion": 1,
       "id": "0355ae7c-d130-4c74-a4e7-767d79480200",
@@ -392,8 +392,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        112,
-        -112
+        160,
+        -192
       ],
       "id": "878a641c-e690-464c-b49c-c8ce6f5e8064",
       "name": "Webhook Identidade",
@@ -409,8 +409,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        160,
-        1648
+        192,
+        1536
       ],
       "id": "aadca73a-5024-4452-be4a-39641d029c2f",
       "name": "Webhook IcoPass",
@@ -456,8 +456,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        400,
-        1904
+        432,
+        1792
       ],
       "id": "6e3fb701-9d34-421e-8b66-393a942dbcfa",
       "name": "validarIcoPass",
@@ -499,8 +499,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        928,
-        1888
+        960,
+        1776
       ],
       "id": "44419281-b6e1-4a59-b2a9-b04df4e196a6",
       "name": "Token Valido"
@@ -528,8 +528,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        624,
-        2128
+        656,
+        2016
       ],
       "id": "f291c50d-7972-4075-847b-49bd6413bb39",
       "name": "Token Invalido"
@@ -541,8 +541,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        240,
-        2128
+        272,
+        2016
       ],
       "id": "e1e4c95a-001c-42ab-adcf-6eec765ed8f0",
       "name": "Message Error"
@@ -575,8 +575,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        848,
-        2128
+        880,
+        2016
       ],
       "id": "ce800ef7-0dc2-478e-a2b2-79a13fc383fc",
       "name": "If"
@@ -621,8 +621,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1072,
-        2112
+        1104,
+        2000
       ],
       "id": "b4a2d904-b76b-4426-872c-fc22616e9432",
       "name": "validarIcoPass1",
@@ -652,8 +652,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        368,
-        1648
+        400,
+        1536
       ],
       "id": "b4bdc339-7bc6-46eb-86ef-00495cc46071",
       "name": "coletar identificador1",
@@ -719,8 +719,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        416,
-        2368
+        448,
+        2256
       ],
       "id": "a40c4ead-bdcf-4fde-8962-da37edfb5801",
       "name": "Switch2"
@@ -748,8 +748,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1088,
-        2544
+        1120,
+        2432
       ],
       "id": "bfe4853a-00e6-4bb6-bb38-ad4eeaeb844b",
       "name": "Token Invalido1"
@@ -761,8 +761,8 @@
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        672,
-        2544
+        704,
+        2432
       ],
       "id": "d2b130c3-e9c7-4f23-9425-35946dafc529",
       "name": "Message Error1"
@@ -802,8 +802,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1088,
-        2352
+        1120,
+        2240
       ],
       "id": "ebcbb80e-4cb9-4e1d-bf8b-9718c3c6f8b0",
       "name": "Token Valido1"
@@ -836,8 +836,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        752,
-        -112
+        800,
+        -192
       ],
       "id": "46c5b696-c526-49fb-802a-39f8344f3f37",
       "name": "If1",
@@ -862,8 +862,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        112,
-        128
+        160,
+        80
       ],
       "id": "28c9a660-00bd-494a-9694-bf2605152685",
       "name": "Set Token Banco"
@@ -904,8 +904,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        832,
-        1648
+        864,
+        1536
       ],
       "id": "97df732b-b1d5-41b7-994e-51da83297658",
       "name": "If2",
@@ -930,8 +930,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        192,
-        1904
+        224,
+        1792
       ],
       "id": "298bb1f5-1b19-4d5f-94c0-1d5dd9c8de80",
       "name": "Set Token Banco1"
@@ -944,8 +944,8 @@
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        560,
-        -112
+        608,
+        -192
       ],
       "id": "1f52c239-86d1-4e9a-bd1e-873e536ec9f5",
       "name": "Get Token2",
@@ -966,8 +966,8 @@
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        608,
-        1648
+        640,
+        1536
       ],
       "id": "6ac673ba-3317-4131-bfad-8cfe16075d5b",
       "name": "Get Token3",
@@ -988,8 +988,8 @@
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        1136,
-        -96
+        1184,
+        -176
       ],
       "id": "15daed2f-78a4-485d-bbdd-2a748b74f647",
       "name": "Update e Get Token",
@@ -1010,8 +1010,8 @@
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        1216,
-        1664
+        1248,
+        1552
       ],
       "id": "cd9f135a-6d01-4be7-b0ac-46a4cda1b71c",
       "name": "Update e Get Token1",
@@ -1054,7 +1054,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        2288,
+        2480,
         0
       ],
       "id": "4c83c525-0d7d-48f5-823b-2728fb2be45d",
@@ -1063,14 +1063,14 @@
     {
       "parameters": {
         "content": "API GLPI Abertura de Ticket\n\nDocumentação: https://ti.icomon.com.vc/apirest.php/",
-        "height": 928,
-        "width": 1264,
+        "height": 1072,
+        "width": 1248,
         "color": 2
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1552,
-        -272
+        1488,
+        -368
       ],
       "typeVersion": 1,
       "id": "a846a070-66df-428a-bdd4-a429dba54715",
@@ -1083,61 +1083,67 @@
             {
               "id": "d544554b-7ed4-4af0-899f-aa88b54445a6",
               "name": "owner",
-              "value": "={{ $json.query.outroSolicitante}}",
+              "value": "={{ $json.body.outroSolicitante || 'Não' }}",
               "type": "string"
             },
             {
               "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
               "name": "nameUser",
-              "value": "={{ $json.query.nomeColaborador }}",
+              "value": "={{ $json.body.nomeColaborador }}",
               "type": "string"
             },
             {
               "id": "d6883123-06f3-45b0-baed-39a8e8fa83a7",
               "name": "re",
-              "value": "={{ $json.query.matricula }}",
+              "value": "={{ $json.body.matricula }}",
               "type": "string"
             },
             {
               "id": "3850a8cf-90a4-4bed-ac77-6a67bb7ee244",
               "name": "phoneUser",
-              "value": "={{ $json.query.telefoneColaborador }}",
+              "value": "={{ $json.body.telefoneColaborador }}",
               "type": "string"
             },
             {
               "id": "20ae629f-e83a-4b1a-b96d-c437d60f494e",
               "name": "reManager",
-              "value": "={{ $json.query.matriculaGestor }}",
+              "value": "={{ $json.body.matriculaGestor }}",
               "type": "string"
             },
             {
               "id": "2b164380-2f77-4195-9427-a8d65351cd0c",
               "name": "nameManager",
-              "value": "={{ $json.query.nomeGestor }}",
+              "value": "={{ $json.body.nomeGestor }}",
               "type": "string"
             },
             {
               "id": "39c2ed10-cdb6-4734-9ca4-7cbfa89a183e",
               "name": "phoneManager",
-              "value": "={{ $json.query.telefoneGestor }}",
+              "value": "={{ $json.body.telefoneGestor }}",
               "type": "string"
             },
             {
               "id": "37d9d08e-cec4-4b04-a83e-bc8f37479818",
               "name": "local",
-              "value": "={{ $json.query.localidade }}",
+              "value": "={{ $json.body.localidadeTrabalho }}",
               "type": "string"
             },
             {
               "id": "05bdaca9-efd8-4f10-8b66-b872940550ad",
               "name": "title",
-              "value": "={{ $json.query.titulo}}",
+              "value": "={{ $json.body.titulo}}",
               "type": "string"
             },
             {
               "id": "065f6bcd-85d6-4185-889d-bcc2258ebcbf",
               "name": "description",
-              "value": "={{ $json.query.descricao}}",
+              "value": "={{ $json.body.descricao}}",
+              "type": "string"
+            },
+            {
+              "id": "f267a315-8a2d-4ec8-ab96-041290fd92dd",
+              "name": "isManager",
+              "value": "={{ $json.body.ehGestor}}",
               "type": "string"
             }
           ]
@@ -1147,8 +1153,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1856,
-        -16
+        1760,
+        -192
       ],
       "id": "fda76d82-73cd-4b63-b4a4-1d233bb3a16e",
       "name": "Coletar Valores",
@@ -1215,8 +1221,8 @@
               }
             },
             {
-              "id": "e3a1ff30-35aa-432a-b851-246f7eb6327f",
-              "leftValue": "={{ $json.local }}",
+              "id": "40e61fa5-02ac-4b5f-9e44-9e205f602dae",
+              "leftValue": "={{ $json.title }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1225,8 +1231,8 @@
               }
             },
             {
-              "id": "40e61fa5-02ac-4b5f-9e44-9e205f602dae",
-              "leftValue": "={{ $json.title }}",
+              "id": "1baf980f-8126-4e77-a351-0e1ed773325a",
+              "leftValue": "={{ $json.description }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1242,8 +1248,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2048,
-        -16
+        2240,
+        -208
       ],
       "id": "17ef19e8-01a5-4b52-b878-fa9ef8fba59f",
       "name": "If3"
@@ -1265,8 +1271,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2304,
-        -208
+        2480,
+        -224
       ],
       "id": "69d979b1-fba8-477b-ba7b-3c79e6fbc4b2",
       "name": "Dados Incompletos"
@@ -1301,8 +1307,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        2304,
-        992
+        3536,
+        384
       ],
       "id": "a0dce54e-0942-43cd-9932-7fcbc0155527",
       "name": "requestToken3"
@@ -1310,14 +1316,14 @@
     {
       "parameters": {
         "content": "API GLPI Consulta de Ticket\n\nDocumentação: https://ti.icomon.com.vc/apirest.php/",
-        "height": 656,
-        "width": 1264,
+        "height": 592,
+        "width": 1232,
         "color": 2
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1552,
-        720
+        2784,
+        112
       ],
       "typeVersion": 1,
       "id": "1d2d146e-2af7-46e4-9a37-2240c9a58170",
@@ -1351,8 +1357,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2048,
-        976
+        3280,
+        368
       ],
       "id": "a586f12e-f71f-4333-b4cb-9769bcecd2ba",
       "name": "If4"
@@ -1374,8 +1380,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2304,
-        784
+        3536,
+        176
       ],
       "id": "ba9b36f0-65cb-4c10-bb8c-33b8e3b0925d",
       "name": "Dados Incompletos1"
@@ -1389,8 +1395,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        1632,
-        976
+        2864,
+        368
       ],
       "id": "2b507f7a-5808-4513-9ff9-24f89954ec47",
       "name": "Webhook Conulta Ticket",
@@ -1406,8 +1412,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        1632,
-        -16
+        1584,
+        -192
       ],
       "id": "c343ef76-d415-443b-bddc-73724a6bb732",
       "name": "Webhook Abertura Ticket",
@@ -1430,8 +1436,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1856,
-        976
+        3088,
+        368
       ],
       "id": "688a03bc-f2a7-442a-be62-b3422af1778c",
       "name": "Coletar Ticket Id",
@@ -1467,8 +1473,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        2560,
-        992
+        3792,
+        384
       ],
       "id": "4b37baf5-df75-4983-b9b2-a7701f3463d0",
       "name": "searchTicket",
@@ -1493,7 +1499,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"input\": {\n    \"entities_id\": 0,\n    \"name\": \"{{ $('Coletar Valores').item.json.title }}\",\n    \"date\": \"{{$now.format('yyyy-MM-dd HH:mm:ss')}}\",\n    \"closedate\": null,\n    \"solvedate\": null,\n    \"status\": 1,\n    \"requesttypes_id\": 1,\n    \"groups_id_tech\": 1,\n    \"content\": \"&#60;div&#62;&#60;h1&#62;Dados do formulário&#60;/h1&#62;&#60;h2&#62;Dados do Requerente&#60;/h2&#62;&#60;div&#62;&#60;b&#62;1) Deseja abrir o chamado para outro solicitante? : &#60;/b&#62;{{ $('Coletar Valores').item.json.owner }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;2) Informe o colaborador : &#60;/b&#62;{{ $('Coletar Valores').item.json.nameUser }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;3) Insira o RE : &#60;/b&#62;{{ $('Coletar Valores').item.json.re }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;4) Telefone de contato : &#60;/b&#62;{{ $('Coletar Valores').item.json.phoneUser }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;5) Telefone de contato (Gestor) : &#60;/b&#62;{{ $('Coletar Valores').item.json.phoneManager }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;6) Gestor responsável : &#60;/b&#62;{{ $('Coletar Valores').item.json.nameManager }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;7) Localização : &#60;/b&#62;{{ $('Coletar Valores').item.json.local }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;8) Local de trabalho : &#60;/b&#62;Empresa&#60;/div&#62;&#60;div&#62;&#60;b&#62;9) Tipo de solicitação : &#60;/b&#62;{{ $('Coletar Valores').item.json.title }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;16) Descrição da solicitação : &#60;/b&#62;&#60;p&#62;{{ $('Coletar Valores').item.json.description }}&#60;/p&#62;&#60;/div&#62;&#60;div&#62;&#60;b&#62;17) Anexo : &#60;/b&#62;Nenhum documento anexado&#60;/div&#62;&#60;/div&#62;\",\n    \"urgency\": 3,\n    \"impact\": 3,\n    \"priority\": 3,\n    \"itilcategories_id\": 0,\n    \"type\": 2,\n    \"global_validation\": 1\n  }\n}",
+        "jsonBody": "={\n  \"input\": {\n    \"entities_id\": 0,\n    \"name\": \"{{ $('Coletar Valores').item.json.title }}\",\n    \"date\": \"{{$now.format('yyyy-MM-dd HH:mm:ss')}}\",\n    \"closedate\": null,\n    \"solvedate\": null,\n    \"status\": 1,\n    \"requesttypes_id\": 1,\n    \"groups_id_tech\": 1,\n    \"content\": \"&#60;div&#62;&#60;h1&#62;Dados do formulário&#60;/h1&#62;&#60;h2&#62;Dados do Requerente&#60;/h2&#62;&#60;div&#62;&#60;b&#62;1) Deseja abrir o chamado para outro solicitante? : &#60;/b&#62;{{ $('Coletar Valores').item.json.owner }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;2) Informe o colaborador : &#60;/b&#62;{{ $('Coletar Valores').item.json.nameUser }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;3) Insira o RE : &#60;/b&#62;{{ $('Coletar Valores').item.json.re }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;4) Telefone de contato : &#60;/b&#62;{{ $('Coletar Valores').item.json.phoneUser }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;5) Telefone de contato (Gestor) : &#60;/b&#62;{{ $('Coletar Valores').item.json.phoneManager }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;6) Gestor responsável : &#60;/b&#62;{{ $('Coletar Valores').item.json.nameManager }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;7) Localização : &#60;/b&#62;{{ $('Coletar Valores').item.json.local }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;8) Local de trabalho : &#60;/b&#62;Empresa&#60;/div&#62;&#60;div&#62;&#60;b&#62;9) Tipo de solicitação : &#60;/b&#62;{{ $('Coletar Valores').item.json.title }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;10) Descrição da solicitação : &#60;/b&#62;&#60;p&#62;{{ $('Coletar Valores').item.json.description }}&#60;/p&#62;&#60;/div&#62;&#60;div&#62;&#60;b&#62;11) Anexo : &#60;/b&#62;Nenhum documento anexado&#60;/div&#62;&#60;/div&#62;\",\n    \"urgency\": 3,\n    \"impact\": 3,\n    \"priority\": 3,\n    \"itilcategories_id\": 0,\n    \"type\": 2,\n    \"global_validation\": 1\n  }\n}",
         "options": {
           "redirect": {
             "redirect": {}
@@ -1503,8 +1509,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        1872,
-        384
+        1600,
+        288
       ],
       "id": "4c2f692c-0493-4bca-bbac-dcf7806a89d2",
       "name": "createTicket"
@@ -1524,8 +1530,8 @@
               "leftValue": "={{ $json.id }}",
               "rightValue": "",
               "operator": {
-                "type": "string",
-                "operation": "notEmpty",
+                "type": "number",
+                "operation": "exists",
                 "singleValue": true
               }
             }
@@ -1537,8 +1543,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2224,
-        384
+        1792,
+        288
       ],
       "id": "e6961687-1a24-4ce3-9fe9-ddbd1c0d4189",
       "name": "If5"
@@ -1546,13 +1552,13 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "INSERT INTO [db_Gepaci].[dbo].[ticketReturn]\n\t( [Nome Cliente], [Telefone], [RE], [Ticket], [Data Abertura] )\n\tVALUES \n\t( '{{ $('Coletar Valores').item.json.nameUser }}', '{{ $('Coletar Valores').item.json.phoneUser }}',  '{{ $('Coletar Valores').item.json.re }}', '{{ $('createTicket').item.json.id }}', '{{$now.format('yyyy-MM-dd HH:mm:ss')}}' );"
+        "query": "INSERT INTO [db_Gepaci].[dbo].[ticketReturn]\n\t( [Nome Cliente], [Telefone], [RE], [Ticket], [Data Abertura], [Channel], [ChatId], [Status Glpi] )\n\tVALUES \n\t( '{{ $('Coletar Valores').item.json.nameUser }}', '{{ $('Coletar Valores').item.json.phoneUser }}',  '{{ $('Coletar Valores').item.json.re }}', '{{ $('createTicket').item.json.id }}', '{{$now.format('yyyy-MM-dd HH:mm:ss')}}', '{{ $('Select Dados').item.json.channel }}', '{{ $('Select Dados').item.json.chatId }}', 'Novo' );"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        2432,
-        288
+        2384,
+        272
       ],
       "id": "745e039e-90d1-4633-b413-2d234372e572",
       "name": "Microsoft SQL",
@@ -1568,7 +1574,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2432,
+        2192,
         480
       ],
       "id": "f702e8ad-e6be-4f38-969b-4b21021385d5",
@@ -1579,8 +1585,7 @@
         "rule": {
           "interval": [
             {
-              "field": "cronExpression",
-              "expression": "0 */2 * * mon-fri"
+              "field": "minutes"
             }
           ]
         }
@@ -1588,8 +1593,8 @@
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.3,
       "position": [
-        1648,
-        1632
+        1664,
+        944
       ],
       "id": "170c18f0-af0e-4970-8aff-ebc2f19ab089",
       "name": "Schedule Trigger",
@@ -1597,15 +1602,15 @@
     },
     {
       "parameters": {
-        "content": "Verificar Alteração de Status\n\nSchedule roda a cada 2 horas verificando se houve alteração de status dos chamados da base criados nos \núltimos 10 dias.\n\nDocumentação: https://ti.icomon.com.vc/apirest.php/",
-        "height": 1008,
-        "width": 1744,
+        "content": "Verificar Alteração de Status\n\nSchedule roda a cada 2 horas verificando se houve alteração de status dos chamados da base criados nos \núltimos 10 dias.\n\n0 */2 * * mon-fri\n\nDocumentação: https://ti.icomon.com.vc/apirest.php/",
+        "height": 1152,
+        "width": 2448,
         "color": 3
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        1568,
-        1440
+        1488,
+        736
       ],
       "typeVersion": 1,
       "id": "db11b182-4e92-47a0-b520-8af5ce73cf2d",
@@ -1626,18 +1631,17 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"recipient\": \"{{ $('coletar dados da conversa').first().json.recipientLid }}\",\n  \"text\": \"{{ $('Loop Over Items').first().json.message.replace(/(\\r\\n|\\n|\\r)/gm, \" \") }}\",\n  \"instance_id\": \"8ulek0ah8an7vwi49w450\",\n  \"auto_delete\": false,\n  \"auto_mention\": true,\n  \"view_once\": false,\n  \"link_preview\": true,\n  \"mentions\": \"everyone\"\n}",
+        "jsonBody": "={\n  \"recipient\": \"{{ $('Set Tickets').first().json.chatId }}\",\n  \"text\": \"{{ $('Text Message').first().json.textMessage.replace(/(\\r\\n|\\n|\\r)/gm, \"\\ \")  }}\",\n  \"instance_id\": \"8ulek0ah8an7vwi49w450\",\n  \"auto_delete\": false,\n  \"auto_mention\": true,\n  \"view_once\": false,\n  \"link_preview\": true,\n  \"mentions\": \"everyone\"\n}",
         "options": {}
       },
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        3040,
-        2048
+        2976,
+        1136
       ],
       "id": "0688c66e-1fef-44c8-bee1-0f267477584c",
-      "name": "Response Message Zapster",
-      "disabled": true
+      "name": "Response Message Zapster"
     },
     {
       "parameters": {},
@@ -1645,11 +1649,10 @@
       "name": "Replace Me",
       "typeVersion": 1,
       "position": [
-        4160,
-        2560
+        3696,
+        1600
       ],
-      "id": "45ef510f-93d1-47e5-9c13-73bee6a07305",
-      "disabled": true
+      "id": "45ef510f-93d1-47e5-9c13-73bee6a07305"
     },
     {
       "parameters": {
@@ -1658,8 +1661,8 @@
       "type": "n8n-nodes-base.splitInBatches",
       "typeVersion": 3,
       "position": [
-        1648,
-        1840
+        1632,
+        1296
       ],
       "id": "6adba83f-ed25-43ac-a69e-0a6cfa166570",
       "name": "Loop Over Items",
@@ -1672,21 +1675,20 @@
       "type": "n8n-nodes-base.wait",
       "typeVersion": 1.1,
       "position": [
-        3968,
-        2416
+        3456,
+        1344
       ],
       "id": "68c686f2-28b3-4c51-985f-be3ab84c4f3e",
       "name": "Wait1",
-      "webhookId": "d3569ea4-8aac-4739-8f2b-3770d057d58f",
-      "disabled": true
+      "webhookId": "d3569ea4-8aac-4739-8f2b-3770d057d58f"
     },
     {
       "parameters": {},
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2144,
-        2096
+        2944,
+        864
       ],
       "id": "171153bc-fc8e-451e-ae21-5698267e6bdc",
       "name": "No Operation, do nothing3"
@@ -1707,7 +1709,7 @@
               "rightValue": "",
               "operator": {
                 "type": "string",
-                "operation": "exists",
+                "operation": "notExists",
                 "singleValue": true
               }
             }
@@ -1719,46 +1721,11 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1872,
-        1920
+        2576,
+        944
       ],
       "id": "a270d093-2bd3-4ef5-ac83-b6ec6e51c516",
       "name": "If6"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "4033bbf2-d7ae-40dc-9b3d-8cc2e427e521",
-              "name": "ticketId",
-              "value": "={{ $('requestToken3').first().json.body.ticketId }}",
-              "type": "string"
-            },
-            {
-              "id": "fe58698a-3e08-4737-a6a0-6fa731936cd0",
-              "name": "nomeCliente",
-              "value": "={{ $('requestToken3').first().json.body.nameUser }}",
-              "type": "string"
-            },
-            {
-              "id": "debb8891-a84c-4123-9d69-f729878a2c30",
-              "name": "phone",
-              "value": "={{ $('requestToken3').first().json.body.phoneUser }}",
-              "type": "string"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        2064,
-        1632
-      ],
-      "id": "5d1e190e-d017-4f5c-9085-8bfe24602035",
-      "name": "Set Tickets"
     },
     {
       "parameters": {
@@ -1790,11 +1757,12 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        2144,
-        1904
+        1936,
+        944
       ],
       "id": "6ec3fd2f-b23c-4ff8-86bb-b4e7b96dfaef",
-      "name": "requestToken4"
+      "name": "requestToken4",
+      "executeOnce": true
     },
     {
       "parameters": {
@@ -1808,7 +1776,7 @@
             },
             {
               "name": "session_token",
-              "value": "ls6jh3gghs6msl8mrumjd4cm7h"
+              "value": "={{ $('Set Token').first().json.sessionToken }}"
             },
             {
               "name": "is_deleted",
@@ -1840,7 +1808,7 @@
             },
             {
               "name": "criteria[0][value]",
-              "value": "={{ $('Select ticketReturn').first().json.ticketId }}"
+              "value": "={{ $('Set Tickets').first().json.ticketId.trim() }}"
             },
             {
               "name": "criteria[1][link]",
@@ -1874,8 +1842,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        2368,
-        1904
+        2032,
+        1568
       ],
       "id": "09444f2e-7724-4836-9fa1-2cee5a0b3874",
       "name": "searchTicket1",
@@ -1884,16 +1852,17 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT [Nome Cliente] AS nameUser\n      ,[Telefone] AS phoneUser\n      ,[RE] AS re\n      ,[Ticket] AS ticketId\n      ,[Status Glpi] AS status\n  FROM [db_Gepaci].[dbo].[ticketReturn]\n  WHERE \n  [Data Abertura] < DATEADD(DAY, 10, SYSDATETIME())\n  AND\n  [Status Glpi] = 'Novo'\n  AND\n  [Status Retorno] IS NULL"
+        "query": "SELECT [Nome Cliente] AS nameUser\n      ,[Telefone] AS phoneUser\n      ,[RE] AS re\n      ,[Ticket] AS ticketId\n      ,[Status Glpi] AS status\n      ,[Channel] AS channel\n      ,[ChatId] AS chatId\n  FROM [db_Gepaci].[dbo].[ticketReturn]\n  WHERE \n  [Data Abertura] > DATEADD(DAY, -10, SYSDATETIME())\n  AND\n  [Status Glpi] = 'Novo'\n  AND\n  [Status Retorno] IS NULL"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        1856,
-        1632
+        2336,
+        944
       ],
       "id": "f4e90b90-5010-46a0-9e24-a6b1c3058023",
       "name": "Select ticketReturn",
+      "executeOnce": true,
       "credentials": {
         "microsoftSql": {
           "id": "d1VJXdOhxYJikLtU",
@@ -1913,12 +1882,11 @@
           "conditions": [
             {
               "id": "176cb604-0361-4a16-995c-f08fbf7f360d",
-              "leftValue": "={{ $json.data }}",
-              "rightValue": "",
+              "leftValue": "={{ $('searchTicket1').first().json.body.totalcount }}",
+              "rightValue": 1,
               "operator": {
-                "type": "array",
-                "operation": "notEmpty",
-                "singleValue": true
+                "type": "number",
+                "operation": "equals"
               }
             }
           ],
@@ -1929,8 +1897,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        2592,
-        2080
+        2272,
+        1568
       ],
       "id": "3c4735c9-cc60-4237-9f94-2836613179fa",
       "name": "If7"
@@ -1966,8 +1934,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        944,
-        768
+        992,
+        688
       ],
       "id": "303f9476-b242-4dc5-adc1-418cad1cf93a",
       "name": "requestToken5"
@@ -2031,8 +1999,8 @@
       "type": "n8n-nodes-base.switch",
       "typeVersion": 3.3,
       "position": [
-        752,
-        992
+        608,
+        912
       ],
       "id": "331ec160-e6f0-411c-8634-d9da4a2227eb",
       "name": "Switch3"
@@ -2046,8 +2014,8 @@
       },
       "type": "n8n-nodes-base.stickyNote",
       "position": [
-        32,
-        576
+        80,
+        496
       ],
       "typeVersion": 1,
       "id": "f8f2fe85-cfe3-442e-870b-1caaff933658",
@@ -2060,7 +2028,7 @@
             {
               "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
               "name": "inputIdentity",
-              "value": "={{ $json.body.chatInput }}",
+              "value": "={{ $json.body.chatInput.padStart(6, '0') }}",
               "type": "string"
             }
           ]
@@ -2070,35 +2038,12 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        336,
-        752
+        384,
+        672
       ],
       "id": "00ef8cf7-d6f6-421c-9009-d9efea3f6bd2",
       "name": "coletar identificador2",
       "onError": "continueRegularOutput"
-    },
-    {
-      "parameters": {
-        "assignments": {
-          "assignments": [
-            {
-              "id": "b1bbef1f-aade-4643-a58b-90a6e7b54cac",
-              "name": "ehGestor",
-              "value": "={{ $('ehGestor1').item.json.body.ehGestor }}",
-              "type": "boolean"
-            }
-          ]
-        },
-        "options": {}
-      },
-      "type": "n8n-nodes-base.set",
-      "typeVersion": 3.4,
-      "position": [
-        1056,
-        976
-      ],
-      "id": "781c6b77-8d6a-44af-a487-b14e76b8d800",
-      "name": "Colaborador Encontrado1"
     },
     {
       "parameters": {
@@ -2123,8 +2068,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1056,
-        1168
+        848,
+        1120
       ],
       "id": "6753190d-951a-4d95-bcb5-45ec152128c5",
       "name": "Não Encontrado1"
@@ -2157,8 +2102,8 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        752,
-        752
+        800,
+        672
       ],
       "id": "bdef230d-c987-4c16-90b9-731a66707a00",
       "name": "If8",
@@ -2183,8 +2128,8 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        160,
-        992
+        208,
+        912
       ],
       "id": "97e376ce-6df9-4a70-9d13-de87bcf7890b",
       "name": "Set Token Banco2"
@@ -2197,8 +2142,8 @@
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        560,
-        752
+        608,
+        672
       ],
       "id": "792025b0-ff9f-402c-b2dd-ba1db6778eb6",
       "name": "Get Token",
@@ -2219,8 +2164,8 @@
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        1136,
-        768
+        1184,
+        688
       ],
       "id": "f1540c66-ce8e-4bc9-a69b-dca46e1d3486",
       "name": "Update e Get Token2",
@@ -2242,8 +2187,8 @@
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2.1,
       "position": [
-        112,
-        752
+        160,
+        672
       ],
       "id": "a15ee950-aa9b-4fdc-8595-b5c8e30deb87",
       "name": "Webhook EhGestor",
@@ -2281,8 +2226,8 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        992,
-        112
+        976,
+        64
       ],
       "id": "abd24425-aa65-4122-8fa9-93fd1d7afcc6",
       "name": "ehGestor"
@@ -2319,11 +2264,375 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        448,
-        992
+        400,
+        912
       ],
       "id": "4ae63194-c932-4fbf-b34c-cce99376010c",
       "name": "ehGestor1"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $('Loop Over Items').first().json.channel}}",
+                    "rightValue": "whatsapp",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "31c95a95-085c-4d52-bb78-5ff06a284233"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "whatsapp"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "a8e52eec-39e3-4fef-85e1-701c030a2aef",
+                    "leftValue": "={{ $('Loop Over Items').first().json.channel}}",
+                    "rightValue": "telegram",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "telegram"
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.3,
+      "position": [
+        2688,
+        1328
+      ],
+      "id": "844ed358-548c-4009-81ba-3a87a25e1c0a",
+      "name": "Validar Tipo Entrada"
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Loop Over Items').first().json.chatId }}",
+        "text": "={{ $('Text Message').first().json.textMessage }}",
+        "additionalFields": {
+          "appendAttribution": false
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        2976,
+        1344
+      ],
+      "id": "1e8bcd7a-520a-4991-8177-105e70e87e4c",
+      "name": "Send a text message",
+      "webhookId": "51d558cf-abc9-4a9e-b0db-05a7de209dac",
+      "credentials": {
+        "telegramApi": {
+          "id": "tXP0eu17cHrnpEfC",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b5b7676d-2611-4db4-ba61-0e03d453b2f0",
+              "name": "textMessage",
+              "value": "=Prezado *{{ $('Set Tickets').first().json.nomeCliente.trim() }}*,\n\nSeu chamado de número: *{{ $('Loop Over Items').first().json.ticketId.trim() }}{{ ' - ' + $('searchTicket1').first().json.body.data[0]['1'] || '' }}* foi atualizado e consta com o status *'Pendente'* aguardando informações adicionais. Por favor, acesse o portal de atendimento para verificar os detalhes e fornecer as informações necessárias.\n\nAtenciosamente,\nEquipe de Suporte Técnico",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2512,
+        1344
+      ],
+      "id": "6057569e-feff-4226-bfc6-0a9f7cc28d6c",
+      "name": "Text Message"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "UPDATE [db_Gepaci].[dbo].[ticketReturn]\n  SET [Status Retorno] = 'Mensagem Enviada',\n      [Status Glpi] = 'Pendente',\n      [Data Atualizacao] = '{{$now.format('yyyy-MM-dd HH:mm:ss')}}'\n  WHERE [Status Glpi] = 'Novo'\n  AND [Ticket] = '{{ $('Set Tickets').first().json.ticketId.trim() }}';\n"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        3264,
+        1344
+      ],
+      "id": "c56feef3-cd14-4bcd-8a8e-c7c8f195c7ce",
+      "name": "Update Status",
+      "credentials": {
+        "microsoftSql": {
+          "id": "d1VJXdOhxYJikLtU",
+          "name": "db_Gepaci"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "1256ebcb-6226-4071-ab66-e650ffc312ab",
+              "leftValue": "={{ $('Coletar Valores').first().isManager }}",
+              "rightValue": "sim",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1968,
+        -192
+      ],
+      "id": "c87626cf-e43b-43eb-af7e-9a937440c856",
+      "name": "Velidar Gestor"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b68770f2-f6ef-434f-9c38-3f0c0cab1751",
+              "name": "sessionToken",
+              "value": "={{ $json.body.session_token }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2144,
+        944
+      ],
+      "id": "28f9aec8-0afc-4f60-a07a-8bbe718bb808",
+      "name": "Set Token"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "4033bbf2-d7ae-40dc-9b3d-8cc2e427e521",
+              "name": "ticketId",
+              "value": "={{ $('Loop Over Items').first().json.ticketId }}",
+              "type": "string"
+            },
+            {
+              "id": "fe58698a-3e08-4737-a6a0-6fa731936cd0",
+              "name": "nomeCliente",
+              "value": "={{ $('Loop Over Items').first().json.nameUser }}",
+              "type": "string"
+            },
+            {
+              "id": "debb8891-a84c-4123-9d69-f729878a2c30",
+              "name": "phone",
+              "value": "={{ $('Loop Over Items').first().json.phoneUser }}",
+              "type": "string"
+            },
+            {
+              "id": "7e534cc0-b793-432c-aa56-2f8a5cb8bc3a",
+              "name": "channel",
+              "value": "={{ $('Loop Over Items').first().json.channel }}",
+              "type": "string"
+            },
+            {
+              "id": "06c3d46d-f1a0-4fdb-a2ed-ac3bcf794157",
+              "name": "chatId",
+              "value": "={{ $('Loop Over Items').first().json.chatId }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1824,
+        1568
+      ],
+      "id": "5d1e190e-d017-4f5c-9085-8bfe24602035",
+      "name": "Set Tickets"
+    },
+    {
+      "parameters": {
+        "operation": "executeQuery",
+        "query": "SELECT TOP (1)\n   [Channel] AS channel\n  ,[ChatId] AS chatId\n  FROM [db_Gepaci].[dbo].[reports]\n  WHERE \n  [Matricula] = '{{ $('Coletar Valores').item.json.re }}'\n  AND Status != 'finalizada'\nORDER BY id DESC"
+      },
+      "type": "n8n-nodes-base.microsoftSql",
+      "typeVersion": 1.1,
+      "position": [
+        2192,
+        272
+      ],
+      "id": "4a4a1bb4-c6c5-41bb-9d3e-843f604b6a7d",
+      "name": "Select Dados",
+      "executeOnce": true,
+      "alwaysOutputData": true,
+      "credentials": {
+        "microsoftSql": {
+          "id": "d1VJXdOhxYJikLtU",
+          "name": "db_Gepaci"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "85eaccb3-829a-4366-be33-742517433d92",
+              "leftValue": "={{ $('ehGestor1').first().json.body.ehGestor }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        832,
+        896
+      ],
+      "id": "adc5d0fc-0ff1-4091-8630-4b9086455671",
+      "name": "If9"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b1bbef1f-aade-4643-a58b-90a6e7b54cac",
+              "name": "ehGestor",
+              "value": "=nao",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1104,
+        1088
+      ],
+      "id": "1d402208-42ba-48e4-b68e-cc2e68931859",
+      "name": "Gestor False"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "b1bbef1f-aade-4643-a58b-90a6e7b54cac",
+              "name": "ehGestor",
+              "value": "=sim",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1104,
+        880
+      ],
+      "id": "781c6b77-8d6a-44af-a487-b14e76b8d800",
+      "name": "Gestor True"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e505d659-4b27-4103-b017-b0c5a36d5328",
+              "name": "returnJson",
+              "value": "={{ $('createTicket').first().json }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2544,
+        272
+      ],
+      "id": "f9746ec2-3aa3-40b1-8f96-1b2791ee663d",
+      "name": "Edit Fields"
     }
   ],
   "pinData": {},
@@ -2642,7 +2951,7 @@
       "main": [
         [
           {
-            "node": "If3",
+            "node": "Velidar Gestor",
             "type": "main",
             "index": 0
           }
@@ -2744,7 +3053,7 @@
       "main": [
         [
           {
-            "node": "Microsoft SQL",
+            "node": "Select Dados",
             "type": "main",
             "index": 0
           }
@@ -2762,7 +3071,7 @@
       "main": [
         [
           {
-            "node": "Select ticketReturn",
+            "node": "requestToken4",
             "type": "main",
             "index": 0
           }
@@ -2773,7 +3082,7 @@
       "main": [
         [
           {
-            "node": "Wait1",
+            "node": "Update Status",
             "type": "main",
             "index": 0
           }
@@ -2782,7 +3091,13 @@
     },
     "Replace Me": {
       "main": [
-        []
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
       ]
     },
     "Loop Over Items": {
@@ -2790,7 +3105,7 @@
         [],
         [
           {
-            "node": "If6",
+            "node": "Set Tickets",
             "type": "main",
             "index": 0
           }
@@ -2812,22 +3127,11 @@
       "main": [
         [
           {
-            "node": "requestToken4",
-            "type": "main",
-            "index": 0
-          }
-        ],
-        [
-          {
             "node": "No Operation, do nothing3",
             "type": "main",
             "index": 0
           }
-        ]
-      ]
-    },
-    "Set Tickets": {
-      "main": [
+        ],
         [
           {
             "node": "Loop Over Items",
@@ -2841,7 +3145,7 @@
       "main": [
         [
           {
-            "node": "searchTicket1",
+            "node": "Set Token",
             "type": "main",
             "index": 0
           }
@@ -2852,7 +3156,7 @@
       "main": [
         [
           {
-            "node": "Set Tickets",
+            "node": "If6",
             "type": "main",
             "index": 0
           }
@@ -2872,10 +3176,16 @@
     },
     "If7": {
       "main": [
-        [],
         [
           {
-            "node": "Loop Over Items",
+            "node": "Text Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
             "type": "main",
             "index": 0
           }
@@ -2897,7 +3207,7 @@
       "main": [
         [
           {
-            "node": "Colaborador Encontrado1",
+            "node": "If9",
             "type": "main",
             "index": 0
           }
@@ -3005,6 +3315,144 @@
           }
         ]
       ]
+    },
+    "Validar Tipo Entrada": {
+      "main": [
+        [
+          {
+            "node": "Response Message Zapster",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Send a text message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Text Message": {
+      "main": [
+        [
+          {
+            "node": "Validar Tipo Entrada",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send a text message": {
+      "main": [
+        [
+          {
+            "node": "Update Status",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update Status": {
+      "main": [
+        [
+          {
+            "node": "Wait1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Velidar Gestor": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "requestToken2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Token": {
+      "main": [
+        [
+          {
+            "node": "Select ticketReturn",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set Tickets": {
+      "main": [
+        [
+          {
+            "node": "searchTicket1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Select Dados": {
+      "main": [
+        [
+          {
+            "node": "Microsoft SQL",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If9": {
+      "main": [
+        [
+          {
+            "node": "Gestor True",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Gestor False",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Microsoft SQL": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
     }
   },
   "active": true,
@@ -3015,7 +3463,7 @@
     "availableInMCP": false,
     "timeSavedPerExecution": 1
   },
-  "versionId": "9248f0a6-8922-40c7-82ba-c6663ae61f16",
+  "versionId": "ea75e55b-0cb5-45ef-b996-6109a8ffa0d6",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "c13cee92dfa69db8294a82c6dfa57e3a1199207e843eec919de3f2ec003607aa"
