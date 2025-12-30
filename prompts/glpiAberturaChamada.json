@@ -14,5 +14,6 @@
     "itilcategories_id": 0,
     "type": 2, // 1-Requisição, 2-Incident
     // "locations_id": 2, // ID da Base / Localidade
+    // "plugin_fields_departamentofielddropdowns_id": 1163449535,
     "global_validation": 1
 }

@@ -40,13 +40,13 @@
     },
     {
       "parameters": {
-        "url": "=https://apiwhatsapp.icomon.com.vc/funcionarios/pesquisar/{{ $('coletar identificador').item.json.inputIdentity }}",
+        "url": "=https://apiwhatsapp.icomon.com.vc/funcionarios/pesquisar/{{ $('coletar identificador').first().json.inputIdentity }}",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $json.body.accessToken }}"
+              "value": "=Bearer {{ $('Set Token Banco').first().json.body.accessToken }}"
             }
           ]
         },
@@ -164,7 +164,7 @@
             {
               "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
               "name": "inputIdentity",
-              "value": "={{ $json.body.chatInput.padStart(6, '0') }}",
+              "value": "={{ $('Webhook Identidade').first().json.body.chatInput.padStart(6, '0') }}",
               "type": "string"
             }
           ]
@@ -188,19 +188,19 @@
             {
               "id": "b1bbef1f-aade-4643-a58b-90a6e7b54cac",
               "name": "nome",
-              "value": "={{ $('buscarFuncionario').item.json.body.nome }}",
+              "value": "={{ $('buscarFuncionario').first().json.body.nome }}",
               "type": "string"
             },
             {
               "id": "8ce69bca-e03f-4819-b323-343385885b0a",
               "name": "funcao",
-              "value": "={{ $('buscarFuncionario').item.json.body.funcao }}",
+              "value": "={{ $('buscarFuncionario').first().json.body.funcao }}",
               "type": "string"
             },
             {
               "id": "de4ca59d-6e55-43db-9409-ed6f2f99ad66",
               "name": "ehGestor",
-              "value": "={{ $('ehGestor').item.json.body.ehGestor }}",
+              "value": "={{ $('ehGestor').first().json.body.ehGestor }}",
               "type": "boolean"
             },
             {
@@ -425,7 +425,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $json.body.token }}"
+              "value": "=Bearer {{ $('Set Token Banco1').first().json.body.token }}"
             }
           ]
         },
@@ -471,19 +471,19 @@
             {
               "id": "b1bbef1f-aade-4643-a58b-90a6e7b54cac",
               "name": "body.login",
-              "value": "={{ $('validarIcoPass').item.json.body.login }}",
+              "value": "={{ $('validarIcoPass').first().json.body.login }}",
               "type": "string"
             },
             {
               "id": "8ce69bca-e03f-4819-b323-343385885b0a",
               "name": "body.nome",
-              "value": "={{ $('validarIcoPass').item.json.body.nome }}",
+              "value": "={{ $('validarIcoPass').first().json.body.nome }}",
               "type": "string"
             },
             {
               "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
               "name": "=body.matricula",
-              "value": "={{ $('validarIcoPass').item.json.body.matricula }}",
+              "value": "={{ $('validarIcoPass').first().json.body.matricula }}",
               "type": "string"
             },
             {
@@ -536,7 +536,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const raw = $input.first().json.error.message;\n\nlet jsonString = raw.replace(/^400 - /, \"\");\n\nlet dados = JSON.parse(jsonString);\n\nreturn [\n  {\n    errorReturn: dados\n  }\n];"
+        "jsCode": "const raw = $('validarIcoPass').first().json.error.message;\n\nlet jsonString = raw.replace(/^400 - /, \"\");\n\nlet dados = JSON.parse(jsonString);\n\nreturn [\n  {\n    errorReturn: dados\n  }\n];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -590,7 +590,7 @@
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $('Set Token Banco1').item.json.body.token }}"
+              "value": "=Bearer {{ $('Set Token Banco1').first().json.body.token }}"
             }
           ]
         },
@@ -599,11 +599,11 @@
           "parameters": [
             {
               "name": "login",
-              "value": "=R{{ $('coletar identificador1').item.json.matriculaUsuario }}"
+              "value": "=R{{ $('coletar identificador1').first().json.matriculaUsuario }}"
             },
             {
               "name": "codigo",
-              "value": "={{ $('coletar identificador1').item.json.tokenIcoPass }}"
+              "value": "={{ $('coletar identificador1').first().json.tokenIcoPass }}"
             }
           ]
         },
@@ -636,13 +636,13 @@
             {
               "id": "e5e9fabe-66d8-44eb-9b98-d247e0db3379",
               "name": "matriculaUsuario",
-              "value": "={{ $json.body.matricula }}",
+              "value": "={{ $('Webhook IcoPass').first().json.body.matricula }}",
               "type": "string"
             },
             {
               "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
               "name": "tokenIcoPass",
-              "value": "={{ $json.body.tokenUser }}",
+              "value": "={{ $('Webhook IcoPass').first().json.body.tokenUser }}",
               "type": "string"
             }
           ]
@@ -756,7 +756,7 @@
     },
     {
       "parameters": {
-        "jsCode": "const raw = $input.first().json.error.message;\n\nlet jsonString = raw.replace(/^400 - /, \"\");\n\nlet dados = JSON.parse(jsonString);\n\nreturn [\n  {\n    errorReturn: dados\n  }\n];"
+        "jsCode": "const raw = $('validarIcoPass1').first().json.error.message;\n\nlet jsonString = raw.replace(/^400 - /, \"\");\n\nlet dados = JSON.parse(jsonString);\n\nreturn [\n  {\n    errorReturn: dados\n  }\n];"
       },
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -774,19 +774,19 @@
             {
               "id": "b1bbef1f-aade-4643-a58b-90a6e7b54cac",
               "name": "body.login",
-              "value": "={{ $('validarIcoPass1').item.json.body.login }}",
+              "value": "={{ $('validarIcoPass1').first().json.body.login }}",
               "type": "string"
             },
             {
               "id": "8ce69bca-e03f-4819-b323-343385885b0a",
               "name": "body.nome",
-              "value": "={{ $('validarIcoPass1').item.json.body.nome }}",
+              "value": "={{ $('validarIcoPass1').first().json.body.nome }}",
               "type": "string"
             },
             {
               "id": "71acd1c0-db5c-48b0-b974-3c24f3c9835e",
               "name": "=body.matricula",
-              "value": "={{ $('validarIcoPass1').item.json.body.matricula }}",
+              "value": "={{ $('validarIcoPass1').first().json.body.matricula }}",
               "type": "string"
             },
             {
@@ -1083,67 +1083,67 @@
             {
               "id": "d544554b-7ed4-4af0-899f-aa88b54445a6",
               "name": "owner",
-              "value": "={{ $json.body.outroSolicitante || 'Não' }}",
+              "value": "={{ $('Webhook Abertura Ticket').first().json.body.outroSolicitante || 'Não' }}",
               "type": "string"
             },
             {
               "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
               "name": "nameUser",
-              "value": "={{ $json.body.nomeColaborador }}",
+              "value": "={{ $('Webhook Abertura Ticket').first().json.body.nomeColaborador }}",
               "type": "string"
             },
             {
               "id": "d6883123-06f3-45b0-baed-39a8e8fa83a7",
               "name": "re",
-              "value": "={{ $json.body.matricula }}",
+              "value": "={{ $('Webhook Abertura Ticket').first().json.body.matricula }}",
               "type": "string"
             },
             {
               "id": "3850a8cf-90a4-4bed-ac77-6a67bb7ee244",
               "name": "phoneUser",
-              "value": "={{ $json.body.telefoneColaborador }}",
+              "value": "={{ $('Webhook Abertura Ticket').first().json.body.telefoneColaborador }}",
               "type": "string"
             },
             {
               "id": "20ae629f-e83a-4b1a-b96d-c437d60f494e",
               "name": "reManager",
-              "value": "={{ $json.body.matriculaGestor }}",
+              "value": "={{ $('Webhook Abertura Ticket').first().json.body.matriculaGestor }}",
               "type": "string"
             },
             {
               "id": "2b164380-2f77-4195-9427-a8d65351cd0c",
               "name": "nameManager",
-              "value": "={{ $json.body.nomeGestor }}",
+              "value": "={{ $('Webhook Abertura Ticket').first().json.body.nomeGestor }}",
               "type": "string"
             },
             {
               "id": "39c2ed10-cdb6-4734-9ca4-7cbfa89a183e",
               "name": "phoneManager",
-              "value": "={{ $json.body.telefoneGestor }}",
+              "value": "={{ $('Webhook Abertura Ticket').first().json.body.telefoneGestor }}",
               "type": "string"
             },
             {
               "id": "37d9d08e-cec4-4b04-a83e-bc8f37479818",
               "name": "local",
-              "value": "={{ $json.body.localidadeTrabalho }}",
+              "value": "={{ $('Webhook Abertura Ticket').first().json.body.localidadeTrabalho }}",
               "type": "string"
             },
             {
               "id": "05bdaca9-efd8-4f10-8b66-b872940550ad",
               "name": "title",
-              "value": "={{ $json.body.titulo}}",
+              "value": "={{ $('Webhook Abertura Ticket').first().json.body.titulo }}",
               "type": "string"
             },
             {
               "id": "065f6bcd-85d6-4185-889d-bcc2258ebcbf",
               "name": "description",
-              "value": "={{ $json.body.descricao}}",
+              "value": "={{ $('Webhook Abertura Ticket').first().json.body.descricao }}",
               "type": "string"
             },
             {
               "id": "f267a315-8a2d-4ec8-ab96-041290fd92dd",
               "name": "isManager",
-              "value": "={{ $json.body.ehGestor}}",
+              "value": "={{ $('Webhook Abertura Ticket').first().json.body.ehGestor }}",
               "type": "string"
             }
           ]
@@ -1153,7 +1153,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        1760,
+        1792,
         -192
       ],
       "id": "fda76d82-73cd-4b63-b4a4-1d233bb3a16e",
@@ -1172,7 +1172,7 @@
           "conditions": [
             {
               "id": "db0be12e-7fa6-4ed1-a273-01aa303cfbe2",
-              "leftValue": "={{ $json.nameUser }}",
+              "leftValue": "={{ $('Coletar Valores').first().json.nameUser }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1182,7 +1182,7 @@
             },
             {
               "id": "c3a77a16-0d3b-4719-825d-65895902eabf",
-              "leftValue": "={{ $json.re }}",
+              "leftValue": "={{ $('Coletar Valores').first().json.re }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1192,7 +1192,7 @@
             },
             {
               "id": "82daeb69-ea59-4bde-b6ab-50628d37331a",
-              "leftValue": "={{ $json.phoneUser }}",
+              "leftValue": "={{ $('Coletar Valores').first().json.phoneUser }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1202,7 +1202,7 @@
             },
             {
               "id": "59dfcc8e-5a4e-443c-9931-f6c5994c79df",
-              "leftValue": "={{ $json.nameManager }}",
+              "leftValue": "={{ $('Coletar Valores').first().json.nameManager }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1212,7 +1212,7 @@
             },
             {
               "id": "41db40f8-6659-433b-8fd5-db8c3a013b31",
-              "leftValue": "={{ $json.phoneManager }}",
+              "leftValue": "={{ $('Coletar Valores').first().json.phoneManager }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1222,7 +1222,7 @@
             },
             {
               "id": "40e61fa5-02ac-4b5f-9e44-9e205f602dae",
-              "leftValue": "={{ $json.title }}",
+              "leftValue": "={{ $('Coletar Valores').first().json.title }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1232,7 +1232,7 @@
             },
             {
               "id": "1baf980f-8126-4e77-a351-0e1ed773325a",
-              "leftValue": "={{ $json.description }}",
+              "leftValue": "={{ $('Coletar Valores').first().json.description }}",
               "rightValue": "",
               "operator": {
                 "type": "string",
@@ -1370,7 +1370,7 @@
             {
               "id": "54ced45a-ed60-47e9-b4dc-525876c11bd3",
               "name": "return",
-              "value": "Solicitar dados faltantes.",
+              "value": "Solicitar número do chamado.",
               "type": "string"
             }
           ]
@@ -1426,7 +1426,7 @@
             {
               "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
               "name": "ticketId",
-              "value": "={{ $json.query.numeroChamado }}",
+              "value": "={{ $('Webhook Conulta Ticket').first().json.query.numeroChamado }}",
               "type": "string"
             }
           ]
@@ -1499,7 +1499,7 @@
         },
         "sendBody": true,
         "specifyBody": "json",
-        "jsonBody": "={\n  \"input\": {\n    \"entities_id\": 0,\n    \"name\": \"{{ $('Coletar Valores').item.json.title }}\",\n    \"date\": \"{{$now.format('yyyy-MM-dd HH:mm:ss')}}\",\n    \"closedate\": null,\n    \"solvedate\": null,\n    \"status\": 1,\n    \"requesttypes_id\": 1,\n    \"groups_id_tech\": 1,\n    \"content\": \"&#60;div&#62;&#60;h1&#62;Dados do formulário&#60;/h1&#62;&#60;h2&#62;Dados do Requerente&#60;/h2&#62;&#60;div&#62;&#60;b&#62;1) Deseja abrir o chamado para outro solicitante? : &#60;/b&#62;{{ $('Coletar Valores').item.json.owner }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;2) Informe o colaborador : &#60;/b&#62;{{ $('Coletar Valores').item.json.nameUser }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;3) Insira o RE : &#60;/b&#62;{{ $('Coletar Valores').item.json.re }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;4) Telefone de contato : &#60;/b&#62;{{ $('Coletar Valores').item.json.phoneUser }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;5) Telefone de contato (Gestor) : &#60;/b&#62;{{ $('Coletar Valores').item.json.phoneManager }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;6) Gestor responsável : &#60;/b&#62;{{ $('Coletar Valores').item.json.nameManager }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;7) Localização : &#60;/b&#62;{{ $('Coletar Valores').item.json.local }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;8) Local de trabalho : &#60;/b&#62;Empresa&#60;/div&#62;&#60;div&#62;&#60;b&#62;9) Tipo de solicitação : &#60;/b&#62;{{ $('Coletar Valores').item.json.title }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;10) Descrição da solicitação : &#60;/b&#62;&#60;p&#62;{{ $('Coletar Valores').item.json.description }}&#60;/p&#62;&#60;/div&#62;&#60;div&#62;&#60;b&#62;11) Anexo : &#60;/b&#62;Nenhum documento anexado&#60;/div&#62;&#60;/div&#62;\",\n    \"urgency\": 3,\n    \"impact\": 3,\n    \"priority\": 3,\n    \"itilcategories_id\": 0,\n    \"type\": 2,\n    \"global_validation\": 1\n  }\n}",
+        "jsonBody": "={\n  \"input\": {\n    \"entities_id\": 0,\n    \"name\": \"{{ $('Coletar Valores').first().json.title }}\",\n    \"date\": \"{{$now.format('yyyy-MM-dd HH:mm:ss')}}\",\n    \"closedate\": null,\n    \"solvedate\": null,\n    \"status\": 1,\n    \"requesttypes_id\": 1,\n    \"groups_id_tech\": 1,\n    \"content\": \"&#60;div&#62;&#60;h1&#62;Dados do formulário&#60;/h1&#62;&#60;h2&#62;Dados do Requerente&#60;/h2&#62;&#60;div&#62;&#60;b&#62;1) Deseja abrir o chamado para outro solicitante? : &#60;/b&#62;{{ $('Coletar Valores').first().json.owner }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;2) Informe o colaborador : &#60;/b&#62;{{ $('Coletar Valores').first().json.nameUser }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;3) Insira o RE : &#60;/b&#62;{{ $('Coletar Valores').first().json.re }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;4) Telefone de contato : &#60;/b&#62;{{ $('Coletar Valores').first().json.phoneUser }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;5) Telefone de contato (Gestor) : &#60;/b&#62;{{ $('Coletar Valores').first().json.phoneManager }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;6) Gestor responsável : &#60;/b&#62;{{ $('Coletar Valores').first().json.nameManager }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;7) Localização : &#60;/b&#62;{{ $('Coletar Valores').first().json.local }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;8) Local de trabalho : &#60;/b&#62;Empresa&#60;/div&#62;&#60;div&#62;&#60;b&#62;9) Tipo de solicitação : &#60;/b&#62;{{ $('Coletar Valores').first().json.title }}&#60;/div&#62;&#60;div&#62;&#60;b&#62;10) Descrição da solicitação : &#60;/b&#62;&#60;p&#62;{{ $('Coletar Valores').first().json.description }}&#60;/p&#62;&#60;/div&#62;&#60;div&#62;&#60;b&#62;11) Anexo : &#60;/b&#62;Nenhum documento anexado&#60;/div&#62;&#60;/div&#62;\",\n    \"urgency\": 3,\n    \"impact\": 3,\n    \"priority\": 3,\n    \"itilcategories_id\": 0,\n    \"type\": 2,\n    \"global_validation\": 1\n  }\n}",
         "options": {
           "redirect": {
             "redirect": {}
@@ -1543,7 +1543,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1792,
+        1824,
         288
       ],
       "id": "e6961687-1a24-4ce3-9fe9-ddbd1c0d4189",
@@ -1552,12 +1552,12 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "INSERT INTO [db_Gepaci].[dbo].[ticketReturn]\n\t( [Nome Cliente], [Telefone], [RE], [Ticket], [Data Abertura], [Channel], [ChatId], [Status Glpi] )\n\tVALUES \n\t( '{{ $('Coletar Valores').item.json.nameUser }}', '{{ $('Coletar Valores').item.json.phoneUser }}',  '{{ $('Coletar Valores').item.json.re }}', '{{ $('createTicket').item.json.id }}', '{{$now.format('yyyy-MM-dd HH:mm:ss')}}', '{{ $('Select Dados').item.json.channel }}', '{{ $('Select Dados').item.json.chatId }}', 'Novo' );"
+        "query": "INSERT INTO [db_Gepaci].[dbo].[ticketReturn]\n\t( [Nome Cliente], [Telefone], [RE], [Ticket], [Data Abertura], [Channel], [ChatId], [Status Glpi] )\n\tVALUES \n\t( '{{ $('Coletar Valores').first().json.nameUser }}', '{{ $('Coletar Valores').first().json.phoneUser }}',  '{{ $('Coletar Valores').first().json.re }}', '{{ $('createTicket').first().json.id }}', '{{ $now.format('yyyy-MM-dd HH:mm:ss') }}', '{{ $('Select Dados').first().json.channel }}', '{{ $('Select Dados').first().json.chatId }}', 'Novo' );"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        2384,
+        2320,
         272
       ],
       "id": "745e039e-90d1-4633-b413-2d234372e572",
@@ -1574,7 +1574,7 @@
       "type": "n8n-nodes-base.noOp",
       "typeVersion": 1,
       "position": [
-        2192,
+        2096,
         480
       ],
       "id": "f702e8ad-e6be-4f38-969b-4b21021385d5",
@@ -1842,7 +1842,7 @@
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.3,
       "position": [
-        2032,
+        2064,
         1568
       ],
       "id": "09444f2e-7724-4836-9fa1-2cee5a0b3874",
@@ -2028,7 +2028,7 @@
             {
               "id": "9efad99d-7bde-414c-af1a-637e4d123fb5",
               "name": "inputIdentity",
-              "value": "={{ $json.body.chatInput.padStart(6, '0') }}",
+              "value": "={{ $('Webhook EhGestor').first().json.body.chatInput.padStart(6, '0') }}",
               "type": "string"
             }
           ]
@@ -2196,7 +2196,7 @@
     },
     {
       "parameters": {
-        "url": "=https://apiwhatsapp.icomon.com.vc/funcionarios/{{ $('coletar identificador').item.json.inputIdentity }}/EhGestor",
+        "url": "=https://apiwhatsapp.icomon.com.vc/funcionarios/{{ $('coletar identificador').first().json.inputIdentity }}/EhGestor",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
@@ -2234,13 +2234,13 @@
     },
     {
       "parameters": {
-        "url": "=https://apiwhatsapp.icomon.com.vc/funcionarios/{{ $('coletar identificador2').item.json.inputIdentity }}/EhGestor",
+        "url": "=https://apiwhatsapp.icomon.com.vc/funcionarios/{{ $('coletar identificador2').first().json.inputIdentity }}/EhGestor",
         "sendHeaders": true,
         "headerParameters": {
           "parameters": [
             {
               "name": "Authorization",
-              "value": "=Bearer {{ $json.body.accessToken }}"
+              "value": "=Bearer {{ $('Set Token Banco2').first().json.body.accessToken }}"
             }
           ]
         },
@@ -2369,7 +2369,7 @@
             {
               "id": "b5b7676d-2611-4db4-ba61-0e03d453b2f0",
               "name": "textMessage",
-              "value": "=Prezado *{{ $('Set Tickets').first().json.nomeCliente.trim() }}*,\n\nSeu chamado de número: *{{ $('Loop Over Items').first().json.ticketId.trim() }}{{ ' - ' + $('searchTicket1').first().json.body.data[0]['1'] || '' }}* foi atualizado e consta com o status *'Pendente'* aguardando informações adicionais. Por favor, acesse o portal de atendimento para verificar os detalhes e fornecer as informações necessárias.\n\nAtenciosamente,\nEquipe de Suporte Técnico",
+              "value": "=Prezado *{{ $('Set Tickets').first().json.nomeCliente.trim().split(/\\s+/)[0] }}*,\n\nSeu chamado de número: *{{ $('Loop Over Items').first().json.ticketId.trim() }}{{ ' - ' + $('searchTicket1').first().json.body.data[0]['1'] || '' }}* foi atualizado e consta com o status *'Pendente'* aguardando informações adicionais. Por favor, acesse o portal de atendimento para verificar os detalhes e fornecer as informações necessárias.\n\nAtenciosamente,\nEquipe de Suporte Técnico",
               "type": "string"
             }
           ]
@@ -2388,7 +2388,7 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "UPDATE [db_Gepaci].[dbo].[ticketReturn]\n  SET [Status Retorno] = 'Mensagem Enviada',\n      [Status Glpi] = 'Pendente',\n      [Data Atualizacao] = '{{$now.format('yyyy-MM-dd HH:mm:ss')}}'\n  WHERE [Status Glpi] = 'Novo'\n  AND [Ticket] = '{{ $('Set Tickets').first().json.ticketId.trim() }}';\n"
+        "query": "UPDATE [db_Gepaci].[dbo].[ticketReturn]\n  SET [Status Retorno] = 'Mensagem Enviada',\n      [Status Glpi] = 'Pendente',\n      [Data Atualizacao] = '{{ $now.format('yyyy-MM-dd HH:mm:ss') }}'\n  WHERE [Status Glpi] = 'Novo'\n  AND [Ticket] = '{{ $('Set Tickets').first().json.ticketId.trim() }}';\n"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
@@ -2432,7 +2432,7 @@
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
       "position": [
-        1968,
+        2000,
         -192
       ],
       "id": "c87626cf-e43b-43eb-af7e-9a937440c856",
@@ -2445,7 +2445,7 @@
             {
               "id": "b68770f2-f6ef-434f-9c38-3f0c0cab1751",
               "name": "sessionToken",
-              "value": "={{ $json.body.session_token }}",
+              "value": "={{ $('requestToken4').first().json.body.session_token }}",
               "type": "string"
             }
           ]
@@ -2511,12 +2511,12 @@
     {
       "parameters": {
         "operation": "executeQuery",
-        "query": "SELECT TOP (1)\n   [Channel] AS channel\n  ,[ChatId] AS chatId\n  FROM [db_Gepaci].[dbo].[reports]\n  WHERE \n  [Matricula] = '{{ $('Coletar Valores').item.json.re }}'\n  AND Status != 'finalizada'\nORDER BY id DESC"
+        "query": "SELECT TOP (1)\n   [Channel] AS channel\n  ,[ChatId] AS chatId\n  FROM [db_Gepaci].[dbo].[reports]\n  WHERE \n  [Matricula] = '{{ $('Coletar Valores').first().json.re }}'\n  AND Status != 'finalizada'\nORDER BY id DESC"
       },
       "type": "n8n-nodes-base.microsoftSql",
       "typeVersion": 1.1,
       "position": [
-        2192,
+        2096,
         272
       ],
       "id": "4a4a1bb4-c6c5-41bb-9d3e-843f604b6a7d",
@@ -2628,7 +2628,7 @@
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
       "position": [
-        2544,
+        2528,
         272
       ],
       "id": "f9746ec2-3aa3-40b1-8f96-1b2791ee663d",
@@ -3463,7 +3463,7 @@
     "availableInMCP": false,
     "timeSavedPerExecution": 1
   },
-  "versionId": "ea75e55b-0cb5-45ef-b996-6109a8ffa0d6",
+  "versionId": "05a36234-047f-4ed6-81a4-67874c532fdb",
   "meta": {
     "templateCredsSetupCompleted": true,
     "instanceId": "c13cee92dfa69db8294a82c6dfa57e3a1199207e843eec919de3f2ec003607aa"
